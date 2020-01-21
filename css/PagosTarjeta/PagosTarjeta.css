@@ -1,0 +1,336 @@
+/*Cuerpo del modulo CompletarPerfil_Jugador*/
+body{
+    background-color: #d6d0ce;
+}
+.imgBtnRegresar {
+	width: 50px;
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 80%;
+	background-color: #d6d0ce;
+	border-radius: 50px;
+	
+}
+.imgBtnRegresar:hover {
+	cursor: pointer;
+	box-shadow: 0px 3px 4px 1px #616161;
+}
+button:hover {
+	cursor: pointer;
+	box-shadow: 0px 3px 4px 1px #616161;
+}
+.botoncito:hover {
+	cursor: pointer;
+	box-shadow: 0px 3px 4px 1px #616161;
+	color: black;
+}
+#cuadroAzul {
+	padding-top: 8px;
+	background: #9e9e9e;
+}
+#cuadroBlanco {
+	padding-top: 8px;
+	background: #ffffff;
+}
+
+/* Contenido del formulario*/
+#cuadroAzul>div>div>label {
+    font-family: Prototype;
+    font-size: 18px;
+    color: #ffffff;
+}
+#cuadroBlanco>div>div>label {
+    font-family: Prototype;
+    font-size: 18px;
+    color: #616161;
+}
+
+.btnTerminar {
+	height: 35px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+    font-family: Prototype;
+    text-align: center;
+    font-size: 15px;
+    border: hidden;
+    border-radius: 50px;
+    
+	background: #9e9e9e;
+	color: #ffffff;
+}
+
+/* Estilo para Columna de tarjetas scrolleables*/
+.scrollTarjetas {
+	margin-top: 4px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: #ffffff;
+	position: relative;
+    height: 250px;
+    overflow: auto;
+}
+.scrollTarjetas::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+.scrollTarjetas::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 10px;
+}
+.scrollTarjetas::-webkit-scrollbar-thumb {
+	height: 6px;
+	border: 4px solid #00bdff;
+    background-clip: padding-box;
+    border-radius: 8px;
+}
+.scrollTarjetas::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+.scrollTarjetas::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+/* Texto de Mis tarjetas */
+.scrollTarjetas>label {
+	font-family: prototype;
+	font-size: 20px;
+	text-align: center;
+	color: #616161;
+}
+/* botones de las tarjetas */
+.scrollTarjetas>button {
+	height: 28px;
+	margin-top: 3px;
+	margin-bottom: 22px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 4px;
+	font-family: prototype;
+	font-size: 16px;
+	text-align: center;
+	background-color: #616161;
+	color: #ffffff;
+	
+	border-radius: 50px;
+    border: hidden;
+}
+
+#separacionTitulos {
+	margin-top: 35px;
+}
+
+@media (max-width: 992px) {
+	#separacionTitulos {
+		margin-top: 5px !important;
+	}
+}
+
+@media (max-width: 576px) {
+	#separacionTitulos {
+		margin-top: 25px !important;
+	}
+}
+
+#columnaTarjetas>div>div>div>div>input {
+	width: 100%;
+	height: 45px;
+	margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 16%;
+    font-family: Prototype;
+    font-size: 20px;
+    font-style: normal;
+    border-radius: 50px;
+    color: #616161;
+}
+#columnaTarjetas>div>div>div>div>select { 
+	width: 100%;
+	height: 45px;
+	margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 30px;
+    font-family: Prototype;
+    font-size: 20px;
+    font-style: normal;
+    -webkit-appearance: button;
+    border-radius: 50px;
+    color: #616161;
+}
+#columnaTarjetas>div>div>div>div>input::placeholder {
+  color: #616161;
+}
+/* linea de todos las cajs */
+.linea {
+	position: absolute;
+	width: 2px;
+	height: 34px;
+	margin-top: -50px;
+	margin-left: calc(82% - 20px);
+	background: #616161;
+}
+/* select mes */
+.lineaCajaSmall {
+	position: absolute;
+	width: 2px;
+	height: 34px;
+	margin-top: -50px;
+	margin-left: 54%;
+	background: #616161;
+}
+/* caja año */
+.lineaSelect {
+	position: absolute;
+	width: 2px;
+	height: 34px;
+	margin-top: -55px;
+	margin-left: 54%;
+	background: #616161;
+}
+.imgCaja {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	margin-top: -42px;
+	margin-left: calc(85% - 20px);
+}
+
+.imgCajaSmall {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	margin-top: -47px;
+	margin-left: calc(72% - 20px);
+}
+.imgSelect {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	margin-top: -42px;
+	margin-left: calc(72% - 20px);
+}
+.imgTriangulito {
+	position: absolute;
+	width: 12px;
+	height: 11px;
+	margin-top: -42px;
+	margin-left: 42%;
+}
+/* Segunda fila derecha de la tabla de tarjetas*/
+#separacionSubTitulos {
+	margin-top: 10px;
+}
+#checkTarjeta>div>label {
+	margin-top: 12px;
+	margin-right: 20px;
+	font-family: prototype;
+	font-size: 20px;
+	color: #ffffff;
+}
+#checkTarjeta>div>label>input {
+	position: absolute;
+	margin-left: 60%;
+	margin-top: 8px;
+}
+
+/* Tercer fila derecha de la tabla de tarjetas donde van los terminos*/
+.separacionTerminos {
+	margin-top: 60px;
+}
+
+@media (max-width: 992px) {
+	.separacionTerminos {
+		margin-top: 0px !important;
+	}
+}
+
+.txtVisa {
+	font-family: prototype;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+/* Modal Exitoso */
+#cuerpoModalExitoso {
+	background: transparent !important;
+	border: none;
+}
+#cuerpoModalExitoso>.modal-body {
+	background: #414c50;
+}
+#cuerpoModalExitoso>.footer {
+	background: #414c50;
+}
+#cuerpoModalExitoso>.modal-body>div>div>label {
+	margin-top: 35px;
+    font-family: Prototype;
+    font-size: 25px;
+    color: #ffffff;
+}
+#cuerpoModalExitoso>.modal-body>div>div>.subtitulo {
+	margin-top: -5px;
+	margin-bottom: 35px;
+    font-family: Prototype;
+    font-size: 18px;
+    color: #ffffff;
+}
+#cuerpoModalExitoso>.footer>div>div>button {
+	height: 35px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    font-family: Prototype;
+    font-size: 15px;
+    font-style: normal;
+    text-align: center;
+    border-radius: 50px;
+    border: hidden;
+    background-color: #43a047;
+    color: #ffffff;
+}
+
+/* Cambio de cursor para botones */
+
+.contenedorCheck input[type="checkbox"] {
+    display: none;
+}
+
+.contenedorCheck input[type="checkbox"]+label span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    background: #9E9E9E;
+    background-size: cover;
+    cursor: pointer;
+    border: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: #ffffff;
+}
+
+.contenedorCheck input[type="checkbox"]:checked+label span {
+    background: #ffffff;
+    border: solid;
+    border-width: 7px;
+    border-radius: 5px;
+    border-color: #616161;
+    background-size: cover;
+}
+.contenedorCheck>p>label {
+	margin-top: 10px;
+	font-family: prototype;
+	font-size: 20px;
+	color: #fff;
+}
+/* Color de caja de checbutton y radiobutton */
+.colorCaja {
+	background-color: #9e9e9e;
+}
+.colorLetra {
+	font-size: 18px;
+	color: #ffffff;
+	font-family: Prototype;
+	font-weight: bold;
+}

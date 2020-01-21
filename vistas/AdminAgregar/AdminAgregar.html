@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Agregar</title>
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/AdminAgregar/AdminAgregar.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-4">
+            <!-- caja de editar Sitio -->
+            <div class="col-10 col-md-5 col-lg-5 col-xl-4 mr-lg-2 pb-3 bordeRedondo">
+                <br>
+                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Sitio</p>
+                <br>
+                <form action="">
+                    <div class="row justify-content-center">
+                        <!-- Agregar radio -->
+                        <div class="form-inline mb-2 mr-3">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioSitioAdd" value="1" name="radioSitio"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioSitioAdd">Agregar</label>
+                            </div>
+                        </div>
+
+                        <div class="form-inline mb-2">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioSitioEdi" value="2" name="radioSitio"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioSitioEdi">Editar</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Estado</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Ciudad</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Sitio">
+                            </div>
+                        </div>
+                        <div class="col-9 d-none" id="modClassSitio">
+                            <div class="row justify-content-start">
+                                <div class="col-8 col-md-9 pr-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="" id=""
+                                            placeholder="Sitio a Buscar">
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
+                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
+                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Caja de Editar Ciudad -->
+            <div class="col-10 col-md-5 col-lg-5 col-xl-4 ml-md-2 mt-3 mt-md-0 pb-3 bordeRedondo">
+                <br>
+                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Ciudad</p>
+                <br>
+                <form action="">
+                    <div class="row justify-content-center">
+                        <!-- Agregar radio -->
+                        <div class="form-inline mb-2 mr-3">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioCdAdd" value="1" name="radioCd"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioCdAdd">Agregar</label>
+                            </div>
+                        </div>
+
+                        <div class="form-inline mb-2">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioCdEdi" value="2" name="radioCd"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioCdEdi">Editar</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <select class="custom-select m-auto d-block" name="" id="">
+                                    <option selected>Estado</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Ciudad">
+                            </div>
+                        </div>
+                        <div class="col-9 d-none" id="modClassCd">
+                            <div class="row justify-content-start">
+                                <div class="col-8 col-md-9 pr-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="" id=""
+                                            placeholder="Ciudad a buscar">
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
+                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
+                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Caja de editar Placa -->
+            <div class="col-10 col-md-5 col-lg-5 col-xl-4 mr-lg-2 mt-3 pb-3 bordeRedondo">
+                <br>
+                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Placa</p>
+                <br>
+                <form action="">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <div class="row justify-content-center">
+                                <!-- Agregar radio -->
+                                <div class="form-inline mb-2 mr-3">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="radioPlacaAdd" value="1" name="radioPlaca"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="radioPlacaAdd">Agregar</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-inline mb-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="radioPlacaEdi" value="2" name="radioPlaca"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="radioPlacaEdi">Editar</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Usuario">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Numero de Placa">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Sitio</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Estado</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Ciudad</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 d-none" id="modClassPlaca">
+                            <div class="row justify-content-start">
+                                <div class="col-7 col-md-8 pr-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="" id=""
+                                            placeholder="Placa a Buscar">
+                                    </div>
+                                </div>
+                                <div class="col-5 col-md-4">
+                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
+                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
+                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Caja de editar Estado -->
+            <div class="col-10 col-md-5 col-lg-5 col-xl-4 ml-md-2 mt-3 pb-3 bordeRedondo">
+                <br>
+                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Estado</p>
+                <br>
+                <form action="">
+                    <div class="row justify-content-center">
+                        <!-- Agregar radio -->
+                        <div class="form-inline mb-2 mr-3">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioEdoAdd" value="1" name="radioEdo"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioEdoAdd">Agregar</label>
+                            </div>
+                        </div>
+
+                        <div class="form-inline mb-2">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioEdoEdi" value="2" name="radioEdo"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioEdoEdi">Editar</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Estado">
+                            </div>
+                        </div>
+                        <div class="col-9 d-none" id="modClassEdo">
+                            <div class="row justify-content-start">
+                                <div class="col-8 col-md-9 pr-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="" id=""
+                                            placeholder="Estado a Buscar">
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
+                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
+                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Caja de Editar Costo-->
+            <div class="col-10 col-md-5 col-lg-5 col-xl-4 ml-md-2 mt-3 pb-3 bordeRedondo">
+                <br>
+                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Costo</p>
+                <br>
+                <form action="">
+                    <div class="row justify-content-center">
+                        <!-- Agregar radio -->
+                        <div class="form-inline mb-2 mr-3">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioCostoAdd" value="1" name="radioCostoKm"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioCostoAdd">Agregar</label>
+                            </div>
+                        </div>
+
+                        <div class="form-inline mb-2">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioCostoEdi" value="2" name="radioCostoKm"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="radioCostoEdi">Editar</label>
+                            </div>
+                        </div>
+
+                        <div class="col-9">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Estado</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                    <option selected>Ciudad</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" placeholder="Costo por Km">
+                            </div>
+                        </div>
+                        <div class="col-9 d-none" id="modClassCostoKm">
+                            <div class="row justify-content-start">
+                                <div class="col-8 col-md-9 pr-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="" id=""
+                                            placeholder="Costo a Buscar">
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
+                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
+                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/AdminAgregar/AdminAgregar.js"></script>
+</body>
+
+</html>

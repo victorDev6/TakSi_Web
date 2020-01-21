@@ -1,0 +1,25 @@
+.cajaCosto {
+    width: 250px !important;
+    margin-top: 5px !important;
+}
+ .botonCosto {
+    width: 100px !important;
+    margin: auto;
+}
+.iconoBoton {
+    width: 18px;
+    height: 16px;
+    padding-right: 3px;
+    padding-bottom: 2px;
+}
+ .botonAceptar {
+    width: 170px !important;
+    margin: auto;
+}
+
+@media screen and (max-width: 992px) { 
+    .tamTexto {
+        font-size: 12px;
+    }
+} 
+

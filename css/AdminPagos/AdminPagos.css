@@ -1,0 +1,47 @@
+/* body {
+ background-color: #9e9e9e;
+} */
+.caja {
+    width: 250px !important;
+    margin-top: 5px !important;
+}
+ .boton {
+    width: 101px !important;
+    margin: auto;
+}
+.botonPago {
+    width: 160px !important;
+    margin: auto;
+}
+.iconoBotonP {
+    width: 18px;
+    height: 16px;
+    padding-bottom: 2px;
+}
+/*css paginacion*/
+#paginaP{
+	background-color: transparent;
+	/* padding-top: 30px; */
+	font-family: prototype;
+	font-size: 20px;
+    color: #666060 !important;	
+    margin: auto;
+}
+#paginacionP{
+	/* padding-top: 35px; */
+    text-align: left;
+}
+.paginationP .active a{
+    color: rgb(43, 125, 163) !important;
+    font-weight: bold;
+}
+
+.paginationP a{
+    color: #3b3535 !important;
+    border-color: rgb(193, 201, 201);
+    font-weight: bold;
+}
+.iconoPaginacionP {
+    width: 18px;
+    height: 18px;
+}

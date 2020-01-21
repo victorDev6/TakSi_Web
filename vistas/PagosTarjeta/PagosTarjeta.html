@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pagos</title>
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/PagosTarjeta/PagosTarjeta.css">
+</head>
+
+<body>
+    <div class="contenedor">
+
+        <!-- Boton para retroceder a seleccion de forma de pago -->
+        <div class="row mx-0">
+
+            <div class="col-sm-1 col-md-1">
+                <!-- offset-md-10 offset-sm-10 -->
+                <img class="imgBtnRegresar" id="btnRegresarPagos" src="../../Diseno/ICONOS/regresar.svg">
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mx-0">
+            <!-- Agregar modo de suscripcion -->
+            <div class="col-10 col-sm-4 col-md-4 col-lg-5 col-xl-4 py-2 mb-2 mr-sm-3 colorCaja">
+                <div class="form-inline">
+                    <p class="m-auto colorLetra">TIPO DE SUSCRIPCION:</p>
+                    <div class="form-check mx-3 text-center">
+                        <label class="form-check-label font-weight-bold">
+                            <input type="radio" class="form-check-input" name="" id="" value="checkedValue">
+                            Mensual
+                        </label>
+                    </div>
+                    <div class="form-check text-center">
+                        <label class="form-check-label font-weight-bold">
+                            <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
+                            Anual
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otra columna para el pago de taxi -->
+            <div class="col-10 col-sm-6 col-md-6 col-lg-5 col-xl-4 py-2 mb-2 colorCaja">
+                <div class="form-inline">
+                    <p class="m-auto colorLetra">TAXIS A PAGAR:</p>
+                    <div class="form-check ml-3 text-center">
+                        <label class="form-check-label font-weight-bold">
+                            <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                            Taxi 1
+                        </label>
+                    </div>
+                    <div class="form-check ml-3 text-center">
+                        <label class="form-check-label font-weight-bold">
+                            <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                            Taxi 2
+                        </label>
+                    </div>
+                    <div class="form-check ml-3 text-center">
+                        <label class="form-check-label font-weight-bold">
+                            <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                            Taxi 3
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <form id="formularioPagoTarjeta" action="javascript:void(0)">
+            <div class="row mx-0">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-10 offset-lg-1 offset-md-1 offset-sm-1 offset-1"
+                    id="cuadroAzul">
+                    <div class="row">
+                        <div class="col-11 offset-1">
+                            <label>INFORMACIÓN DE PAGO</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mx-0">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-10 offset-lg-1 offset-md-1 offset-sm-1 offset-1"
+                    id="cuadroBlanco">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-7 col-sm-11 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 offset-0">
+                            <label>Concepto de Pago:</label>
+                            <label>Suscripcíon a la Plataforma</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-11 col-xs-12 offset-lg-1 offset-md-0 offset-sm-1 offset-0">
+                            <label>Monto Total:</label>
+                            <label>$200</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mx-0">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-10 offset-lg-1 offset-md-1 offset-sm-1 offset-1"
+                    id="cuadroAzul">
+
+                    <div class="row" id="columnaTarjetas">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-10 offset-lg-0 offset-md-0 offset-sm-0 offset-1">
+                            <div class="scrollTarjetas" data-spy="scroll" data-offset="0" align="center">
+                                <label>MIS TARJETAS</label>
+                                <!-- Insertar botones con sus respectivos datos -->
+                                <button type="button" class="btn form-control botoncito" data-tarjeta="3823">XXXX XXXX
+                                    XXXX
+                                    3823</button>
+                                <button type="button" class="btn form-control botoncito" data-tarjeta="2904">XXXX XXXX
+                                    XXXX
+                                    2904</button>
+                                <button type="button" class="btn form-control botoncito" data-tarjeta="4573">XXXX XXXX
+                                    XXXX
+                                    4573</button>
+                                <button type="button" class="btn form-control botoncito" data-tarjeta="9123">XXXX XXXX
+                                    XXXX
+                                    9123</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-6 col-10 offset-lg-0 offset-md-0 offset-sm-0 offset-1">
+                            <div class="row" id="separacionTitulos">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PTNombreTitular"
+                                            placeholder="Nombre del titular">
+                                        <div class="linea"></div>
+                                        <img class="imgCaja" src="../../Diseno/ICONOS/alerta.svg" data-toggle="tooltip"
+                                            data-placement="top" title="Ingresa el nombre de usuario de la tarjeta">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PTTarjeta"
+                                            placeholder="Número de la tarjeta">
+                                        <div class="linea"></div>
+                                        <img class="imgCaja" src="../../Diseno/ICONOS/tarjeta.svg" data-toggle="tooltip"
+                                            data-placement="top" title="Ingresa el numero de tarjeta de 16 digitos">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                                    <div class="form-group">
+                                        <select class="form-control" name="PTMes">
+                                            <option disabled selected>Mes</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </div>
+                                    <img class="imgTriangulito" src="../../Diseno/ICONOS/triaguloSelect.svg">
+                                    <div class="lineaSelect"></div>
+                                    <img class="imgCajaSmall" src="../../Diseno/ICONOS/alerta.svg" data-toggle="tooltip"
+                                        data-placement="top" title="Mes de vigencia de la tarjeta">
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PTAnio" placeholder="Año">
+                                        <div class="lineaCajaSmall"></div>
+                                        <img class="imgSelect" src="../../Diseno/ICONOS/alerta.svg"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="Año de vigencia de la tarjeta">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" id="separacionSubTitulos">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-10 offset-md-0 offset-sm-0 offset-xs-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PTCorreo"
+                                            placeholder="e-mail@hotmail.com">
+                                        <div class="linea"></div>
+                                        <img class="imgCaja" src="../../Diseno/ICONOS/alerta.svg" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Ingresa el Correo para recibir confirmacion de tu pago">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-6 col-6 offset-md-0 offset-sm-0 offset-xs-1">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PTCodigo" placeholder="CVV">
+                                        <div class="lineaCajaSmall"></div>
+                                        <img class="imgSelect" src="../../Diseno/ICONOS/alerta.svg"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="El codigo de seguridad es de 3 digitos y se encuentra al reverso de tu tarjeta">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-10 col-12 offset-lg-1 offset-md-6 offset-sm-2 offset-0"
+                                    id="checkTarjeta">
+                                    <div class="form-group">
+                                        <div class="contenedorCheck">
+                                            <p>
+                                                <input type="checkbox" id="gTarjeta" name="PTGuardarTarjeta">
+                                                <label for="gTarjeta">Guardar Tarjeta: <span></span></label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row separacionTerminos">
+                                <div class="col-12" align="right">
+                                    <label class="txtVisa">* Sólo Aceptamos VISA y MASTERCARD</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-0">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-10 offset-lg-9 offset-md-9 offset-sm-7 offset-1">
+                    <button type="submit" class="btn btn-block form-control btnTerminar" data-toggle="modal"
+                        data-target="#modalTransferExitoso">PAGAR</button>
+                    <!-- <a href="#" class="btn btn-success btn-sm botonAdd" data-toggle="modal" data-target="#modal-agregar">Añadir</a> -->
+                </div>
+            </div>
+        </form>
+
+
+        <!-- Modal para Ingresar datos de pago -->
+        <div class="modal fade" id="modalTransferExitoso" tabindex="-1" role="dialog" data-backdrop="static"
+            data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" id="cuerpoModalExitoso">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12" align="center">
+                                <label>Transacción Aprobada</label>
+                            </div>
+                            <div class="col-12" align="center">
+                                <label class="subtitulo">Muchas Gracias por su Pago</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-4 offset-4" align="center">
+                                <button type="button" class="form-control" data-dismiss="modal"
+                                    aria-label="Close">TERMINAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../librerias/popper/popper.min.js"></script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/PagosTarjeta/PagosTarjeta.js"></script>
+
+
+</body>
+
+</html>

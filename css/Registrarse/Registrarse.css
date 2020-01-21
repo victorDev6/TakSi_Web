@@ -1,0 +1,36 @@
+body{
+    background-color: #d6d0ce;
+}
+
+.caja {
+    width: 300px !important;
+    margin-top: 5px !important;
+}
+
+.ckeckbox_1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+ 
+.botonC {
+    margin-top: 5px;
+}
+
+
+@media (max-width: 454px) {
+    .caja {
+    width: 230px !important;
+    margin-top: 5px !important;
+}
+}
+
+@media (max-width: 370px) {
+    .caja {
+    width: 200px !important;
+    margin-top: 5px !important;
+    /* Fuente de todos los campos */
+    font-size: 14px;    
+}
+
+
+}
