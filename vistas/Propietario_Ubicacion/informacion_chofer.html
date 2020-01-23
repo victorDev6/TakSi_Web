@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion_chofer.css">
+
+
+
+
+<div class="tutulo p-4">
+	<h2>DATOS CHOFERES</h2>
+</div>
+
+
+<div class="container">
+	<div class="row justify-content-end">
+		<di>
+			<a ui-sref="informacion" class="btn btn-secondary btn-sm active" id="btnAgregarChofer" role="button">
+			<i class="fa fa-arrow-left mx-2"></i>REGRESAR</a>
+		</di>
+	</div>
+	<div class="row justify-content-start">
+		<di>
+			<p class="mb-0 font-weight-light " >llene los datos con informacion real, para que sea valida su peticion</p>
+		</di>
+	</div>
+	<form id="chofer1">
+		<div class="row contenidoform p-1 justify-content-center align-items-center">
+			<div class="col-12">
+				<span class="titulos d-block m-auto">CHOFER #1<img class="iconotaxi"></span>
+			</div>
+
+			<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1">
+				<div class="row pl-4 pr-4">
+					<div class="col-6 col-lg-6">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Nombre:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Pat:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Mat:</label>
+							<div class="col-12  col-sm-12   col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Usuario:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="pitufo">
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-lg-6">
+						<div class="form-group row mb-0">
+							<div class="d-block m-auto">
+								<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi" class="d-none">
+								<img class="selectorImagen imgSubida_estiloC" id="imgSubida" src="">
+							</div>
+						</div>
+
+						<div class="row mb-0">
+							<label for="" class=" col-12  col-sm-12  col-md-12  col-lg-12  col-form-label  text-center text-md-center subtitulo">Img:</label>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ICONO PDF-->
+			<div class="col-12 col-sm-2">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-12">
+						<button class="btn pdf d-block m-auto"></button>
+					</div>
+					<div class="col-12">
+						<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+					</div>
+				</div>
+			</div>
+			<!-- FIN PDF-->
+
+			<!--BOTON DE: GUARDAR--EDITAR--ELIMINAR-->
+			<div class="col-12  col-sm-2  col-md-2  col-lg-1">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+						<button class="btn guardar d-block m-auto"></button>
+					</div>
+					<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+						<button class="btn editar d-block m-auto"></button>
+					</div>
+					<div class="col-4 col-sm-12  col-md-12  col-lg-8">
+						<button class="btn eliminar d-block m-auto"></button>
+					</div>
+				</div>
+			</div>
+			<!--FIN BOTON-->
+		</div>
+	</form>
+
+
+</div>
+
+
+<script src="../../js/Propietario_Ubicacion/informacion_chofer.js"> </script>

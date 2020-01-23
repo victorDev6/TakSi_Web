@@ -1,100 +1,271 @@
-<div class="tutulo">
+<!--link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"-->
+
+<link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion.css">
+
+
+
+<div class="tutulo p-4">
 	<h2>DATOS DEL TAXI</h2>
 </div>
 
 <div class="container">
-	<form>
+	<form id="taxi1">
 		<div class="row contenidoform p-2">
 
-			<div class="col-12  col-sm-6  col-md-4 col-lg-4 uno p-1 pb-0">
-				<div class="form-group row mb-1">
-					<label for="inputPassword" class="col-4  col-sm-4  col-md-5  col-lg-4   col-form-label  text-right px-0">N° Taxi:</label>
-					<div class="col-8  col-sm-8  col-md-7  col-lg-7">
-						<input type="number" class="form-control form-control-sm" id="inputPassword" placeholder="5354">
-					</div>
+			<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1 taxis">
+				<div class="row  justify-content-center align-items-center taxx">
+					<span class="titulos">TAXI #1<img class="iconotaxi"></span>
 				</div>
 
-				<div class="form-group row mb-1">
-					<label for="inputPassword" class="col-4  col-sm-4  col-md-5  col-lg-4  col-form-label  text-right px-0">Placa:</label>
-					<div class="col-8  col-sm-8  col-md-7  col-lg-7">
-						<input type="password" class="form-control form-control-sm" id="inputPassword" placeholder="JH4-34">
+				<div class="row pl-4 pr-4">
+					<div class="col-6 col-lg-6 hijotaxi1">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">N° Taxi:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="5354">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Placa:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="JH4-34">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Marca:</label>
+							<div class="col-12  col-sm-12   col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Tzuru">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Modelo:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="2020">
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group row mb-1">
-					<label for="inputPassword" class="col-4  col-sm-4   col-md-5	col-lg-4  col-form-label  text-right px-0">Marca:</label>
-					<div class="col-8  col-sm-8   col-md-7  col-lg-7">
-						<input type="password" class="form-control form-control-sm" id="inputPassword" placeholder="Tzuru">
-					</div>
-				</div>
+					<div class="col-6 col-lg-6 hijotaxi2">
 
-				<div class="form-group row mb-1">
-					<label for="inputPassword" class="col-4  col-sm-4  col-md-5  col-lg-4   col-form-label  text-right px-0">Modelo:</label>
-					<div class="col-8  col-sm-8  col-md-7  col-lg-7">
-						<input type="password" class="form-control form-control-sm" id="inputPassword" placeholder="2020">
-					</div>
-				</div>
+						<div class="form-group row mb-0">
+							<label for="" class="col-12   col-sm-12   col-md-4   col-lg-3    col-form-label  text-center text-md-right px-0 subtitulo">Sitio:</label>
+							<div class="col-12 col-sm-12 col-md-8  col-lg-9">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccionar Sitio</option>
+									<option value="1">Radio Taxi</option>
+									<option value="2">Junchavin</option>
+									<option value="3">Miguel Aleman</option>
+								</select>
+							</div>
+						</div>
 
+						<div class="form-group row mb-0">
+							<label for="" class="col-12 col-sm-12 col-md-4  col-lg-3 col-form-label  text-center text-md-right px-0 subtitulo">Estado:</label>
+							<div class="col-12 col-sm-12 col-md-8  col-lg-9">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccionar Estado</option>
+									<option value="1">Chiapas</option>
+									<option value="2">Tabasco</option>
+									<option value="3">Monterrey Nvo. Leon</option>
+								</select>
+							</div>
+						</div>
 
-				<div class="form-group row mb-0">
-					<label for="inputEmail3" class="col-4 col-sm-4 col-md-5  col-lg-4 col-form-label  text-right px-0">Sitio</label>
-					<div class="col-8 col-sm-8 col-md-7  col-lg-7">
-						<input type="email" class="form-control form-control-sm" id="inputEmail3" placeholder="Radio Taxi">
-					</div>
-				</div>
+						<div class="form-group row mb-0">
+							<label for="" class="col-12 col-sm-12 col-md-4  col-lg-3 col-form-label  text-center text-md-right px-0 subtitulo">Ciudad:</label>
+							<div class="col-12 col-sm-12 col-md-8  col-lg-9">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccionar Ciudad</option>
+									<option value="1">Comitan</option>
+									<option value="2">Sancristobal</option>
+									<option value="3">Tuxtla Gutierrez</option>
+								</select>
+							</div>
+						</div>
 
-			</div>
-
-			<div class="col-12  col-sm-6  col-md-4 col-lg-4 dos p-0">
-				<div class="form-group row mb-1">
-					<label for="inputEmail3" class="col-4 col-sm-4 col-md-5  col-lg-4 col-form-label  text-right px-0">Estado</label>
-					<div class="col-8 col-sm-8 col-md-7  col-lg-7">
-						<select class="form-control form-control-sm" name="" id="">
-							<option value="-1">Seleccionar Estado</option>
-							<option value="1">Activo</option>
-							<option value="2">inactivo</option>
-							<option value="3">nombrede equipo</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group row mb-1">
-					<label for="inputEmail3" class="col-4 col-sm-4 col-md-5  col-lg-4 col-form-label  text-right px-0">Ciudad</label>
-					<div class="col-8 col-sm-8 col-md-7  col-lg-7">
-						<select class="form-control form-control-sm" name="" id="">
-							<option value="-1">Seleccionar Ciudad</option>
-							<option value="1">Activo</option>
-							<option value="2">inactivo</option>
-							<option value="3">nombrede equipo</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group row mb-1">
-					<div class="contenedorhijo_noticias  offset-lg-5  offset-5 col-7 col-sm-8 col-md-7  col-lg-7">
-						<div class="" id="contenedor_imagen">
-							<div class="form-group">
-								<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia">
-								<img class="selectorImagen imgSubida_estilo img-responsive" id="imgSubida" src="">
+						<div class="form-group row mb-0 pt-1 justify-content-center align-items-center">
+							<div class=" form-group offset-md-3">
+								<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi" class="d-none">
+								<img class="selectorImagen imgSubida_estilo" id="imgSubida" src="">
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 
-
-
-
-
-
-			<div class="col-12  col-sm-6  col-md-3 col-lg-3 tres p-1">
-				<h4>CHOFERES</h4>
+			<div class="col-12  col-sm-4   col-md-3  col-lg-3">
+				<div class="row  justify-content-center align-items-center chof">
+					<span class="titulos">CHOFERES</span>
+				</div>
+				<div class="form-group row justify-content-center align-items-center pl-4 pr-4 pt-md-4">
+					<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0 pt-sm-4 pt-md-0 ">
+						<img class="iconochoferesS d-block m-auto">
+					</div>
+					<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0">
+						<img class="iconochoferesC d-block m-auto">
+					</div>
+					<div class="col-3 col-sm-8  col-md-4">
+						<img class="iconochoferesS d-block m-auto">
+					</div>
+				</div>
+				<div class="row justify-content-center align-items-center mt-2 pl-4 pr-4 ">
+					<div class="p-2">
+						<a ui-sref="choferes" class="btn btn-secondary btn-sm active" id="btnAgregarChofer" role="button">AGREGAR</a>
+					</div>
+				</div>
 			</div>
 
-			<div class="col-12  col-sm-6  col-md-1 col-lg-1 cuatro p-1">
-				<p>Icono</p>
+			<div class="col-12  col-sm-12  col-md-1 col-lg-1  p-1 pt-md-4 cuatro">
+				<div class="row justify-content-center align-items-center p-1 pt-md-4">
+					<div class="col-4 col-sm-4 col-md-12 col-lg-8 pb-md-4">
+						<button class="btn guardar d-block m-auto"></button>
+					</div>
+					<div class="col-4 col-sm-4  col-md-12 col-lg-8 pb-md-4">
+						<button class="btn editar d-block m-auto"></button>
+					</div>
+					<div class="col-4 col-sm-4  col-md-12 col-lg-8">
+						<button class="btn eliminar d-block m-auto"></button>
+					</div>
+				</div>
 			</div>
+
 		</div>
 	</form>
+
+
+
+
+	<!--form id="taxi2" class="pt-4">
+		<div class="row contenidoform p-2">
+
+			<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1 taxis">
+				<div class="row  justify-content-center align-items-center taxx">
+					<span class="titulos">TAXI #2<img class="iconotaxi"></span>
+				</div>
+
+				<div class="row pl-4 pr-4">
+					<div class="col-6 col-lg-6 hijotaxi1">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">N° Taxi:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="5354">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Placa:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="JH4-34">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Marca:</label>
+							<div class="col-12  col-sm-12   col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Tzuru">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Modelo:</label>
+							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="2020">
+							</div>
+						</div>
+					</div>
+
+					<div class="col-6 col-lg-6 hijotaxi2">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12   col-sm-12   col-md-4   col-lg-3    col-form-label  text-center text-md-right px-0 subtitulo">Sitio:</label>
+							<div class="col-12 col-sm-12 col-md-8  col-lg-9">
+								<input type="text" class="form-control form-control-sm" id="inputEmail3" placeholder="Radio Taxi">
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12 col-sm-12 col-md-4  col-lg-3 col-form-label  text-center text-md-right px-0 subtitulo">Estado:</label>
+							<div class="col-12 col-sm-12 col-md-8  col-lg-9">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccionar Estado</option>
+									<option value="1">Chiapas</option>
+									<option value="2">Tabasco</option>
+									<option value="3">Monterrey Nvo. Leon</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<label for="" class="col-12 col-sm-12 col-md-4  col-lg-3 col-form-label  text-center text-md-right px-0 subtitulo">Ciudad:</label>
+							<div class="col-12 col-sm-12 col-md-8  col-lg-9">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccionar Ciudad</option>
+									<option value="1">Comitan</option>
+									<option value="2">Sancristobal</option>
+									<option value="3">Tuxtla Gutierrez</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row mb-0 pt-1 justify-content-center align-items-center">
+							<div class="offset-md-3">
+								<input type="file" accept=".png, .jpg, .jpeg" id="" class="d-none">
+								<img class="imgSubida_estilo" id="" src="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="col-12  col-sm-4   col-md-3  col-lg-3">
+				<div class="row  justify-content-center align-items-center chof">
+					<span class="titulos">CHOFERES</span>
+				</div>
+				<div class="form-group row justify-content-center align-items-center pl-4 pr-4 pt-md-4">
+					<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0 pt-sm-4 pt-md-0 ">
+						<img class="iconochoferesS d-block m-auto">
+					</div>
+					<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0">
+						<img class="iconochoferesC d-block m-auto">
+					</div>
+					<div class="col-3 col-sm-8  col-md-4">
+						<img class="iconochoferesS d-block m-auto">
+					</div>
+				</div>
+				<div class="row justify-content-center align-items-center mt-2 pl-4 pr-4 ">
+					<div class="p-2">
+						<button type="button" class="form-control form-control-sm btn btn-block btnAgregarChofer" id="btnAgregarChofer">Agregar</button>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col-12  col-sm-12  col-md-1 col-lg-1  p-1 pt-md-4 cuatro">
+				<div class="row justify-content-center align-items-center p-1 pt-md-4">
+					<div class="col-4 col-sm-4 col-md-12 col-lg-8 pb-md-4">
+						<button class="btn guardar d-block m-auto"></button>
+					</div>
+					<div class="col-4 col-sm-4  col-md-12 col-lg-8 pb-md-4">
+						<button class="btn editar d-block m-auto"></button>
+					</div>
+					<div class="col-4 col-sm-4  col-md-12 col-lg-8">
+						<button class="btn eliminar d-block m-auto"></button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</form-->
 </div>
+
+
+
+
+<script src="../../js/Propietario_Ubicacion/informacion.js"> </script>

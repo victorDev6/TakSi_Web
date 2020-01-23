@@ -21,10 +21,13 @@ app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider
 			url: '/Mi Cuenta',
 			templateUrl: 'micuenta.html'
 		})
+		.state('choferes', {
+			url: '/chofer',
+			templateUrl: 'informacion_chofer.html'
+		})
 		.state('cerrarsesion', {
 			url: '/Home',
 			templateUrl: 'ubicacion.html'
 		});
+
 }]);
-
-
