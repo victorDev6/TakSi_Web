@@ -1,119 +1,344 @@
-<link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+<!--link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"-->
 
 <link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion_chofer.css">
 
 
 
 
-<div class="tutulo p-4">
-	<h2>DATOS CHOFERES</h2>
+<div class="tutulo pt-2 pb-0 mb-0">
+	<h2 class="mb-0">DATOS CHOFERES</h2>
 </div>
 
 
 <div class="container">
 	<div class="row justify-content-end">
 		<di>
-			<a ui-sref="informacion" class="btn btn-secondary btn-sm active" id="btnAgregarChofer" role="button">
-			<i class="fa fa-arrow-left mx-2"></i>REGRESAR</a>
+			<a ui-sref="informacion" class="btn btn-secondary btn-sm active" id="btnRegresarTaxi" role="button">
+				<i class="fa fa-arrow-left mx-2"></i>REGRESAR</a>
 		</di>
 	</div>
 	<div class="row justify-content-start">
 		<di>
-			<p class="mb-0 font-weight-light " >llene los datos con informacion real, para que sea valida su peticion</p>
+			<p class="mb-1 font-weight-light h6 text-muted">Llene los datos con informacion real, para que sea valida su peticion</p>
 		</di>
 	</div>
-	<form id="chofer1">
-		<div class="row contenidoform p-1 justify-content-center align-items-center">
-			<div class="col-12">
-				<span class="titulos d-block m-auto">CHOFER #1<img class="iconotaxi"></span>
-			</div>
+	<div id="chofer1" class="mb-2">
+		<form id="chofer1">
+			<div class="row contenidoform p-1 justify-content-center align-items-center">
+				<div class="col-12">
+					<span class="titulos d-block m-auto">CHOFER #1</span>
+				</div>
 
-			<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1">
-				<div class="row pl-4 pr-4">
-					<div class="col-6 col-lg-6">
-						<div class="form-group row mb-0">
-							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Nombre:</label>
-							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+				<!-- FORMULARIO CHOFER-->
+				<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1">
+					<div class="row pl-4 pr-4">
+						<div class="col-6 col-lg-6">
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Nombre:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Pat:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Mat:</label>
+								<div class="col-12  col-sm-12   col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Usuario:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="pitufo">
+								</div>
 							</div>
 						</div>
-
-						<div class="form-group row mb-0">
-							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Pat:</label>
-							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+						<div class="col-6 col-lg-6">
+							<div class="form-group row mb-0 justify-content-center align-items-center pt-4 pt-md-0">
+								<div class="offset-0 offset-md-4 offset-lg-3 pt-1 pt-md-0">
+									<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi" class="d-none">
+									<img class="selectorImagen imgSubida_estiloC" id="imgSubida" src="">
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group row mb-0">
-							<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Mat:</label>
-							<div class="col-12  col-sm-12   col-md-8  col-lg-9">
-								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+							<div class="form-group row mb-0 justify-content-center align-items-center">
+								<div class="offset-0 offset-md-4 offset-lg-3">
+									<label for="" class="col-form-label  d-block m-auto subtitulo">Img:</label>
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group row mb-0">
-							<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Usuario:</label>
-							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="pitufo">
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="password" class="form-control form-control-sm" id="pasW1" value="tak-si">
+									<input type="checkbox" id="cliquiandoP1"/> <label class="checkboxtext text-muted mb-0">Show Password</label>
+								</div>
 							</div>
-						</div>
+
+							<!-- ICONO PDF-secundario-->
+							<div class="row justify-content-center align-items-center pt-1 p-md-0 d-block d-md-none">
+								<div class="col-12">
+									<button class="btn pdf d-block m-auto"></button>
+								</div>
+								<div class="col-12">
+									<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+								</div>
+							</div>
+						</div><!-- FIN PDF-->
 					</div>
-					<div class="col-6 col-lg-6">
-						<div class="form-group row mb-0">
-							<div class="d-block m-auto">
-								<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi" class="d-none">
-								<img class="selectorImagen imgSubida_estiloC" id="imgSubida" src="">
-							</div>
-						</div>
+				</div>
+				<!-- FIN -->
 
-						<div class="row mb-0">
-							<label for="" class=" col-12  col-sm-12  col-md-12  col-lg-12  col-form-label  text-center text-md-center subtitulo">Img:</label>
+				<!-- ICONO PDF-->
+				<div class="col-12 col-sm-2 d-none d-md-block">
+					<div class="row justify-content-center align-items-center pt-1 p-sm-0">
+						<div class="col-12">
+							<button class="btn pdf d-block m-auto"></button>
 						</div>
-
-						<div class="form-group row mb-0">
-							<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
-							<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-								<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
-							</div>
+						<div class="col-12">
+							<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
 						</div>
 					</div>
 				</div>
-			</div>
+				<!-- FIN -->
 
-			<!-- ICONO PDF-->
-			<div class="col-12 col-sm-2">
-				<div class="row justify-content-center align-items-center">
-					<div class="col-12">
-						<button class="btn pdf d-block m-auto"></button>
-					</div>
-					<div class="col-12">
-						<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+				<!--BOTON DE: GUARDAR--EDITAR--ELIMINAR-->
+				<div class="col-12  col-sm-2  col-md-2  col-lg-1">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+							<button class="btn guardar d-block m-auto"></button>
+						</div>
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+							<button class="btn editar d-block m-auto"></button>
+						</div>
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8">
+							<button class="btn eliminar d-block m-auto"></button>
+						</div>
 					</div>
 				</div>
+				<!-- FIN -->
 			</div>
-			<!-- FIN PDF-->
+		</form>
+	</div>
 
-			<!--BOTON DE: GUARDAR--EDITAR--ELIMINAR-->
-			<div class="col-12  col-sm-2  col-md-2  col-lg-1">
-				<div class="row justify-content-center align-items-center">
-					<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
-						<button class="btn guardar d-block m-auto"></button>
-					</div>
-					<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
-						<button class="btn editar d-block m-auto"></button>
-					</div>
-					<div class="col-4 col-sm-12  col-md-12  col-lg-8">
-						<button class="btn eliminar d-block m-auto"></button>
+	<div id="chofer2" class="mb-2">
+		<form id="chofer2">
+			<div class="row contenidoform p-1 justify-content-center align-items-center">
+				<div class="col-12">
+					<span class="titulos d-block m-auto">CHOFER #2</span>
+				</div>
+
+				<!-- FORMULARIO CHOFER-->
+				<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1">
+					<div class="row pl-4 pr-4">
+						<div class="col-6 col-lg-6">
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Nombre:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Pat:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Mat:</label>
+								<div class="col-12  col-sm-12   col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Usuario:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="pitufo">
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-lg-6">
+							<div class="form-group row mb-0 justify-content-center align-items-center pt-4 pt-md-0">
+								<div class="offset-0 offset-md-4 offset-lg-3 pt-1 pt-md-0">
+									<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi" class="d-none">
+									<img class="selectorImagen imgSubida_estiloC" id="imgSubida" src="">
+								</div>
+							</div>
+							<div class="form-group row mb-0 justify-content-center align-items-center">
+								<div class="offset-0 offset-md-4 offset-lg-3">
+									<label for="" class="col-form-label  d-block m-auto subtitulo">Img:</label>
+								</div>
+							</div>
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="password" class="form-control form-control-sm" id="pasW2" value="tak-si">
+									<input type="checkbox" id="cliquiandoP2"/> <label class="checkboxtext text-muted mb-0">Show Password</label>
+								</div>
+							</div>
+
+							<!-- ICONO PDF-secundario-->
+							<div class="row justify-content-center align-items-center pt-1 p-md-0 d-block d-md-none">
+								<div class="col-12">
+									<button class="btn pdf d-block m-auto"></button>
+								</div>
+								<div class="col-12">
+									<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+								</div>
+							</div>
+						</div><!-- FIN PDF-->
 					</div>
 				</div>
+				<!-- FIN -->
+
+				<!-- ICONO PDF-->
+				<div class="col-12 col-sm-2 d-none d-md-block">
+					<div class="row justify-content-center align-items-center pt-1 p-sm-0">
+						<div class="col-12">
+							<button class="btn pdf d-block m-auto"></button>
+						</div>
+						<div class="col-12">
+							<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+						</div>
+					</div>
+				</div>
+				<!-- FIN -->
+
+				<!--BOTON DE: GUARDAR--EDITAR--ELIMINAR-->
+				<div class="col-12  col-sm-2  col-md-2  col-lg-1">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+							<button class="btn guardar d-block m-auto"></button>
+						</div>
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+							<button class="btn editar d-block m-auto"></button>
+						</div>
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8">
+							<button class="btn eliminar d-block m-auto"></button>
+						</div>
+					</div>
+				</div>
+				<!-- FIN -->
 			</div>
-			<!--FIN BOTON-->
-		</div>
-	</form>
+		</form>
+	</div>
 
+	<div id="chofer3" class="mb-2">
+		<form id="chofer3">
+			<div class="row contenidoform p-1 justify-content-center align-items-center">
+				<div class="col-12">
+					<span class="titulos d-block m-auto">CHOFER #3</span>
+				</div>
 
+				<!-- FORMULARIO CHOFER-->
+				<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1">
+					<div class="row pl-4 pr-4">
+						<div class="col-6 col-lg-6">
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Nombre:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Pat:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Ape Mat:</label>
+								<div class="col-12  col-sm-12   col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+								</div>
+							</div>
+
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Usuario:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="pitufo">
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-lg-6">
+							<div class="form-group row mb-0 justify-content-center align-items-center pt-4 pt-md-0">
+								<div class="offset-0 offset-md-4 offset-lg-3 pt-1 pt-md-0">
+									<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi" class="d-none">
+									<img class="selectorImagen imgSubida_estiloC" id="imgSubida" src="">
+								</div>
+							</div>
+							<div class="form-group row mb-0 justify-content-center align-items-center">
+								<div class="offset-0 offset-md-4 offset-lg-3">
+									<label for="" class="col-form-label  d-block m-auto subtitulo">Img:</label>
+								</div>
+							</div>
+							<div class="form-group row mb-0">
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
+								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
+									<input type="password" class="form-control form-control-sm" id="pasW3" value="tak-si">
+									<input type="checkbox" id="cliquiandoP3"/> <label class="checkboxtext text-muted mb-0">Show Password</label>
+								</div>
+							</div>
+
+							<!-- ICONO PDF-secundario-->
+							<div class="row justify-content-center align-items-center pt-1 p-md-0 d-block d-md-none">
+								<div class="col-12">
+									<button class="btn pdf d-block m-auto"></button>
+								</div>
+								<div class="col-12">
+									<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+								</div>
+							</div>
+						</div><!-- FIN PDF-->
+					</div>
+				</div>
+				<!-- FIN -->
+
+				<!-- ICONO PDF-->
+				<div class="col-12 col-sm-2 d-none d-md-block">
+					<div class="row justify-content-center align-items-center pt-1 p-sm-0">
+						<div class="col-12">
+							<button class="btn pdf d-block m-auto"></button>
+						</div>
+						<div class="col-12">
+							<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+						</div>
+					</div>
+				</div>
+				<!-- FIN -->
+
+				<!--BOTON DE: GUARDAR--EDITAR--ELIMINAR-->
+				<div class="col-12  col-sm-2  col-md-2  col-lg-1">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+							<button class="btn guardar d-block m-auto"></button>
+						</div>
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
+							<button class="btn editar d-block m-auto"></button>
+						</div>
+						<div class="col-4 col-sm-12  col-md-12  col-lg-8">
+							<button class="btn eliminar d-block m-auto"></button>
+						</div>
+					</div>
+				</div>
+				<!-- FIN -->
+			</div>
+		</form>
+	</div>
 </div>
 
 
-<script src="../../js/Propietario_Ubicacion/informacion_chofer.js"> </script>
+
+<script type="text/javascript" src="../../js/Propietario_Ubicacion/informacion_chofer.js"></script>
+

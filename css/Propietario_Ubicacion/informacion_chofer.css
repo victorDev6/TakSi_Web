@@ -3,29 +3,11 @@
 	border-radius: 12px;
 	border: 1px solid #999c9e;
 }
-
 /*
+
 .c1 {
-	background: #f76c6c;
+	background: #fdfbfb;
 }
-*/
-.c2 {
-	background: #6cf79c;
-}
-
-.c3 {
-	background: #f4a309;
-}
-
-/*
-.caja1 {
-	background: #3443f4;
-}
-
-.caja2 {
-	background: #39f2f2;
-}
-
 
 .subcaja1 {
 	background: #20fd29;
@@ -34,20 +16,38 @@
 	background: #e3f505;
 }
 
+.hijocaja1 {
+	background: #f5050e;
+}
+
+.hijocaja2 {
+	background: #6cf79c;
+}
+
+
+.hijocaja3 {
+	background: #3443f4;
+}
+
+
+.c3 {
+	background: #f4a309;
+}
+
+
+.caja1 {
+	background: #3443f4;
+}
+
+.caja2 {
+	background: #39f2f2;
+}
 
 .subcaja4 {
 	background: #f505ec;
 }
 
-.subcaja44 {
-	background: #f5050e;
 
-}
-
-.subcaja444 {
-	background: #919100;
-
-}
 */
 /* ---------------------------------------------------- */
 /*  ICONO y TITULOS            						  	*/
@@ -79,13 +79,19 @@
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
 
-#btnAgregarChofer:hover,
-#btnAgregarChofer {
-	border-radius: 20px;
-	border: 1.5px solid #eae2df;
+#btnRegresarTaxi {
 	background: #535050;
 	color: #ffffff;
+	border: 1.5px solid #fff;
+	border-radius: 20px;
 	width: 100%;
+}
+
+
+#btnRegresarTaxi:hover {
+	background: #898484;
+	color: #ffffff;
+	border: 1.5px solid #fff;
 }
 
 .form-control:focus {
@@ -94,11 +100,6 @@
 		0px 0px 8px rgba(59, 191, 250, 0.5);
 }
 
-#btnAgregarChoferA {
-	background: #3bbffa !important;
-	color: #ffffff !important;
-	border: 1.5px solid #eae2df !important;
-}
 
 
 /***************************************************/
@@ -142,3 +143,9 @@
 }
 
 /* GUARDAR EDITAR ELIMINAR*/
+
+
+
+.checkboxtext {
+    font-size: .68rem;
+}

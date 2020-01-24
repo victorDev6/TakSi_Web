@@ -6,22 +6,21 @@
 
 
 
+/*
 
-
-.gu {
+.agregr {
 	background: #f76c6c;
 }
 
-.ed {
+.divAG {
 	background: #6cf79c;
 }
 
 
-.el {
+.divCHO {
 	background: #f4a309;
 }
 
-/*
 .hijotaxi1 {
 	background: #3443f4;
 }
@@ -47,9 +46,11 @@
 }
 
 
-.chof,
 .taxx {
 	height: 52px;
+}
+.titulochof{
+	height: 53px;
 }
 
 .titulos {
@@ -66,9 +67,9 @@
 
 
 .iconochoferesS,
-.iconochoferesC{
+.iconochoferesC {
 	width: 35px;
-    height: 35px;
+	height: 35px;
 }
 
 .iconochoferesS {
@@ -83,13 +84,19 @@
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
 
-#btnAgregarChofer:hover,
+
 #btnAgregarChofer {
-	border-radius: 20px;
-	border: 1.5px solid #eae2df;
 	background: #535050;
 	color: #ffffff;
-	width: 150%;
+	border: 1.5px solid #fff;
+	border-radius: 20px;
+	max-width: 75%;
+}
+
+#btnAgregarChofer:hover {
+	background: #898484;
+	color: #ffffff;
+	border: 1.5px solid #fff;
 }
 
 .form-control:focus {
@@ -98,11 +105,7 @@
 		0px 0px 8px rgba(59, 191, 250, 0.5);
 }
 
-#btnAgregarChoferA {
-	background: #3bbffa !important;
-	color: #ffffff !important;
-	border: 1.5px solid #eae2df !important;
-}
+
 
 
 /***************************************************/
@@ -125,10 +128,13 @@ div > input {
 
 
 /* GUARDAR EDITAR ELIMINAR*/
-.guardar,.editar,.eliminar {
+.guardar,
+.editar,
+.eliminar {
 	width: auto;
-    height: 30px;
+	height: 30px;
 }
+
 .guardar {
 	background: url("../../Diseno/ICONOS/guardarTaxi.svg")no-repeat;
 }
@@ -140,6 +146,3 @@ div > input {
 .eliminar {
 	background: url("../../Diseno/ICONOS/eliminarTaxi.svg") no-repeat;
 }
-
-
-
