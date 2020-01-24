@@ -77,7 +77,7 @@
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
 									<input type="password" class="form-control form-control-sm" id="pasW1" value="tak-si">
-									<input type="checkbox" id="cliquiandoP1"/> <label class="checkboxtext text-muted mb-0">Show Password</label>
+									<input type="checkbox" id="cliquiandoP1" /> <label class="checkboxtext text-muted mb-0">Show Password</label>
 								</div>
 							</div>
 
@@ -182,7 +182,7 @@
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
 									<input type="password" class="form-control form-control-sm" id="pasW2" value="tak-si">
-									<input type="checkbox" id="cliquiandoP2"/> <label class="checkboxtext text-muted mb-0">Show Password</label>
+									<input type="checkbox" id="cliquiandoP2" /> <label class="checkboxtext text-muted mb-0">Show Password</label>
 								</div>
 							</div>
 
@@ -287,7 +287,7 @@
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right subtitulo">Contraseña:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
 									<input type="password" class="form-control form-control-sm" id="pasW3" value="tak-si">
-									<input type="checkbox" id="cliquiandoP3"/> <label class="checkboxtext text-muted mb-0">Show Password</label>
+									<input type="checkbox" id="cliquiandoP3" /> <label class="checkboxtext text-muted mb-0">Show Password</label>
 								</div>
 							</div>
 
@@ -297,6 +297,7 @@
 									<button class="btn pdf d-block m-auto"></button>
 								</div>
 								<div class="col-12">
+									<input type="file" class="custom-file-input d-none" id="customFileLang">
 									<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
 								</div>
 							</div>
@@ -309,10 +310,11 @@
 				<div class="col-12 col-sm-2 d-none d-md-block">
 					<div class="row justify-content-center align-items-center pt-1 p-sm-0">
 						<div class="col-12">
-							<button class="btn pdf d-block m-auto"></button>
+							<input type="file" class="custom-file-input d-none" id="customFile" accept=".pdf">
+							<button class="btn pdf d-block m-auto" for="customFile"></button>
 						</div>
 						<div class="col-12">
-							<label for="" class="col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
+							<label class=" col-form-label  text-center subtitulo d-block m-auto">Credencial.</label>
 						</div>
 					</div>
 				</div>
@@ -341,4 +343,3 @@
 
 
 <script type="text/javascript" src="../../js/Propietario_Ubicacion/informacion_chofer.js"></script>
-
