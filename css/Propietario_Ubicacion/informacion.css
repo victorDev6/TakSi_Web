@@ -4,32 +4,19 @@
 	border: 1px solid #999c9e;
 }
 
-
-
-/*
-
-.agregr {
-	background: #f76c6c;
+/* ---------------------------------------------------- */
+/*  TITULO PRINCIPLA           						  	*/
+/*----------------------------------------------------- */
+div.ng-scope.tutulo {
+	margin: auto;
+	text-align: center;
 }
 
-.divAG {
-	background: #6cf79c;
+div.ng-scope.tutulo h2 {
+	font-weight: 700;
+	font-size: 1.3em;
+	font-family: Comic Sans MS, cursive, sans-serif;
 }
-
-
-.divCHO {
-	background: #f4a309;
-}
-
-.hijotaxi1 {
-	background: #3443f4;
-}
-
-.hijotaxi2 {
-	background: #39f2f2;
-}
-
-*/
 
 
 /* ---------------------------------------------------- */
@@ -49,7 +36,8 @@
 .taxx {
 	height: 52px;
 }
-.titulochof{
+
+.titulochof {
 	height: 53px;
 }
 
@@ -58,6 +46,7 @@
 	font-weight: bold;
 	text-align: center;
 	font-family: Comic Sans MS, cursive, sans-serif;
+	color: #fff;
 }
 
 .subtitulo {
@@ -80,24 +69,44 @@
 	content: url("../../Diseno/ICONOS/chofercondatos.svg");
 }
 
+
+
+/* ---------------------------------------------------- */
+/*  TAMAÑO BOTONES SM: Y PADDING DEL ICONO				*/
+/*----------------------------------------------------- */
+
+a.btnAgregarChofer {
+	font-size: .7em;
+}
+
+.Ipropietario {
+	padding-top: 2px;
+}
+
 /* ---------------------------------------------------- */
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
+.btnAgregarChofer {
+	background: #535050 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
+	border-radius: 20px !important;
+	max-width: 75% !important;
 
-
-#btnAgregarChofer {
-	background: #535050;
-	color: #ffffff;
-	border: 1.5px solid #fff;
-	border-radius: 20px;
-	max-width: 75%;
 }
 
-#btnAgregarChofer:hover {
-	background: #898484;
-	color: #ffffff;
-	border: 1.5px solid #fff;
+.btnAgregarChofer:hover {
+	background: #898484 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
 }
+
+
+
+
+
+
+
 
 .form-control:focus {
 	border: 1.5px solid #0ed6fa;
@@ -107,13 +116,6 @@
 
 
 
-
-/***************************************************/
-
-/*Columna que contiene el selector de imagenes para perfil
-div > input {
-	display: none;
-}*/
 
 /*Agregando sobrePosicion de objeto, donde tendra salida la imagen seleccionada*/
 .imgSubida_estilo {
@@ -127,22 +129,55 @@ div > input {
 }
 
 
-/* GUARDAR EDITAR ELIMINAR*/
-.guardar,
-.editar,
+/* ---------------------------------------------------- */
+/*  BOTON GUARDAR-EDITAR-ELIMINAR: 						*/
+/*----------------------------------------------------- */
+.editar {
+	background: #92c7eb;
+	background: url("../../Diseno/ICONOS/EditarBlanco.svg");
+	background-size: cover;
+	background-position: center;
+	padding: 15px;
+	width: 15px;
+	height: 20px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
 .eliminar {
-	width: auto;
-	height: 30px;
+	background: #92c7eb;
+	background: url("../../Diseno/ICONOS/EliminarBlanco.svg");
+	background-size: cover;
+	background-position: center;
+	padding: 15px;
+	width: 15px;
+	height: 20px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: none;
+	outline: none;
 }
 
 .guardar {
-	background: url("../../Diseno/ICONOS/guardarTaxi.svg")no-repeat;
+	background: #92c7eb;
+	background: url("../../Diseno/ICONOS/GuardarBlanco.svg");
+	background-size: cover;
+	background-position: center;
+	padding: 15px;
+	width: 15px;
+	height: 20px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: none;
+	outline: none;/*quitar borde azul del form*/
+
 }
 
-.editar {
-	background: url("../../Diseno/ICONOS/editarTaxi.svg") no-repeat;
-}
-
-.eliminar {
-	background: url("../../Diseno/ICONOS/eliminarTaxi.svg") no-repeat;
+.guardar:hover,
+.editar:hover,
+.eliminar:hover{
+	width: 40px;
+	height: 40px;
 }

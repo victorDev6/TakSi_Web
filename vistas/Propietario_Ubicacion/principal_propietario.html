@@ -1,22 +1,30 @@
 <!doctype html>
-<html lang="en" ng-app="ubicacion">
+<html lang="es" ng-app="ubicacion">
 
 <head>
-
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Propietario</title>
-	<!-- CSS -->
+	<!-- librerias CSS -->
 	<link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	<!--Vistas CSS-->
 	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/principal_propietario.css">
+	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion.css">
+	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/reportes.css">
+	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/micuenta.css">
+	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion_chofer.css">
+
+	<!--DateTimepicker Calendario CSS-->
+	<link rel="stylesheet" href="../../librerias/datetimepicker/css/icon.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../librerias/datetimepicker/css/bootstrap-material-datetimepicker.min.css">
 </head>
 
-<body>
+<body class="Body-Propietario">
 
 	<!-- Inicio Wrapper -->
-	<div class="wrapper">
+	<div class="wrapper  d-block m-auto">
 		<nav class="sidebar">
 			<!-- Inicio Sidebar -->
 			<div class="cerrar-menu">
@@ -45,23 +53,31 @@
 				</li>
 			</ul>
 		</nav><!-- Fin sidebar -->
-
-
 		<div class="overlay"></div><!-- Dark overlay -->
-
-		<div class="content px-5"><!-- Content -->
-			<a class="btn btn-secondary  abrir-menu" href="#" role="button"><i class="fas fa-align-left"></i> <span>Menu</span></a><!-- cerrar sidebar menu -->
+		<!-- Content -->
+		<div class="content px-5">
+			<!-- cerrar sidebar menu -->
+			<a class="btn btn-secondary  abrir-menu" href="#" role="button"><i class="fas fa-align-left"></i> <span>Menu</span></a>
 			<div ui-view></div>
 		</div><!-- Fin content -->
 	</div><!-- Fin wrapper -->
 
-	<!-- Javascript -->
+	<!-- Javascript librerias jS-->
 	<script src="../../librerias/jquery/jquery-3.4.1.min.js"> </script>
 	<script src="../../angular/angular.min.js"></script>
 	<script src="../../angular/angular-ui-router.min.js"></script>
 	<script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../js/Propietario_Ubicacion/app.js"></script>
-	<script src="../../js/Propietario_Ubicacion/principal_principal.js"></script>
-</body>
 
-</html>
+	<!--DateTimepicker Calendario jS-->
+	<script type=" text/javascript" src="../../librerias/datetimepicker/js/moment.min.js"></script>
+	<script type="text/javascript" src="../../librerias/datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
+
+	<!--Vistas jS-->
+	<script type="text/javascript" src="../../js/Propietario_Ubicacion/app.js"></script>
+	<script type="text/javascript" src="../../js/Propietario_Ubicacion/principal_principal.js"></script>
+
+
+
+
+
+</body></html>

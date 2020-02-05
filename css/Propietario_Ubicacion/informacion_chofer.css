@@ -3,6 +3,7 @@
 	border-radius: 12px;
 	border: 1px solid #999c9e;
 }
+
 /*
 
 .c1 {
@@ -78,21 +79,40 @@
 /* ---------------------------------------------------- */
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
+a.btnRegresarTaxi {
+	font-size: .7em;
+	font-weight: 500;
+}
 
-#btnRegresarTaxi {
-	background: #535050;
-	color: #ffffff;
-	border: 1.5px solid #fff;
-	border-radius: 20px;
+.Ipropietario {
+	padding-top: 2px;
+}
+
+
+
+.btnRegresarTaxi {
+	background: #535050 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
+	border-radius: 20px !important;
 	width: 100%;
 }
 
 
-#btnRegresarTaxi:hover {
-	background: #898484;
-	color: #ffffff;
-	border: 1.5px solid #fff;
+.btnRegresarTaxi:hover {
+	background: #898484 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
 }
+
+
+
+
+
+
+
+
+
 
 .form-control:focus {
 	border: 1.5px solid #0ed6fa;
@@ -115,31 +135,79 @@
 }
 
 
-/* GUARDAR EDITAR ELIMINAR*/
-.guardar,
-.editar,
-.eliminar {
-	width: auto;
+/* ---------------------------------------------------- */
+/*  BOTON GUARDAR-EDITAR-ELIMINAR: 						*/
+/*----------------------------------------------------- */
+.editarC {
+	background: #92c7eb;
+	background: url("../../Diseno/ICONOS/EditarBlanco.svg");
+	background-size: cover;
+	background-position: center;
+	padding: 12px;
+	width: 13px;
+	height: 13px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.eliminarC {
+	background: #92c7eb;
+	background: url("../../Diseno/ICONOS/EliminarBlanco.svg");
+	background-size: cover;
+	background-position: center;
+	padding: 12px;
+	width: 13px;
+	height: 13px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.guardarC {
+	background: #92c7eb;
+	background: url("../../Diseno/ICONOS/GuardarBlanco.svg");
+	background-size: cover;
+	background-position: center;
+	padding: 12px;
+	width: 13px;
+	height: 13px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	/*quitar borde azul del form*/
+}
+
+
+
+.guardarC:focus,
+.editarC:focus,
+.eliminarC:focus,
+.guardarC:hover,
+.editarC:hover,
+.eliminarC:hover {
+	width: 30px;
 	height: 30px;
+	box-shadow: none;
 }
 
-.guardar {
-	background: url("../../Diseno/ICONOS/guardarTaxi.svg")no-repeat;
-}
-
-.editar {
-	background: url("../../Diseno/ICONOS/editarTaxi.svg") no-repeat;
-}
-
-.eliminar {
-	background: url("../../Diseno/ICONOS/eliminarTaxi.svg") no-repeat;
-}
 
 
 .pdf {
 	background: url("../../Diseno/ICONOS/pdf_Mediano.svg") no-repeat;
-	width: 38px;
-	height: 38px;
+	width: 35px;
+	height: 35px;
+	transition: all 0.5s;
+}
+
+.pdf:focus,
+.pdf:hover {
+	width: 45px;
+	height: 45px;
+	box-shadow: none;
 }
 
 /* GUARDAR EDITAR ELIMINAR*/
@@ -147,5 +215,5 @@
 
 
 .checkboxtext {
-    font-size: .68rem;
+	font-size: .68rem;
 }

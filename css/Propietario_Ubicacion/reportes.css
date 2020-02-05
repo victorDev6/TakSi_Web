@@ -1,0 +1,158 @@
+/*
+.colorRojo1 {
+	background: #f24646;
+}
+
+.colorVerde2 {
+	background: #0af7a5;
+}
+
+
+.colorAzul3 {
+	background: #4027ff;
+}
+
+.colorAmarillo4 {
+	background: #d8ff00;
+}
+*/
+.contenidoform {
+	background-color: rgba(0, 0, 0, 0.22);
+	border-radius: 12px;
+	border: 1px solid #999c9e;
+}
+
+
+
+
+/* ---------------------------------------------------- */
+/*  TITULO PRINCIPLA           						  	*/
+/*----------------------------------------------------- */
+div.ng-scope.tutulo {
+	margin: auto;
+	text-align: center;
+	color: #fff;
+}
+
+div.ng-scope.tutulo h2 {
+	font-weight: 700;
+	font-size: 1.3em;
+	font-family: Comic Sans MS, cursive, sans-serif;
+	color: #fff;
+}
+
+/* ---------------------------------------------------- */
+/* BTN AGREGAR CHOFER 									*/
+/*----------------------------------------------------- */
+.form-control:focus {
+	border: 1.5px solid #0ed6fa;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset,
+		0px 0px 8px rgba(59, 191, 250, 0.5);
+}
+
+/****************************************************/
+/*fondo tabla*/
+.fondo-tabla {
+	background: #f0e8e8;
+}
+
+
+/*fila botones*/
+.filabotones {
+	height: 100%;
+}
+
+
+/* ---------------------------------------------------- */
+/*  TAMAÑO BOTONES SM: Y PADDING DEL ICONO				*/
+/*----------------------------------------------------- */
+a.BuscarT,
+a.LimpiarT {
+	font-size: .7em;
+}
+
+.Ipropietario {
+	padding-top: 2px;
+}
+
+
+/*BOTON BUSCAR-LIMPIAR*/
+.BuscarT,
+.LimpiarT {
+	background: #535050 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
+	border-radius: 20px !important;
+	width: 100%;
+}
+
+.BuscarT:hover,
+.LimpiarT:hover {
+	background: #898484 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
+}
+
+
+
+
+/*DISEÑO PAGINADOR*/
+#paginaP {
+	background-color: transparent;
+	/ padding-top: 30px;/ font-family: prototype;
+	font-size: 20px;
+	color: #666060 !important;
+	margin: auto;
+}
+
+#paginacionP {
+	/ padding-top: 35px;/ text-align: left;
+}
+
+.paginationP .active a {
+	color: rgb(43, 125, 163) !important;
+	font-weight: bold;
+}
+
+.paginationP a {
+	color: #3b3535 !important;
+	border-color: rgb(193, 201, 201);
+	font-weight: bold;
+}
+
+.iconoPaginacionP {
+	width: 18px;
+	height: 18px;
+}
+
+
+/*ICONO DESCARGAR PDF*/
+.pdfR {
+	background: url(../../Diseno/ICONOS/pdf_Mediano.svg) no-repeat;
+	width: 50px;
+	height: 50px;
+}
+
+
+
+/*REDONDEO DE LA TABLA REPORTE*/
+table {
+	border-collapse: separate;
+	font-size: 75%;
+}
+
+th:first-child {
+	border-top-left-radius: 10px;
+}
+
+th:last-child {
+	border-top-right-radius: 10px;
+}
+
+tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}

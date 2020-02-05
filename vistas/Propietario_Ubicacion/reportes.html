@@ -1,1 +1,186 @@
-<h2>nada aun</h2>
+<!--link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"-->
+
+<!--link rel="stylesheet" href="../../css/Propietario_Ubicacion/reportes.css"-->
+
+
+
+<div class="tutulo p-3">
+	<h2>REPORTES POR TAXI</h2>
+</div>
+
+<div class="container">
+
+	<form id="taxi1">
+		<div class="row contenidoform  justify-content-center p-2">
+
+			<!--primer contenido-->
+			<div class="col-12  col-sm-7 col-md-8 col-lg-8 p-2">
+				<div class="row">
+					<div class="col-6 pb-1">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right  subtitulo">Sitio:</label>
+							<div class="col-12 col-sm-12 col-md-5  col-lg-7">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccionar Estado</option>
+									<option value="1">Chiapas</option>
+									<option value="2">Tabasco</option>
+									<option value="3">Monterrey Nvo. Leon</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-6 pb-1">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right subtitulo">Taxi:</label>
+							<div class="col-12 col-sm-12 col-md-5  col-lg-7">
+								<select class="form-control form-control-sm" name="" id="">
+									<option value="-1">Seleccioar No. Taxi</option>
+									<option value="1">234</option>
+									<option value="2">452</option>
+									<option value="3">45</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-6 pb-1">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-7	col-lg-5  col-form-label  text-center text-md-right subtitulo">Fecha Inicio:</label>
+							<div class="col-12  col-sm-12   col-md-5    col-lg-7">
+								<div class="input-group">
+									<input type="text" class="form-control form-control-sm" id="date-start" placeholder="Fecha Inicial..">
+									<div class="input-group-append">
+										<span class="input-group-text p-0" id="basic-addon2"><i class="material-icons">event</i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-6 pb-1">
+						<div class="form-group row mb-0">
+							<label for="" class="col-12  col-sm-12   col-md-7   col-lg-5   col-form-label  text-center text-md-right subtitulo">Fecha Fin:</label>
+							<div class="col-12  col-sm-12   col-md-5   col-lg-7">
+								<div class="input-group">
+									<input class="form-control form-control-sm" id="date-end" placeholder="Fecha Final.." />
+									<div class="input-group-append">
+										<span class="input-group-text p-0" id="basic-addon2"><i class="material-icons">event</i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--primer contenido-->
+
+			<div class="col-8  col-sm-3   col-md-2  col-lg-2 d-sm-flex align-items-center justify-content-center">
+				<div class="row pt-sm-4 pt-md-0 filabotones">
+					<div class="p-1 col-6 col-sm-12 d-block m-auto">
+						<a ui-sref="" class="btn btn-secondary btn-sm active btn-block m-auto BuscarT" id="" role="button">
+							Buscar<i class="fas fa-search float-left Ipropietario"></i>
+						</a>
+					</div>
+					<div class="p-1 col-6 col-sm-12 d-block m-auto">
+						<a ui-sref="" class="btn btn-secondary btn-sm active btn-block m-auto LimpiarT" id="" role="button">
+							<i class="fas fa-trash  float-left Ipropietario"></i>Limpiar
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-4  col-sm-2  col-md-2 col-lg-2 d-sm-flex align-items-center justify-content-center">
+				<!-- ICONO PDF-secundario-->
+				<div class="row justify-content-center align-items-center pt-1 p-md-0 d-block">
+					<div class="col-12">
+						<button class="btn pdfR d-block m-auto"></button>
+					</div>
+				</div>
+			</div><!-- FIN PDF-->
+		</div><!-- FIN PDF-->
+
+	</form>
+
+
+	<div class="mt-5">
+		<div class="row contenidoform  justify-content-center p-2">
+			<div class="table-responsive">
+				<table class="table table-sm table-hover table-striped text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">No. Viaje</th>
+							<th scope="col">No. Taxi</th>
+							<th scope="col">Placa</th>
+							<th scope="col">Chofer</th>
+							<th scope="col">Fecha</th>
+							<th scope="col">Salida</th>
+							<th scope="col">Destino</th>
+							<th scope="col">Hora</th>
+							<th scope="col">Calificacion</th>
+						</tr>
+					</thead>
+					<tbody class="fondo-tabla">
+						<tr>
+							<td scope="row">1</th>
+							<td>453</td>
+							<td>PH2-234</td>
+							<td>Jose Luis</td>
+							<td>22/01/200</td>
+							<td>Arbolitos</td>
+							<td>Mercado</td>
+							<td>12:01:00 am</td>
+							<td>3 de 5</td>
+						</tr>
+						<tr>
+							<td scope="row">2</th>
+							<td>843</td>
+							<td>2HTD-81</td>
+							<td>Victorin</td>
+							<td>10/01/200</td>
+							<td>Plaza</td>
+							<td>Parque</td>
+							<td>08:31:40 am</td>
+							<td>no calificado</td>
+						</tr>
+						<tr>
+							<td scope="row">3</th>
+							<td>123</td>
+							<td>56-23F5</td>
+							<td>Alexis</td>
+							<td>01/01/2020</td>
+							<td>Chichima</td>
+							<td>Centro</td>
+							<td>01:50:00 pm</td>
+							<td>2 de 5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="row pt-2">
+				<ul class="pagination" id="paginaP">
+					<li class="" id="paginacionP">
+						<a class="page-link" href="#">
+							<img id="" class="img-fluid iconoPaginacionP" src="../../Diseno/ICONOS/flechaAtras.svg">
+						</a>
+					</li>
+					<li class="active" id="paginacionP"><a class="page-link" href="#">1</a>
+					</li>
+					<li class="" id="paginacionP"><a class="page-link" href="#">2</a></li>
+					<li class="" id="paginacionP"><a class="page-link" href="#">3</a></li>
+					<li class="" id="paginacionP">
+						<a class="page-link" href="#">
+							<img id="" class="img-fluid iconoPaginacionP" src="../../Diseno/ICONOS/flechaAdelante.svg">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script src="../../js/Propietario_Ubicacion/reporte.js"> </script>
