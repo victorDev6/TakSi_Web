@@ -1,0 +1,49 @@
+.encierroF1 {
+	background-color: rgba(165, 164, 164, 0.65);
+	border-radius: 12px;
+	border: 1px solid #999c9e;
+}
+
+.encierroF2 {
+	background-color: rgba(165, 164, 164, 0.66);
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	border: 1px solid #999c9e;
+}
+
+.p-facturacion {
+	font-weight: 550 !important;
+	color: rgba(255, 196, 0, 0.9) !important;
+}
+
+.p-facturacion2 {
+	color: #fff !important;
+
+}
+
+.input-facturacion {
+	color: black;
+	font-size: 1.4rem;
+	font-weight: 545 !important;
+	box-shadow: none;
+	border: none;
+	outline: none;
+}
+
+.i-facturacion {
+	color: white;
+}
+
+hr {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+	border: 0;
+	border-top: 1px solid rgb(249, 246, 246);
+}
+
+.input-facturacion2 {
+	color: #fff !important;
+	box-shadow: none;
+	border: none;
+	outline: none;
+}

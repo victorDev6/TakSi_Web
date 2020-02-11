@@ -1,59 +1,19 @@
-.contenidoform {
-	background-color: rgba(0, 0, 0, 0.12);
+.encierroIC {
+	background-color: rgba(165, 164, 164, 0.65);
 	border-radius: 12px;
 	border: 1px solid #999c9e;
 }
 
-/*
-
-.c1 {
-	background: #fdfbfb;
+/* ---------------------------------------------------- */
+/*  PARRAFO: 	;            						  	*/
+/*----------------------------------------------------- */
+.p-chofer{
+	color: white !important
 }
 
-.subcaja1 {
-	background: #20fd29;
-}
-.subcaja2 {
-	background: #e3f505;
-}
-
-.hijocaja1 {
-	background: #f5050e;
-}
-
-.hijocaja2 {
-	background: #6cf79c;
-}
-
-
-.hijocaja3 {
-	background: #3443f4;
-}
-
-
-.c3 {
-	background: #f4a309;
-}
-
-
-.caja1 {
-	background: #3443f4;
-}
-
-.caja2 {
-	background: #39f2f2;
-}
-
-.subcaja4 {
-	background: #f505ec;
-}
-
-
-*/
 /* ---------------------------------------------------- */
 /*  ICONO y TITULOS            						  	*/
 /*----------------------------------------------------- */
-
 .titulos {
 	font-size: 1em;
 	font-weight: bold;
@@ -75,7 +35,6 @@
 	content: url("../../Diseno/ICONOS/chofersindatos.svg");
 }
 
-
 /* ---------------------------------------------------- */
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
@@ -87,8 +46,6 @@ a.btnRegresarTaxi {
 .Ipropietario {
 	padding-top: 2px;
 }
-
-
 
 .btnRegresarTaxi {
 	background: #535050 !important;
@@ -105,22 +62,11 @@ a.btnRegresarTaxi {
 	border: 1.5px solid #fff !important;
 }
 
-
-
-
-
-
-
-
-
-
 .form-control:focus {
 	border: 1.5px solid #0ed6fa;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset,
 		0px 0px 8px rgba(59, 191, 250, 0.5);
 }
-
-
 
 /***************************************************/
 /*Agregando sobrePosicion de objeto, donde tendra salida la imagen seleccionada*/
@@ -133,7 +79,6 @@ a.btnRegresarTaxi {
 			rgb(82, 87, 67));
 	border: 1.2px solid #6c757d;
 }
-
 
 /* ---------------------------------------------------- */
 /*  BOTON GUARDAR-EDITAR-ELIMINAR: 						*/
@@ -194,8 +139,9 @@ a.btnRegresarTaxi {
 	box-shadow: none;
 }
 
-
-
+/* ---------------------------------------------------- */
+/*  BOTON PDF: 											*/
+/*----------------------------------------------------- */
 .pdf {
 	background: url("../../Diseno/ICONOS/pdf_Mediano.svg") no-repeat;
 	width: 35px;
@@ -205,15 +151,20 @@ a.btnRegresarTaxi {
 
 .pdf:focus,
 .pdf:hover {
-	width: 45px;
-	height: 45px;
+	outline: none !important;
+	outline-width: 0 !important;
 	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
 }
 
-/* GUARDAR EDITAR ELIMINAR*/
-
-
-
-.checkboxtext {
-	font-size: .68rem;
+/* ---------------------------------------------------- */
+/*  BOTON-ICONO OJITO: 						*/
+/*----------------------------------------------------- */
+.cajaicono {
+	height: 31px;
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
 }
+
+

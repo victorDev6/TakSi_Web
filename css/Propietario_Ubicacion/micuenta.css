@@ -1,3 +1,18 @@
+
+
+
+
+/* ---------------------------------------------------- */
+/*  CONTENIDO ENCERRADO        						  	*/
+/*----------------------------------------------------- */
+.encierroM {
+	background-color: rgba(165, 164, 164, 0.65);
+	border-radius: 12px;
+	border: 1px solid #999c9e;
+}
+
+
+
 /* ---------------------------------------------------- */
 /*  Textos celestes            						  	*/
 /*----------------------------------------------------- */
@@ -145,6 +160,11 @@ tr:last-child td:last-child {
 /* ---------------------------------------------------- */
 /*  BOTON ACPTAR-NO GRACIAS MODA-TARJETA: 				*/
 /* ---------------------------------------------------- */
+.modal {
+	height: auto;
+}
+
+
 .aceptar {
 	color: #fff !important;
 	background-color: #535050;
@@ -172,12 +192,21 @@ tr:last-child td:last-child {
 }
 
 
-.modal-content-Agr {
-	border-radius: 21px 21px;
-	background:;
+
+.modal-content-A {
+	border-radius: 20px 20px;
 	-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
 	-moz-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
 	box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+
+}
+
+.modal-body-Agr {
+	background: #7e7979;
+	background-image: url(../../Diseno/IMG/TarjetaAzul-Modal.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .modal-content-E {
@@ -185,7 +214,6 @@ tr:last-child td:last-child {
 	background-image: url(../../Diseno/IMG/tak-si-modal.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-
 
 	-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
 	-moz-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
@@ -218,6 +246,43 @@ tr:last-child td:last-child {
 }
 
 /* ---------------------------------------------------- */
+/*  TEXTO MODAL: 										*/
+/* ---------------------------------------------------- */
+.textoModal {
+	color: #000;
+	font-weight: bold;
+}
+
+
+/* ---------------------------------------------------- */
+/*  INPUT MODAL-TRANSPARENT	 SELECT-OPTION				*/
+/* ---------------------------------------------------- */
+.inputMAgr,
+.inputMAgr:focus,
+.inputMAgr::placeholder{
+	background-color: transparent;
+	color: #fff;
+	font-weight:700;
+}
+
+.SelectAgr,
+.optionAgr{
+	color: #fff !important;
+	background-color: transparent !important;
+}
+
+.optionAgr{
+	background-color: #2a2a2a !important;
+}
+
+.optionAgr:hover,
+.optionAgr:focus{
+	color: #fff !important;
+}
+
+
+
+/* ---------------------------------------------------- */
 /*  DESENFOQUE IMG-MODAL: 								*/
 /* ---------------------------------------------------- */
 .filter {
@@ -226,4 +291,34 @@ tr:last-child td:last-child {
 	backdrop-filter: blur(1.8px);
 	/* Chrome and Opera */
 	background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+/* ---------------------------------------------------- */
+/*  BTN-NEXT;			 								*/
+/* ---------------------------------------------------- */
+.btnNext {
+	background: #535050 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
+	border-radius: 20px !important;
+	width: 100%;
+}
+
+.btnNext:hover {
+	background: #898484 !important;
+	color: #ffffff !important;
+	border: 1.5px solid #fff !important;
+}
+
+/* ---------------------------------------------------- */
+/*  BOTON-ICONOM OJITO: 								*/
+/*----------------------------------------------------- */
+.cajaiconoM {
+	height: 31px;
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
 }

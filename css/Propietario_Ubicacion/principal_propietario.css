@@ -3,21 +3,20 @@
 /*----------------------------------------------------- */
 body.Body-Propietario {
 
-	 min-height: 100vh;
-
+	height: 100vh;
 	font-family: 'Poppins', sans-serif;
 	margin: 0px;
-	/*background-color: #d6d0ce !important;*/
-
-	background: url("../../Diseno/IMG/servicio-aplicacion.jpg") no-repeat center center fixed;
+	padding: 0px !important;
+	background-color: #d6d0ce;
+	background: url("../../Diseno/IMG/Tak-SiBody.jpeg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 
-	-webkit-backdrop-filter: blur(6px);/* Safari 9+ */
-	backdrop-filter: blur(6px);/* Chrome and Opera */
-	background-color: rgba(255, 255, 255, 0.1);
+	-webkit-backdrop-filter: blur(1.5px);/* Safari 9+ */
+	backdrop-filter: blur(1.5px);/* Chrome and Opera */
+	background-color: rgba(255, 255, 255, 0.1);*/
 }
 
 
@@ -276,4 +275,11 @@ div.ng-scope.tutulo h2 {
 	font-weight: 700;
 	font-size: 1.3em;
 	font-family: Comic Sans MS, cursive, sans-serif;
+}
+
+/* ---------------------------------------------------- */
+/*  TEXTO MODAL: 		;    						  	*/
+/*----------------------------------------------------- */
+.textoModal{
+	color: #020202;
 }

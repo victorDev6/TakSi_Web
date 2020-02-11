@@ -2,10 +2,10 @@ $(document).ready(function () {
 /* ---------------------------------------------------- */
 /* VISULIZAR LAS CONTRASEÑAS							*/
 /*----------------------------------------------------- */
-		$("#icon-click1").click(function() {
-			$("#icon1").toggleClass('fa-eye-slash');
+		$("#icon-clickM1").click(function() {
+			$("#iconM1").toggleClass('fa-eye-slash');
 
-			var input = $("#pass1");
+			var input = $("#passM1");
 			if (input.attr("type") === "password") {
 				input.attr("type", "text");
 			} else {
@@ -14,10 +14,10 @@ $(document).ready(function () {
 		});
 
 
-		$("#icon-click2").click(function() {
-			$("#icon2").toggleClass('fa-eye-slash');
+		$("#icon-clickM2").click(function() {
+			$("#iconM2").toggleClass('fa-eye-slash');
 
-			var input = $("#pass2");
+			var input = $("#passM2");
 			if (input.attr("type") === "password") {
 				input.attr("type", "text");
 			} else {
@@ -25,15 +25,5 @@ $(document).ready(function () {
 			}
 		});
 
-		$("#icon-click3").click(function() {
-			$("#icon3").toggleClass('fa-eye-slash');
-
-			var input = $("#pass3");
-			if (input.attr("type") === "password") {
-				input.attr("type", "text");
-			} else {
-				input.attr("type", "password");
-			}
-		});
 
 });
