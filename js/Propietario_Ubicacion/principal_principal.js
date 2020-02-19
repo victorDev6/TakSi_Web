@@ -1,4 +1,5 @@
-jQuery(document).ready(function () {
+//jQuery(document).ready(function () {
+$(document).ready(function () {
 
 	/*Cerar Sidebar*/
 	$('.cerrar-menu, .overlay').on('click', function () {
@@ -25,4 +26,7 @@ jQuery(document).ready(function () {
 		$('.sidebar').removeClass('active');
 		$('.overlay').removeClass('active');
 	});
+
+
+
 });

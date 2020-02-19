@@ -1,23 +1,3 @@
-/*
-.colorRojo1 {
-	background: #f24646;
-}
-
-.colorVerde2 {
-	background: #0af7a5;
-}
-
-
-.colorAzul3 {
-	background: #4027ff;
-}
-
-.colorAmarillo4 {
-	background: #d8ff00;
-}
-*/
-
-
 /* ---------------------------------------------------- */
 /*  CONTENIDO ENCERRADO        						  	*/
 /*----------------------------------------------------- */
@@ -26,10 +6,6 @@
 	border-radius: 12px;
 	border: 1px solid #999c9e;
 }
-
-
-
-
 
 /* ---------------------------------------------------- */
 /*  TITULO PRINCIPLA           						  	*/
@@ -56,18 +32,19 @@ div.ng-scope.tutulo h2 {
 		0px 0px 8px rgba(59, 191, 250, 0.5);
 }
 
-/****************************************************/
-/*fondo tabla*/
+/* ---------------------------------------------------- */
+/*  FONDO TABLA     									*/
+/*----------------------------------------------------- */
 .fondo-tabla {
 	background: #f0e8e8;
 }
 
-
-/*fila botones*/
+/* ---------------------------------------------------- */
+/*  FILA BOTONES     									*/
+/*----------------------------------------------------- */
 .filabotones {
 	height: 100%;
 }
-
 
 /* ---------------------------------------------------- */
 /*  TAMAÑO BOTONES SM: Y PADDING DEL ICONO				*/
@@ -81,8 +58,9 @@ a.LimpiarT {
 	padding-top: 2px;
 }
 
-
-/*BOTON BUSCAR-LIMPIAR*/
+/* ---------------------------------------------------- */
+/*  BOTON BUSCAR-LIMPIAR: 								*/
+/*----------------------------------------------------- */
 .BuscarT,
 .LimpiarT {
 	background: #535050 !important;
@@ -99,40 +77,9 @@ a.LimpiarT {
 	border: 1.5px solid #fff !important;
 }
 
-
-
-
-/*DISEÑO PAGINADOR*/
-#paginaP {
-	background-color: transparent;
-	/ padding-top: 30px;/ font-family: prototype;
-	font-size: 20px;
-	color: #666060 !important;
-	margin: auto;
-}
-
-#paginacionP {
-	/ padding-top: 35px;/ text-align: left;
-}
-
-.paginationP .active a {
-	color: rgb(43, 125, 163) !important;
-	font-weight: bold;
-}
-
-.paginationP a {
-	color: #3b3535 !important;
-	border-color: rgb(193, 201, 201);
-	font-weight: bold;
-}
-
-.iconoPaginacionP {
-	width: 18px;
-	height: 18px;
-}
-
-
-/*ICONO DESCARGAR PDF*/
+/* ---------------------------------------------------- */
+/*  ICONO DESCARGAR 		 							*/
+/*----------------------------------------------------- */
 .pdfR {
 	background: url(../../Diseno/ICONOS/pdf_Mediano.svg) no-repeat;
 	width: 50px;
@@ -140,8 +87,9 @@ a.LimpiarT {
 }
 
 
-
-/*REDONDEO DE LA TABLA REPORTE*/
+/* ---------------------------------------------------- */
+/*  REDONDEO TABLA REPORTE: 							*/
+/*----------------------------------------------------- */
 table {
 	border-collapse: separate;
 	font-size: 75%;
@@ -163,37 +111,57 @@ tr:last-child td:last-child {
 	border-bottom-right-radius: 10px;
 }
 
-/*
-.borderP{
-	border: 2px solid #ecf0f5 !important;
-	border-radius: 10px;
+
+/* ---------------------------------------------------- */
+/*  			INICIO PAGINADOR:        				*/
+/*----------------------------------------------------- */
+.page-link {
+	background-color: #343a40 !important;
+	color: #fff;
 }
-*/
-
-.pagiB{
-	border: 1.4px solid #ecf0f5 !important;
+.page-link:hover {
+	background-color: rgba(165, 164, 164, 0.65)!important;
+	color: #000 !important;
 }
-
-
-.pagiB:first-child{
-	border-top-left-radius: 9px;
-	border-bottom-left-radius: 9px;
-}
-
-.pagiB:last-child {
-	border-top-right-radius: 9px;
-	border-bottom-right-radius: 9px;
+.page-item.active .page-link {
+	background-color: rgba(165, 164, 164, 0.65)!important;
+    z-index: 3;
+	color: #000;
+    border-color: #fff;
 }
 
-
-.btn-secondary {
-    color: #fff;
-    background-color: #373c40;
+.page-item.disabled .page-link {
+		background-color: rgba(165, 164, 164, 0.65)!important;
+		color: #000;
 }
 
-.btn-secondary:disabled {
-    color: #fff;
-    background-color: #464a4e;
-	cursor: not-allowed;
+.page-item.disabled {
+	border-color: #fff;
+    cursor: not-allowed!important;
 }
+
+.page-item.active:focus,
+.page-link:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+/* ---------------------------------------------------- */
+/*  			TERMINA PAGINADOR:        				*/
+/*----------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
 

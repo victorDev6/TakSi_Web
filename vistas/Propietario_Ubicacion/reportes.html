@@ -1,8 +1,5 @@
 <!--link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"-->
 
-<!--link rel="stylesheet" href="../../css/Propietario_Ubicacion/reportes.css"-->
-
-
 
 <div class="tutulo p-3">
 	<h2>REPORTES POR TAXI</h2>
@@ -103,46 +100,37 @@
 	</form>
 
 
+
+
 	<div class="mt-5">
-		<div class="row encierroR  justify-content-center p-2" ng-controller="miTablaReportes">
+		<div class="row encierroR  justify-content-center p-2">
+			<!--div class="row encierroR  justify-content-center p-2" ng-controller="miTablaReportes"-->
+
+
+
 			<div class="table-responsive">
-				<table class="table table-sm table-hover table-striped text-center">
+				<table class="table table-sm table-hover table-striped text-center" id="my-table">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">No. Viaje</th>
-							<th scope="col">No. Taxi</th>
+							<th class="text-nowrap">No. Viaje</th>
+							<th class="text-nowrap">No. Taxi</th>
 							<th class="text-nowrap">Placa</th>
 							<th class="text-nowrap">Chofer</th>
-							<th>Fecha</th>
-							<th>Salida</th>
-							<th>Destino</th>
+							<th class="text-nowrap">Fecha</th>
+							<th class="text-nowrap">Salida</th>
+							<th class="text-nowrap">Destino</th>
 							<th class="text-nowrap">Hora</th>
-							<th>Calificacion</th>
+							<th class="text-nowrap">Calificacion</th>
 						</tr>
 					</thead>
-					<tbody class="fondo-tabla">
-						<tr ng-repeat="regreporte in data | startFromGrid: currentPage * pageSize | limitTo: pageSize">
-							<td>{{regreporte.noviaje}}</td>
-							<td>{{regreporte.notaxi}}</td>
-							<td class="text-nowrap">{{regreporte.placa}}</td>
-							<td>{{regreporte.chofer}}</td>
-							<td>{{regreporte.fecha}}</td>
-							<td>{{regreporte.salida}}</td>
-							<td>{{regreporte.destino}}</td>
-							<td class="text-nowrap">{{regreporte.hora}}</td>
-							<td>{{regreporte.calificacion}}</td>
-						</tr>
-					</tbody>
+					<tbody class="fondo-tabla" id="reportetabla"></tbody>
 				</table>
 			</div>
-
-
-
-			<div class="btn-toolbar" role="toolbar" aria-label="groupo de botones con toolbar">
-				<div class="btn-group btn-group-sm borderP" role="group"  aria-label="Primer group">
-					<button type="button" class="btn btn-secondary pagiB" ng-disabled='currentPage == 0' ng-click='currentPage = currentPage - 1'>&laquo;</button>
-					<button type="button" class="btn btn-secondary pagiB" ng-disabled='currentPage == page.no - 1' ng-click='setPage(page.no)' ng-repeat='page in pages'>{{page.no}}</button>
-					<button type="button" class="btn btn-secondary pagiB" ng-disabled='currentPage >= data.length/pageSize - 1' ng-click='currentPage = currentPage + 1'>&raquo;</button>
+			<div class="row justify-content-center align-items-center">
+				<div class="col-12">
+					<div class="col-sm-12">
+						<p id="pagination-here"></p>
+					</div>
 				</div>
 			</div>
 
@@ -150,6 +138,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 
