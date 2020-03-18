@@ -1,13 +1,13 @@
 <!--link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"-->
 
 
-<div class="tutulo p-3">
+<div class="tutulo p-2">
 	<h2>REPORTES POR TAXI</h2>
 </div>
 
 <div class="container">
 
-	<form id="taxi1">
+	<form id="taxi1" action="javascript:void(0)">
 		<div class="row encierroR  justify-content-center p-2">
 
 			<!--primer contenido-->
@@ -15,13 +15,9 @@
 				<div class="row">
 					<div class="col-12 col-sm-6 pb-1">
 						<div class="form-group row mb-0">
-							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right  subtitulo">Sitio:</label>
+							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right  subtitulo">Taxi:</label>
 							<div class="col-12 col-sm-12 col-md-5  col-lg-7">
-								<select class="form-control form-control-sm" name="" id="">
-									<option value="-1">Seleccionar Estado</option>
-									<option value="1">Chiapas</option>
-									<option value="2">Tabasco</option>
-									<option value="3">Monterrey Nvo. Leon</option>
+								<select class="form-control form-control-sm" name="" id="placas">
 								</select>
 							</div>
 						</div>
@@ -29,13 +25,10 @@
 
 					<div class="col-12 col-sm-6 pb-1">
 						<div class="form-group row mb-0">
-							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right subtitulo">Taxi:</label>
+							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right subtitulo">Chofer:</label>
 							<div class="col-12 col-sm-12 col-md-5  col-lg-7">
-								<select class="form-control form-control-sm" name="" id="">
-									<option value="-1">Seleccioar No. Taxi</option>
-									<option value="1">234</option>
-									<option value="2">452</option>
-									<option value="3">45</option>
+								<select class="form-control form-control-sm" name="" id="chofer" disabled>
+								    <option value="0" selected>Seleccionar Chofer</option>
 								</select>
 							</div>
 						</div>
@@ -43,10 +36,10 @@
 
 					<div class="col-12 col-sm-6 pb-1">
 						<div class="form-group row mb-0">
-							<label for="" class="col-12  col-sm-12   col-md-7	col-lg-5  col-form-label  text-center text-md-right subtitulo">Fecha Inicio:</label>
+							<label for="" class="col-12  col-sm-12   col-md-7	col-lg-5  col-form-label  text-center text-md-right subtitulo">Fecha Ini:</label>
 							<div class="col-12  col-sm-12   col-md-5    col-lg-7">
 								<div class="input-group">
-									<input type="text" class="form-control form-control-sm" id="date-start" placeholder="Fecha Inicial..">
+									<input type="text" class="form-control form-control-sm" id="date-start" name="datestart" placeholder="Fecha Inicial..">
 									<div class="input-group-append">
 										<span class="input-group-text p-0" id="basic-addon2"><i class="material-icons">event</i></span>
 									</div>
@@ -60,7 +53,7 @@
 							<label for="" class="col-12  col-sm-12   col-md-7   col-lg-5   col-form-label  text-center text-md-right subtitulo">Fecha Fin:</label>
 							<div class="col-12  col-sm-12   col-md-5   col-lg-7">
 								<div class="input-group">
-									<input class="form-control form-control-sm" id="date-end" placeholder="Fecha Final.." />
+									<input class="form-control form-control-sm" id="date-end" name="dateend" placeholder="Fecha Final.." />
 									<div class="input-group-append">
 										<span class="input-group-text p-0" id="basic-addon2"><i class="material-icons">event</i></span>
 									</div>
@@ -75,12 +68,12 @@
 			<div class="col-12  col-sm-3   col-md-2  col-lg-2 d-sm-flex align-items-center justify-content-center">
 				<div class="row pt-sm-4 pt-md-0 filabotones">
 					<div class="p-1 col-12 col-sm-12 d-block m-auto">
-						<a ui-sref="" class="btn btn-secondary btn-sm active btn-block m-auto BuscarT" id="" role="button">
+						<a ui-sref="" class="btn btn-secondary btn-sm active btn-block m-auto BuscarT" id="buscarReporte" role="button">
 							Buscar<i class="fas fa-search float-left Ipropietario"></i>
 						</a>
 					</div>
 					<div class="p-1 col-12 col-sm-12 d-block m-auto">
-						<a ui-sref="" class="btn btn-secondary btn-sm active btn-block m-auto LimpiarT" id="" role="button">
+						<a ui-sref="" class="btn btn-secondary btn-sm active btn-block m-auto LimpiarT" id="limpiarCampo" role="button">
 							<i class="fas fa-trash  float-left Ipropietario"></i>Limpiar
 						</a>
 					</div>
@@ -91,7 +84,8 @@
 				<!-- ICONO PDF-secundario-->
 				<div class="row justify-content-center align-items-center pt-1 p-md-0 d-block">
 					<div class="col-12">
-						<button class="btn pdfR d-block m-auto"></button>
+						<button class="btn pdfR d-block m-auto" onclick="generate()" id="desabled" ></button>
+						<!--button onclick="generate()">Generate PDF</button-->
 					</div>
 				</div>
 			</div><!-- FIN PDF-->
@@ -102,38 +96,66 @@
 
 
 
-	<div class="mt-5">
+	<div class="mt-4">
 		<div class="row encierroR  justify-content-center p-2">
 			<!--div class="row encierroR  justify-content-center p-2" ng-controller="miTablaReportes"-->
 
+			<div class="col-12">
+				<div class="form-group row mb-0">
+					<label for="nopagina" class="offset-lg-7 col-lg-3 col-form-labe numregistroxp text-right">Registro por pagina:</label>
+					<div class="col-lg-2 pl-lg-0">
+						<select class="form-control form-control-sm" id="nopagina">
+							<option value="" disabled selected>seleccionar..</option>
+							<option value="10" class="hover">10</option>
+							<option value="20" class="hover">20</option>
+							<option value="1000" class="hover">Visualizar todo</option>
+						</select>
+					</div>
+				</div>
+			</div>
 
 
 			<div class="table-responsive">
-				<table class="table table-sm table-hover table-striped text-center" id="my-table">
+				<table class="table table-sm table-hover table-striped" id="my-table">
 					<thead class="thead-dark">
 						<tr>
-							<th class="text-nowrap">No. Viaje</th>
-							<th class="text-nowrap">No. Taxi</th>
-							<th class="text-nowrap">Placa</th>
-							<th class="text-nowrap">Chofer</th>
-							<th class="text-nowrap">Fecha</th>
-							<th class="text-nowrap">Salida</th>
-							<th class="text-nowrap">Destino</th>
-							<th class="text-nowrap">Hora</th>
-							<th class="text-nowrap">Calificacion</th>
+							<th class="text-nowrap text-center">#</th>
+							<th class="text-nowrap text-center">No. Taxi</th>
+							<th class="text-nowrap text-center">Placa</th>
+							<th class="text-nowrap text-center">Chofer</th>
+							<th class="text-nowrap text-center">Fecha y Hora</th>
+							<th class="text-nowrap text-center">Salida</th>
+							<th class="text-nowrap text-center">Destino</th>
+							<th class="text-nowrap text-center">Precio</th>
 						</tr>
 					</thead>
-					<tbody class="fondo-tabla" id="reportetabla"></tbody>
+					<tbody class="fondo-tabla" id="reportetabla">
+					</tbody>
 				</table>
 			</div>
-			<div class="row justify-content-center align-items-center">
+			<div class="row justify-content-center align-items-center claseocultarpag">
 				<div class="col-12">
-					<div class="col-sm-12">
+					<div class="col-sm-12 table-responsive">
 						<p id="pagination-here"></p>
 					</div>
 				</div>
 			</div>
 
+			<div class="alert alert-secondary d-none" role="alert" >
+				<strong>No se encontraron registros!</strong> vuelva a realizar la busqueda.
+			</div>
+
+
+			<div class="container-fluid d-none">
+				<div class="row justify-content-end align-items-center">
+					<div class="col-12 col-sm-8 col-md-5 col-lg-3">
+						<table class="table table-sm" id="my-tableTotal">
+							<thead class="thead-dark" id="totalpesos">
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</div>
@@ -141,6 +163,5 @@
 
 
 
-
-
 <script src="../../js/Propietario_Ubicacion/reporte.js"> </script>
+<script src="../../librerias/jspdf/PDF-Reportes.js"> </script>

@@ -1,3 +1,8 @@
+option:checked {
+	color: white;
+	background-color: #989a9b;
+}
+
 /* ---------------------------------------------------- */
 /*  CONTENIDO ENCERRADO        						  	*/
 /*----------------------------------------------------- */
@@ -86,6 +91,13 @@ a.LimpiarT {
 	height: 50px;
 }
 
+.pdfR:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
 
 /* ---------------------------------------------------- */
 /*  REDONDEO TABLA REPORTE: 							*/
@@ -111,6 +123,26 @@ tr:last-child td:last-child {
 	border-bottom-right-radius: 10px;
 }
 
+/* ---------------------------------------------------- */
+/*  REDONDEO TABLA TOTAL: 								*/
+/*----------------------------------------------------- */
+#my-tableTotal th:first-child {
+	border-top-left-radius: 10px;
+}
+
+#my-tableTotal th:last-child {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#my-tableTotal th:first-child {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+
+
+
 
 /* ---------------------------------------------------- */
 /*  			INICIO PAGINADOR:        				*/
@@ -119,49 +151,50 @@ tr:last-child td:last-child {
 	background-color: #343a40 !important;
 	color: #fff;
 }
+
 .page-link:hover {
-	background-color: rgba(165, 164, 164, 0.65)!important;
+	background-color: rgba(165, 164, 164, 0.65) !important;
 	color: #000 !important;
 }
+
 .page-item.active .page-link {
-	background-color: rgba(165, 164, 164, 0.65)!important;
-    z-index: 3;
+	background-color: rgba(165, 164, 164, 0.65) !important;
+	z-index: 3;
 	color: #000;
-    border-color: #fff;
+	border-color: #fff;
 }
 
 .page-item.disabled .page-link {
-		background-color: rgba(165, 164, 164, 0.65)!important;
-		color: #000;
+	background-color: rgba(165, 164, 164, 0.65) !important;
+	color: #000;
 }
 
 .page-item.disabled {
 	border-color: #fff;
-    cursor: not-allowed!important;
+	cursor: not-allowed !important;
 }
 
 .page-item.active:focus,
 .page-link:focus {
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
+	outline: none !important;
+	outline-width: 0 !important;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
 }
+
 /* ---------------------------------------------------- */
 /*  			TERMINA PAGINADOR:        				*/
 /*----------------------------------------------------- */
+.numregistroxp {
+	font-size: .8rem;
+	color: #fff;
+	font-weight: bold;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ---------------------------------------------------- */
+/*  			CURSOR SELECT CHOFER      				*/
+/*----------------------------------------------------- */
+.clasedesactivar{
+	cursor: not-allowed;
+}
