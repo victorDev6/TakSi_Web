@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Costos</title>
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/AdminCostos/AdminCostos.css">
 </head>
 
 <body>
@@ -20,49 +18,40 @@
         </div>
         <br>
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-12 col-lg-10">
                 <form class="form-inline">
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <select class="custom-select cajaCosto m-auto d-block" name="" id="">
+                            <select class="custom-select cajaCosto m-auto d-block" name="" id="selectEdo_AdminCosto">
                                 <option selected>Estado</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <select class="custom-select cajaCosto m-auto d-block" name="" id="">
+                            <select class="custom-select cajaCosto m-auto d-block" name="" id="selectCd_AdminCosto">
                                 <option selected>Ciudad</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
+                    <!-- <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
                             <select class="custom-select cajaCosto m-auto d-block" name="" id="">
                                 <option selected>Sitio</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-12 mt-3 col-sm-6 col-lg-4">
+                    </div> -->
+                    <div class="col-12 col-sm-6 col-lg-4">
                         <div class="row justify-content-center">
 
                             <div class="col-5 mx-1">
-                                <a class="btn btn-info d-block botonCosto" href="#"><img class="iconoBoton"
-                                        src="../../Diseno/ICONOS/Iconobuscar.svg" alt="">Buscar</a>
+                                <a class="btn btn-info d-block botonCosto" href="#" id="btn_buscar_costo"><img
+                                        class="iconoBoton" src="../../Diseno/ICONOS/Iconobuscar.svg" alt="">Buscar</a>
                             </div>
 
                             <div class="col-5">
-                                <a class="btn btn-info d-block botonCosto" href="#"><img class="iconoBoton"
-                                        src="../../Diseno/ICONOS/eliminar.svg" alt="">Limpiar</a>
+                                <a class="btn btn-info d-block botonCosto" href="#" id="btn_limpiar_costo"><img
+                                        class="iconoBoton" src="../../Diseno/ICONOS/eliminar.svg" alt="">Limpiar</a>
                             </div>
                         </div>
                     </div>
@@ -76,33 +65,38 @@
             </div>
         </div>
         <br>
-        <!-- tabla -->
+        <!-- Tabla de admin costos-->
         <div class="row justify-content-center">
-            <div class="col-9 col-lg-9 col-xl-9">
+            <div class="col-12 col-lg-10">
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
-                        <thead class="thead-dark text-center tamTexto">
+                    <div class="alert alert-info d-none" id="NoRegistro" role="alert">
+                        <h4 class="alert-heading">Disculpa!</h4>
+                        Registro no encontrado.
+                    </div>
+                    <table class="table table-sm table-hover table-striped text-center" id="my-table_costo">
+                        <thead class="thead-dark text-center tamTexto" id="encabezadoTabla">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">FECHA</th>
-                                <th scope="col">MONTO MENSUAL</th>
-                                <th scope="col">MONTO ANUAL</th>
-                                <th scope="col">% DE DESCUENTO</th>
-                                <th scope="col">EDITAR</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">M. Mensual</th>
+                                <th scope="col">M.Anual</th>
+                                <th scope="col">% Descuento</th>
+                                <th scope="col">Eliminar</th>
+                                <th scope="col">Editar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="text-center">
-                                <th scope="row">1</th>
-                                <td>20/12/2019</td>
-                                <td>$ 200</td>
-                                <td>$ 2,300</td>
-                                <td>10%</td>
-                                <td><a class="btn btn-info" href="#"><img class="iconoBoton"
-                                            src="../../Diseno/ICONOS/editar.svg" alt=""> Editar</a></td>
-                            </tr>
+                        <tbody class="fondo-tabla" id="tabla_general_costo">
                         </tbody>
                     </table>
+                </div>
+                <div class="row justify-content-center align-items-center" id="esconderPaginacionC">
+                    <div class="col-12">
+                        <div class="col-sm-12">
+                            <p id="pagination-here_c"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,65 +109,64 @@
         <div class="row justify-content-center">
             <div class="col-7 col-sm-10 col-md-9 offset-1 offset-md-1 col-lg-10">
                 <p class="h4 font-weight-bold">Nuevo Costo</p>
+                <p class="mt-2 small"><span class="font-weight-bold">Nota: </span> Debe agregar el monto x mes y
+                    descuento para poder calcular el monto anual</p>
             </div>
         </div>
         <br>
+        <!-- Seccion donde se agrega Otro nuevo costo -->
         <div class="row justify-content-center">
             <div class="col-10">
                 <form class="form-inline">
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <select class="custom-select cajaCosto m-auto d-block" name="" id="">
-                                <option selected>Estado</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                            <select class="custom-select cajaCosto m-auto d-block" name="" id="select_edo_add_costo">
+                                <option value="Estado" selected>Estado</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <select class="custom-select cajaCosto m-auto d-block" name="" id="">
-                                <option selected>Ciudad</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                            <select class="custom-select cajaCosto m-auto d-block" name="" id="select_cd_add_costo">
+                                <option value="Ciudad" selected>Ciudad</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
+                    <!-- <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
                             <select class="custom-select cajaCosto m-auto d-block" name="" id="">
                                 <option selected>Sitio</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
+                    <!-- Caja Monto mensual -->
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <input type="text" name="" id="" class="form-control m-auto cajaCosto"
+                            <input type="text" name="" id="monto_mes_costo" class="form-control m-auto cajaCosto"
                                 placeholder="Monto mensual">
                         </div>
                     </div>
-
+                    <!-- Caj monto anual -->
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <input type="text" name="" id="" class="form-control m-auto cajaCosto"
-                                placeholder="Monto Anual">
+                            <input type="text" name="" disabled id="monto_anual_costo"
+                                class="form-control m-auto cajaCosto" placeholder="Monto Anual">
                         </div>
                     </div>
-
+                    <!-- Caja % descuento -->
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <input type="text" name="" id="" class="form-control m-auto cajaCosto"
+                            <input type="text" name="" id="descuento_costo" class="form-control m-auto cajaCosto"
                                 placeholder="% Descuento">
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-4 mt-2">
-                        <a class="btn btn-info d-block botonAceptar" href="#"><img class="iconoBoton"
-                                src="../../Diseno/ICONOS/guardar.svg" alt=""> Guardar</a>
+                    <div class="col-12 col-sm-6 col-lg-4 mt-2" id="ocultar_caja_btn_agregar_costos_o">
+                        <a class="btn btn-info d-block botonAceptar" href="#" id="btn_add_new_costo"><img
+                                class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt=""> Guardar</a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mt-2 d-none" id="ocultar_caja_btn_editar_costo_o">
+                        <a class="btn btn-info d-block botonAceptar" href="#" id="btnEditarCosto_o"><img
+                                class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt=""> Editar</a>
                     </div>
                 </form>
             </div>
@@ -183,10 +176,6 @@
 
     </div>
 
-
-
-    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../js/AdminCostos/AdminCostos.js"></script>
 </body>
 

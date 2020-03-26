@@ -24,7 +24,7 @@
 	/* padding-top: 30px; */
 	font-family: prototype;
 	font-size: 20px;
-    color: #666060 !important;	
+    color: #666060;	
     margin: auto;
 }
 #paginacionP{
@@ -32,12 +32,12 @@
     text-align: left;
 }
 .paginationP .active a{
-    color: rgb(43, 125, 163) !important;
+    color: rgb(43, 125, 163);
     font-weight: bold;
 }
 
 .paginationP a{
-    color: #3b3535 !important;
+    color: #3b3535;
     border-color: rgb(193, 201, 201);
     font-weight: bold;
 }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="contenedor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:400,400i,500" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../librerias/awesome/css/linearicons.css">
+    <link rel="stylesheet" href="../../librerias/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../librerias/bootstrapValidator/css/Validaciones.css">
+    <link rel="stylesheet" href="../../css/Validaciones/validaciones.css">
+    <link rel="stylesheet" href="../../css/Principal/principal.css">
+    <link rel="stylesheet" href="../../css/Principal/header.css">
+    <link rel="stylesheet" href="../../css/Registrarse/Registrarse.css">
+    <link rel="stylesheet" href="../../css/InicioSesion/InicioSesion.css" />
+
+    <!-- Liberias de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+
+    <title>Menu</title>
+</head>
+
+<body>
+    <div class="loader" id="loader"></div>
+    <header>
+        <div class="wrapper" id="sidebar">
+            <div class="cont2"><a href="#!/Contenedor"><img class="logo" src="../../Diseno/ICONOS/logo.png" alt=""></a>
+            </div>
+            <nav>
+                <a ui-sref="contenedor" id="contenedor">Inicio</a>
+                <a ui-sref="registro" id="registro">Registrarse</a>
+                <a ui-sref="iniciosesion" id="iniciosesion">Iniciar Sesion</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido -->
+    <div id="content">
+        <div ui-view class="col-*"></div>
+    </div>
+
+    <!-- Inicio del Footer de la pagina -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 single-footer-widget mt-4">
+
+                    <ul>
+                        <li><a href="#">AYUDA</a></li>
+                        <li><a href="#">ACERCA DE</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 single-footer-widget mt-4">
+
+                    <ul>
+                        <li><a href="#">TERMINOS DE USO</a></li>
+                        <li><a href="#">AVISO DE PRIVACIDAD</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5 col-md-6 single-footer-widget mt-4">
+                    <h4 class="text-lg-center">Descargar App</h4>
+                    <div class="col">
+                        <div class="download-button d-flex flex-row justify-content-end">
+                            <div class="buttons gray flex-row d-flex">
+                                <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
+                                    class="mt-2">
+                                <div class="desc">
+                                    <a href="#">
+                                        <p class="ml-2">
+                                            <span>Conductor</span> <br>
+                                            Disponible en <br> Play Store
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="buttons gray flex-row d-flex">
+                                <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
+                                    class="mt-2">
+                                <div class="desc">
+                                    <a href="#">
+                                        <p class="ml-2">
+                                            <span>Pasajero</span> <br>
+                                            Disponible en <br> Play Store
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 single-footer-widget mt-4">
+                    <h4 class="mb-3">CONTACTOS</h4>
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fa fa-facebook fa-2x mr-2"></i>isoft/softetc</a></li>
+                        <li><a href="#"><i class="fa fa-twitter fa-2x mr-2"></i>Locooooo</a></li>
+                        <li><a href="#"><i class="fa fa-address-book fa-2x mr-2"></i>locooooo</a></li>
+                        <li><a href="#"><i class="fa fa-envelope fa-2x mr-2"></i>locooooo</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+                <p class="footer-text m-0 col-lg-6 col-md-12 p-0 py-3 text-center">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados |
+                    Creado</i> por
+                    <a href="#" target="_blank">ISoft</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+
+            </div>
+        </div>
+    </footer>
+    <!--Fin del Footer -->
+
+    <!-- Modal para mostrar mensajes -->
+    <!--Modal: modalMensajes-->
+    <div class="modal fade" id="modalMensajesM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center" id="cabezaModal">
+                    <p class="heading font-weight-bold h4">Mensaje</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <img src="" alt="" width="70px" height="70px" id="imagenCuerpoM">
+                    <p class="mt-3 font-weight-bold h4" id="textoCuerpoModal"></p>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <a type="button" class="btn m-auto" data-dismiss="modal" id="botonAceptarModalM">Aceptar</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: modalPush-->
+    <!-- Modal Error Validacion Bootstrap -->
+    <div id="showErrors" class="col-lg-4 col-md-5 col-sm-6 col-xs-12 showErrorModal">
+        <table class="errorModal">
+            <tr>
+                <td class="errorModalTitle"><img id="img1" alt="" src="../../Diseno/ICONOS/alerta.svg"></td>
+                <td class="errorModalBody">
+                    <ul id="errors"></ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Librerias -->
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <script src=" ../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
+    <script src="../../angular/angular.min.js"></script>
+    <script src="../../angular/angular-ui-router.min.js"></script>
+    <script src=" ../../librerias/bootstrap/js/bootstrap.min.js"> </script>
+    <script src="../../js/Principal/app.js"></script>
+    <script src="../../js/Principal/principal.js"></script>
+</body>
+
+</html>

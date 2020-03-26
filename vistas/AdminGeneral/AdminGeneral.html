@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="administrador">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../librerias/awesome/css/linearicons.css">
+    <link rel="stylesheet" href="../../librerias/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/AdminGeneral/AdminGeneral.css">
+
+    <!-- AdminNoticias -->
+    <link rel="stylesheet" href="../../css/AdminNoticias/AdminNoticias.css">
+    <!-- Admin pagos -->
+    <link rel="stylesheet" href="../../css/AdminPagos/AdminPagos.css">
+    <!-- Admin Costos -->
+    <link rel="stylesheet" href="../../css/AdminCostos/AdminCostos.css">
+    <!-- Admin Perfiles -->
+    <link rel="stylesheet" href="../../css/AdminPerfiles/AdminPerfiles.css">
+    <!-- Admin Notificación -->
+    <link rel="stylesheet" href="../../css/AdminNotificacion/AdminNotificacion.css">
+    <!-- Admin Agregar Sitio -->
+    <link rel="stylesheet" href="../../css/AdminAgregar/AdminAgregar.css">
+
+    <!-- Liberias de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+
+
+    <title>Propietario</title>
+</head>
+
+<body>
+    <!-- Inicio Wrapper -->
+    <div class="wrapper">
+        <nav class="sidebar">
+            <!-- Inicio Sidebar -->
+            <div class="cerrar-menu">
+                <i class="fa fa-arrow-left"></i><!-- close flechacerrarsidebar menu -->
+            </div>
+            <div class="headersidebar">
+                <img src="../../Diseno/ICONOS/logo.png" alt="" class="carrito mx-auto">
+            </div>
+            <ul class="list-unstyled menu-elements">
+                <h2>Admin</h2>
+                <li class="active">
+                    <a ui-sref="adminnoticias" id="adminnoticias">Admin Noticias</a>
+                </li>
+                <li>
+                    <a ui-sref="adminpagos" id="adminpagos">Admin Pagos</a>
+                </li>
+                <li>
+                    <a ui-sref="admincostos" id="admincostos">Admin Costos</a>
+                </li>
+                <li>
+                    <a ui-sref="adminperfiles" id="adminperfiles">Admin Perfiles</a>
+                </li>
+                <li>
+                    <a ui-sref="notificaciones" id="notificaciones">Notificaciones</a>
+                </li>
+                <li>
+                    <a ui-sref="agregarsitio" id="agregarsitio">Agregar Sitio</a>
+                </li>
+                <h2 class="footter py-3"></h2>
+                <li>
+                    <a id="cerrarsession">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav><!-- Fin sidebar -->
+
+
+        <div class="overlay"></div><!-- Dark overlay -->
+
+        <div class="content px-5">
+            <!-- Content -->
+            <a class="btn btn-secondary  abrir-menu" href="#" role="button"><i class="fa fa-align-left"></i>
+                <span>Menu</span></a><!-- cerrar sidebar menu -->
+            <div ui-view></div>
+        </div><!-- Fin content -->
+    </div><!-- Fin wrapper -->
+
+    <!-- Modal para Cerrar Sesion -->
+    <div class="modal fade" id="modalCerrarSesion" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="cuerpoModalExitoso">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-3" align="center">
+                            <img class="imgCajaImg" src="../../Diseno/ICONOS/alerta.svg">
+                        </div>
+                        <div class="col-12 mt-2" align="center">
+                            <label class="subtitulo">¿SEGURO QUIERES CERRAR SESIÓN?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-4 offset-1">
+                            <button type="button" class="form-control bg-danger" data-dismiss="modal"
+                                aria-label="Close">Cancelar</button>
+                        </div>
+                        <div class="col-4 offset-2">
+                            <button type="button" class="form-control" id="btn_modal_cerrar_sesion">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Librerias -->
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"> </script>
+    <script src="../../angular/angular.min.js"></script>
+    <script src="../../angular/angular-ui-router.min.js"></script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../librerias/paginador/jquery.bootpag.js"></script>
+    <script src="../../js/AdminGeneral/app.js"></script>
+    <script src="../../js/AdminGeneral/AdminGeneral.js"> </script>
+
+</body>
+
+</html>

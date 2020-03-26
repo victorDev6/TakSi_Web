@@ -1,0 +1,123 @@
+/************	modal show error	**************/
+.showErrorModal {
+	z-index: 10000;
+	position: fixed;
+	bottom: 1%;
+	right: 0.5%;
+	font-family: "Open Sans";
+	display: none;
+}
+
+.errorModal {
+	background-color: #820408;
+	-webkit-background-color: #820408;
+	-moz-background-color: #820408;
+	-o-background-color: #820408;
+	-ms-background-color: #820408;
+	
+	border-color: #890008;
+	border-radius: 18px;
+	width: 100%;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+}
+
+.errorModalTitle {
+	width: 20%;
+	text-align: center;
+	font-family: Open Sans;
+	color: #FFFFFF;
+	font-size: 10px;
+	border-width: 4px;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	color: #fff;
+	border-bottom-left-radius: 18px;
+	border-top-left-radius: 18px;
+}
+
+#img1 {
+	width: 50%;
+	height: auto;
+}
+
+.errorModalTitle>span {
+	margin-top: 2%;
+	padding-bottom: 2%;
+	font-size: 24px;
+}
+
+.errorModalBody {
+	border-width: 4px;
+	font-family: Open Sans;
+	color: #FFFFFF;
+	font-size: 10px;
+	border-top-right-radius: 18px;
+	border-bottom-right-radius: 18px;
+}
+
+.errorModalBody>ul {
+	list-style: none; /* Remove list bullets */ padding : 0px;
+	margin: 0px;
+}
+
+.errorModalBody>ul>li>a {
+	color: #FFFFFF;
+	font-size: 14px;
+}
+
+/*mensaje de error de operaciones */
+.modalErrorOperaciones {
+	position: absolute;
+	top: 1%;
+	font-weight: bolder;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.msg-clear {
+	border-color: #FFFFFF;
+	-webkit-box-shadow: 0 7px 10px -5px rgba(0, 0, 0, .15);
+	-moz-box-shadow: 0 7px 10px -5px rgba(0, 0, 0, .15);
+	box-shadow: 0 7px 10px -5px rgba(0, 0, 0, .15);
+}
+
+.msg {
+	text-align: left;
+	background: #FFFFFF;
+	color: #666666;
+	font-weight: bold;
+	font-size: small;
+	padding: 12px;
+	padding-left: 16px;
+	border-top: solid 3px #CCCCCC;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	-webkit-box-shadow: 0 10px 10px -5px rgba(0, 0, 0, .08);
+	-moz-box-shadow: 0 10px 10px -5px rgba(0, 0, 0, .08);
+	box-shadow: 0 10px 10px -5px rgba(0, 0, 0, .08);
+}
+
+.msg-danger-text {
+	color: #890008;
+}
+
+.msg-danger {
+	border-color: #890008;
+}
+
+.msg-warning {
+	border-color: rgba(255, 165, 0, .5);
+}
+
+.modalErrorOperaciones {
+	display: none;
+}
+
+.modalErrorOperaciones .glyphicon {
+	font-size: 20px;
+	padding: 4px;
+	color: #890008;
+} 

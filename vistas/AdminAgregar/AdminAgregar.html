@@ -6,122 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Agregar</title>
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/AdminAgregar/AdminAgregar.css">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row justify-content-center mt-4">
+            <!-- Submenu -->
+            <div class="col-12">
+                <div class="row justify-content-center mb-4 py-4 bg-dark">
+                    <!-- Sitio -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuSitio">Agregar
+                            Sitio</button>
+                    </div>
+                    <!-- Ciudad -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuCiudad">Agregar Ciudad</button>
+                    </div>
+                    <!-- Consesión -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuConsesion">Agregar Consesión</button>
+                    </div>
+                    <!-- Estado -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuEstado">Agregar Estado</button>
+                    </div>
+                    <!-- Costo km -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuCostoKm">Agregar Costo Km</button>
+                    </div>
+                    <!-- Codigo Descuento -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuCodigo">Agregar Codigo</button>
+                    </div>
+                    <!-- Publicidad -->
+                    <div class="form-inline mb-2 mr-4">
+                        <button class="btn btn-light" id="btnMenuMarcador">Agregar Marcador</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 bordeRedondoSelect">
+                <p class="h5 font-weight-bold text-center pt-2 mb-3" id="textoM_Pantalla">Hola</p>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3" id="ocultarSelectEdo">
+                        <div class="form-group">
+                            <select class="custom-select" name="" id="selectEdo_AdminA">
+                                <option selected>Estado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3" id="ocultarSelectCd">
+                        <div class="form-group">
+                            <select class="custom-select" name="" id="selectCd_AdminA">
+                                <option selected>Ciudad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- caja de editar Sitio -->
-            <div class="col-10 col-md-5 col-lg-5 col-xl-4 mr-lg-2 pb-3 bordeRedondo">
-                <br>
-                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Sitio</p>
-                <br>
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 mr-lg-2 pb-3 bordeRedondo d-none" id="mostrarSitio">
                 <form action="">
                     <div class="row justify-content-center">
-                        <!-- Agregar radio -->
-                        <div class="form-inline mb-2 mr-3">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioSitioAdd" value="1" name="radioSitio"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioSitioAdd">Agregar</label>
-                            </div>
-                        </div>
-
-                        <div class="form-inline mb-2">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioSitioEdi" value="2" name="radioSitio"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioSitioEdi">Editar</label>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block" id="btn_table_show_sitio">Mostrar Tabla</button>
                             </div>
                         </div>
                         <div class="col-9">
                             <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
-                                    <option selected>Estado</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <input type="text" class="form-control" name="" id="nombre_sitio_a"
+                                    placeholder="Nombre de Sitio">
                             </div>
                         </div>
-                        <div class="col-9">
-                            <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
-                                    <option selected>Ciudad</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-9">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Sitio">
-                            </div>
-                        </div>
-                        <div class="col-9 d-none" id="modClassSitio">
-                            <div class="row justify-content-start">
-                                <div class="col-8 col-md-9 pr-0">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="" id=""
-                                            placeholder="Sitio a Buscar">
-                                    </div>
-                                </div>
-                                <div class="col-4 col-md-3">
-                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
-                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
-                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                        <div class="col-6" id="ocultar_caja_btn_agregar_sitio">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btn_agregar_sitio"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
                                 Guardar</a>
+                        </div>
+                        <div class="col-6 d-none" id="ocultar_caja_btn_editar_sitio">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btn_actualizar_sitio"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Editar</a>
                         </div>
                     </div>
                 </form>
             </div>
             <!-- Caja de Editar Ciudad -->
-            <div class="col-10 col-md-5 col-lg-5 col-xl-4 ml-md-2 mt-3 mt-md-0 pb-3 bordeRedondo">
-                <br>
-                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Ciudad</p>
-                <br>
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 ml-md-2 pb-3 bordeRedondo d-none" id="mostrarCiudad">
                 <form action="">
                     <div class="row justify-content-center">
-                        <!-- Agregar radio -->
-                        <div class="form-inline mb-2 mr-3">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioCdAdd" value="1" name="radioCd"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioCdAdd">Agregar</label>
-                            </div>
-                        </div>
-
-                        <div class="form-inline mb-2">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioCdEdi" value="2" name="radioCd"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioCdEdi">Editar</label>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block">Mostrar Tabla</button>
                             </div>
                         </div>
                         <div class="col-9">
                             <div class="form-group">
-                                <select class="custom-select m-auto d-block" name="" id="">
-                                    <option selected>Estado</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <input type="text" class="form-control" name="" id="nombre_ciudad_a"
+                                    placeholder="Nombre de Ciudad">
                             </div>
                         </div>
-                        <div class="col-9">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Ciudad">
-                            </div>
-                        </div>
-                        <div class="col-9 d-none" id="modClassCd">
+                        <!-- <div class="col-9 d-none" id="modClassCd">
                             <div class="row justify-content-start">
                                 <div class="col-8 col-md-9 pr-0">
                                     <div class="form-group">
@@ -134,138 +120,77 @@
                                             src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-6">
-                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
-                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnAgregarCd"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
                                 Guardar</a>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- Caja de editar Placa -->
-            <div class="col-10 col-md-5 col-lg-5 col-xl-4 mr-lg-2 mt-3 pb-3 bordeRedondo">
-                <br>
-                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Placa</p>
-                <br>
+            <!-- Caja de editar Consesión -->
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 mr-lg-2 pb-3 bordeRedondo d-none" id="mostrarConsesion">
                 <form action="">
                     <div class="row justify-content-center">
-                        <div class="col-10">
-                            <div class="row justify-content-center">
-                                <!-- Agregar radio -->
-                                <div class="form-inline mb-2 mr-3">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="radioPlacaAdd" value="1" name="radioPlaca"
-                                            class="custom-control-input">
-                                        <label class="custom-control-label" for="radioPlacaAdd">Agregar</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-inline mb-2">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="radioPlacaEdi" value="2" name="radioPlaca"
-                                            class="custom-control-input">
-                                        <label class="custom-control-label" for="radioPlacaEdi">Editar</label>
-                                    </div>
-                                </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block" id="show_table_consesion">Mostrar Tabla</button>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Usuario">
+                                <input type="text" class="form-control" name="" id="nombre_user_a"
+                                    placeholder="Nombre de Usuario">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Apellidos">
+                                <input type="text" class="form-control" name="" id="ape_user_a" placeholder="Apellidos">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Numero de Placa">
+                                <input type="text" class="form-control" name="" id="num_cons_a"
+                                    placeholder="N. de Consesión">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-9">
                             <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
+                                <select class="custom-select m-auto d-block" name="" id="selectSitio_a">
                                     <option selected>Sitio</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
-                                    <option selected>Estado</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
-                                    <option selected>Ciudad</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 d-none" id="modClassPlaca">
-                            <div class="row justify-content-start">
-                                <div class="col-7 col-md-8 pr-0">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="" id=""
-                                            placeholder="Placa a Buscar">
-                                    </div>
-                                </div>
-                                <div class="col-5 col-md-4">
-                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
-                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
-                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                        <div class="col-9" id="ocultar_caja_btn_agregar_consesion">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnAgregarFolio"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
                                 Guardar</a>
+                        </div>
+                        <div class="col-9 d-none" id="ocultar_caja_btn_editar_consesion">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btn_actualizar_consesion"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Editar</a>
                         </div>
                     </div>
                 </form>
             </div>
             <!-- Caja de editar Estado -->
-            <div class="col-10 col-md-5 col-lg-5 col-xl-4 ml-md-2 mt-3 pb-3 bordeRedondo">
-                <br>
-                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Estado</p>
-                <br>
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 ml-md-2 pb-3 bordeRedondo d-none" id="mostrarEstado">
                 <form action="">
                     <div class="row justify-content-center">
-                        <!-- Agregar radio -->
-                        <div class="form-inline mb-2 mr-3">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioEdoAdd" value="1" name="radioEdo"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioEdoAdd">Agregar</label>
-                            </div>
-                        </div>
-
-                        <div class="form-inline mb-2">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioEdoEdi" value="2" name="radioEdo"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioEdoEdi">Editar</label>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block">Mostrar Tabla</button>
                             </div>
                         </div>
                         <div class="col-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Nombre de Estado">
+                                <input type="text" class="form-control" name="" id="nombre_estado_a"
+                                    placeholder="Nombre de Estado">
                             </div>
                         </div>
-                        <div class="col-9 d-none" id="modClassEdo">
+                        <!-- <div class="col-9 d-none" id="modClassEdo">
                             <div class="row justify-content-start">
                                 <div class="col-8 col-md-9 pr-0">
                                     <div class="form-group">
@@ -278,92 +203,262 @@
                                             src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-6">
-                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
-                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnAgregarEdo"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
                                 Guardar</a>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- Caja de Editar Costo-->
-            <div class="col-10 col-md-5 col-lg-5 col-xl-4 ml-md-2 mt-3 pb-3 bordeRedondo">
-                <br>
-                <p class="h5 font-weight-bold text-center my-0">Agregar / Editar Costo</p>
-                <br>
+            <!-- Caja de Editar Costo Km-->
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 ml-md-2 pb-3 bordeRedondo d-none" id="mostrarCosto">
                 <form action="">
                     <div class="row justify-content-center">
-                        <!-- Agregar radio -->
-                        <div class="form-inline mb-2 mr-3">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioCostoAdd" value="1" name="radioCostoKm"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioCostoAdd">Agregar</label>
-                            </div>
-                        </div>
-
-                        <div class="form-inline mb-2">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="radioCostoEdi" value="2" name="radioCostoKm"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radioCostoEdi">Editar</label>
-                            </div>
-                        </div>
-
                         <div class="col-9">
                             <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
-                                    <option selected>Estado</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <button class="btn btn-info btn-block">Mostrar Tabla</button>
                             </div>
                         </div>
                         <div class="col-9">
                             <div class="form-group">
-                                <select class="custom-select caja m-auto d-block" name="" id="">
-                                    <option selected>Ciudad</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <input type="text" class="form-control" name="" id="costo_foraneo_a"
+                                    placeholder="Costo Foraneo">
                             </div>
                         </div>
                         <div class="col-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" placeholder="Costo por Km">
+                                <input type="text" class="form-control" name="" id="costo_km_a"
+                                    placeholder="Costo por Km">
                             </div>
                         </div>
-                        <div class="col-9 d-none" id="modClassCostoKm">
-                            <div class="row justify-content-start">
-                                <div class="col-8 col-md-9 pr-0">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="" id=""
-                                            placeholder="Costo a Buscar">
-                                    </div>
-                                </div>
-                                <div class="col-4 col-md-3">
-                                    <a href="#" class="btn btn-success d-block"><img class="iconoBoton"
-                                            src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
-                                </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="tarifa_base_a"
+                                    placeholder="Tarifa Base">
                             </div>
                         </div>
-                        <div class="col-6">
-                            <a class="btn btn-info d-block botonAddEd" href="#"><img class="iconoBoton"
-                                    src="../../Diseno/ICONOS/guardar.svg" alt="">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="tarifa_km_a"
+                                    placeholder="Tarifa Kilometros">
+                            </div>
+                        </div>
+                        <div class="col-6" id="ocultar_caja_btn_agregar_costo">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnAgregarCostoKm"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
                                 Guardar</a>
+                        </div>
+                        <div class="col-6 d-none" id="ocultar_caja_btn_editar_costo">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btn_actualizar_costo"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Editar</a>
                         </div>
                     </div>
                 </form>
             </div>
+            <!-- Caja de editar Codigo de Descuento -->
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 ml-md-2 pb-3 bordeRedondo d-none" id="mostrarCodigo">
+                <form action="">
+                    <div class="row justify-content-center">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block">Mostrar Tabla</button>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="codigo_descuento_a"
+                                    placeholder="Codigo">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="c_descuento_a"
+                                    placeholder="C. Descuento">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="total_usos_a" placeholder="C. Usos">
+                            </div>
+                        </div>
+                        <div class="col-6" id="ocultar_caja_btn_agregar_codigo">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnAgregarCodigoD"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                        <div class="col-6 d-none" id="ocultar_caja_btn_editar_codigo">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnEditarCodigoD"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Editar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Agregar Marcadores Publicidad -->
+            <div class="col-12 col-md-5 col-lg-5 col-xl-4 ml-md-2 pb-3 bordeRedondo d-none" id="mostrarMarcador">
+                <form action="">
+                    <div class="row justify-content-center">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block">Mostrar Tabla</button>
+                            </div>
+                        </div>
+                        <div class="col-9" id="contenedor_imagenM">
+                            <div class="form-group">
+                                <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenMarcador">
+                                <img class="selectorImagen imgSubida_estilo d-block m-auto" id="imgSubidaM" src="">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="nombre_empresa"
+                                    placeholder="Empresa">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="url_logo" placeholder="url imagen">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="status_marker" placeholder="Status">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="telefono_empresa"
+                                    placeholder="Telefono">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <textarea name="" class="form-control" id="descrip_empresa" cols="20" rows="3"
+                                    placeholder="Descripcion..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="latitud_marker"
+                                    placeholder="Latitud">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="longitud_marker"
+                                    placeholder="Longitud">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-check ckeckbox_1 px-0 mx-0">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="checkAgregarMarcador">
+                                    <label class="custom-control-label text-justify small text-white"
+                                        for="checkAgregarMarcador"><span class="font-weight-bold">Nota: </span>
+                                        Si deseas agregar otra ubicacion del mismo negocio, maraca la casilla e ingresa
+                                        <span class="font-weight-bold">(Estado, Ciudad, Nombre de Empresa, Longitud y
+                                            Latitud)</span>, de lo
+                                        contrario se guardara como un nuevo registro</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 mt-2" id="ocultar_caja_btn_agregar_marcador">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnAgregarMarcadorP"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Guardar</a>
+                        </div>
+                        <div class="col-6 mt-2 d-none" id="ocultar_caja_btn_editar_marcador">
+                            <a class="btn btn-info d-block botonAddEd" href="#" id="btnEditarMarcadorD"><img
+                                    class="iconoBoton" src="../../Diseno/ICONOS/guardar.svg" alt="">
+                                Editar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tabla Sitio-->
+            <div class="col-12 col-md-6 col-lg-6 col-xl-7 ml-md-2 bordeRedondo d-none" id="ocultarTablaSitio">
+                <div class="row">
+                    <div class="col-5 mt-2">
+                        <div class="form-group" id="addSelectOpciones">
+
+                        </div>
+                    </div>
+                    <div class="col-4 mt-2 d-none" id="ocul_caja_bus_sitio">
+                        <input type="text" class="form-control" placeholder="Dato a buscar" id="busqueda_nom_filtrada">
+                    </div>
+                    <div class="col-2 mt-2 d-none" id="ocul_btn_bus_sitio">
+                        <a href="#" class="btn btn-info d-block" id="btn_busq_filtrada"><img class="iconoBoton"
+                                src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
+                    </div>
+                </div>
+                <div class="table-responsive" id="esconderTablaCompleta">
+                    <table class="table table-sm table-hover table-striped text-center" id="my-table">
+                        <thead class="thead-dark" id="agregarEncabezadoTabla">
+                            <tr>
+                                <!-- <th class="text-nowrap">Estado</th>
+                                <th class="text-nowrap">Nombre</th>
+                                <th class="text-nowrap">Sitio</th>
+                                <th class="text-nowrap">Editar</th>
+                                <th class="text-nowrap">Eliminar</th> -->
+                            </tr>
+                        </thead>
+                        <tbody class="fondo-tabla" id="tabla_general_b"></tbody>
+                    </table>
+                </div>
+                <div class="row justify-content-center align-items-center" id="esconderPaginacion">
+                    <div class="col-12">
+                        <div class="col-sm-12">
+                            <p id="pagination-here"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <!-- Tabla Ubicaciones de Marcador-->
+                    <div class="col-12 col-md-11 col-lg-11 col-xl-11 ml-md-2 d-none" id="ocultarTablaUbicacion">
+                        <p class="font-italic" id="nom_empresaMarcador"></p>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover table-striped text-center">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-nowrap">#</th>
+                                        <th class="text-nowrap">Latitud</th>
+                                        <th class="text-nowrap">Longitud</th>
+                                        <th class="text-nowrap">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fondo-tabla" id="tabla_marcador"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <!-- Tabla Ciudades-->
+                    <div class="col-12 col-md-11 col-lg-11 col-xl-11 ml-md-2 d-none" id="ocultarTablaCiudades">
+                        <p class="font-italic" id="nom_estado_cd"></p>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover table-striped text-center">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-nowrap">Ciudad</th>
+                                        <th class="text-nowrap">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fondo-tabla" id="tabla_show_cd"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <br>
     </div>
 
-    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../js/AdminAgregar/AdminAgregar.js"></script>
 </body>
 

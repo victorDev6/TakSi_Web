@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Perfiles</title>
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/AdminPerfiles/AdminPerfiles.css">
 </head>
 
 <body>
@@ -24,37 +22,34 @@
                 <form class="form-inline">
                     <div class="col mb-sm-2 col-lg-4">
                         <div class="form-group">
-                            <select class="custom-select cajaPerfil m-auto d-block" name="" id="">
-                                <option selected>Estado</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                            <select class="custom-select cajaPerfil m-auto d-block" name="" id="addSelectOpcionesP">
+                                <option value="0" selected>Opcion</option>
+                                <option value="1">Estado y Ciudad</option>
+                                <option value="2">Nombre</option>
+                                <option value="3">Apellido</option>
+                                <option value="4">Status</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col mb-sm-2 col-lg-4">
+                    <div class="col mb-sm-2 col-lg-4 d-none" id="esconderSelEdo">
                         <div class="form-group">
-                            <select class="custom-select cajaPerfil m-auto d-block" name="" id="">
+                            <select class="custom-select cajaPerfil m-auto d-block d-none" name=""
+                                id="selectEdo_AdminPerfil">
+                                <option value="Ciudad" selected>Estado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col mb-sm-2 col-lg-4 d-none" id="esconderSelCd">
+                        <div class="form-group">
+                            <select class="custom-select cajaPerfil m-auto d-block d-none" name=""
+                                id="selectCd_AdminPerfil">
                                 <option selected>Ciudad</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
                             </select>
                         </div>
                     </div>
-                    <div class="col mb-sm-2 col-lg-4">
+                    <div class="col mb-sm-2 col-lg-4 d-none" id="esconderCajaP">
                         <div class="form-group">
-                            <select class="custom-select cajaPerfil m-auto d-block" name="" id="">
-                                <option selected>Sitio</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col mb-sm-2 col-lg-4">
-                        <div class="form-group">
-                            <input type="text" name="" id="" class="form-control m-auto cajaPerfil"
+                            <input type="text" name="" id="caja_bus_filtrada_p" class="form-control m-auto cajaPerfil"
                                 placeholder="Escribe.....">
                         </div>
                     </div>
@@ -63,13 +58,13 @@
                         <div class="row justify-content-center">
 
                             <div class="col-5 mx-1">
-                                <a class="btn btn-info botonPerfil d-block" href="#"><img class="iconoBoton"
-                                        src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""> Buscar</a>
+                                <a class="btn btn-info botonPerfil d-block" href="#" id="btn_buscar_perfiles"><img
+                                        class="iconoBoton" src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""> Buscar</a>
                             </div>
 
                             <div class="col-5">
-                                <a class="btn btn-info d-block botonPerfil" href="#"><img class="iconoBoton"
-                                        src="../../Diseno/ICONOS/eliminar.svg" alt=""> Limpiar</a>
+                                <a class="btn btn-info d-block botonPerfil" href="#" id="btn_limpiar_perfiles"><img
+                                        class="iconoBoton" src="../../Diseno/ICONOS/eliminar.svg" alt=""> Limpiar</a>
                             </div>
                         </div>
 
@@ -79,127 +74,128 @@
             </div>
         </div>
         <br>
+        <!-- Linea que divide -->
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="border-top my-3"></div>
             </div>
         </div>
+        <!-- Tabla -->
         <div class="row justify-content-center">
-            <div class="col-10">
-                <div class="row cajaPadre_adminPerfil" align="center">
-                    <div class="contenedorhijo_perfil mt-3">
-                        <img class="img-fluid" src="https://sobrecomic.com/wp-content/uploads/2009/08/hellsing.jpg"
-                            id="imagen_perfil">
-
-                        <div class="caja_texto_perfil">
-                            <p>Jose Luis Moreno</p>
+            <div class="col-12 col-lg-10">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover table-striped text-center" id="my-table_perfiles">
+                        <thead class="thead-dark text-center tamTexto">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Check Mail</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Activ/Desactiv</th>
+                                <th scope="col"><img src="../../Diseno/ICONOS/eliminar.svg" class="iconoBoton"></th>
+                                <!-- <th scope="col"><img src="../../Diseno/ICONOS/EditarBlanco.svg" class="iconoBoton"></th> -->
+                            </tr>
+                        </thead>
+                        <tbody class="fondo-tabla" id="tabla_general_perfiles">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row justify-content-center align-items-center" id="esconderPaginacionPerfiles">
+                    <div class="col-12">
+                        <div class="col-sm-12">
+                            <p id="pagination-here_p"></p>
                         </div>
-
-                        <button class="btn btn_perfil_elim" role="link" type="submit">
-                            <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_p">
-                            ELIMINAR
-                        </button>
                     </div>
-                    <!-- otro -->
-                    <div class="contenedorhijo_perfil mt-3">
-                        <img class="img-fluid" src="https://sobrecomic.com/wp-content/uploads/2009/08/hellsing.jpg"
-                            id="imagen_perfil">
-
-                        <div class="caja_texto_perfil">
-                            <p>Jose Luis Moreno</p>
-                        </div>
-
-                        <button class="btn btn_perfil_elim" role="link" type="submit">
-                            <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_p">
-                            ELIMINAR
-                        </button>
-                    </div>
-                    <!-- otro -->
-                    <div class="contenedorhijo_perfil mt-3">
-                        <img class="img-fluid" src="https://sobrecomic.com/wp-content/uploads/2009/08/hellsing.jpg"
-                            id="imagen_perfil">
-
-                        <div class="caja_texto_perfil">
-                            <p>Jose Luis Moreno</p>
-                        </div>
-
-                        <button class="btn btn_perfil_elim" role="link" type="submit">
-                            <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_p">
-                            ELIMINAR
-                        </button>
-                    </div>
-                    <!-- otro -->
-                    <div class="contenedorhijo_perfil mt-3">
-                        <img class="img-fluid" src="https://sobrecomic.com/wp-content/uploads/2009/08/hellsing.jpg"
-                            id="imagen_perfil">
-
-                        <div class="caja_texto_perfil">
-                            <p>Jose Luis Moreno</p>
-                        </div>
-
-                        <button class="btn btn_perfil_elim" role="link" type="submit">
-                            <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_p">
-                            ELIMINAR
-                        </button>
-                    </div>
-                    <!-- otro -->
-                    <div class="contenedorhijo_perfil mt-3">
-                        <img class="img-fluid" src="https://sobrecomic.com/wp-content/uploads/2009/08/hellsing.jpg"
-                            id="imagen_perfil">
-
-                        <div class="caja_texto_perfil">
-                            <p>Jose Luis Moreno</p>
-                        </div>
-
-                        <button class="btn btn_perfil_elim" role="link" type="submit">
-                            <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_p">
-                            ELIMINAR
-                        </button>
-                    </div>
-                    <!-- otro -->
-                    <div class="contenedorhijo_perfil mt-3">
-                        <img class="img-fluid" src="https://sobrecomic.com/wp-content/uploads/2009/08/hellsing.jpg"
-                            id="imagen_perfil">
-
-                        <div class="caja_texto_perfil">
-                            <p>Jose Luis Moreno</p>
-                        </div>
-
-                        <button class="btn btn_perfil_elim" role="link" type="submit">
-                            <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_p">
-                            ELIMINAR
-                        </button>
+                </div>
+            </div>
+            <!-- Termino de Tabla -->
+            <div class="row justify-content-center align-items-center" id="esconderPaginacionC">
+                <div class="col-12">
+                    <div class="col-sm-12">
+                        <p id="pagination-here_c"></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <div class="border-top my-3"></div>
+        <br>
+        <!-- Encabezado de Lista de Quejas de Usuarios -->
+        <div class="row justify-content-center mb-2">
+            <div class="col-11 col-sm-10 col-md-9 offset-1 offset-md-1 col-lg-10">
+                <p class="h4 font-weight-bold" id="showdia">Lista de Quejas de Usuarios</p>
             </div>
         </div>
-        <!-- paginación -->
-        <div class="row">
-            <ul class="pagination" id="pagina">
-                <li class="" id="paginacion"><a class="page-link" href="#">
-                        <img id="" class="img-fluid iconoPaginacion" src="../../Diseno/ICONOS/flechaAtras.svg">
-                    </a></li>
-                <li class="active" id="paginacion"><a class="page-link" href="#">1</a>
-                </li>
-                <li class="" id="paginacion"><a class="page-link" href="#">2</a></li>
-                <li class="" id="paginacion"><a class="page-link" href="#">3</a></li>
-                <li class="" id="paginacion"><a class="page-link" href="#">
-                        <img id="" class="img-fluid iconoPaginacion" src="../../Diseno/ICONOS/flechaAdelante.svg">
-                    </a></li>
-            </ul>
-
+        <!-- Tabla de Quejas -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover table-striped text-center" id="my-table_quejas">
+                        <thead class="thead-dark text-center tamTexto">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Mensaje del Usuario</th>
+                                <th scope="col"><img src="../../Diseno/ICONOS/eliminar.svg" class="iconoBoton"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="fondo-tabla" id="tabla_general_quejas">
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Paginación -->
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="col-sm-12">
+                            <p id="pagination-here_quejas"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <br>
-        <br>
+
+        <!-- Encabezado de Lista de Sugerencias/errores de choferes -->
+        <div class="row justify-content-center mb-2">
+            <div class="col-11 col-sm-10 col-md-9 offset-1 offset-md-1 col-lg-10">
+                <p class="h4 font-weight-bold" id="showdia">Lista de Sugerencias/Errores</p>
+            </div>
+        </div>
+        <!-- Tabla de Sugerecnias/errores de chofer -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover table-striped text-center" id="my-table_bugs_chofer">
+                        <thead class="thead-dark text-center tamTexto">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Reporte</th>
+                                <th scope="col"><img src="../../Diseno/ICONOS/eliminar.svg" class="iconoBoton"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="fondo-tabla" id="tabla_general_bugs_chofer">
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Paginación -->
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="col-sm-12">
+                            <p id="pagination-here_bugs_chofer"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../js/AdminPerfiles/AdminPerfiles.js"></script>
 </body>
 

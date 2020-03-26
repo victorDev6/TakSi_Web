@@ -1,8 +1,64 @@
 body{
-    background-color: #d6d0ce;
+    /* background-color: #d6d0ce; */
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd),
+    url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi2.png?alt=media&token=fe5167d9-b413-4554-a656-578fafb1de73);
+    
+    background-repeat: no-repeat !important;
+    /* background-attachment: scroll !important; */
+    background-position: center left,
+    center right;
+    z-index: auto;
+    background-size: 400px 200px !important;
+    -webkit-background-size: 400px 200px !important;
+    -moz-background-size: 400px 200px !important;
+    -o-background-size: cover !important;
+
 }
 .btn_accesar {
     background-color: #9e9e9e; 
     border-color: white; 
     border-radius: 10px;
+}
+.btn_accesar:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 16px rgb(52, 55, 56);
+  transition: all 0.2s ease;
+}
+
+
+
+ /* Estilos de modal para mostrar mensajes */
+/* Agrega el borde del contenedor del modal */
+.modal-content {
+    -webkit-border-radius: 20px !important;
+    -moz-border-radius: 20px !important;
+    border-radius: 20px !important;
+}
+
+/* Agrega el borde del modal */
+.modal-header {
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+/* Agrega el color del contenedor del modal */
+#modalPush {
+    background-color: rgba(238, 235, 235, 0.3) !important;
+}
+
+#textoCuerpoModalR {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+/* Agrega el color al encabezado del modal y el color de texto */
+ #cabezaModalR {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+}
+
+/* Agrega el color de texto del boton aceptar del modal */
+ .colorTextbtn {
+    color: #ffffff !important;
 }

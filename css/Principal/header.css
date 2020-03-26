@@ -1,0 +1,152 @@
+header {
+	width:100%; /* Establecemos que el header abarque el 100% del documento */
+	overflow:hidden; /* Eliminamos errores de float */
+	/* background: #ffffff; */
+	background: #ededed;
+	/* margin-bottom:20px; */
+	z-index: 997;
+}
+
+.wrapper {
+	width:90%; /* Establecemos que el ancho sera del 90% */
+	max-width:1000px; /* Aqui le decimos que el ancho máximo sera de 1000px */
+	margin:auto; /* Centramos los elementos */
+	overflow:hidden; /* Eliminamos errores de float */
+}
+
+header .logo {
+	/* color:#f2f2f2;
+	font-size:50px;
+	line-height:150px;
+	float:left; */
+	width: 140px;
+	height: 140px;
+	line-height:140px;
+	float:left;
+}
+
+header nav {
+	float:right;
+	line-height:140px;
+}
+
+header nav a {
+	display:inline-block;
+	color:#8f8d8e;
+	text-decoration:none;
+	padding:10px 20px;
+	line-height:normal;
+	font-size:20px;
+	font-weight:bold;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+
+header nav a:hover {
+	background:#aaa8a7;
+	border-radius:50px;
+}
+
+/* lo que haremos es cambiarle la posición del encabezado a una posición fija en pantalla,
+ después simplemente reducir el line-height y hacer mas pequeña la fuente. */
+.header2 {
+	position: fixed;
+	height:100px;
+	background: #d6dde3;
+}
+
+.header2 .logo {
+	line-height:100px;
+	/* font-size:30px; */
+	width: 110px;
+	height: 110px;
+}
+
+.header2 nav {
+	line-height:100px;
+}
+
+/* agregar la parte que nos permite adaptar el header a un dispositivo móvil. */
+@media screen and (max-width: 630px) { 
+	header nav {
+		width:100%;
+		text-align:center; /*Centramos el menu y el logotipo*/
+		line-height:60px;
+	}
+	header .cont2{
+		display: flex;
+		justify-content: center;
+		
+	}
+
+	.header2 {
+		height:auto;
+	}
+
+	.header2 .logo,
+	.header2 nav {
+		line-height:50px;
+	}
+}
+
+/* ---------------------------------------------------- */
+/*  MENU ACTIVO DEL SIDERBAR						  	*/
+/*----------------------------------------------------- */
+.activo {
+    background:#c0bebd;
+	border-radius:50px;
+	/* text-decoration: underline; */
+	color: #3d4041 !important;
+    font-weight: bold;
+}
+
+/* Estilos de modal para mostrar mensajes */
+/* Agrega el borde del contenedor del modal */
+        .modal-content {
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            border-radius: 20px !important;
+        }
+
+        /* Agrega el borde del modal */
+        .modal-header {
+            border-top-left-radius: 20px !important;
+            border-top-right-radius: 20px !important;
+        }
+
+        /* Agrega el color del contenedor del modal */
+        #modalPush {
+            background-color: rgba(238, 235, 235, 0.3) !important;
+		}
+
+		#textoCuerpoModal {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+
+        /* Agrega el color al encabezado del modal y el color de texto */
+        #cabezaModal {
+            color: #ffffff;
+        }
+
+        /* Agrega el color de texto del boton aceptar del modal */
+        #botonAceptarModalM {
+            color: #ffffff;
+		}
+		
+/* Loader */
+#loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999 !important;
+	background: url('../../Diseno/ICONOS/LLANTA.gif') no-repeat
+		rgb(249, 249, 249);
+	background-size: 20%;
+	background-position: center;
+	opacity: .8;
+	display: none;
+}

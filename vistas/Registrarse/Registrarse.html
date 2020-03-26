@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registrarse</title>
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/Registrarse/Registrarse.css">
+    <!-- <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../../css/Registrarse/Registrarse.css"> -->
+
 </head>
 
 <body>
@@ -26,108 +27,150 @@
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <form class="form-inline">
-
+                <form class="form-inline" id="formularioRegistro" action="javascript:void(0)">
+                    <!-- Campo Nombre -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="nom" class="form-control m-auto caja" placeholder="Nombre">
+                            <input type="text" name="nombreUser" id="nom_prop" class="form-control m-auto caja"
+                                placeholder="Nombre">
                         </div>
                     </div>
+                    <!-- Campo Apellidos -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="ape" class="form-control m-auto caja"
+                            <input type="text" name="apellidoUser" id="ape_prop" class="form-control m-auto caja"
                                 placeholder="Apellidos">
                         </div>
                     </div>
+                    <!-- Campo Dirección -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="direcc" class="form-control m-auto caja"
+                            <input type="text" name="direccionUser" id="direc_prop" class="form-control m-auto caja"
                                 placeholder="Direccion">
                         </div>
                     </div>
 
                     <!-- Siguiente fila -->
+                    <!-- Campo Telefono -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="tel" class="form-control m-auto caja" placeholder="Telefono">
+                            <input type="text" name="telefonoUser" id="tel_prop" class="form-control m-auto caja"
+                                placeholder="Telefono">
                         </div>
                     </div>
+                    <!-- Campo Password -->
                     <div class="col">
-                        <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="pass" class="form-control m-auto caja"
-                                placeholder="Contraseña">
+                        <div class=" form-group mb-2 mx-2">
+                            <div class="input-group m-auto" id="input1">
+                                <input type="password" name="pass1User" class="form-control tamLetra" id="pass_prop"
+                                    placeholder="Contraseña">
+                                <div class="input-group-append" id="input_append1">
+                                    <span class="input-group-text btn" id="mostrar1"><i id="iconoOjo"
+                                            class="fa fa-eye-slash"></i></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- otro -->
+
+                    <!-- fin de otro -->
+                    <!-- Campo Confirm Password -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="pass2" class="form-control m-auto caja"
-                                placeholder="Confirmar Contraseña">
+                            <div class="input-group m-auto" id="input2">
+                                <input type="password" name="pass2User" class="form-control tamLetra" id="pass2_prop"
+                                    placeholder="Confirmar Contraseña">
+                                <div class="input-group-append" id="input_append2">
+                                    <span class="input-group-text btn" id="mostrar2"><i id="iconoOjo2"
+                                            class="fa fa-eye-slash"></i></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Siguiente fila -->
+                    <!-- Campo Cant Taxi -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="taxiN" class="form-control m-auto caja"
+                            <input type="text" name="cantTaxiUser" id="cant_tax_prop" class="form-control m-auto caja"
                                 placeholder="Numero de Taxi(s) a registrar">
                         </div>
                     </div>
+                    <!-- Campo Email -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <input type="text" name="" id="email" class="form-control m-auto caja" placeholder="Correo">
+                            <input type="text" name="emailUser" id="mail_prop" class="form-control m-auto caja"
+                                placeholder="Correo">
                         </div>
                     </div>
+                    <!-- Campo Estado -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <select class="custom-select caja m-auto d-block" name="" id="selEdo">
-                                <option selected>Estado</option>
-                                <option value="">Loco</option>
-                                <option value="">Loco</option>
-                                <option value="">Loco</option>
+                            <select class="custom-select caja m-auto d-block form-control" name="selectEdoUser"
+                                id="edo_prop">
+                                <option value="" selected>Estado</option>
                             </select>
                         </div>
                     </div>
 
                     <!-- Siguiente fila -->
+                    <!-- Campo Ciudad -->
                     <div class="col">
                         <div class="form-group mb-2 mx-2">
-                            <select class="custom-select caja m-auto d-block" name="" id="selCd">
-                                <option selected>Ciudad</option>
-                                <option value="">Loco</option>
-                                <option value="">Loco</option>
-                                <option value="">Loco</option>
+                            <select class="custom-select caja m-auto d-block form-control" name="selectCdUser"
+                                id="cd_prop">
+                                <option value="" selected>Ciudad</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="form-check mx-3 ckeckbox_1">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="" id="">
-                                Acepto los terminos de uso y politicas de privacidad
-                            </label>
+                    <!-- Campo Numero de Consesión -->
+                    <div class="col">
+                        <div class="form-group mb-2 mx-2">
+                            <input type="text" name="consesionUser" id="num_cons_prop" class="form-control m-auto caja"
+                                placeholder="Numero de Consesión">
+                        </div>
+                    </div>
+                    <!-- es una caja oculta que sirve para mover un contenido -->
+                    <div class="col d-none d-md-block">
+                        <div class="form-group mb-2 mx-2">
+                            <input type="hidden" name="" id="" class="form-control m-auto caja">
                         </div>
                     </div>
 
-                    <div class="col">
+                    <!-- Check Politicas de privacidad -->
+                    <div class="col-12">
+                        <div class="form-check mx-3 ckeckbox_1">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="checkTerminos_prop">
+                                <label class="custom-control-label" for="checkTerminos_prop">Acepto los
+                                    <a class="mx-1" href="../Registrarse/Terminos.html" target="_blank">Terminos de
+                                        uso</a> y <a class="mx-1" href="../Registrarse/Politicas.html"
+                                        target="_blank">Politicas
+                                        de
+                                        privacidad.</a></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
                         <div class="form-group mb-2 mx-2 botonC">
-                            <button type="button" class="btn btn-primary m-auto d-block">CONTINUAR</button>
+                            <button type="button" class="btn btn_registrar font-weight-bold btn-lg m-auto d-block"
+                                id="btn_add_prop">CONTINUAR</button>
                         </div>
                     </div>
                 </form>
                 <div class="col-12">
-                    <p class="text-center">¿Tienes una Cuenta? <a href="#">Acceder</a></p>
+                    <p class="text-center">¿Tienes una Cuenta? <a href="#!/InicioSesion" id="irInicioSesion">Acceder</a>
+                    </p>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 
 
-
-
-
-    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../librerias/popper/popper.min.js"></script>
-    <script src=" ../../librerias/bootstrap/js/bootstrap.min.js"> </script>
+    <!-- <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script> -->
+    <script src=" ../../js/Validaciones/Validaciones.js"> </script>
     <script src="../../js/Registrarse/Registrarse.js"></script>
 
 

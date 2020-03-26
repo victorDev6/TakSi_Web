@@ -2,6 +2,10 @@
     width: 250px !important;
     margin-top: 5px !important;
 }
+.cajaCosto2 {
+    width: 200px !important;
+    margin-top: 5px !important;
+}
  .botonCosto {
     width: 100px !important;
     margin: auto;
@@ -21,5 +25,79 @@
     .tamTexto {
         font-size: 12px;
     }
-} 
+}
+
+
+/* ---------------------------------------------------- */
+/*  FONDO TABLA     									*/
+/*----------------------------------------------------- */
+.fondo-tabla {
+	background: #f0e8e8;
+}
+
+/* ---------------------------------------------------- */
+/*  REDONDEO TABLA REPORTE: 							*/
+/*----------------------------------------------------- */
+table {
+	border-collapse: separate;
+	font-size: 75%;
+}
+
+th:first-child {
+	border-top-left-radius: 10px;
+}
+
+th:last-child {
+	border-top-right-radius: 10px;
+}
+
+tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+
+/* ---------------------------------------------------- */
+/*  			INICIO PAGINADOR:        				*/
+/*----------------------------------------------------- */
+.page-link {
+	background-color: #7b7e7e !important;
+	color: #fff;
+}
+.page-link:hover {
+	background-color: rgba(165, 164, 164, 0.65)!important;
+	color: #000 !important;
+}
+.page-item.active .page-link {
+	background-color: rgba(165, 164, 164, 0.65)!important;
+    z-index: 3;
+	color: #000;
+    border-color: #fff;
+}
+
+.page-item.disabled .page-link {
+		background-color: rgba(165, 164, 164, 0.65)!important;
+		color: #000;
+}
+
+.page-item.disabled {
+	border-color: #fff;
+    cursor: not-allowed!important;
+}
+
+.page-item.active:focus,
+.page-link:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+/* ---------------------------------------------------- */
+/*  			TERMINA PAGINADOR:        				*/
+/*----------------------------------------------------- */
+
 

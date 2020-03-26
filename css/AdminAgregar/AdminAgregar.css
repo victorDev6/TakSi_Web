@@ -7,10 +7,148 @@ body{
     padding-bottom: 2px;
 }
 .bordeRedondo {
-    border-radius: 15px;
-    background-color: #616161;
+    /* border-radius: 15px; */
+    /* background-color: #616161;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px; */
+    background-color: rgba(165, 164, 164, 0.65);
+	border-radius: 12px;
+	border: 1px solid #999c9e;
+}
+.bordeRedondoSelect {
+    /* border-radius: 15px;
+    background-color: #616161; */
+    background-color: rgba(165, 164, 164, 0.65);
+	border-radius: 12px;
+	border: 1px solid #999c9e;
 }
  .botonAddEd {
     width: 115px !important;
     margin: auto;
 }
+
+/*Para activar el submenu*/
+.activo_btn{
+    background-color: rgb(202, 187, 187);
+    font-weight: bold;
+}
+
+/*Columna que contiene el selector de imagenes para perfil*/
+#contenedor_imagenM>div>input {
+	display: none;
+}
+
+#contenedor_imagenM>div>input:active {
+	background: url("https://img.icons8.com/material/4ac144/256/twitter.png") no-repeat, linear-gradient(#00a1da, #00a1da);
+	background-position: 95% 166px;
+	background-size: 16px 14px;
+}
+
+/*Agregando sobrePosicion de objeto, donde tendra salida la imagen seleccionada*/
+.imgSubida_estilo {
+	width: 75%;
+	height: 190px;
+	background: url("../../Diseno/ICONOS/abrirFoto.svg") no-repeat,
+				linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+	background-position: 95% 166px;
+	background-size: 18px 16px;
+	margin-left: 5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.has-error .imgSubida_estilo {
+    border: 1px solid #a94442 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075)!important;
+}
+
+#contenedor_imagenM>div>button {
+	width: 100%;
+	height: 45px;
+    padding-left: 28px;
+	background: url("https://img.icons8.com/material/4ac144/256/twitter.png") no-repeat,
+				linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+	background-position: 8% 12px;
+	background-size: 12px 16px;
+    font-family: Prototype;
+    font-size: 15px;
+    border-radius: 50px;
+    color: #00bdff;
+}
+
+/* ---------------------------------------------------- */
+/*  FONDO TABLA     									*/
+/*----------------------------------------------------- */
+.fondo-tabla {
+	background: #f0e8e8;
+}
+
+/* ---------------------------------------------------- */
+/*  REDONDEO TABLA REPORTE: 							*/
+/*----------------------------------------------------- */
+table {
+	border-collapse: separate;
+	font-size: 75%;
+}
+
+th:first-child {
+	border-top-left-radius: 10px;
+}
+
+th:last-child {
+	border-top-right-radius: 10px;
+}
+
+tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+
+/* ---------------------------------------------------- */
+/*  			INICIO PAGINADOR:        				*/
+/*----------------------------------------------------- */
+.page-link {
+	background-color: #7b7e7e !important;
+	color: #fff;
+}
+.page-link:hover {
+	background-color: rgba(165, 164, 164, 0.65)!important;
+	color: #000 !important;
+}
+.page-item.active .page-link {
+	background-color: rgba(165, 164, 164, 0.65)!important;
+    z-index: 3;
+	color: #000;
+    border-color: #fff;
+}
+
+.page-item.disabled .page-link {
+		background-color: rgba(165, 164, 164, 0.65)!important;
+		color: #000;
+}
+
+.page-item.disabled {
+	border-color: #fff;
+    cursor: not-allowed!important;
+}
+
+.page-item.active:focus,
+.page-link:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+/* ---------------------------------------------------- */
+/*  			TERMINA PAGINADOR:        				*/
+/*----------------------------------------------------- */
+
+

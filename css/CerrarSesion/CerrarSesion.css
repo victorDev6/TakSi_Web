@@ -1,0 +1,73 @@
+/* Modal Para Cerrar Sesion y Eliminar registro */
+#cuerpoModalExitoso {
+	background: transparent !important;
+	border: none;
+}
+#cuerpoModalExitoso>.modal-body {
+    background: #414c50;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+#cuerpoModalExitoso>.footer {
+    background: #414c50;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+}
+#cuerpoModalExitoso>.modal-body>div>div>label {
+	margin-top: 35px;
+    font-family: Prototype;
+    font-size: 25px;
+    color: #ffffff;
+}
+#cuerpoModalExitoso>.modal-body>div>div>.subtitulo {
+	margin-top: -5px;
+	margin-bottom: 35px;
+    font-family: Prototype;
+    font-size: 18px;
+    color: #ffffff;
+}
+#cuerpoModalExitoso>.footer>div>div>button {
+	height: 35px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    font-family: Prototype;
+    font-size: 15px;
+    font-style: normal;
+    text-align: center;
+    border-radius: 50px;
+    border: hidden;
+    background-color: #43a047;
+    color: #ffffff;
+}
+.imgCaja {
+	width: 80px;
+	height: 80px;
+}
+
+/* Estilo Modal de Agregar Datos de Tarjeta */
+#cuerpoModalTarjeta>.modal-body {
+	background: #414c50;
+}
+#cuerpoModalTarjeta>.footer {
+	background: #414c50;
+}
+#cuerpoModalTarjeta>.footer>div>div>button {
+	height: 35px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    font-family: Prototype;
+    font-size: 15px;
+    font-style: normal;
+    text-align: center;
+    border-radius: 50px;
+    border: hidden;
+    background-color: #43a047;
+    color: #ffffff;
+}
+.colorText {
+    color: #ffffff;
+    font-weight: bold;
+}
+.colorTextChico {
+    color: #9e9e9e;
+}

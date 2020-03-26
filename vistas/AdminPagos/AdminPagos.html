@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Pagos</title>
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/AdminPagos/AdminPagos.css">
 </head>
 
 <body>
@@ -24,69 +22,56 @@
                 <form class="form-inline">
                     <div class="col mb-sm-2">
                         <div class="form-group">
-                            <select class="custom-select caja m-auto d-block" name="" id="">
-                                <option selected>Estado</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col mb-sm-2">
-                        <div class="form-group">
-                            <select class="custom-select caja m-auto d-block" name="" id="">
-                                <option selected>Ciudad</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col mb-sm-2">
-                        <div class="form-group">
-                            <select class="custom-select caja m-auto d-block" name="" id="">
-                                <option selected>Sitio</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-
-
-                    <div class="col mb-sm-2">
-                        <div class="form-group">
-                            <select class="custom-select caja m-auto d-block" name="" id="">
+                            <select class="custom-select caja m-auto d-block" name="" id="sel_opc_bus_pago">
                                 <option selected>Busqueda por</option>
-                                <option value="">Loco</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                                <option value="1">Estado y Ciudad</option>
+                                <option value="2">Estado, Ciudad, Sitio</option>
+                                <option value="3">Nombre</option>
+                                <option value="4">Cantidad</option>
                             </select>
                         </div>
                     </div>
                     <div class="col mb-sm-2">
                         <div class="form-group">
-                            <input type="text" name="" id="" class="form-control m-auto caja"
+                            <select class="custom-select caja m-auto d-block" name="" id="select_edo_pagos">
+                                <option value="0" selected>Estado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col mb-sm-2">
+                        <div class="form-group">
+                            <select class="custom-select caja m-auto d-block" name="" id="select_cd_pagos">
+                                <option value="0" selected>Ciudad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col mb-sm-2">
+                        <div class="form-group">
+                            <select class="custom-select caja m-auto d-block" name="" id="select_sitio_pagos">
+                                <option value="0" selected>Sitio</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col mb-sm-2">
+                        <div class="form-group">
+                            <input type="text" name="" id="campo_bus_pagos" class="form-control m-auto caja"
                                 placeholder="Escribe.....">
                         </div>
                     </div>
-
                     <div class="col-12 col-md-6 col-lg">
                         <div class="row justify-content-center">
 
                             <div class="col-5 mx-1">
-                                <a class="btn btn-info d-block boton" href="#"><img class="iconoBotonP"
-                                        src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""> Buscar</a>
+                                <a class="btn btn-info d-block boton text-white" id="btn_bus_pagos"><img
+                                        class="iconoBotonP" src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""> Buscar</a>
                             </div>
 
                             <div class="col-5">
-                                <a class="btn btn-info d-block boton" href="#"><img class="iconoBotonP"
-                                        src="../../Diseno/ICONOS/eliminar.svg" alt=""> Limpiar</a>
+                                <a class="btn btn-info d-block boton" href="#" id="btn_limpiar_pagos"><img
+                                        class="iconoBotonP" src="../../Diseno/ICONOS/eliminar.svg" alt=""> Limpiar</a>
                             </div>
                         </div>
-
                     </div>
-
                 </form>
             </div>
         </div>
@@ -98,83 +83,47 @@
         </div>
         <div class="row justify-content-start mb-2">
             <div class="col-7 ml-3 col-sm-4 col-md-3 ml-md-4 col-lg-3">
-                <a class="btn offset-lg-2 offset-xl-5" href="#"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="" width="40px"
-                        height="40px"></a>
-                <a class="btn" href="#"><img src="https://image.flaticon.com/icons/png/512/888/888850.png" alt=""
+                <a class="btn offset-lg-2 offset-xl-5" href="#"><img src="../../Diseno/ICONOS/pdf_Mediano.svg" alt=""
                         width="40px" height="40px"></a>
+                <a class="btn" href="#"><img src="../../Diseno/ICONOS/excel.svg" alt="" width="40px" height="40px"></a>
             </div>
         </div>
+        <!-- Tabla -->
         <div class="row justify-content-center">
-            <div class="col-11 col-lg-10 col-xl-9">
+            <div class="col-11 col-lg-11 col-xl-10">
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
-                        <thead class="thead-dark">
+                    <table class="table table-hover table-bordered" id="my-table_pagos">
+                        <thead class="thead-dark" align="center">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">CONCEPTO</th>
-                                <th scope="col">FECHA</th>
-                                <th scope="col">TIPO</th>
-                                <th scope="col">MONTO</th>
-                                <th scope="col">SITIO</th>
-                                <th scope="col">ESTADO</th>
-                                <th scope="col">CIUDAD</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Concepto</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Sitio</th>
+                                <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jose</td>
-                                <td>Pago Mensual</td>
-                                <td>12/13/2019</td>
-                                <td>Tarjeta</td>
-                                <td>$200</td>
-                                <td>Buena Vista</td>
-                                <td>Chiapas</td>
-                                <td>Comitan</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Rosa</td>
-                                <td>Pago Mensual</td>
-                                <td>12/13/2019</td>
-                                <td>Tarjeta</td>
-                                <td>$200</td>
-                                <td>Buena Vista</td>
-                                <td>Chiapas</td>
-                                <td>Comitan</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Juan</td>
-                                <td>Pago Mensual</td>
-                                <td>12/13/2019</td>
-                                <td>Tarjeta</td>
-                                <td>$200</td>
-                                <td>Buena Vista</td>
-                                <td>Chiapas</td>
-                                <td>Comitan</td>
-                            </tr>
+                        <tbody class="fondo-tabla" id="tabla_general_pagos" align="center">
                         </tbody>
                     </table>
                 </div>
+                <!-- Paginación -->
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="col-sm-12">
+                            <p id="pagination-here_pagos"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <ul class="pagination" id="paginaP">
-                <li class="" id="paginacionP"><a class="page-link" href="#">
-                        <img id="" class="img-fluid iconoPaginacionP" src="../../Diseno/ICONOS/flechaAtras.svg">
-                    </a></li>
-                <li class="active" id="paginacionP"><a class="page-link" href="#">1</a>
-                </li>
-                <li class="" id="paginacionP"><a class="page-link" href="#">2</a></li>
-                <li class="" id="paginacionP"><a class="page-link" href="#">3</a></li>
-                <li class="" id="paginacionP"><a class="page-link" href="#">
-                        <img id="" class="img-fluid iconoPaginacionP" src="../../Diseno/ICONOS/flechaAdelante.svg">
-                    </a></li>
-            </ul>
-        </div>
+
+
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="border-top my-3"></div>
@@ -309,11 +258,6 @@
         <br>
     </div>
 
-
-
-
-    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../js/AdminPagos/AdminPagos.js"></script>
 </body>
 

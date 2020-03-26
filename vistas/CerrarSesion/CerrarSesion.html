@@ -1,12 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Modales de Cerrar Sesion</title>
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/CerrarSesion/CerrarSesion.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>Modales Eliminar Registro, Agregar Tarjeta y Cerrar Sesion</p>
+            </div>
+            <div class="w-100"></div>
+            <div class="col mx-2">
+                <a href="#" class="btn btn-success btn-sm botonAdd" data-toggle="modal"
+                    data-target="#modalEliminarRegistro">Eliminar Registro</a>
+            </div>
+            <div class="col mx-2">
+                <a href="#" class="btn btn-success btn-sm botonAdd" data-toggle="modal"
+                    data-target="#modalCerrarSesion">Cerrar Sesion</a>
+            </div>
+            <div class="col mx-2">
+                <a href="#" class="btn btn-success btn-sm botonAdd" data-toggle="modal"
+                    data-target="#modalAgregarTarjeta">Agregar Tarjeta</a>
+            </div>
+        </div>
+
+        <!-- Modal para Eliminar Registro -->
+        <div class="modal fade" id="modalEliminarRegistro" tabindex="-1" role="dialog" data-backdrop="static"
+            data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" id="cuerpoModalExitoso">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-3" align="center">
+                                <img class="imgCaja" src="../../Diseño/ICONOS/alerta.svg">
+                            </div>
+                            <div class="col-12 mt-2" align="center">
+                                <label class="subtitulo">¿Estas seguro de Eliminar el Registro?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-4 offset-1">
+                                <button type="button" class="form-control bg-danger" data-dismiss="modal"
+                                    aria-label="Close">Cancelar</button>
+                            </div>
+                            <div class="col-4 offset-2">
+                                <button type="button" class="form-control" data-dismiss="modal"
+                                    aria-label="Close">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Cerrar Sesion -->
+        <div class="modal fade" id="modalCerrarSesion" tabindex="-1" role="dialog" data-backdrop="static"
+            data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="cuerpoModalExitoso">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-3" align="center">
+                                <img class="imgCaja" src="../../Diseño/ICONOS/alerta.svg">
+                            </div>
+                            <div class="col-12 mt-2" align="center">
+                                <label class="subtitulo">¿Seguro quieres Cerrar Sesión?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-4 offset-1">
+                                <button type="button" class="form-control bg-danger" data-dismiss="modal"
+                                    aria-label="Close">Cancelar</button>
+                            </div>
+                            <div class="col-4 offset-2">
+                                <button type="button" class="form-control" data-dismiss="modal"
+                                    aria-label="Close">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal para Agregar datos en la tarjeta -->
+        <div class="modal fade" id="modalAgregarTarjeta" tabindex="-1" role="dialog" data-backdrop="static"
+            data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" id="cuerpoModalTarjeta">
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="row mb-3">
+                                <p class="h5 m-auto colorText">Ingresa los datos de tu tarjeta</p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <label for="nomUser" class="small colorText">Nombre de Usuario</label>
+                                        <input type="text" name="nomUser" id="nomUser" class="form-control"
+                                            placeholder="Ejemplo: Juan">
+                                        <small id="" class="colorTextChico">*Nombre del popietario de la
+                                            tarjeta</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="numTarjeta" class="small colorText">Numero de tarjeta</label>
+                                        <input type="text" name="numTarjeta" id="numTarjeta" class="form-control"
+                                            placeholder="Ejemplo: 4567-8956-7543-2345">
+                                        <small id="" class="colorTextChico">*Por lo general son 16 digitos</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo" class="small colorText">Correo Electronico</label>
+                                        <input type="text" name="correo" id="correo" class="form-control"
+                                            placeholder="ejemplo@gmail.com">
+                                        <small id="" class="colorTextChico">*Para recibir informacion de tus
+                                            pagos</small>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-sm-3">
+                                    <div class="form-group">
+                                        <label for="anio" class="small colorText">Mes</label>
+                                        <select class="form-control" name="PTMes">
+                                            <option disabled selected>Mes</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                        <p id="" class="text-center small colorTextChico">*Mes de vigencia de
+                                            tu
+                                            tarjeta</p>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-sm-3">
+                                    <div class="form-group">
+                                        <label for="anio" class="small colorText">Año</label>
+                                        <input type="text" name="anio" id="anio" class="form-control"
+                                            placeholder="2020">
+                                        <p id="" class="text-center small colorTextChico">*Año de vigencia de
+                                            tu
+                                            tarjeta</p>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-sm-3">
+                                    <div class="form-group">
+                                        <label for="cvv" class="small colorText">CVV</label>
+                                        <input type="text" name="cvv" id="cvv" class="form-control" placeholder="123">
+                                        <p id="" class="text-center small colorTextChico">*Codigo de 3
+                                            digitos al reverso de
+                                            tu tarjeta</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-4 offset-1">
+                                <button type="button" class="form-control bg-danger" data-dismiss="modal"
+                                    aria-label="Close">Cancelar</button>
+                            </div>
+                            <div class="col-4 offset-2">
+                                <button type="button" class="form-control bg-success" data-dismiss="modal"
+                                    aria-label="Close">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../librerias/popper/popper.min.js"></script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>
