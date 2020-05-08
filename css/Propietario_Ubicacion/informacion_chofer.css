@@ -159,7 +159,7 @@ a.btnRegresarTaxi {
 }
 
 /* ---------------------------------------------------- */
-/*  BOTON-ICONO OJITO: 						*/
+/*  BOTON-ICONO OJITO: 									*/
 /*----------------------------------------------------- */
 .cajaicono {
 	height: 31px;
@@ -167,4 +167,29 @@ a.btnRegresarTaxi {
 	border-bottom-right-radius: .25rem !important;
 }
 
+
+/* ---------------------------------------------------- */
+/*  MODAL AGREGAR CHOFER:								*/
+/*----------------------------------------------------- */
+.modal-content-Informacion-Chofer {
+	border-radius: 20px 20px;
+	-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+	-moz-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+	box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+}
+
+
+.modal-header-NvChofer {
+	background-color: #d6d0ce;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-width: 0px;
+}
+
+.modal-footer-NvChofer {
+	border-top-width: 0px;
+	background-color: #d6d0ce;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
 

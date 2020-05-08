@@ -13,7 +13,8 @@
 <div class="container">
 	<div class="row justify-content-end">
 		<di class="col-8 col-sm-4 col-md-3 col-lg-2">
-			<a ui-sref="informacion" class="btn btn-secondary btn-sm active btn-block m-auto btnRegresarTaxi" id="" role="button">
+			<a class="btn btn-secondary btn-sm active btn-block m-auto btnRegresarTaxi" id="idRetornarATaxis" role="button">
+			<!--a ui-sref="informacion" class="btn btn-secondary btn-sm active btn-block m-auto btnRegresarTaxi" id="idRetornarATaxis" role="button"-->
 				<i class="fa fa-arrow-left float-left pl-md-4 Ipropietario"></i>Regresar</a>
 		</di>
 	</div>
@@ -24,10 +25,10 @@
 	</div>
 
 	<div id="chofer1" class="mb-2">
-		<form id="chofer1">
+		<form id="chofer1" action="javascript:void(0)">
 			<div class="row encierroIC p-1 justify-content-center align-items-center">
 				<div class="col-12">
-					<span class="titulos d-block m-auto">CHOFER #2</span>
+					<span class="titulos d-block m-auto">CHOFER #1</span>
 				</div>
 
 				<!-- FORMULARIO CHOFER-->
@@ -37,35 +38,35 @@
 							<div class="form-group row mb-1">
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Nombre:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+									<input type="text" class="form-control form-control-sm" id="inputNombre1" placeholder="Ingrese el nombre">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
-								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Ape Pat:</label>
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Apellidos:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+									<input type="text" class="form-control form-control-sm" id="inputApellido1" placeholder="Ingrese los apellidos">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
-								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Ape Mat:</label>
+								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">telefono :</label>
 								<div class="col-12  col-sm-12   col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+									<input type="text" class="form-control form-control-sm" id="inputTelefono1" placeholder="ingrese num. telefono">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Usuario:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="" placeholder="juan">
+									<input type="text" class="form-control form-control-sm" id="inputEmail1" placeholder="Ingrese el usuario">
 								</div>
 							</div>
 
 							<div class="form-group row  mb-0">
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center  text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Contraseña:</label>
 								<div class="input-group col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="password" class="form-control form-control-sm " placeholder="Contraseña" id="pass1">
+									<input type="password" class="form-control form-control-sm" id="inputPass1" placeholder="Ingrese la contraseña">
 									<div class="input-group-prepend">
 										<div class="input-group-text form-control-sm cajaicono">
 											<a href="" class="text-dark" id="icon-click1">
@@ -115,7 +116,7 @@
 				<div class="col-12  col-sm-2  col-md-2  col-lg-1">
 					<div class="row justify-content-center align-items-center">
 						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
-							<button class="btn guardarC d-block m-auto"></button>
+							<button  class="btn guardarC d-block m-auto" id="guardarchofer1"></button>
 						</div>
 						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
 							<button class="btn editarC d-block m-auto"></button>
@@ -130,11 +131,19 @@
 		</form>
 	</div>
 
+
+
+
+
+
+
+
+
 	<div id="chofer2" class="mb-2">
-		<form id="chofer2">
+		<form id="chofer2" action="javascript:void(0)">
 			<div class="row encierroIC p-1 justify-content-center align-items-center">
 				<div class="col-12">
-					<span class="titulos d-block m-auto">CHOFER #1</span>
+					<span class="titulos d-block m-auto">CHOFER #2</span>
 				</div>
 
 				<!-- FORMULARIO CHOFER-->
@@ -144,35 +153,35 @@
 							<div class="form-group row mb-1">
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Nombre:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+									<input type="text" class="form-control form-control-sm" id="inputNombre2"  placeholder="Ingrese el nombre">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
-								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Ape Pat:</label>
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Apellidos:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+									<input type="text" class="form-control form-control-sm" id="inputApellido2" placeholder="Ingrese los apellidos">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
-								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Ape Mat:</label>
+								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">telefono:</label>
 								<div class="col-12  col-sm-12   col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+									<input type="text" class="form-control form-control-sm" id="inputTelefono2" placeholder="ingrese num. telefono">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Usuario:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="" placeholder="juan">
+									<input type="text" class="form-control form-control-sm" id="inputEmail2" placeholder="Ingrese el usuario">
 								</div>
 							</div>
 
 							<div class="form-group row  mb-0">
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center  text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Contraseña:</label>
 								<div class="input-group col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="password" class="form-control form-control-sm " placeholder="Contraseña" id="pass2">
+									<input type="password" class="form-control form-control-sm" id="inputPass2" placeholder="Ingrese la contraseña" >
 									<div class="input-group-prepend">
 										<div class="input-group-text form-control-sm cajaicono">
 											<a href="" class="text-dark" id="icon-click2">
@@ -222,7 +231,7 @@
 				<div class="col-12  col-sm-2  col-md-2  col-lg-1">
 					<div class="row justify-content-center align-items-center">
 						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
-							<button class="btn guardarC d-block m-auto"></button>
+							<button  class="btn guardarC d-block m-auto" id="guardarchofer2"></button>
 						</div>
 						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
 							<button class="btn editarC d-block m-auto"></button>
@@ -237,8 +246,21 @@
 		</form>
 	</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<div id="chofer3" class="mb-2">
-		<form id="chofer3">
+		<form id="chofer3" action="javascript:void(0)">
 			<div class="row encierroIC p-1 justify-content-center align-items-center">
 				<div class="col-12">
 					<span class="titulos d-block m-auto">CHOFER #3</span>
@@ -251,35 +273,35 @@
 							<div class="form-group row mb-1">
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Nombre:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Juan">
+									<input type="text" class="form-control form-control-sm" id="inputNombre3" placeholder="Ingrese el nombre">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
-								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Ape Pat:</label>
+								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Apellidos:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Moreno">
+									<input type="text" class="form-control form-control-sm" id="inputApellido3" placeholder="Ingrese los apellidos">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
-								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Ape Mat:</label>
+								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">telefono:</label>
 								<div class="col-12  col-sm-12   col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="inputPassword" placeholder="Rodriguez">
+									<input type="text" class="form-control form-control-sm" id="inputTelefono3" placeholder="ingrese num. telefono">
 								</div>
 							</div>
 
 							<div class="form-group row mb-1">
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Usuario:</label>
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="text" class="form-control form-control-sm" id="" placeholder="juan">
+									<input type="text" class="form-control form-control-sm" id="inputEmail3" placeholder="Ingrese el usuario">
 								</div>
 							</div>
 
 							<div class="form-group row  mb-0">
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center  text-md-right px-0 subtitulo pb-0 pt-0 pt-lg-1">Contraseña:</label>
 								<div class="input-group col-12  col-sm-12  col-md-8  col-lg-9">
-									<input type="password" class="form-control form-control-sm " placeholder="Contraseña" id="pass3">
+									<input type="password" class="form-control form-control-sm" id="inputPass3" placeholder="Ingrese la contraseña">
 									<div class="input-group-prepend">
 										<div class="input-group-text form-control-sm cajaicono">
 											<a href="" class="text-dark" id="icon-click3">
@@ -329,7 +351,7 @@
 				<div class="col-12  col-sm-2  col-md-2  col-lg-1">
 					<div class="row justify-content-center align-items-center">
 						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
-							<button class="btn guardarC d-block m-auto"></button>
+							<button class="btn guardarC d-block m-auto" id="guardarchofer3"></button>
 						</div>
 						<div class="col-4 col-sm-12  col-md-12  col-lg-8  pb-sm-5 pb-md-4">
 							<button class="btn editarC d-block m-auto"></button>
@@ -342,6 +364,24 @@
 				<!-- FIN -->
 			</div>
 		</form>
+	</div>
+</div>
+
+
+
+
+<!-- Modal alta de chofer-->
+<div class="modal" id="altaChofer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content modal-content-Informacion-Chofer">
+			<div class="modal-header modal-header-NvChofer  justify-content-center">
+				<h6 class="modal-title text-center " id="textoModalAltaC">?.</h6>
+			</div>
+			<div class="modal-footer modal-footer-NvChofer justify-content-center">
+				<button type="button" class="btn btn-secondary cancelaraltaChofer" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary acepataraltaChofer">Aceptar</button>
+			</div>
+		</div>
 	</div>
 </div>
 
