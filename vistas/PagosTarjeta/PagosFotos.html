@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos</title>
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../librerias/bootstrapSelect/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../librerias/bootstrapValidator/css/Validaciones.css">
+    <link rel="stylesheet" href="../../css/Validaciones/validaciones.css">
+    <link rel="stylesheet" href="../../css/PagosTarjeta/PagosFotos.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:400,400i,500" rel="stylesheet">
+
+
+    <!-- Liberias de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
+</head>
+
+<body>
+    <div class="loader" id="loaderFoto"></div>
+    <div class="container-fluid">
+        <form action="javascript:void(0)" id="formulario_pagos">
+            <!-- fondoCaja -->
+            <p class="font-weight-bold h3 text-center mb-1 mt-3 mb-sm-4">PAGO DE SUSCRIPCIÓN <span
+                    id="tituloPago"></span></p>
+            <div class="row justify-content-center">
+
+                <div class="col-10 col-sm-8 col-md-5 col-xl-4 mr-md-2 fondoCaja d-none" id="oculCajaImg">
+                    <p class="font-weight-bold my-3 text-center">Subir ticket de Pago</p>
+                    <div class="contenedor_imagen" id="contenedor_imagen">
+                        <div class="form-group">
+                            <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia1">
+                            <img class="selectorImagen imgSubida_estilo" id="imgSubida1" src="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-10 col-sm-8 col-md-5 col-xl-4 ml-md-2 fondoCaja">
+                    <div class="row justify-content-center mb-4">
+                        <!-- <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9">
+                                <div class="form-group mt-5">
+                                    <input type="text" name="email_pago" placeholder="Ingresa tu correo"
+                                        class="form-control tamTexto_textArea" id="email_user_pago">
+                                </div>
+                            </div> -->
+                        <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9">
+                            <div class="float-right mt-2">
+                                <button class="btn bg-light btn-sm rounded-circle" data-toggle="tooltip"
+                                    data-placement="top" title="Regresar"><img src="../../Diseno/ICONOS/regresar.svg"
+                                        alt="" width="20px" height="25px"></button>
+                            </div>
+                            <div class="form-group">
+                                <!-- Cantidad de taxis registrados -->
+                                <p class="font-weight-bold mt-3 mb-2">Taxis Registrados: <span class="font-weight-bold"
+                                        id="taxisRegistrados"></span></p>
+                                <ul class="list-group mb-2" id="listarTaxis">
+                                </ul>
+                                <!-- Acumula lo seleccionado -->
+                                <input type="text" id="cajaTaxiSelect" class="form-control"
+                                    placeholder="Taxis Seleccionados" hidden>
+                                <!-- select multiple  -->
+                                <!-- name="cajaTaxiSelect" -->
+                                <div class="d-none" id="cajaVisual">
+                                    <span class="font-italic text-white bg-danger" id="mensajeSeleccion">
+                                        Selecciona la(s) placa(s) de tu(s) taxi(s) que deseas activar</span>
+                                    <select class="selectpicker form-control mt-2" multiple id="selectTaxis">
+                                        <!-- <option value="" disabled>Selecciona un Taxi</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9">
+                            <div class="form-group">
+                                <textarea name="" id="descripcion_pago" cols="40" rows="3"
+                                    class="tamTexto_textArea form-control"
+                                    placeholder="Escribe un mensaje al Administrador si asi lo desea (Opcional)"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9 d-none" id="ocul_btn_continuar">
+                            <button class="btn btn-info d-block m-auto mb-4" id="btn_continuar_pago">SIGUIENTE</button>
+                        </div>
+                        <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9 d-none" id="ocul_btn_enviar">
+                            <button class="btn btn-info d-block m-auto mb-4" id="btn_enviar_datos">ENVIAR
+                                DATOS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- </div> -->
+    </div>
+    <!-- Modal Error Validacion Bootstrap -->
+    <div id="showErrors" class="col-lg-4 col-md-5 col-sm-6 col-xs-12 showErrorModal">
+        <table class="errorModal">
+            <tr>
+                <td class="errorModalTitle"><img id="img1" alt="" src="../../Diseno/ICONOS/alerta.svg"></td>
+                <td class="errorModalBody">
+                    <ul id="errors"></ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- Modal de opciones de pago -->
+    <div class="modal fade" id="modalMostrarOpcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-notify modal-info modal-lg" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center" id="cabezaModalPago">
+                    <p class="heading font-weight-bold h4">Elige como quieres pagar</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="col-12 mt-2 mb-3">
+                            <span class="h3 colorTituloPasos">
+                                ¡Realiza tu pago en tan solo 4 pasos!
+                            </span>
+                        </div>
+                        <div class="col-10 col-lg-5 m-2 bordePasosPago">
+                            <span class="d-block text-lg-left">
+                                <span class="font-weight-bold">Paso 1: </span>Elige la opción que quieras pagar, ya sea
+                                suscripcion anual o mensual.
+                            </span>
+                        </div>
+                        <div class="col-10 col-lg-5 m-2 bordePasosPago">
+                            <span class="d-block text-lg-left">
+                                <span class="font-weight-bold">Paso 2: </span>En pantalla observarás tus taxis
+                                registrados, los activos e inactivos,
+                                podrás seleccionar el taxi que quieras pagar y continuar.
+                            </span>
+                        </div>
+                        <div class="col-10 col-lg-5 m-2 bordePasosPago">
+                            <span class="d-block text-lg-left">
+                                <span class="font-weight-bold">Paso 3: </span>Por ultimo sube una foto de su ticket de
+                                pago, dando click en el recuadro
+                                blanco y finalmente de click en "Enviar Datos".
+                            </span>
+                        </div>
+                        <div class="col-10 col-lg-5 m-2 bordePasosPago">
+                            <span class="d-block text-lg-left">
+                                Nosotros verificaremos
+                                si coincide el monto de su ticket, con el monto del taxi que usted quiera activar.
+                                en caso de que no coincida se le notificará inmediatamente.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-10 col-lg-5 my-3 mx-2 bordeOpcionesPago sombraOpcionesPago efectoHover">
+                            <span class="font-weight-bold d-block mt-3 h4"><span id="cantMes"></span> al MES</span><br>
+                            <span class="text-lg-left d-block">
+                                Paga <span id="cantMes2"></span> Pesos para activar tu cuenta durante un mes
+                            </span><br>
+                            <a href="" class="btn btn-primary" id="btn_pago_mes">CONTINUAR</a><br>
+                            <span class="text-lg-left d-block my-3">
+                                <span class="font-weight-bold">Nota: </span>
+                                Si tu taxi ha realizado viajes con cupones de descuento,
+                                se te descontará y pagarás menos.
+                            </span>
+                        </div>
+                        <div class="col-10 col-lg-5 my-3 mx-2 bordeOpcionesPago sombraOpcionesPago efectoHover">
+                            <span class="font-weight-bold d-block mt-3 h4"><span id="cantAnual"></span> al AÑO</span>
+                            <br>
+                            <span class="text-lg-left d-block">Paga <span id="cantAnual2"></span> Pesos para activar tu
+                                cuenta durante un año,
+                                con
+                                el <span id="cantDesc"></span> de descuento
+                                incluido </span> <br>
+                            <a href="" class="btn btn-primary" id="btn_pago_anual">CONTINUAR</a>
+                            <br>
+                            <span class="text-lg-left d-block my-3"><span class="font-weight-bold">Nota: </span>
+                                Este paquete
+                                incluye
+                                un <span id="cantDesc2"></span> de descuento,
+                                si tu taxi realiza viajes con cupones de descuento, no te preocupes el monto que
+                                acumulas
+                                se te descontará en tu proximo pago.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <p class="font-weight-bold">¿Necesitas ayuda?</p>
+                    <p>Llama o
+                        envianos un WhatsApp al numero <span class="text-primary font-weight-bold">963-186-51-24</span>
+                    </p>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal de mensajes -->
+    <div class="modal fade" id="modalMensajesPF" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center" id="cabezaModalPF">
+                    <p class="heading font-weight-bold h4">Mensaje</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="mt-3 font-weight-bold h4" id="textoCuerpoModalPF"></p>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <a type="button" class="btn m-auto btn-info" data-dismiss="modal" id="btn_modal_PF">Aceptar</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../librerias/popper/popper.min.js"></script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
+    <script src="../../librerias/bootstrapSelect/js/bootstrap-select.min.js"></script>
+    <script src=" ../../js/Validaciones/Validaciones.js"> </script>
+    <script src="../../js/PagosTarjeta/PagosFotos.js"></script>
+</body>
+
+</html>

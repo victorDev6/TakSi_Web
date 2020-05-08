@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  setTimeout(function() {
+$(document).ready(function () {
+  setTimeout(function () {
     $("#loader").fadeIn(500);
     $("#loader").fadeOut(500);
   }, 1);
@@ -16,7 +16,7 @@ $(document).ready(function() {
       storageBucket: "taksi-d543c.appspot.com",
       messagingSenderId: "3651890584",
       appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-      measurementId: "G-6VDL057TWQ"
+      measurementId: "G-6VDL057TWQ",
     });
   } catch (err) {
     if (!/already exists/.test(err.message)) {
@@ -28,10 +28,12 @@ $(document).ready(function() {
   }
   var db = firebase.firestore();
 
+  //Variable global
+  var estatus_user_global = "";
   /********************************************************** */
   /*MOSTRAR PASSWORD
 /*********************************************************** */
-  $("#mostrarPass").click(function() {
+  $("#mostrarPass").click(function () {
     var pass = document.getElementById("pass_ini_sesion");
     if (pass.type === "password") {
       pass.type = "text";
@@ -62,7 +64,7 @@ $(document).ready(function() {
       .auth()
       .signInWithEmailAndPassword(email_ini_sesion, pass_ini_sesion)
 
-      .catch(function(error) {
+      .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -105,14 +107,14 @@ $(document).ready(function() {
         }
       });
   }
-  $("#btn_ini_sesion").click(function(e) {
+  $("#btn_ini_sesion").click(function (e) {
     e.preventDefault();
     limpiarModalErrores();
     let validarUser = $("#formularioInicioSesion")
       .data("bootstrapValidator")
       .validate();
     if (validarUser.isValid()) {
-      setTimeout(function() {
+      setTimeout(function () {
         $("#loader").fadeIn(500);
         $("#loader").fadeOut(500);
       }, 1);
@@ -122,6 +124,29 @@ $(document).ready(function() {
       colorTodos = "#ffc107";
       linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
       mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+    }
+  });
+
+  //Al dar enter
+  $("#pass_ini_sesion , #email_ini_sesion").keypress(function (e) {
+    if (e.which == 13) {
+      e.preventDefault();
+      limpiarModalErrores();
+      let validarUser = $("#formularioInicioSesion")
+        .data("bootstrapValidator")
+        .validate();
+      if (validarUser.isValid()) {
+        setTimeout(function () {
+          $("#loader").fadeIn(500);
+          $("#loader").fadeOut(500);
+        }, 1);
+        ingreso();
+      } else {
+        mensajeM = `Verifique los campos`;
+        colorTodos = "#ffc107";
+        linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+        mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+      }
     }
   });
 
@@ -135,7 +160,6 @@ $(document).ready(function() {
       arrayDivicion = adCheck.split(separador);
       if (arrayDivicion[0] === "admin") {
         valorAdchek = true;
-        console.log(valorAdchek);
       }
     } catch (error) {
       console.log(error);
@@ -147,30 +171,38 @@ $(document).ready(function() {
   /*ESTA EN ESCUCHA POR CUALQUIER CAMBIO
 /*********************************************************** */
   function observador() {
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
         let email = user.email;
         let verifiEmail = user.emailVerified;
 
-        if (verifiEmail) {
-          checkAd = adCheck();
-          if (checkAd) {
-            //Redireccionar a la pagina de admin
-            console.log("Bienvenido admiistrador");
-            window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
-          } else {
-            buscarIdDoc(email);
-            MostrarBienvenida(user);
-            Limpiar();
+        BuscarStatus(email);
+
+        setTimeout(() => {
+          if (verifiEmail && estatus_user_global == "true") {
+            checkAd = adCheck();
+            if (checkAd) {
+              window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
+            } else {
+              buscarIdDoc(email);
+              MostrarBienvenida(user);
+              Limpiar();
+            }
+          } else if (estatus_user_global == "false" && verifiEmail === true) {
+            mensajeM = `¡Su cuenta ha sido bloqueada!`;
+            colorTodos = "#e24c4b";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            cerrarSesion();
+          } else if (verifiEmail === false) {
+            mensajeM = `Revise su correo y active su cuenta para poder accesar`;
+            colorTodos = "#ffc107";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            cerrarSesion();
           }
-        } else {
-          mensajeM = `Revise su correo y active su cuenta para poder accesar`;
-          colorTodos = "#ffc107";
-          linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-          mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-          cerrarSesion();
-        }
+        }, 1000);
       } else {
         // User is signed out.
         //console.log("no existe usuario activo");
@@ -194,10 +226,10 @@ $(document).ready(function() {
     db.collection("reg_prop_prin_web")
       .doc(idDoc)
       .update({
-        verifEmail: "true"
+        verifEmail: "true",
       })
-      .then(function() {
-        console.log("Document successfully updated!");
+      .then(function () {
+        //Document successfully updated
       });
   }
   /********************************************************** */
@@ -212,8 +244,8 @@ $(document).ready(function() {
     db.collection("reg_prop_prin_web")
       .where("email", "==", emailU)
       .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
           obtenerId = doc.id;
           obtenerStateEmail = doc.data().verifEmail;
         });
@@ -221,7 +253,7 @@ $(document).ready(function() {
           updateStateEmail(obtenerId);
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log("Error getting documents: ", error);
         mensajeM = `¡Error de comunicación!<br>
             Inténtalo mas tarde`;
@@ -252,10 +284,10 @@ $(document).ready(function() {
     firebase
       .auth()
       .signOut()
-      .then(function() {
+      .then(function () {
         //console.log("Saliendo...");
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -271,13 +303,13 @@ $(document).ready(function() {
 
     auth
       .sendPasswordResetEmail(email_recup_pass)
-      .then(function() {
+      .then(function () {
         mensajeM = `Correo enviado`;
         colorTodos = "#4caf50";
         linkImagen = "../../Diseno/ICONOS/icon_modal_correct.svg";
         mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         switch (errorCode) {
@@ -305,22 +337,48 @@ $(document).ready(function() {
         }
       });
   }
-  $("#btn_acept_pass").click(function(e) {
+  $("#btn_acept_pass").click(function (e) {
     e.preventDefault();
     limpiarModalErrores();
     let validarUserRecup = $("#formularioModalRecupPass")
       .data("bootstrapValidator")
       .validate();
     if (validarUserRecup.isValid()) {
-      setTimeout(function() {
+      setTimeout(function () {
         $("#loader").fadeIn(500);
         $("#loader").fadeOut(500);
       }, 1);
       reestablecerPassword();
     }
   });
-  $("#btn_cancel_pass").click(function(e) {
+  $("#btn_cancel_pass").click(function (e) {
     e.preventDefault();
     limpiarModalErrores();
   });
+
+  //FUNCION PARA BUSCAR EL STATUS
+  //Nota: intente hacer esto pero me di cuenta de que
+  //debe validarlo leiver
+  function BuscarStatus(email) {
+    estatus_user_global = "";
+    let mensajeM;
+    let colorTodos;
+    let linkImagen;
+    db.collection("reg_prop_prin_web")
+      .where("email", "==", email)
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          estatus_user_global = doc.data().status;
+        });
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
+        mensajeM = `¡Error de comunicación!<br>
+            Inténtalo mas tarde`;
+        colorTodos = "#e24c4b";
+        linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+        mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+      });
+  }
 }); //fin del documento

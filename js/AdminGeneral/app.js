@@ -15,6 +15,10 @@ app.config([
         url: "/AdminPagos",
         templateUrl: "../../vistas/AdminPagos/AdminPagos.html"
       })
+      .state("verifpagos", {
+        url: "/VerificarPagos",
+        templateUrl: "../../vistas/AdminPagos/VerificarPagos.html"
+      })
       .state("admincostos", {
         url: "/AdminCostos",
         templateUrl: "../../vistas/AdminCostos/AdminCostos.html"

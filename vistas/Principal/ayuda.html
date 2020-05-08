@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda</title>
+    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/Principal/ayuda.css">
+
+    <!-- Liberias de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!-- Mensaje de ayuda -->
+        <div class="row justify-content-start mt-3">
+            <p class="h3 font-weight-bold text-capitalize ml-1 ml-md-3 text-warning bg-dark rounded-lg px-2">Centro de
+                Ayuda</p>
+        </div>
+        <!-- Logo -->
+        <div class="row justify-content-center">
+            <img src="../../Diseno/ICONOS/logoTaxiNuevo.png" alt="" width="10%">
+        </div>
+        <!-- Buscador -->
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-9 col-md-6 col-lg-4">
+                <div class="form-group">
+                    <label for="buscador_txt"></label>
+                    <input type="text" class="form-control border border-secondary" id="buscador_txt"
+                        placeholder="Buscar...">
+                </div>
+            </div>
+        </div>
+        <!-- Mensaje de selecciona una opcion -->
+        <div class="row justify-content-center">
+            <p class="h4 font-weight-bold">¡Selecciona una Opción!</p>
+        </div>
+        <!-- seleccionar user  -->
+        <div class="row justify-content-center">
+            <a href="#" class="btn btn-secondary mx-1" id="btn_ayuda_conductor">Conductor</a>
+            <a href="#" class="btn btn-secondary mx-1" id="btn_ayuda_pasajero">Pasajero</a>
+        </div>
+        <!-- Cargando -->
+        <div class="row justify-content-center d-none" id="cargando">
+            <div class="col-12 col-md-4 mx-1 mt-4">
+                <div class="spinner-border d-block m-auto" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <!-- Lugar de las preguntas -->
+        <div class="row justify-content-center">
+            <!-- Primera columna -->
+            <div class="col-12 col-md-4 mx-1 mt-4">
+                <div id="accordion1" role="tablist">
+                </div>
+            </div>
+            <!-- Segunda columna -->
+            <div class="col-12 col-md-4 mx-1 mt-4">
+                <div id="accordion2" role="tablist">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla del buscador -->
+        <div class="content-search">
+            <div class="content-table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </thead>
+
+                    <tbody id="mostrarResulLista">
+                        <!-- <tr>
+                            <td><a href="#" onclick="ResultadoBusqueda('id')">¿Que es ta-si?</a></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../librerias/dataTable/jquery.dataTables.min.js"></script>
+    <script src="../../librerias/popper/popper.min.js"></script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"> </script>
+    <script src="../../js/Principal/ayuda.js"></script>
+</body>
+
+</html>

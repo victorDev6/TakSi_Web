@@ -1,9 +1,7 @@
 header {
 	width:100%; /* Establecemos que el header abarque el 100% del documento */
 	overflow:hidden; /* Eliminamos errores de float */
-	/* background: #ffffff; */
-	background: #ededed;
-	/* margin-bottom:20px; */
+	background: #ffd700;
 	z-index: 997;
 }
 
@@ -32,7 +30,7 @@ header nav {
 
 header nav a {
 	display:inline-block;
-	color:#8f8d8e;
+	color:#464545;
 	text-decoration:none;
 	padding:10px 20px;
 	line-height:normal;
@@ -44,16 +42,18 @@ header nav a {
 }
 
 header nav a:hover {
-	background:#aaa8a7;
+	background:#373635;
 	border-radius:50px;
+	color: #fbfbfb;
 }
 
 /* lo que haremos es cambiarle la posición del encabezado a una posición fija en pantalla,
  después simplemente reducir el line-height y hacer mas pequeña la fuente. */
 .header2 {
 	position: fixed;
-	height:100px;
-	background: #d6dde3;
+	height:115px;
+	/* #d6dde3 */
+	background: #ffd700; 
 }
 
 .header2 .logo {
@@ -94,10 +94,10 @@ header nav a:hover {
 /*  MENU ACTIVO DEL SIDERBAR						  	*/
 /*----------------------------------------------------- */
 .activo {
-    background:#c0bebd;
+    background:#444343;
 	border-radius:50px;
 	/* text-decoration: underline; */
-	color: #3d4041 !important;
+	color: #ffffff !important;
     font-weight: bold;
 }
 

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Pagos</title>
+    <link rel="stylesheet" href="../../css/AdminPagos/VerificarPagos.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <p class="h3 text-center font-weight-bold mt-4">VERIFICAR PAGOS</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 px-sm-0">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 float-sm-right m-auto">
+                    <select name="" id="selectBusquedaSoli" class="form-control">
+                        <!-- <option value="0">Selecciona</option> -->
+                        <option value="1" selected>Pendientes</option>
+                        <option value="2">Aceptados</option>
+                        <option value="3">Rechazados</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                <div class="float-sm-left">
+                    <button ui-sref="adminpagos" class="btn bg-white d-block m-auto rounded-circle"><img
+                            src="../../Diseno/ICONOS/regresar.svg" alt="Regresar" width="20" height="25"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- aqui van todas las cajas -->
+        <div class="row">
+            <!-- caja padre para Pagos flex-->
+            <div class="row cajaPadre_admin_p" align="center" id="hijos_solicitudes">
+
+
+            </div>
+        </div>
+        <!-- modal -->
+        <!-- Modal para Rechazar/Aceptar -->
+        <div class="modal fade" id="modalMensajesP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center" id="cabezaModal">
+                        <p class="heading font-weight-bold h4">Mensaje</p>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <img src="" alt="" width="70px" height="70px" id="imagenCuerpoM">
+                        <p class="mt-3 font-weight-bold h4" id="textoCuerpoModal"></p>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <a type="button" class="btn m-auto" data-dismiss="modal" id="botonCancelarModalM">Cancelar</a>
+                        <a type="button" class="btn m-auto d-none" data-dismiss="modal"
+                            id="botonAceptarModalM">Aceptar</a>
+                        <a type="button" class="btn m-auto d-none" data-dismiss="modal"
+                            id="botonAceptarModalMR">Aceptar</a>
+                        <a type="button" class="btn m-auto d-none" data-dismiss="modal"
+                            id="botonAceptarModalElim">Aceptar</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- muestra info -->
+        <div class="modal fade" id="modalMostrarInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center" id="cabezaModalI">
+                        <p class="heading font-weight-bold h4">Informacion</p>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-lg-6">
+                                <p align="left">
+                                    <span class="font-weight-bold">Estado: </span>
+                                    <span id="estado_modal" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Ciudad: </span>
+                                    <span id="ciudad_modal" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Nombre: </span>
+                                    <span id="nombre_modal" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Apellido: </span>
+                                    <span id="apellido_modal" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Fecha: </span>
+                                    <span id="fecha_modal" class="tipoLetra"></span>
+                                </p>
+
+                                <p align="left" class="mb-0">
+                                    <span class="font-weight-bold">Descripción: </span>
+                                    <br>
+                                    <p id="descripcion_modal" class="tipoLetra text-left"></p>
+                                </p>
+                            </div>
+                            <div class="col-11 col-lg-6">
+                                <p align="left">
+                                    <span class="font-weight-bold">Correo: </span>
+                                    <span id="email_modal" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Telefono: </span>
+                                    <span id="telefono_modal" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Consesión: </span>
+                                    <span id="consesion_modal" class="tipoLetra"></span>
+                                </p>
+                                <!-- <p align="left">
+                                    <span class="font-weight-bold">Opción de Pago: </span>
+                                    <span id="opcion_pago_modal" class="tipoLetra"></span>
+                                </p> -->
+                                <p align="left">
+                                    <span class="font-weight-bold">Taxis a pagar: </span>
+                                    <br>
+                                    <span id="solicitud_modal" class="tipoLetra"></span>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <a type="button" class="btn m-auto" data-dismiss="modal" id="botonAceptarInfo">Aceptar</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/AdminPagos/VerificarPagos.js"></script>
+</body>
+
+</html>

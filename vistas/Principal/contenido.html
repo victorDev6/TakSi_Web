@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contenedor</title>
+
+
 </head>
 
 <body>
@@ -21,26 +23,36 @@
                         ¡Desarga la aplicacion ahora mismo!
                     </p>
                     <div class="download-button d-flex flex-row justify-content-start">
-                        <div class="buttons dark flex-row d-flex">
-                            <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
-                                class="mt-2">
+                        <div class="buttons dark flex-row d-flex py-2">
+                            <!-- <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
+                                class="mt-2"> -->
                             <div class="desc">
-                                <a href="#">
+                                <a href="#" id="btn_app_conductor">
                                     <p class="ml-2">
-                                        <span>Conductor</span> <br>
-                                        Disponible en <br> Play Store
+                                        <!-- <span>Conductor</span> <br>
+                                        Disponible en <br> Play Store -->
+                                        <p class="font-weight-bold" style="font-size: 16px;">App para
+                                            Conductor</p>
+                                        <p class="font-weight-normal" style="font-size: 13px;">Disponible en:
+                                            <br>Play Store y App
+                                            Store</p>
                                     </p>
                                 </a>
                             </div>
                         </div>
-                        <div class="buttons dark flex-row d-flex">
-                            <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
-                                class="mt-2">
+                        <div class="buttons dark flex-row d-flex py-2">
+                            <!-- <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="15px" height="15px"
+                                class="mt-2"> -->
                             <div class="desc">
-                                <a href="#">
+                                <a href="#" id="btn_app_pasajero">
                                     <p class="ml-2">
-                                        <span>Pasajero</span> <br>
-                                        Disponible en <br> Play Store
+                                        <!-- <span>Pasajero</span> <br>
+                                        Disponible en <br> Play Store -->
+                                        <p class="font-weight-bold" style="font-size: 16px;">App para
+                                            Pasajero</p>
+                                        <p class="font-weight-normal" style="font-size: 13px;">Disponible en:
+                                            <br>Play Store y App
+                                            Store</p>
                                     </p>
                                 </a>
                             </div>
@@ -48,7 +60,8 @@
                     </div>
                 </div>
                 <div class="banner-img col-lg-4 col-md-6 mt-5">
-                    <img class="img-fluid" src="../../Diseno/ICONOS/banner-img.png" alt="">
+                    <!-- banner-img.png -->
+                    <img class="img-fluid" src="../../Diseno/ICONOS/taxi_pasajero_loader.png" alt="">
                 </div>
             </div>
         </div>
@@ -61,45 +74,16 @@
             <h2 class="">Noticias</h2>
             <div class="mt-4 carousel slide" id="secondary-carousel" data-ride="carousel"
                 style="background-color: black;">
-                <ol class="carousel-indicators">
-                    <li data-target="#secondary-carousel" data-slid-to="0" class="active"></li>
-                    <li data-target="#secondary-carousel" data-slid-to="1"></li>
-                    <li data-target="#secondary-carousel" data-slid-to="2"></li>
+                <ol class="carousel-indicators" id="add_indicador_carousel">
                 </ol>
-
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="carousel-caption d-block">
-                            <p>Loco</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>
-                        </div>
-                        <img class="d-block m-auto img-fluid" src="https://i.ytimg.com/vi/BwG-INLTXjQ/hqdefault.jpg"
-                            alt="">
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-block">
-                            <p>Titulo de la Imagen</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>
-                        </div>
-                        <img class="d-block m-auto img-fluid" src="https://i.ytimg.com/vi/BwG-INLTXjQ/hqdefault.jpg"
-                            alt="">
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-block">
-                            <p>Titulo de la Imagen</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>
-                        </div>
-                        <img class="d-block m-auto img-fluid" src="https://i.ytimg.com/vi/BwG-INLTXjQ/hqdefault.jpg"
-                            alt="">
-                    </div>
+                <div class="carousel-inner" id="add_corousel_noticias">
                 </div>
-
-                <a href="#secondary-carousel" class="carousel-control-prev" data-slide="prev">
+                <a href="#secondary-carousel" class="carousel-control" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Anterior</span>
                 </a>
 
-                <a href="#secondary-carousel" class="carousel-control-next" data-slide="next">
+                <a href="#secondary-carousel" class="carousel-control" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Siguiente</span>
                 </a>
@@ -165,43 +149,68 @@
     <section class="about-area">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5 home-about-left">
-                    <img class="img-fluid" src="../../Diseno/ICONOS/iphone.png" alt="">
+                <div class="col-lg-5 home-about-left" id="id_app_conductor">
+                    <!-- 70% -->
+                    <img class="img-fluid" src="../../Diseno/ICONOS/taksi-chofer-mapa.png" alt="" style="width: 49%;">
+                    <img class="img-fluid" src="../../Diseno/ICONOS/taksi-chofer-menu.png" alt="" style="width: 49%;">
                 </div>
                 <div class="offset-lg-1 col-lg-5 home-about-right">
                     <h1>
                         Tax-si <br>
                         App para conductor <br>
                     </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore
-                        magna aliqua.Ut
-                        enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                    </p>
-                    <a class="primary-btn text-uppercase" href="#">Mas detalles</a>
+
+                    <dl>
+                        <li>Haz que los usuarios te ubiquen mas facil y rapidamente.</li>
+                        <li>Gana la confianza de los usuarios.</li>
+                        <li>Acepta o rechaza solicitudes de ususario que tu desees.</li>
+                        <li>Obten buena calificación brindando un buen servicio.</li>
+                        <li>Lleva un mejor control sobre los servicios que realizas al dia.</li>
+                        <li>Guiate del mapa obteniendo el camino mas corto y ahorra combustible evitando
+                            hacer recorridos largos.
+                        </li>
+                    </dl>
+
+                    <!-- <a class="primary-btn text-uppercase" href="#">Mas detalles</a> -->
+                    <a href="#" id="btn_link_android_conductor" target="_blank">
+                        <img src="../../Diseno/ICONOS/disponible_en_googlePlay.png" alt="" width="" height="50px">
+                    </a>
+                    <a href="#" id="btn_link_apple_conductor" target="_blank">
+                        <img src="../../Diseno/ICONOS/disponible_en_appStore.png" alt="" width="" height="68px">
+                    </a>
                 </div>
                 <div class="col-lg-6 home-about-right home-about-right2">
                     <h1>
                         Tax-si <br>
                         App para pasajero <br>
                     </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore
-                        magna aliqua.Ut
-                        enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                    </p>
-                    <a class="primary-btn text-uppercase" href="#">Mas detalles</a>
+                    <dl>
+                        <li>Solicita el servicio de taxi facil, seguro y rapido.</li>
+                        <li>Comparte con tus amigos y familiares la ubicación en la que te encuentras.</li>
+                        <li>Llega a tu destino facil y rapidamente.</li>
+                        <li>Obten códigos de descuento y paga menos al pedir un servicio.</li>
+                        <li>Guarda la ubicación de tus lugares favoritos.</li>
+                        <li>Puedes cancelar tu viaje si asi lo deseas sin cargo alguno.
+                        </li>
+                    </dl>
+                    <!-- <a class="primary-btn text-uppercase" href="#">Mas detalles</a> -->
+                    <a href="#" id="btn_link_android_pasajero" target="_blank">
+                        <img src="../../Diseno/ICONOS/disponible_en_googlePlay.png" alt="" width="" height="50px">
+                    </a>
+                    <a href="#" id="btn_link_apple_pasajero" target="_blank">
+                        <img src="../../Diseno/ICONOS/disponible_en_appStore.png" alt="" width="" height="68px">
+                    </a>
                 </div>
-                <div class="col-lg-5 home-about-left">
-                    <img class="img-fluid" src="../../Diseno/ICONOS/iphone.png" alt="">
+                <div class="col-lg-5 home-about-left" id="id_app_pasajero">
+                    <img class="img-fluid" src="../../Diseno/ICONOS/taxi_pasajero_mapa.png" alt="" style="width: 49%;">
+                    <img class="img-fluid" src="../../Diseno/ICONOS/taxi_pasajero_menu.png" alt="" style="width: 49%;">
                 </div>
             </div>
         </div>
     </section>
     <!-- End about Area -->
 
+    <script src="../../js/Principal/contenido.js"></script>
 </body>
 
 </html>

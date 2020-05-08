@@ -1,0 +1,5 @@
+.carousel-inner{
+  object-fit: scale-down !important;
+  height: 70vh !important;
+  width: 100% !important;
+}

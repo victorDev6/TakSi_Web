@@ -22,6 +22,7 @@ try {
   }
 }
 var db = firebase.firestore();
+var storageRef = firebase.storage().ref();
 
 /*SE AGREGA UNA VARIABLE DONDE OBTIENE EL VALOR DEL SELECT
 SELECCIONADO Y ASI SABER QUE PANTALLA ESTA SOLICITANDO LA
@@ -315,6 +316,7 @@ function Vswitch(valor) {
 /*********************************************************** */
 /* Funcion lanzada por clase, que extrae el ID de quien lo lanzo, para procesar su imagen de salida*/
 var numeroTaxi = "";
+var file;
 $(document).ready(function() {
   $(".selectorImagen").click(function(e) {
     switch (e.target.id) {
@@ -327,7 +329,7 @@ $(document).ready(function() {
   });
   /* Se carga la imagen de Perfil si es un formato válido (png,jpg y jpeg)*/
   $("#imagenMarcador").change(function() {
-    var file = $("#imagenMarcador" + numeroTaxi).val();
+    file = $("#imagenMarcador" + numeroTaxi).val();
     var ext = file.substring(file.lastIndexOf("."));
     if (
       ext == ".jpg" ||
@@ -342,8 +344,7 @@ $(document).ready(function() {
         imgExt = 22;
       }
       var preview = document.getElementById("imgSubidaM" + numeroTaxi);
-      var file = document.getElementById("imagenMarcador" + numeroTaxi)
-        .files[0];
+      file = document.getElementById("imagenMarcador" + numeroTaxi).files[0];
       extension_PM = ext; //ext de imagen
 
       $("#imgSubidaM" + numeroTaxi).attr("title", file.name);
@@ -353,10 +354,6 @@ $(document).ready(function() {
         "load",
         function() {
           preview.src = reader.result;
-          var imagen = preview.src;
-          recotarImagen_PM = imagen.slice(imgExt);
-          console.log(extension_PM);
-          console.log(recotarImagen_PM);
         },
         false
       );
@@ -545,6 +542,7 @@ function AgregarFolio() {
       nombre: nombreUser,
       apellido: apellidosUser,
       folio: num_consesion,
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
       sitio: sitio_usuario
     })
     .then(function(docRef) {
@@ -614,19 +612,6 @@ function AgregarNuevaColeccion(nomColeccion) {
     .catch(function(error) {
       console.error("Error adding document: ", error);
     }));
-  /*db.collection(nomColeccion)
-    .add({})
-    .then(function(docRef) {
-      console.log("Se creo la nueva colección");
-
-      document.getElementById("costo_foraneo_a").value = "";
-      document.getElementById("costo_km_a").value = "";
-      document.getElementById("tarifa_base_a").value = "";
-      document.getElementById("tarifa_km_a").value = "";
-    })
-    .catch(function(error) {
-      console.error("Error adding document: ", error);
-    });*/
 }
 
 /********************************************************** */
@@ -673,14 +658,14 @@ $("#btnAgregarMarcadorP").click(function(e) {
   if ($("#checkAgregarMarcador").prop("checked")) {
     buscarIdMarcador();
   } else {
-    AgregarMarcadorP();
+    GuardarIMG_YDatos();
   }
 });
-function AgregarMarcadorP() {
+function AgregarMarcadorP(url_img) {
   let cd_agregar = document.getElementById("selectCd_AdminA").value;
   let edo_agregar = document.getElementById("selectEdo_AdminA").value;
   let nom_empresa = document.getElementById("nombre_empresa").value;
-  let url_logo = document.getElementById("url_logo").value;
+  let url_logo = url_img;
   let status_marcador = document.getElementById("status_marker").value;
   let telefono = document.getElementById("telefono_empresa").value;
   let descripcion = document.getElementById("descrip_empresa").value;
@@ -713,6 +698,37 @@ function AgregarMarcadorP() {
     .catch(function(error) {
       console.error("Error adding document: ", error);
     });
+}
+function GuardarIMG_YDatos() {
+  var imagenASubir = file;
+  var uploadTask = storageRef
+    .child("markers_publicidad/" + imagenASubir.name)
+    .put(imagenASubir);
+
+  uploadTask.on(
+    "state_changed",
+    function(snapshot) {
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log("Upload is " + progress + "% done");
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log("Upload is paused");
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          console.log("Upload is running");
+          break;
+      }
+    },
+    function(error) {
+      // Handle unsuccessful uploads
+    },
+    function() {
+      // Handle successful uploads on complete
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        AgregarMarcadorP(downloadURL);
+      });
+    }
+  );
 }
 function AnexarOtroMarcador(idMarcador) {
   let latitud = document.getElementById("latitud_marker").value;
@@ -991,10 +1007,12 @@ function mostrarTablaGeneralConsesion() {
                                 <th class="text-nowrap">Sitio</th>
                                 <th class="text-nowrap">Eliminar</th>
                                 <th class="text-nowrap">Editar</th>`;
-  db.collection("folios_consesion").onSnapshot(function(querySnapshot) {
-    tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
-      tabla.innerHTML += `<tr>
+  db.collection("folios_consesion")
+    .orderBy("fecha", "desc")
+    .onSnapshot(function(querySnapshot) {
+      tabla.innerHTML = "";
+      querySnapshot.forEach(function(doc) {
+        tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
 							<td class="text-nowrap">${doc.data().nombre}</td>
@@ -1010,9 +1028,9 @@ function mostrarTablaGeneralConsesion() {
               '${doc.data().sitio}')">Editar
               </button></td>
 							</tr>`;
+      });
+      paginacionA();
     });
-    paginacionA();
-  });
 }
 function showTableEdoCdConsesion() {
   let cd_agregar = document.getElementById("selectCd_AdminA").value;

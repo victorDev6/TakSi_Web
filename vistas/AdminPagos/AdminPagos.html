@@ -6,69 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Pagos</title>
+    <link rel="stylesheet" href="../../librerias/bootstrapSelect/css/bootstrap-select.min.css">
+
 </head>
 
 <body>
     <div class="container-fluid">
         <br>
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-9 col-xl-9">
                 <p class="h4 font-weight-bold">Admin Pagos</p>
             </div>
         </div>
         <br>
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-11 col-md-12 col-xl-9">
                 <form class="form-inline">
-                    <div class="col mb-sm-2">
+                    <div class="col-11 col-md-4 col-xl-4 mb-sm-2">
                         <div class="form-group">
                             <select class="custom-select caja m-auto d-block" name="" id="sel_opc_bus_pago">
                                 <option selected>Busqueda por</option>
                                 <option value="1">Estado y Ciudad</option>
-                                <option value="2">Estado, Ciudad, Sitio</option>
-                                <option value="3">Nombre</option>
-                                <option value="4">Cantidad</option>
+                                <option value="2">Nombre</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col mb-sm-2">
+                    <div class="col-11 col-md-4 col-xl-4 mb-sm-2">
                         <div class="form-group">
                             <select class="custom-select caja m-auto d-block" name="" id="select_edo_pagos">
                                 <option value="0" selected>Estado</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col mb-sm-2">
+                    <div class="col-11 col-md-4 col-xl-4 mb-sm-2">
                         <div class="form-group">
                             <select class="custom-select caja m-auto d-block" name="" id="select_cd_pagos">
                                 <option value="0" selected>Ciudad</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col mb-sm-2">
+                    <!-- <div class="col mb-sm-2">
                         <div class="form-group">
                             <select class="custom-select caja m-auto d-block" name="" id="select_sitio_pagos">
                                 <option value="0" selected>Sitio</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col mb-sm-2">
+                    </div> -->
+                    <div class="col-11 col-md-4 col-xl-4 mb-sm-2">
                         <div class="form-group">
                             <input type="text" name="" id="campo_bus_pagos" class="form-control m-auto caja"
                                 placeholder="Escribe.....">
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg">
+                    <div class="col-11 col-md-4 col-xl-4">
                         <div class="row justify-content-center">
 
-                            <div class="col-5 mx-1">
-                                <a class="btn btn-info d-block boton text-white" id="btn_bus_pagos"><img
-                                        class="iconoBotonP" src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""> Buscar</a>
+                            <div class="col-5">
+                                <a class="btn btn-info btn-sm d-block text-white" id="btn_bus_pagos"><img
+                                        class="iconoBotonP" src="../../Diseno/ICONOS/Iconobuscar.svg" alt=""></a>
                             </div>
 
                             <div class="col-5">
-                                <a class="btn btn-info d-block boton" href="#" id="btn_limpiar_pagos"><img
-                                        class="iconoBotonP" src="../../Diseno/ICONOS/eliminar.svg" alt=""> Limpiar</a>
+                                <a class="btn btn-info btn-sm d-block" href="#" id="btn_limpiar_pagos"><img
+                                        class="iconoBotonP" src="../../Diseno/ICONOS/eliminar.svg" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -99,12 +99,12 @@
                                 <th scope="col">Estado</th>
                                 <th scope="col">Ciudad</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Apellidos</th>
-                                <th scope="col">Concepto</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Monto</th>
-                                <th scope="col">Sitio</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Fec Aceptación</th>
+                                <th scope="col">Fec Inicio</th>
+                                <th scope="col">Fec Fin</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Info</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
@@ -123,20 +123,51 @@
             </div>
         </div>
 
-
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="border-top my-3"></div>
             </div>
         </div>
         <div class="row justify-content-center">
+            <div class="col-12 col-sm-9">
+                <p class="h5 font-weight-bold">Haz click para ver las solicitudes de pagos y analizar quienes ya pagaron
+                </p>
+            </div>
             <div class="col-9">
-                <p class="h5 font-weight-bold">Pago por Deposito</p>
+                <button ui-sref="verifpagos" class="btn btn-success" id="">Ver Solicitudes</button>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-11 col-lg-9">
+                <p class="h5 font-weight-bold mt-2">Pago por Deposito</p>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-10">
-                <form class="form-inline">
+            <div class="col-12 col-sm-5 col-lg-3">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" id="campo_email" class="form-control">
+                </div>
+            </div>
+            <div class="col-12 col-sm-5 col-lg-3">
+                <div class="form-group">
+                    <select name="" id="selectOpcionPago" class="form-control">
+                        <option value="0" selected>Opcion de Pago</option>
+                        <option value="Mensual">Mensual</option>
+                        <option value="Anual">Anual</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-sm-5 col-lg-3">
+                <div class="form-group">
+                    <button class="btn btn-info" id="btn_consultar_user">Consultar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Formulario para pagar -->
+        <div class="row justify-content-center">
+            <div class="col-10" style="background-color: aqua;">
+                <!-- <form class="form-inline">
 
                     <div class="col-12 mb-sm-2 col-sm-6 col-lg-4">
                         <div class="form-group">
@@ -251,12 +282,136 @@
                         <a class="btn btn-info d-block botonPago" href="#"><img class="iconoBotonP"
                                 src="../../Diseno/ICONOS/guardar.svg" alt=""> Guardar</a>
                     </div>
-                </form>
+                </form> -->
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 col-lg-5 col-xl-5 d-none" id="cajaPago1"
+                        style="background-color: aquamarine;">
+                        <p class="text-center font-weight-bold h5">Pago de Mensualidad Tak-si</p>
+                        <p><span class="font-weight-bold">Estado: </span> <span id="label_edo"></span></p>
+                        <p><span class="font-weight-bold">Ciudad: </span> <span id="label_cd"></span></p>
+                        <p><span class="font-weight-bold">Nombre: </span> <span id="label_nom"></span></p>
+                        <p><span class="font-weight-bold">Apellido: </span> <span id="label_ape"></span></p>
+                        <p><span class="font-weight-bold">Consesión: </span> <span id="label_cons"></span></p>
+                        <p><span class="font-weight-bold">Telefono: </span> <span id="label_tel"></span></p>
+                        <p><span class="font-weight-bold">Opcion de Pago: </span> <span id="label_opcionP"></span></p>
+
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-5 col-xl-4 d-none" id="cajaPago2">
+                        <div class="form-group">
+                            <!-- Cantidad de taxis registrados -->
+                            <p class="font-weight-bold mt-3 mb-2">Taxis Registrados: <span class="font-weight-bold"
+                                    id="taxisRegistrados"></span>
+                            </p>
+
+                            <ul class="list-group mb-2" id="listarTaxis">
+
+                            </ul>
+                            <!-- Acumula lo seleccionado -->
+                            <input type="text" id="cajaTaxiSelect" class="form-control"
+                                placeholder="Taxis Seleccionados" hidden>
+                            <!-- select multiple  -->
+                            <!-- name="cajaTaxiSelect" -->
+                            <div>
+                                <span class="font-italic text-white bg-danger" id="mensajeSeleccion">
+                                    Selecciona los taxis a pagar</span>
+                                <select class="selectpicker form-control mt-2" multiple id="selectTaxis">
+                                    <!-- <option value="" disabled>Selecciona un Taxi</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-5">
+                                <button class="btn btn-primary" id="btn_aceptar_pago">Aceptar</button>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <button class="btn btn-danger" id="btn_cancelar_pago">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
         <br>
         <br>
+        <!-- Modal para Rechazar/Aceptar -->
+        <div class="modal fade" id="modalMensajesA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center" id="cabezaModalA">
+                        <p class="heading font-weight-bold h4">Mensaje</p>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <img src="" alt="" width="70px" height="70px" id="imagenCuerpoA">
+                        <p class="mt-3 font-weight-bold h4" id="textoCuerpoModalA"></p>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <a type="button" class="btn m-auto" data-dismiss="modal" id="botonCancelarModalA">Cancelar</a>
+                        <a type="button" class="btn m-auto" data-dismiss="modal" id="botonAceptarModalElimA">Aceptar</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- muestra info -->
+        <div class="modal fade" id="modalMostrarInfoA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center" id="cabezaModalA">
+                        <p class="heading font-weight-bold h4">Informacion</p>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-lg-6">
+                                <p align="left">
+                                    <span class="font-weight-bold">Correo: </span>
+                                    <span id="email_modalA" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Telefono: </span>
+                                    <span id="telefono_modalA" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Consesión: </span>
+                                    <span id="consesion_modalA" class="tipoLetra"></span>
+                                </p>
+                                <p align="left">
+                                    <span class="font-weight-bold">Opción de Pago: </span>
+                                    <span id="opcion_modalA" class="tipoLetra"></span>
+                                </p>
+                            </div>
+                            <div class="col-11 col-lg-6">
+                                <p align="left">
+                                    <span class="font-weight-bold">Taxis Activados: </span>
+                                    <br>
+                                    <span id="solicitud_modalA" class="tipoLetra"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <a type="button" class="btn m-auto" data-dismiss="modal" id="botonAceptarInfoA">Aceptar</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+
     </div>
+
 
     <script src="../../js/AdminPagos/AdminPagos.js"></script>
 </body>

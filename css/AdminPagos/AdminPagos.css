@@ -45,3 +45,61 @@
     width: 18px;
     height: 18px;
 }
+
+
+
+/* Agrega el borde del contenedor del modal */
+        .modal-content {
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            border-radius: 20px !important;
+        }
+
+        /* Agrega el borde del modal */
+        .modal-header {
+            border-top-left-radius: 20px !important;
+            border-top-right-radius: 20px !important;
+        }
+
+        /* Agrega el color del contenedor del modal */
+        #modalPush {
+            background-color: rgba(238, 235, 235, 0.3) !important;
+        }
+
+        #textoCuerpoModalA {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+
+        /* Agrega el color al encabezado del modal y el color de texto */
+        #cabezaModalA {
+            color: #ffffff;
+        }
+        #botonCancelarModalA {
+            color: #ffffff;
+		}
+		#botonAceptarModalElimA{
+			color: #ffffff;
+		}
+
+/* Modal Info */
+/* clase de tipo de letra del modal de mostrar info */
+.tipoLetra{
+	font-size: 17px;
+	font-family: serif;
+}
+
+.texto_lista{
+	font-size: 15px;
+	font-family: serif;
+}
+/* boton modal info */
+#botonAceptarInfoA{
+	color: #ffffff;
+	background-color: #409ac4;
+}
+/* modal info */
+#cabezaModalA{
+    color: #ffffff;
+	background-color: #409ac4;
+}

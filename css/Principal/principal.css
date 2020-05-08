@@ -244,13 +244,14 @@ h4, h5, h6 {
 
 .home-banner-area {
   /* background: url(../../Diseno/ICONOS/home-banner-bg.jpg) center; */
-  /* background-color: #d6dde3; */
-  background: linear-gradient(to bottom right, transparent 0%, transparent 50%, #dde2e6 50%, #fcfdff 100%);
-  background: -moz-linear-gradient(to bottom right, transparent 0%, transparent 50%, #dde2e6 50%, #fcfdff 100%);
-  background: -webkit-linear-gradient(to bottom right, transparent 0%, transparent 50%, #dde2e6 50%, #fcfdff 100%);
-  background: -o-linear-gradient(to bottom right, transparent 0%, transparent 50%, #dde2e6 50%, #fcfdff 100%);
-  background: -ms-linear-gradient(to bottom right, transparent 0%, transparent 50%, #dde2e6 50%, #fcfdff 100%);
-  background-size: cover; }
+  /* background-color: #dde2e6; */
+  background: linear-gradient(to bottom right, transparent 0%, transparent 50%, #ffd700 50%, #fcfdff 100%);
+  background: -moz-linear-gradient(to bottom right, transparent 0%, transparent 50%, #ffd700 50%, #fcfdff 100%);
+  background: -webkit-linear-gradient(to bottom right, transparent 0%, transparent 50%, #ffd700 50%, #fcfdff 100%);
+  background: -o-linear-gradient(to bottom right, transparent 0%, transparent 50%, #ffd700 50%, #fcfdff 100%);
+  background: -ms-linear-gradient(to bottom right, transparent 0%, transparent 50%, #ffd700 50%, #fcfdff 100%);
+  background-size: cover;
+ }
   .home-banner-area .banner-img {
     text-align: right; }
     @media (max-width: 1440px) {
@@ -298,6 +299,8 @@ h4, h5, h6 {
     right: 36%;
     width: 68%;
     height: 68%;
+    /* e9e2b9 */
+    /* e8eff5 */
     background: linear-gradient(to bottom right, transparent 0%, transparent 50%, #f8fcff 50%, #fcfdff 100%);
     background: -webkit-linear-gradient(to bottom right, transparent 0%, transparent 50%, #f8fcff 50%, #fcfdff 100%);
     background: -moz-linear-gradient(to bottom right, transparent 0%, transparent 50%, #f8fcff 50%, #fcfdff 100%);
@@ -506,4 +509,5 @@ h4, h5, h6 {
       font-size: 12px; }
       .footer-area .footer-bottom .buttons p span {
         font-size: 18px; }
+
 

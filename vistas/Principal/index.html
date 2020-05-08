@@ -17,11 +17,14 @@
     <link rel="stylesheet" href="../../css/Principal/header.css">
     <link rel="stylesheet" href="../../css/Registrarse/Registrarse.css">
     <link rel="stylesheet" href="../../css/InicioSesion/InicioSesion.css" />
+    <link rel="stylesheet" href="../../css/Principal/contenido.css" />
+
 
     <!-- Liberias de Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+
 
     <title>Menu</title>
 </head>
@@ -30,7 +33,8 @@
     <div class="loader" id="loader"></div>
     <header>
         <div class="wrapper" id="sidebar">
-            <div class="cont2"><a href="#!/Contenedor"><img class="logo" src="../../Diseno/ICONOS/logo.png" alt=""></a>
+            <div class="cont2"><a href="#!/Contenedor"><img class="logo" src="../../Diseno/ICONOS/logoTaxiNuevo.png"
+                        alt=""></a>
             </div>
             <nav>
                 <a ui-sref="contenedor" id="contenedor">Inicio</a>
@@ -52,42 +56,52 @@
                 <div class="col-lg-2 col-md-6 single-footer-widget mt-4">
 
                     <ul>
-                        <li><a href="#">AYUDA</a></li>
-                        <li><a href="#">ACERCA DE</a></li>
+                        <li><a href="../Principal/ayuda.html" target="_blank">AYUDA</a></li>
+                        <li><a href="#" id="mostrarAcercade">ACERCA DE</a></li>
 
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 single-footer-widget mt-4">
 
                     <ul>
-                        <li><a href="#">TERMINOS DE USO</a></li>
-                        <li><a href="#">AVISO DE PRIVACIDAD</a></li>
+                        <li><a href="../Registrarse/Terminos.html" target="_blank">TERMINOS DE USO</a></li>
+                        <li><a href="../Registrarse/Politicas.html" target="_blank">AVISO DE PRIVACIDAD</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-5 col-md-6 single-footer-widget mt-4">
                     <h4 class="text-lg-center">Descargar App</h4>
                     <div class="col">
                         <div class="download-button d-flex flex-row justify-content-end">
-                            <div class="buttons gray flex-row d-flex">
-                                <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
-                                    class="mt-2">
+                            <div class="buttons gray flex-row d-flex py-2">
+                                <!-- <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
+                                    class="mt-2"> -->
                                 <div class="desc">
-                                    <a href="#">
+                                    <a href="#" id="btn_app_conductor_f">
                                         <p class="ml-2">
-                                            <span>Conductor</span> <br>
-                                            Disponible en <br> Play Store
+                                            <!-- <span>Conductor</span> <br>
+                                            Disponible en <br> Play Store -->
+                                            <p class="font-weight-bold" style="font-size: 16px;">App para
+                                                Conductor</p>
+                                            <p class="font-weight-normal" style="font-size: 13px;">Disponible en:
+                                                <br>Play Store y App
+                                                Store</p>
                                         </p>
                                     </a>
                                 </div>
                             </div>
-                            <div class="buttons gray flex-row d-flex">
-                                <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
-                                    class="mt-2">
+                            <div class="buttons gray flex-row d-flex py-2">
+                                <!-- <img src="../../Diseno/ICONOS/googlePlay.svg" alt="" width="40px" height="40px"
+                                    class="mt-2"> -->
                                 <div class="desc">
-                                    <a href="#">
+                                    <a href="#" id="btn_app_pasajero_f">
                                         <p class="ml-2">
-                                            <span>Pasajero</span> <br>
-                                            Disponible en <br> Play Store
+                                            <!-- <span>Pasajero</span> <br>
+                                            Disponible en <br> Play Store -->
+                                            <p class="font-weight-bold" style="font-size: 16px;">App para
+                                                Pasajero</p>
+                                            <p class="font-weight-normal" style="font-size: 13px;">Disponible en:
+                                                <br>Play Store y App
+                                                Store</p>
                                         </p>
                                     </a>
                                 </div>
@@ -99,10 +113,14 @@
                 <div class="col-lg-3 col-md-6 single-footer-widget mt-4">
                     <h4 class="mb-3">CONTACTOS</h4>
                     <ul class="social-links">
-                        <li><a href="#"><i class="fa fa-facebook fa-2x mr-2"></i>isoft/softetc</a></li>
-                        <li><a href="#"><i class="fa fa-twitter fa-2x mr-2"></i>Locooooo</a></li>
-                        <li><a href="#"><i class="fa fa-address-book fa-2x mr-2"></i>locooooo</a></li>
-                        <li><a href="#"><i class="fa fa-envelope fa-2x mr-2"></i>locooooo</a></li>
+                        <li><a href="#"><i class="fa fa-facebook fa-2x mr-2"></i><span id="link_facebook"></span></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-twitter fa-2x mr-2"></i><span id="link_twitter"></span></a></li>
+                        <!-- fa fa-address-book fa-2x mr-2 -->
+                        <li><a href="#"><i class="fa fa-whatsapp mr-2 fa-2x"></i><span id="tel_empresa"></span></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-envelope fa-2x mr-2"></i><span id="correo_empresa"></span></a>
+                        </li>
 
                     </ul>
                 </div>
@@ -113,7 +131,7 @@
                     Copyright &copy;
                     <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados |
                     Creado</i> por
-                    <a href="#" target="_blank">ISoft</a>
+                    <a href="#" target="_blank" id="link_empresa_isoft">ISoft</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
 
@@ -123,7 +141,6 @@
     <!--Fin del Footer -->
 
     <!-- Modal para mostrar mensajes -->
-    <!--Modal: modalMensajes-->
     <div class="modal fade" id="modalMensajesM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
@@ -148,7 +165,7 @@
             <!--/.Content-->
         </div>
     </div>
-    <!--Modal: modalPush-->
+
     <!-- Modal Error Validacion Bootstrap -->
     <div id="showErrors" class="col-lg-4 col-md-5 col-sm-6 col-xs-12 showErrorModal">
         <table class="errorModal">
@@ -161,14 +178,69 @@
         </table>
     </div>
 
+    <!-- Modal Acerca de -->
+    <div class="modal fade" id="modalAcercaDe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center text-dark bg-warning">
+                    <p class="heading font-weight-bold h4">Acerca de</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="mt-3 font-weight-bold text-center h4">Acerca de Tak-si</p>
+                    <p class="text-justify">Tak-si fué creado en diciembre de 2020 desarrollado por <a href="#"
+                            id="link_empresa_acerca" target="_blank">Isoft</a>
+                        convirtiéndose en la primera taxi app en conectar directamente a pasajeros con
+                        taxistas.
+                        <br>
+                        Fue lanzado el 15 de junio de 2020 en la cuidad de Comitán de Domínguez del estado de Chiapas
+                    </p>
+
+                    <p class="mt-3 font-weight-bold text-center h4">Datos y Cifras</p>
+                    <p>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Fundación: </span><span
+                                id="fundacion_acerca"></span></li>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Lugar: </span><span
+                                id="lugar_acerca"></span>
+                        </li>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Equipo:</span><br>
+                            <span id="equipo_acerca"></span>
+                        </li>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de colaboradores: </span><span
+                                id="num_colab_acerca"></span>
+                        </li>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de oficinas: </span><span
+                                id="num_oficina_acerca"></span></li>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de taxis registrados:
+                            </span><span id="num_taxis_acerca"></span></li>
+                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de pasajeros registrados:
+                            </span><span id="num_pasajero_acerca"></span></li>
+                    </p>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <a type="button" class="btn m-auto  btn-warning text-dark" data-dismiss="modal">Aceptar</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
     <!-- Librerias -->
     <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src=" ../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
+    <script src="../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
     <script src="../../angular/angular.min.js"></script>
     <script src="../../angular/angular-ui-router.min.js"></script>
-    <script src=" ../../librerias/bootstrap/js/bootstrap.min.js"> </script>
+    <script src="../../librerias/bootstrap/js/bootstrap.min.js"> </script>
     <script src="../../js/Principal/app.js"></script>
     <script src="../../js/Principal/principal.js"></script>
+
 </body>
 
 </html>

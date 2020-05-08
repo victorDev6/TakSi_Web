@@ -685,7 +685,7 @@ function EliminarQueja(id) {
 }
 
 /********************************************************** */
-/*QUEJAS DE USUARIOS
+/*QUEJAS DE CHOFERES
 /*********************************************************** */
 (function BusquedaGeneralBugsChofer() {
   let formatDate;
@@ -729,11 +729,16 @@ function EliminarQueja(id) {
         contadorCosto += 1;
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${contadorCosto}</td>
+              <td class="text-nowrap">${doc.data().estado}</td>
+              <td class="text-nowrap">${doc.data().ciudad}</td>
               <td class="text-nowrap">${formatDate} - ${resulH}</td>
+              <td class="text-nowrap">${doc.data().tipoReporte}</td>
               <td class="text-nowrap text-center">
-              <textarea class="text-justify" rows="3" cols="20">
-              ${doc.data().reporte}</textarea>
+              <textarea class="text-justify" rows="3" cols="20">${
+                doc.data().reporte
+              }</textarea>
               </td>
+              
               <td class="text-nowrap">
               <button class="btn btn-danger btn-sm" 
               onclick="EliminarBugsChofer('${doc.id}')">

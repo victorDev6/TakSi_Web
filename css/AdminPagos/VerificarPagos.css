@@ -1,0 +1,172 @@
+.cajaPadre_admin_p {
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+
+.contenedorhijo_pagos {
+	-webkit-flex: 1 1 400px;
+    -ms-flex: 1 1 400px;
+    flex: 1 1 400px; /*200*/
+}
+
+/*Agregando sobrePosicion de objeto, donde tendra salida la imagen seleccionada*/
+.imgSubida_estilo {
+	width: 75%;
+	height: 190px;
+	background: url("../../Diseno/ICONOS/abrirFoto.svg") no-repeat,
+				linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+	background-position: 95% 166px;
+	background-size: 18px 16px;
+	margin-left: 5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.has-error .imgSubida_estilo {
+    border: 1px solid #a94442 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075)!important;
+}
+
+
+.btn_foto_elim:hover{
+	width: 128px;
+	height: 28px;
+	margin-bottom: 0px;
+}
+.btn_foto_aceptar:hover{
+	width: 128px;
+	height: 28px;
+	margin-bottom: 0px;
+}
+.btn_foto_info:hover{
+	width: 128px;
+	height: 28px;
+	margin-bottom: 0px;
+}
+
+.btn_foto_elim {
+	font-size: 15px;
+	color: #ffffff;
+	font-family: Prototype;
+	background-color: #E30613;
+	border-radius: 15px;
+	width: 120px;
+	height: 24px;
+	margin-left: 9px;
+	cursor: pointer;
+	border: none;
+	margin-top: 9px;
+	margin-bottom: 5px;
+}
+.btn_foto_aceptar {
+	font-size: 15px;
+	color:#ffffff;
+	font-family: Prototype;
+	background-color: #23a84b;
+	border-radius: 15px;
+	width: 120px;
+	height: 274x;
+	margin-left: 9px;
+	cursor: pointer;
+	border: none;
+	margin-top: 9px;
+	margin-bottom: 5px;
+}
+
+.btn_foto_info {
+	font-size: 15px;
+	color:#ffffff;
+	font-family: Prototype;
+	background-color: #409ac4;
+	border-radius: 15px;
+	width: 120px;
+	height: 274x;
+	margin-left: 9px;
+	cursor: pointer;
+	border: none;
+	margin-top: 9px;
+	margin-bottom: 5px;
+}
+
+/* Estilos de modal para mostrar mensajes */
+/* Agrega el borde del contenedor del modal */
+        .modal-content {
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            border-radius: 20px !important;
+        }
+
+        /* Agrega el borde del modal */
+        .modal-header {
+            border-top-left-radius: 20px !important;
+            border-top-right-radius: 20px !important;
+        }
+
+        /* Agrega el color del contenedor del modal */
+        #modalPush {
+            background-color: rgba(238, 235, 235, 0.3) !important;
+		}
+
+		#textoCuerpoModal {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+
+        /* Agrega el color al encabezado del modal y el color de texto */
+        #cabezaModal {
+            color: #ffffff;
+        }
+        /* modal info */
+        #cabezaModalI{
+			color: #ffffff;
+			background-color: #409ac4;
+        }
+
+        /* Agrega el color de texto del boton aceptar del modal */
+        #botonAceptarModalM {
+            color: #ffffff;
+		}
+		#botonAceptarModalMR{
+			color: #ffffff;
+		}
+        #botonCancelarModalM {
+            color: #ffffff;
+		}
+		#botonAceptarModalElim{
+			color: #ffffff;
+		}
+        /* boton modal info */
+        #botonAceptarInfo{
+			color: #ffffff;
+			background-color: #409ac4;
+		}
+
+/* clase de tipo de letra del modal de mostrar info */
+.tipoLetra{
+	font-size: 17px;
+	font-family: serif;
+}
+
+.texto_lista{
+	font-size: 15px;
+	font-family: serif;
+}
+
+/* Grosor de borde de las fotos que identifica
+si esta pendiente, rechazado o aceptado */
+.borderSolido{
+	border: 3px solid;
+}

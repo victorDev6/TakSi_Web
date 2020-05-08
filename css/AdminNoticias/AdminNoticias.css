@@ -22,10 +22,25 @@ background-color: #d6d0ce;
     align-items: stretch;
 }
 
+.cajaPadre_admin_n2 {
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+
 .contenedorhijo_noticias {
-	-webkit-flex: 1 1 400px;
-    -ms-flex: 1 1 400px;
-    flex: 1 1 400px; /*200*/
+	-webkit-flex: 0 1 400px;
+    -ms-flex: 0 1 400px;
+    flex: 0 1 400px; /*200*/
 }
 
 #imagen_noticia {

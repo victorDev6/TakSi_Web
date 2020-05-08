@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  setTimeout(function() {
+$(document).ready(function () {
+  setTimeout(function () {
     $("#loader").fadeIn(500);
     $("#loader").fadeOut(500);
   }, 1);
@@ -7,7 +7,7 @@ $(document).ready(function() {
   /********************************************************** */
   /*CAMBIAR ICONO DEL OJO DE CAMPOS PASSWORD
 /*********************************************************** */
-  $("#mostrar1").click(function() {
+  $("#mostrar1").click(function () {
     var pass = document.getElementById("pass_prop");
     if (pass.type === "password") {
       pass.type = "text";
@@ -19,7 +19,7 @@ $(document).ready(function() {
       document.getElementById("iconoOjo").classList.add("fa-eye-slash");
     }
   });
-  $("#mostrar2").click(function() {
+  $("#mostrar2").click(function () {
     //Cambiar icono del ojo de la caja de password
     var pass = document.getElementById("pass2_prop");
     if (pass.type === "password") {
@@ -45,7 +45,7 @@ $(document).ready(function() {
       storageBucket: "taksi-d543c.appspot.com",
       messagingSenderId: "3651890584",
       appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-      measurementId: "G-6VDL057TWQ"
+      measurementId: "G-6VDL057TWQ",
     });
   } catch (err) {
     if (!/already exists/.test(err.message)) {
@@ -61,7 +61,7 @@ $(document).ready(function() {
   /********************************************************** */
   /*CLICK AL BOTON CONTINUAR
 /*********************************************************** */
-  $("#btn_add_prop").click(function(e) {
+  $("#btn_add_prop").click(function (e) {
     e.preventDefault();
     limpiarModalErrores();
     var validar = $("#formularioRegistro")
@@ -125,13 +125,15 @@ $(document).ready(function() {
         num_consesion: num_cons_prop,
         num_taxis: cant_tax_prop,
         telefono: tel_prop,
-        verifEmail: verificacionEmail
+        fecha: firebase.firestore.FieldValue.serverTimestamp(),
+        verifEmail: verificacionEmail,
+        status: "true",
       })
-      .then(function(docRef) {
+      .then(function (docRef) {
         verficar();
         LimpiarCampos(); //Limpia los campos
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error("Error adding document: ", error);
         mensajeM = `¡Error de comunicación!<br>
             Inténtalo mas tarde`;
@@ -171,8 +173,8 @@ $(document).ready(function() {
     db.collection("folios_consesion")
       .where("folio", "==", num_cons_prop)
       .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
           if (querySnapshot._snapshot.docChanges.length != 0) {
             statusFolioExis = true;
           }
@@ -184,21 +186,21 @@ $(document).ready(function() {
             .where("num_consesion", "==", num_cons_prop)
             .where("verifEmail", "==", "true")
             .get()
-            .then(function(querySnapshot2) {
-              querySnapshot2.forEach(function(doc) {
+            .then(function (querySnapshot2) {
+              querySnapshot2.forEach(function (doc) {
                 if (querySnapshot2._snapshot.docChanges.length != 0) {
                   validFolioProp = true;
                 }
               });
 
               if (!validFolioProp) {
-                setTimeout(function() {
+                setTimeout(function () {
                   $("#loader").fadeIn(500);
                   $("#loader").fadeOut(500);
                 }, 1);
                 registrarAuth();
               } else {
-                setTimeout(function() {
+                setTimeout(function () {
                   $("#loader").fadeIn(500);
                   $("#loader").fadeOut(500);
                 }, 1);
@@ -208,7 +210,7 @@ $(document).ready(function() {
                 mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
               }
             })
-            .catch(function(error) {
+            .catch(function (error) {
               console.log("Error");
             });
           //Fin
@@ -219,7 +221,7 @@ $(document).ready(function() {
           mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log("Error getting documents: ", error);
         mensajeM = `¡Error de comunicación!<br>
             Inténtalo mas tarde`;
@@ -237,8 +239,8 @@ $(document).ready(function() {
     let $selectEdo = $("#edo_prop");
     db.collection("estado_ciudad")
       .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
           estados.push(doc.id);
         });
         for (const iterator of estados) {
@@ -250,7 +252,7 @@ $(document).ready(function() {
     /**Accion que realiza el selectEdo para buscar ciudad*/
     const selectEdo = document.querySelector("#edo_prop");
     const selectCd = document.querySelector("#cd_prop");
-    selectEdo.addEventListener("change", event => {
+    selectEdo.addEventListener("change", (event) => {
       selectCd.innerHTML = "";
       selectCd.innerHTML = `<option value="" selected>Ciudad</option>`;
       ObtenerCd(event.target.value);
@@ -263,12 +265,12 @@ $(document).ready(function() {
     var docRef = db.collection("estado_ciudad").doc(estado);
     docRef
       .get()
-      .then(function(doc) {
+      .then(function (doc) {
         if (doc.exists) {
           obj = doc.data();
           obj = Object.values(obj);
           arrayLibreComa = obj.toString().split(",");
-          arrayLibreComa.forEach(function(valor, indice, array) {
+          arrayLibreComa.forEach(function (valor, indice, array) {
             $selectCd.append(`<option value="${valor}">${valor}</option>`);
           });
         } else {
@@ -276,7 +278,7 @@ $(document).ready(function() {
           $selectCd.append(`<option selected>Ciudad</option>`);
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log("Error getting document:", error);
         mensajeM = `¡Error de comunicación!<br>
             Inténtalo mas tarde`;
@@ -288,7 +290,7 @@ $(document).ready(function() {
 
   /********************************************************** */
   /*SI ESTA TODO BIEN, SE REGISTRA LA CUENTA EN AUTH Y 
-SE GUARDAN LOS DATOS AL MISMO TIEMPO
+  SE GUARDAN LOS DATOS AL MISMO TIEMPO
 /*********************************************************** */
   function registrarAuth() {
     let mail_prop = document.getElementById("mail_prop").value;
@@ -299,10 +301,10 @@ SE GUARDAN LOS DATOS AL MISMO TIEMPO
     firebase
       .auth()
       .createUserWithEmailAndPassword(mail_prop, pass_prop)
-      .then(function() {
+      .then(function () {
         SalvarDatos();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         switch (errorCode) {
@@ -347,19 +349,19 @@ SE GUARDAN LOS DATOS AL MISMO TIEMPO
 
   /********************************************************** */
   /*UNA VEZ QUE SE HAYA REGISTRADO SE EJECUTA ESTA FUNCION
-PARA ENVIAR EMAIL AL USER Y QUE LO ACTIVE
+    PARA ENVIAR EMAIL AL USER Y QUE LO ACTIVE
 /*********************************************************** */
   function verficar() {
     var user = firebase.auth().currentUser;
     user
       .sendEmailVerification()
-      .then(function() {
+      .then(function () {
         let mensajeM = `Registro exitoso <br> Verifique el correo para la activación de su cuenta`;
         let colorTodos = "#4caf50";
         let linkImagen = "../../Diseno/ICONOS/icon_modal_correct.svg";
         mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
         let mensajeM = `¡Error! <br> El email no se envió`;
         let colorTodos = "#e24c4b";

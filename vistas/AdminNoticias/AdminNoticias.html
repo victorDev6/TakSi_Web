@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,161 +10,45 @@
 
 <body>
     <div class="container-fluid">
-        <!-- caja padre -->
+
         <div class="row justify-content-start mt-4">
             <div class="col-lg-3 ml-lg-5">
                 <p class="h3"><img src="../../Diseno/ICONOS/noticia.svg" alt="" width="30px" height="30px">
                     Noticias
-                </p c>
+                </p>
             </div>
         </div>
+        <!-- caja padre flex-->
         <div class="row cajaPadre_admin_n" align="center">
+            <!-- Clase Hijo -->
             <div class="contenedorhijo_noticias mt-3">
-                <div class="" id="contenedor_imagen">
+                <div class="contenedor_imagen" id="contenedor_imagen">
                     <div class="form-group">
-                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia">
-                        <img class="selectorImagen imgSubida_estilo" id="imgSubida" src="">
+                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia1">
+                        <img class="selectorImagen imgSubida_estilo" id="imgSubida1" src="">
                     </div>
                 </div>
-                <div class="caja_texto_noticia">
-                    <textarea class="caja_texto_noticia m-0 px-2" rows="4" cols="10"
-                        placeholder="Mensaje..."></textarea>
-                </div>
-
-                <button class="btn btn_noticia_admin btn_noticia_elim p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
-                    ELIMINAR
-                </button>
-
-                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> GUARDAR
-                </button>
-            </div>
-
-            <!-- Otra caja -->
-            <div class="contenedorhijo_noticias mt-3">
-                <div class="" id="contenedor_imagen">
-                    <div class="form-group">
-                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia2">
-                        <img class="selectorImagen imgSubida_estilo" id="imgSubida2" src="">
-                    </div>
+                <div class="my-2" id="progreso_img">
                 </div>
                 <div class="caja_texto_noticia">
-                    <textarea class="caja_texto_noticia m-0 px-2" rows="4" cols="10"
-                        placeholder="Mensaje..."></textarea>
+                    <textarea class="caja_texto_noticia m-0 px-2 text-center" rows="4" cols="10"
+                        placeholder="Mensaje..." id="descripcion_noticia"></textarea>
                 </div>
-
-                <button class="btn btn_noticia_admin btn_noticia_elim p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
-                    ELIMINAR
-                </button>
-
-                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> GUARDAR
+                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="button"
+                    id="btn_subir_noti">
+                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> SUBIR IMG
                 </button>
             </div>
-
-            <!-- Otra caja -->
-            <div class="contenedorhijo_noticias mt-3">
-                <div class="" id="contenedor_imagen">
-                    <div class="form-group">
-                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia3">
-                        <img class="selectorImagen imgSubida_estilo" id="imgSubida3" src="">
-                    </div>
-                </div>
-                <div class="caja_texto_noticia">
-                    <textarea class="caja_texto_noticia m-0 px-2" rows="4" cols="10"
-                        placeholder="Mensaje..."></textarea>
-                </div>
-
-                <button class="btn btn_noticia_admin btn_noticia_elim p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
-                    ELIMINAR
-                </button>
-
-                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> GUARDAR
-                </button>
-            </div>
-
-            <!-- Otra caja -->
-            <div class="contenedorhijo_noticias mt-3">
-                <div class="" id="contenedor_imagen">
-                    <div class="form-group">
-                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia4">
-                        <img class="selectorImagen imgSubida_estilo" id="imgSubida4" src="">
-                    </div>
-                </div>
-                <div class="caja_texto_noticia">
-                    <textarea class="caja_texto_noticia m-0 px-2" rows="4" cols="10"
-                        placeholder="Mensaje..."></textarea>
-                </div>
-
-                <button class="btn btn_noticia_admin btn_noticia_elim p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
-                    ELIMINAR
-                </button>
-
-                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> GUARDAR
-                </button>
-            </div>
-
-            <!-- Otra caja -->
-            <div class="contenedorhijo_noticias mt-3">
-                <div class="" id="contenedor_imagen">
-                    <div class="form-group">
-                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia5">
-                        <img class="selectorImagen imgSubida_estilo" id="imgSubida5" src="">
-                    </div>
-                </div>
-                <div class="caja_texto_noticia">
-                    <textarea class="caja_texto_noticia m-0 px-2" rows="4" cols="10"
-                        placeholder="Mensaje..."></textarea>
-                </div>
-
-                <button class="btn btn_noticia_admin btn_noticia_elim p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
-                    ELIMINAR
-                </button>
-
-                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> GUARDAR
-                </button>
-            </div>
-
-            <!-- Otra caja -->
-            <div class="contenedorhijo_noticias mt-3">
-                <div class="" id="contenedor_imagen">
-                    <div class="form-group">
-                        <input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenNoticia6">
-                        <img class="selectorImagen imgSubida_estilo" id="imgSubida6" src="">
-                    </div>
-                </div>
-                <div class="caja_texto_noticia">
-                    <textarea class="caja_texto_noticia m-0 px-2" rows="4" cols="10"
-                        placeholder="Mensaje..."></textarea>
-                </div>
-
-                <button class="btn btn_noticia_admin btn_noticia_elim p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
-                    ELIMINAR
-                </button>
-
-                <button class="btn btn_noticia_admin btn_noticia_subir p-0" role="link" type="submit">
-                    <img src="../../Diseno/ICONOS/subir.svg" class="iconos_admin_j"> GUARDAR
-                </button>
-            </div>
-
+            <!-- Caja Father  -->
 
         </div>
 
-        <!-- Caja Father  -->
-    </div>
+        <!-- caja padre para noticias flex-->
+        <div class="row cajaPadre_admin_n2" align="center" id="agregarHijosNoticia">
 
+        </div>
 
-    <!-- <script src="../../librerias/popper/popper.min.js"></script> -->
-    <script src="../../js/AdminNoticias/AdminNoticias.js"></script>
+        <script src="../../js/AdminNoticias/AdminNoticias.js"></script>
 
 </body>
 
