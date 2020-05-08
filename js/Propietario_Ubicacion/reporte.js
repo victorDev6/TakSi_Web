@@ -3,7 +3,6 @@ $(document).ready(function () {
 	/*************************************************************************/
 	/**	        CALENDARIO VALIDANDO FECHA MINIMA-MAXIMA					**/
 	/*************************************************************************/
-
 	$(function () {
 		$('#date-end').bootstrapMaterialDatePicker({
 			weekStart: 0,
@@ -19,7 +18,6 @@ $(document).ready(function () {
 			$('#date-end').bootstrapMaterialDatePicker('setMinDate', date);
 		});
 	});
-
 	/*************************************************************************/
 	/**	        						FIREBASE							**/
 	/*************************************************************************/
@@ -217,8 +215,10 @@ $(document).ready(function () {
 			//alert("value p: " + placa + " PLACA: " + placaTxt + " value c: " + chofer + " CHOFER: " + choferTxt + " fecha1: " + fecha1 + " fecha2: " + fecha2);
 			var nueva1 = fecha1.split(" ")[0];
 			var format1 = nueva1.split("/");
+
 			var nueva2 = fecha2.split(" ")[0];
 			var format2 = nueva2.split("/");
+
 			var ultima1 = format1[1] + '/' + format1[0] + '/' + format1[2];
 			var ultima2 = format2[1] + '/' + format2[0] + '/' + format2[2] + " " + "24:00:00";
 			//console.log(ultima2);

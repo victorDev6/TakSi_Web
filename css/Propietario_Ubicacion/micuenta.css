@@ -220,7 +220,7 @@ tr:last-child td:last-child {
 	box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
 }
 
-.modal-header {
+.modal-header-micuenta {
 	background-color: #d6d0ce;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
@@ -233,7 +233,7 @@ tr:last-child td:last-child {
 
 }
 
-.modal-footer {
+.modal-footer-micuenta {
 	background-color: #d6d0ce;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;

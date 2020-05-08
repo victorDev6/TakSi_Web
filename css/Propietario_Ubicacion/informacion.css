@@ -9,9 +9,6 @@
 }
 
 
-
-
-
 /* ---------------------------------------------------- */
 /*  TITULO PRINCIPLA           						  	*/
 /*----------------------------------------------------- */
@@ -82,8 +79,9 @@ div.ng-scope.tutulo h2 {
 /* ---------------------------------------------------- */
 /*  TAMAÑO BOTONES SM: Y PADDING DEL ICONO				*/
 /*----------------------------------------------------- */
-
-a.btnAgregarChofer {
+a.btnAgregarNvotaxi,
+a.btnAgregarChofer,
+a.btnAgregarChofer2{
 	font-size: .7em;
 }
 
@@ -94,7 +92,9 @@ a.btnAgregarChofer {
 /* ---------------------------------------------------- */
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
-.btnAgregarChofer {
+.btnAgregarNvotaxi,
+.btnAgregarChofer,
+.btnAgregarChofer2{
 	background: #535050 !important;
 	color: #ffffff !important;
 	border: 1.5px solid #fff !important;
@@ -103,7 +103,9 @@ a.btnAgregarChofer {
 
 }
 
-.btnAgregarChofer:hover {
+.btnAgregarNvotaxi:hover,
+.btnAgregarChofer:hover,
+.btnAgregarChofer2:hover{
 	background: #898484 !important;
 	color: #ffffff !important;
 	border: 1.5px solid #fff !important;
@@ -189,4 +191,39 @@ a.btnAgregarChofer {
 .eliminar:hover {
 	width: 40px;
 	height: 40px;
+}
+
+
+
+
+.modal-content-Informacion {
+	border-radius: 20px 20px;
+	-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+	-moz-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+	box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+
+}
+
+
+.modal-header-Ntaxi {
+	background-color: #d6d0ce;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-width: 0px;
+}
+
+.modal-footer-Ntaxi {
+	border-top-width: 0px;
+	background-color: #d6d0ce;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+
+
+/* ---------------------------------------------------- */
+/*  			CURSOR BOTONES G-E-E      				*/
+/*----------------------------------------------------- */
+.clasedesactivarB{
+	cursor: not-allowed !important;
 }
