@@ -43,30 +43,40 @@ $(document).ready(function () {
 							$("#editar" + conuntvariable).removeClass("clasedesactivarB");
 							$("#eliminar" + conuntvariable).removeClass("clasedesactivarB");
 
-							document.getElementById("eliminar" + conuntvariable).disabled = false;
-							document.getElementById("editar" + conuntvariable).disabled = false;
+							//document.getElementById("eliminar" + conuntvariable).disabled = false;
+							//document.getElementById("editar" + conuntvariable).disabled = false;
 
 
-							var el= document.getElementById("eliminar" + conuntvariable).disabled = false;
-							var ed= document.getElementById("editar" + conuntvariable).disabled = false;
+							//$("#eliminar").attr('disabled','disabled');
+							//$("#editar").attr('disabled','disabled');
 
-							//para desactivar btn eliminar y editar cuando no se carga el DOM HTML
-							if (el == null ) {
-									document.getElementById("eliminar" + conuntvariable).disabled = false;
-							}
-
-							if (ed == null ) {
-							        document.getElementById("editar" + conuntvariable).disabled = false;
-							}
+							$("#eliminar").removeAttr('disabled');
+							$("#editar").removeAttr('disabled');
 
 
-							document.getElementById("tc" + conuntvariable).disabled = true;
+
+
+							$("#tc"+ conuntvariable).attr('disabled','disabled');
+							$("#cajaNtaxi"+ conuntvariable).attr('disabled','disabled');
+							$("#cajaPlaca"+ conuntvariable).attr('disabled','disabled');
+							$("#jacaMarca"+ conuntvariable).attr('disabled','disabled');
+							$("#cajaModelo"+ conuntvariable).attr('disabled','disabled');
+							$("#cajaNSerie"+ conuntvariable).attr('disabled','disabled');
+							$("#cajaSitio"+ conuntvariable).attr('disabled','disabled');
+
+							//Para habilitar de nuevo, el método adecuado es usar .removeAttr()
+							//$("input").removeAttr('disabled');
+							//$("#eliminar").removeAttr('disabled');
+							//$("#editar").removeAttr('disabled');
+
+
+							/*document.getElementById("tc" + conuntvariable).disabled = true;
 							document.getElementById("cajaNtaxi" + conuntvariable).disabled = true;
 							document.getElementById("cajaPlaca" + conuntvariable).disabled = true;
 							document.getElementById("jacaMarca" + conuntvariable).disabled = true;
 							document.getElementById("cajaModelo" + conuntvariable).disabled = true;
 							document.getElementById("cajaNSerie" + conuntvariable).disabled = true;
-							document.getElementById("cajaSitio" + conuntvariable).disabled = true;
+							document.getElementById("cajaSitio" + conuntvariable).disabled = true;*/
 
 							$("#selectSitio" + conuntvariable).removeClass("d-block");
 							$("#selectSitio" + conuntvariable).addClass("d-none");
@@ -81,13 +91,24 @@ $(document).ready(function () {
 							cajaNseri = docnumtaxi.data().numero_serie;
 							idFirebaseTaxi = docnumtaxi.id;
 
-							document.getElementById("cajaNtaxi" + conuntvariable).value = cajaTax;
+							/*document.getElementById("cajaNtaxi" + conuntvariable).value = cajaTax;
 							document.getElementById("cajaPlaca" + conuntvariable).value = cajaPlac;
 							document.getElementById("jacaMarca" + conuntvariable).value = cajaMrc;
 							document.getElementById("cajaModelo" + conuntvariable).value = cajaModel;
 							document.getElementById("cajaNSerie" + conuntvariable).value = cajaNseri;
 							document.getElementById("cajaSitio" + conuntvariable).value = cajaSit;
 							document.getElementById("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
+							*/
+
+
+							$("#cajaNtaxi" + conuntvariable).val(cajaTax);
+							$("#cajaPlaca" + conuntvariable).val(cajaPlac);
+							$("#jacaMarca" + conuntvariable).val(cajaMrc);
+							$("#cajaModelo" + conuntvariable).val(cajaModel);
+							$("#cajaNSerie" + conuntvariable).val(cajaNseri);
+							$("#cajaSitio" + conuntvariable).val(cajaSit);
+							$("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
+
 
 						} else {
 							console.log("No such document!");
@@ -98,28 +119,14 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  	var numtaxisaltas;
  	var idDocumento;
  	var paso;
- 	db.collection("dueños").where("correo", "==", emailP).onSnapshot(function (queryNumtaxi) {
+ 	db.collection("reg_prop_prin_web").where("email", "==", emailP).onSnapshot(function (queryNumtaxi) {
 
 		//ConsultaryllenarCampos();
  		queryNumtaxi.forEach(function (docnumtaxi) {
- 			numtaxisaltas = docnumtaxi.data().no_taxis;
+ 			numtaxisaltas = docnumtaxi.data().num_taxis;
  			idDocumento = docnumtaxi.id;//id colleccion dueño
  			$('.container').empty().prepend(); //limpiar antes de crear
 
@@ -218,10 +225,10 @@ $(document).ready(function () {
 							<button class="btn guardar d-block m-auto" id="tc' + paso + '"></button>\
 						</div>\
 						<div class="col-4 col-sm-4  col-md-12 col-lg-8 pb-md-4">\
-							<button class="btn editar d-block m-auto" id="editar' + paso + '" disabled></button>\
+							<button class="btn editar d-block m-auto" id="editar' + paso + '" ></button>\
 						</div>\
 						<div class="col-4 col-sm-4  col-md-12 col-lg-8">\
-							<button class="btn eliminar d-block m-auto" id="eliminar' + paso + '" disabled></button>\
+							<button class="btn eliminar d-block m-auto" id="eliminar' + paso + '" ></button>\
 						</div>\
 					</div>\
 				</div>\
@@ -233,6 +240,8 @@ $(document).ready(function () {
 
 			//document.getElementById("editar" + paso).disabled = true;
 			//document.getElementById("eliminar" + paso).disabled = true;
+			$("#eliminar"+ paso).attr('disabled','disabled');
+			$("#editar"+ paso).attr('disabled','disabled');
 				ConsultaryllenarCampos();
 			}
 
@@ -269,8 +278,8 @@ $(document).ready(function () {
  				$('#confirmaragregartaxi').modal('hide');
  				e.preventDefault(); //prevenir clicks
  				if (x <= campos_max) {
- 					db.collection("dueños").doc(idDocumento).update({
- 							"no_taxis": x
+ 					db.collection("reg_prop_prin_web").doc(idDocumento).update({
+ 							"num_taxis": x
  						}).then(function () {
  							console.log("¡actualizado exitosamente!");
  							//ConsultaryllenarCampos();
