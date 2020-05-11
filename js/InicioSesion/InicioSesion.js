@@ -176,6 +176,8 @@ $(document).ready(function () {
         // User is signed in.
         let email = user.email;
         let verifiEmail = user.emailVerified;
+        console.log(user.email);
+        console.log(user.emailVerified);
 
         BuscarStatus(email);
 
@@ -185,6 +187,9 @@ $(document).ready(function () {
             if (checkAd) {
               window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
             } else {
+              // alert("entro");
+              window.location =
+                "../../vistas/Propietario_Ubicacion/principal_propietario.html";
               buscarIdDoc(email);
               MostrarBienvenida(user);
               Limpiar();

@@ -160,9 +160,10 @@ tr:last-child td:last-child {
 /* ---------------------------------------------------- */
 /*  BOTON ACPTAR-NO GRACIAS MODA-TARJETA: 				*/
 /* ---------------------------------------------------- */
-.modal {
+/* comente esto porque afecta mi modal de pagos */
+/* .modal {
 	height: auto;
-}
+} */
 
 
 .aceptar {

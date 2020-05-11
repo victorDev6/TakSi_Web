@@ -166,7 +166,9 @@ function BusquedaGeneral() {
   let segundosActual = Math.floor(Date.now() / 1000);
   let segundosIni = 0;
   let segundosFin = 0;
-  let textoStatus, textoClase, codigoBtnElim;
+  let textoStatus = "",
+    textoClase = "",
+    codigoBtnElim = "";
 
   db.collection("pagos_realizados")
     .orderBy("fecha_aceptacion", "desc")
@@ -712,6 +714,7 @@ function BuscarTaxiInactivoMes(email) {
 }
 
 function BuscarTaxiGeneralMes(email, montoMes) {
+  let taxisActivos_v = 0;
   let cantTaxi_activo = 0;
   let statusTaxiActivo = false;
   let siHayEdoCd = false;
@@ -731,6 +734,7 @@ function BuscarTaxiGeneralMes(email, montoMes) {
             clasePila = "badge-success";
             mensajeStatus = "Activo";
             codigoInactivo = "";
+            taxisActivos_v += 1;
           } else {
             clasePila = "badge-danger";
             mensajeStatus = "Inactivo";
@@ -754,6 +758,15 @@ function BuscarTaxiGeneralMes(email, montoMes) {
       });
       if (statusTaxiActivo) {
         $("#taxisRegistrados").html(cantTaxi_activo);
+        if (taxisActivos_v === cantTaxi_activo) {
+          //validar si estan todos activos o no
+          $("#mensaje_taxis_activos").removeClass("d-none");
+          $("#contenedor_select").addClass("d-none");
+          $("#ocultar_btn_pago").addClass("d-none");
+        } else {
+          $("#mensaje_taxis_activos").addClass("d-none");
+          $("#contenedor_select").removeClass("d-none");
+        }
       }
     })
     .catch(function (error) {
@@ -802,6 +815,7 @@ function BuscarTaxiInactivoAnio(email) {
 }
 
 function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
+  let taxisActivos_v = 0;
   let cantTaxi_activo = 0;
   let statusTaxiActivo = false;
   let siHayEdoCd = false;
@@ -821,6 +835,7 @@ function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
             clasePila = "badge-success";
             mensajeStatus = "Activo";
             codigoInactivo = "";
+            taxisActivos_v += 1;
           } else {
             clasePila = "badge-danger";
             mensajeStatus = "Inactivo";
@@ -829,7 +844,7 @@ function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
             <br><span class="font-weight-bold">Descuento Acumulado: 
             </span>$${doc.data().suma_descuentos} Pesos
             <br><span class="font-weight-bold">Descuento General: 
-            </span>${descuentoAnio}0%
+            </span>${descuentoAnio}%
             <br><span class="font-weight-bold">Total a Pagar: </span>
             <span class="border-success border-bottom">$${totalPagar} Pesos</span>`;
           }
@@ -846,6 +861,15 @@ function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
       });
       if (statusTaxiActivo) {
         $("#taxisRegistrados").html(cantTaxi_activo);
+        if (taxisActivos_v === cantTaxi_activo) {
+          //validar si estan todos activos o no
+          $("#mensaje_taxis_activos").removeClass("d-none");
+          $("#contenedor_select").addClass("d-none");
+          $("#ocultar_btn_pago").addClass("d-none");
+        } else {
+          $("#mensaje_taxis_activos").addClass("d-none");
+          $("#contenedor_select").removeClass("d-none");
+        }
       }
     })
     .catch(function (error) {
@@ -900,8 +924,10 @@ $("#selectTaxis").change(function () {
   let cajaSelect = document.getElementById("cajaTaxiSelect").value;
   if (cajaSelect === "") {
     $("#mensajeSeleccion").removeClass("d-none");
+    $("#ocultar_btn_pago").addClass("d-none");
   } else {
     $("#mensajeSeleccion").addClass("d-none");
+    $("#ocultar_btn_pago").removeClass("d-none");
   }
 });
 
@@ -950,30 +976,33 @@ function RecuperarFechaBD(idPago) {
 
 //Checar fecha
 function ValidarFecha(idPago, segundos, OpcionPago) {
-  let dia2 = 0;
-  let mes2 = 0;
-  let anio2 = 0;
+  let dia2 = 0,
+    mes2 = 0,
+    anio2 = 0;
+
+  //Se obtiene las fecha actual
   let date = new Date(segundos * 1000);
   let mes = date.getMonth();
   let anio = date.getFullYear();
   let dia = date.getDate();
 
+  //Array que contiene los dias del mes
   let days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   if (new Date(anio, 1, 29).getDate() == 29) days_in_months[1] = 29;
 
   //Obtener dias de mes actual y siguiente mes
-  let diasActual = days_in_months[mes]; //31
-  let diasSig = days_in_months[mes + 1]; //30
+  let diasActual = days_in_months[mes];
+  let diasSig = days_in_months[mes + 1];
 
-  if (diasActual > diasSig) {
-    let restaDias = diasActual - diasSig; //1
-    //Aumentar lo que es el dia y mes
+  //Se valida si dia actual es mayor a la cantidad de dias del mes
+  //siguiente
+  if (dia > diasSig) {
+    let restaDias = diasActual - diasSig;
     anio2 = anio;
     mes2 = mes + 2;
     dia2 = restaDias;
     mes = mes + 1;
   } else {
-    //Solo aumentar el mes
     anio2 = anio;
     mes2 = mes + 2;
     dia2 = dia;
@@ -983,45 +1012,39 @@ function ValidarFecha(idPago, segundos, OpcionPago) {
   if (mes < 10) {
     mes = "0" + mes;
   }
-
   if (dia < 10) {
     dia = "0" + dia;
   }
-
   if (mes2 < 10) {
     mes2 = "0" + mes2;
   }
-
   if (dia2 < 10) {
     dia2 = "0" + dia2;
   }
 
   let fechaCompletaActual;
   let fechaCompletaSiguiente;
+
   if (OpcionPago === "Mensual") {
-    fechaCompletaActual = anio + "-" + mes + "-" + dia; //2020-04-23
+    fechaCompletaActual = anio + "-" + mes + "-" + dia;
     fechaCompletaSiguiente = anio2 + "-" + mes2 + "-" + dia2;
   } else if (OpcionPago === "Anual") {
-    //sumarle a anio2 +1
     anio2 = anio2 + 1;
-    fechaCompletaActual = anio + "-" + mes + "-" + dia; //2020-04-23
+    fechaCompletaActual = anio + "-" + mes + "-" + dia;
     fechaCompletaSiguiente = anio2 + "-" + mes + "-" + dia;
   }
 
-  let fechaInicio = new Date(fechaCompletaActual).getTime(); //"2020-03-31"
-  let fechaFin = new Date(fechaCompletaSiguiente).getTime(); //"2020-04-21"
+  //Se convieten en segundos las fechas asignadas
+  let fechaInicio = new Date(fechaCompletaActual).getTime();
+  let fechaFin = new Date(fechaCompletaSiguiente).getTime();
 
+  //Se obtiene el intervao de dias
   var diff = fechaFin - fechaInicio;
   let intervaloDias = diff / (1000 * 60 * 60 * 24);
 
+  //se muiltiplica los segundos actuales por el intervalo y se guarda
   let totalSegundosBD = segundos;
   let totalSegundosAdd = totalSegundosBD + 86400 * intervaloDias;
-
-  console.log("Total segundos BD: " + totalSegundosBD);
-  console.log("Total segundos Local: " + totalSegundosAdd);
-  console.log("Intervalo de dias:" + intervaloDias);
-  console.log("Fecha inicio: " + fechaInicio);
-  console.log("Fecha Fin: " + fechaFin);
 
   GuardarSegFechas(idPago, totalSegundosBD, totalSegundosAdd);
 }

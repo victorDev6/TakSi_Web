@@ -585,9 +585,11 @@ function RecuperarFechaBD(idTaxi, opcionPago) {
 
 //Checar fecha
 function ValidarFecha(idTaxi, segundos, opcionPago) {
-  let dia2 = 0;
-  let mes2 = 0;
-  let anio2 = 0;
+  let dia2 = 0,
+    mes2 = 0,
+    anio2 = 0;
+
+  //Se obtiene las fecha actual
   let date = new Date(segundos * 1000);
   let mes = date.getMonth();
   let anio = date.getFullYear();
@@ -600,15 +602,15 @@ function ValidarFecha(idTaxi, segundos, opcionPago) {
   let diasActual = days_in_months[mes]; //30
   let diasSig = days_in_months[mes + 1]; //31
 
-  if (diasActual > diasSig) {
-    let restaDias = diasActual - diasSig; //1
-    //Aumentar lo que es el dia y mes
+  //Se valida si dia actual es mayor a la cantidad de dias del mes
+  //siguiente
+  if (dia > diasSig) {
+    let restaDias = diasActual - diasSig;
     anio2 = anio;
     mes2 = mes + 2;
     dia2 = restaDias;
     mes = mes + 1;
   } else {
-    //Solo aumentar el mes
     anio2 = anio;
     mes2 = mes + 2;
     dia2 = dia;
@@ -618,52 +620,41 @@ function ValidarFecha(idTaxi, segundos, opcionPago) {
   if (mes < 10) {
     mes = "0" + mes;
   }
-
   if (dia < 10) {
     dia = "0" + dia;
   }
-
   if (mes2 < 10) {
     mes2 = "0" + mes2;
   }
-
   if (dia2 < 10) {
     dia2 = "0" + dia2;
   }
 
-  //Convertir el monto en numero
-  //montoBD = parseInt(montoBD);
   let fechaCompletaActual;
   let fechaCompletaSiguiente;
+
   if (opcionPago === "Mensual") {
     fechaCompletaActual = anio + "-" + mes + "-" + dia;
     fechaCompletaSiguiente = anio2 + "-" + mes2 + "-" + dia2;
   } else if (opcionPago === "Anual") {
-    //sumarle a anio2 +1
     anio2 = anio2 + 1;
     fechaCompletaActual = anio + "-" + mes + "-" + dia;
     fechaCompletaSiguiente = anio2 + "-" + mes + "-" + dia;
   }
 
+  //Se convieten en segundos las fechas asignadas
   let fechaInicio = new Date(fechaCompletaActual).getTime();
   let fechaFin = new Date(fechaCompletaSiguiente).getTime();
 
+  //Se obtiene el intervao de dias
   var diff = fechaFin - fechaInicio;
   let intervaloDias = diff / (1000 * 60 * 60 * 24);
-  //console.log("Esto es la diferencia de dias");
-  //console.log("Fecha de Firebase: " + fechaCompletaActual);
-  //console.log("Fecha dentro de un mes: " + fechaCompletaSiguiente);
-  //console.log(intervaloDias);
 
+  //se muiltiplica los segundos actuales por el intervalo y se guarda
   let totalSegundosBD = segundos;
   let totalSegundosAdd = totalSegundosBD + 86400 * intervaloDias;
 
   GuardarSegFechas(idTaxi, totalSegundosBD, totalSegundosAdd);
-
-  let fechaEnBD = ConvertirFechas(totalSegundosBD);
-  let fechaEnLocal = ConvertirFechas(totalSegundosAdd);
-  //console.log("Fecha en BD: " + fechaEnBD);
-  //console.log("Fecha en Local: " + fechaEnLocal);
 }
 
 //Guardar los segundos para comparar

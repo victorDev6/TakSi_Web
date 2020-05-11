@@ -124,7 +124,7 @@ function SubirFotoFirebase() {
       // Handle unsuccessful uploads
       $("#loaderFoto").hide();
       mensajeM = `<span>Error de Comunicación</span>`;
-      ShowModalMensajes(mensajeM);
+      ShowModalMensajes(mensajeM, "0");
     },
     function () {
       uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
@@ -173,14 +173,13 @@ function GuardarDatos(url) {
       mensajeM = `<span class="text-info">¡Solicitud enviada correctamente!</span><br><br>
                   <span class="text-info">Esperé entre 2 a 3 horas</span><br>
                   <span class="text-info">El equipo verificará sus datos si son veridicos y se activará su cuenta</span>`;
-      ShowModalMensajes(mensajeM);
-      //window.location = "!#/Informacion"; //redirige a informacion cuando acabe el envio
+      ShowModalMensajes(mensajeM, "1");
     })
     .catch(function (error) {
       $("#loaderFoto").hide();
       console.error("Error adding document: ", error);
       mensajeM = `<span>Error de Comunicación</span>`;
-      ShowModalMensajes(mensajeM);
+      ShowModalMensajes(mensajeM, "0");
     });
 }
 /********************************************************** */
@@ -212,7 +211,7 @@ $("#selectTaxis").change(function () {
 $("#btn_continuar_pago").click(function (e) {
   e.preventDefault();
   let mensaje = `<span class="text-info">Ahora suba la foto de su ticket de pago, coherente con lo que seleccionó.</span>`;
-  ShowModalMensajes(mensaje);
+  ShowModalMensajes(mensaje, "0");
   $("#ocul_btn_enviar").removeClass("d-none");
   $("#ocul_btn_continuar").addClass("d-none");
   $("#oculCajaImg").removeClass("d-none");
@@ -297,7 +296,7 @@ function BuscarTaxiInactivoMes(email) {
         $("#loaderFoto").hide();
         //AQUI TERMINA EL LLENADO DEL SELECT Y FINALIZA EL LOADER
       } else {
-        console.log("No hay taxis");
+        //console.log("No hay taxis");
       }
     })
     .catch(function (error) {
@@ -307,6 +306,7 @@ function BuscarTaxiInactivoMes(email) {
 
 function BuscarTaxiGeneralMes(email, montoMes) {
   $("#loaderFoto").show();
+  let taxisActivos_v = 0;
   let cantTaxi_activo = 0;
   let statusTaxiActivo = false;
   let siHayEdoCd = false;
@@ -326,6 +326,7 @@ function BuscarTaxiGeneralMes(email, montoMes) {
             clasePila = "badge-success";
             mensajeStatus = "Activo";
             codigoInactivo = "";
+            taxisActivos_v += 1;
           } else {
             clasePila = "badge-danger";
             mensajeStatus = "Inactivo";
@@ -349,6 +350,14 @@ function BuscarTaxiGeneralMes(email, montoMes) {
       });
       if (statusTaxiActivo) {
         $("#taxisRegistrados").html(cantTaxi_activo);
+        if (taxisActivos_v === cantTaxi_activo) {
+          //validar si estan todos activos o no
+          $("#caja_mensaje_activos").removeClass("d-none");
+          $("#caja_mensaje_admin").addClass("d-none");
+        } else {
+          $("#caja_mensaje_activos").addClass("d-none");
+          $("#caja_mensaje_admin").removeClass("d-none");
+        }
         $("#loaderFoto").hide();
       }
     })
@@ -401,6 +410,7 @@ function BuscarTaxiInactivoAnio(email) {
 
 function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
   $("#loaderFoto").show();
+  let taxisActivos_v = 0;
   let cantTaxi_activo = 0;
   let statusTaxiActivo = false;
   let siHayEdoCd = false;
@@ -420,6 +430,7 @@ function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
             clasePila = "badge-success";
             mensajeStatus = "Activo";
             codigoInactivo = "";
+            taxisActivos_v += 1;
           } else {
             clasePila = "badge-danger";
             mensajeStatus = "Inactivo";
@@ -428,7 +439,7 @@ function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
             <br><span class="font-weight-bold">Descuento Acumulado: 
             </span>$${doc.data().suma_descuentos} Pesos
             <br><span class="font-weight-bold">Descuento General: 
-            </span>${descuentoAnio}0%
+            </span>${descuentoAnio}%
             <br><span class="font-weight-bold">Total a Pagar: </span>
             <span class="border-success border-bottom">$${totalPagar} Pesos</span>`;
           }
@@ -445,6 +456,14 @@ function BuscarTaxiGeneralAnio(email, montoAnio, descuentoAnio) {
       });
       if (statusTaxiActivo) {
         $("#taxisRegistrados").html(cantTaxi_activo);
+        if (taxisActivos_v === cantTaxi_activo) {
+          //validar si estan todos activos o no
+          $("#caja_mensaje_activos").removeClass("d-none");
+          $("#caja_mensaje_admin").addClass("d-none");
+        } else {
+          $("#caja_mensaje_activos").addClass("d-none");
+          $("#caja_mensaje_admin").removeClass("d-none");
+        }
         $("#loaderFoto").hide();
       }
     })
@@ -474,8 +493,11 @@ function BuscarCostoMes(estado, ciudad, email) {
           $("#cantMes2").html("$" + montoMes_global);
           $("#cantAnual").html("$" + montoAnual_global);
           $("#cantAnual2").html("$" + montoAnual_global);
-          $("#cantDesc").html(descuento_global + "0%");
-          $("#cantDesc2").html(descuento_global + "0%");
+          $("#cantAnual3").html("= $" + montoAnual_global);
+          $("#cantDesc").html(descuento_global + "%");
+          $("#cantDesc2").html("-" + descuento_global + "%");
+          let montoMas = montoMes_global * 12;
+          $("#cantAnual_mas").html("$" + montoMas + " ");
           $("#modalMostrarOpcion").modal("show");
           $("#loaderFoto").hide();
         }
@@ -567,7 +589,24 @@ DATOS DE COSTO EN EL MODAL DE PAGO
   BuscarEdoCdUser(email_global);
 })();
 
-function ShowModalMensajes(mensajeM) {
+function ShowModalMensajes(mensajeM, valorBoton) {
   $("#textoCuerpoModalPF").html(mensajeM);
   $("#modalMensajesPF").modal("show");
+  if (valorBoton === "1") {
+    $("#btn_modal_PF").click(function (e) {
+      e.preventDefault();
+      $("#modalMensajesPF").modal("hide");
+      setTimeout(redireccionarInfo, 1000);
+    });
+  }
 }
+
+function redireccionarInfo() {
+  window.location = "#!/Informacion"; //redirige a informacion cuando acabe el envio
+}
+//Regresar a la pagina anterior
+$("#btn_regresar_atras").click(function (e) {
+  e.preventDefault();
+  window.location = "#!/Informacion";
+  limpiarModalErrores();
+});

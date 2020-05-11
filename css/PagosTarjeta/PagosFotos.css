@@ -71,7 +71,7 @@ border: 0px solid #000000;
 }
 
 /*Agregando sobrePosicion de objeto, donde tendra salida la imagen seleccionada*/
-.imgSubida_estilo {
+.imgSubida_estilo_pago {
   width: 90%;
   height: 300px;
   background: url("../../Diseno/ICONOS/abrirFoto.svg") no-repeat,
@@ -85,7 +85,7 @@ border: 0px solid #000000;
   border-bottom-right-radius: 10px;
 }
 
-.has-error .imgSubida_estilo {
+.has-error .imgSubida_estilo_pago {
   border: 1px solid #a94442 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
@@ -166,6 +166,14 @@ border: 0px solid #000000;
         #btn_modal_PF {
           color: #ffffff;
           background-color: #00a1da;
+        }
+        /* Tamaño del texto del modal grande de pagos */
+        .tamTextoModalPago{
+          font-size: 15px;
+        }
+        /* Tachado para mostrar en el modal de pagos */
+        .tachado {
+          text-decoration: line-through;
         }
 
 
