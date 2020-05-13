@@ -283,3 +283,50 @@ div.ng-scope.tutulo h2 {
 .textoModal{
 	color: #020202;
 }
+
+
+/* Modal Para Cerrar Sesion principal */
+#cuerpoModalExitoso_prop {
+	background: transparent !important;
+	border: none;
+}
+#cuerpoModalExitoso_prop>.modal-body {
+    background: #414c50;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+#cuerpoModalExitoso_prop>.footer {
+    background: #414c50;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+}
+#cuerpoModalExitoso_prop>.modal-body>div>div>label {
+	margin-top: 35px;
+    font-family: Prototype;
+    font-size: 25px;
+    color: #ffffff;
+}
+#cuerpoModalExitoso_prop>.modal-body>div>div>.subtitulo {
+	margin-top: -5px;
+	margin-bottom: 35px;
+    font-family: Prototype;
+    font-size: 18px;
+    color: #ffffff;
+}
+#cuerpoModalExitoso_prop>.footer>div>div>button {
+	height: 35px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    font-family: Prototype;
+    font-size: 15px;
+    font-style: normal;
+    text-align: center;
+    border-radius: 50px;
+    border: hidden;
+    background-color: #43a047;
+    color: #ffffff;
+}
+.imgCajaImg_prop {
+	width: 80px;
+	height: 80px;
+}

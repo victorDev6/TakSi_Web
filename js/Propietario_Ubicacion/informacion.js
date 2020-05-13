@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 //APUNTE
 //verificar QUE EL SELECT SALGA DE LA COLLECION LINEA
 
@@ -26,12 +19,13 @@ $(document).ready(function () {
     }
   }
 
-	var db = firebase.firestore();
-  	var emailP = "perezrobleroleiver15@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
+  var db = firebase.firestore();
+  var storageRef = firebase.storage().ref();
+  var emailP = "perezrobleroleiver15@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
 
-	//var user = firebase.auth().currentUser;
-	//var emailP;
-	/*if (user) {
+  //var user = firebase.auth().currentUser;
+  //var emailP;
+  /*if (user) {
 		email = user.email;
 	}else {
 			// usuario NO está logueado.
@@ -39,7 +33,7 @@ $(document).ready(function () {
 
 		}*/
 
-	/*firebase.auth().onAuthStateChanged(function (user) {
+  /*firebase.auth().onAuthStateChanged(function (user) {
 		if (user) {
 			// usuario está logueado.
 			emailP = user.email;
@@ -47,84 +41,86 @@ $(document).ready(function () {
 	}
  	});*/
 
-
-
   //var numtaxisaltas=3;
   function ConsultaryllenarCampos() {
-  	var cajaTax;
-  	var cajaChofer;
-  	var cajaPlac;
-  	var cajaMrc;
-  	var cajaModel;
-  	var cajaNseri;
-  	var cajaSit;
-  	var idFirebaseTaxi;
-  	//db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").get().then(function(querytaxis) {
-  	db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").onSnapshot(function (querytaxis) {
-  		var conuntvariable = 0;
-  		querytaxis.forEach(function (docnumtaxi) {
-  			conuntvariable++;
+    var cajaTax;
+    var cajaChofer;
+    var cajaPlac;
+    var cajaMrc;
+    var cajaModel;
+    var cajaNseri;
+    var cajaSit;
+    var idFirebaseTaxi;
+    //db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").get().then(function(querytaxis) {
+    db.collection("taxis")
+      .where("correo", "==", emailP)
+      .orderBy("fecha_alta_taxi", "asc")
+      .onSnapshot(function (querytaxis) {
+        var conuntvariable = 0;
+        querytaxis.forEach(function (docnumtaxi) {
+          conuntvariable++;
 
-  			if (docnumtaxi.exists) {
-  				$("#tc" + conuntvariable).addClass("clasedesactivarB");
-  				$("#editar" + conuntvariable).removeClass("clasedesactivarB");
-  				$("#eliminar" + conuntvariable).removeClass("clasedesactivarB");
+          if (docnumtaxi.exists) {
+            $("#tc" + conuntvariable).addClass("clasedesactivarB");
+            $("#editar" + conuntvariable).removeClass("clasedesactivarB");
+            $("#eliminar" + conuntvariable).removeClass("clasedesactivarB");
 
-  				$("#eliminar" + conuntvariable).removeAttr("disabled");
-  				$("#editar" + conuntvariable).removeAttr("disabled");
+            $("#eliminar" + conuntvariable).removeAttr("disabled");
+            $("#editar" + conuntvariable).removeAttr("disabled");
 
-  				$("#tc" + conuntvariable).attr("disabled", "disabled");
-  				$("#cajaNtaxi" + conuntvariable).attr("disabled", "disabled");
-  				$("#cajaPlaca" + conuntvariable).attr("disabled", "disabled");
-  				$("#jacaMarca" + conuntvariable).attr("disabled", "disabled");
-  				$("#cajaModelo" + conuntvariable).attr("disabled", "disabled");
-  				$("#cajaNSerie" + conuntvariable).attr("disabled", "disabled");
-  				$("#cajaSitio" + conuntvariable).attr("disabled", "disabled");
+            $("#tc" + conuntvariable).attr("disabled", "disabled");
+            $("#cajaNtaxi" + conuntvariable).attr("disabled", "disabled");
+            $("#cajaPlaca" + conuntvariable).attr("disabled", "disabled");
+            $("#jacaMarca" + conuntvariable).attr("disabled", "disabled");
+            $("#cajaModelo" + conuntvariable).attr("disabled", "disabled");
+            $("#cajaNSerie" + conuntvariable).attr("disabled", "disabled");
+            $("#cajaSitio" + conuntvariable).attr("disabled", "disabled");
 
-  				//Para habilitar de nuevo, el método adecuado es usar .removeAttr()
-  				//$("#editar").removeAttr('disabled');
-  				//Para desabilitar de nuevo, el método adecuado es usar .attr("", "");
-  				// $("#editar"+conuntvariable).removeAttr("disabled");
+            //Para habilitar de nuevo, el método adecuado es usar .removeAttr()
+            //$("#editar").removeAttr('disabled');
+            //Para desabilitar de nuevo, el método adecuado es usar .attr("", "");
+            // $("#editar"+conuntvariable).removeAttr("disabled");
 
-  				$("#selectSitio" + conuntvariable).removeClass("d-block");
-  				$("#selectSitio" + conuntvariable).addClass("d-none");
-  				$("#cajaSitio" + conuntvariable).removeClass("d-none");
-  				$("#cajaSitio" + conuntvariable).addClass("d-block");
+            $("#selectSitio" + conuntvariable).removeClass("d-block");
+            $("#selectSitio" + conuntvariable).addClass("d-none");
+            $("#cajaSitio" + conuntvariable).removeClass("d-none");
+            $("#cajaSitio" + conuntvariable).addClass("d-block");
 
-  				cajaTax = docnumtaxi.data().numero;
-  				cajaPlac = docnumtaxi.data().placa;
-  				cajaMrc = docnumtaxi.data().marca;
-  				cajaModel = docnumtaxi.data().modelo;
-  				cajaSit = docnumtaxi.data().sitio;
-  				cajaNseri = docnumtaxi.data().numero_serie;
-  				idFirebaseTaxi = docnumtaxi.id;
+            cajaTax = docnumtaxi.data().numero;
+            cajaPlac = docnumtaxi.data().placa;
+            cajaMrc = docnumtaxi.data().marca;
+            cajaModel = docnumtaxi.data().modelo;
+            cajaSit = docnumtaxi.data().sitio;
+            cajaNseri = docnumtaxi.data().numero_serie;
+            idFirebaseTaxi = docnumtaxi.id;
 
-  				$("#cajaNtaxi" + conuntvariable).val(cajaTax);
-  				$("#cajaPlaca" + conuntvariable).val(cajaPlac);
-  				$("#jacaMarca" + conuntvariable).val(cajaMrc);
-  				$("#cajaModelo" + conuntvariable).val(cajaModel);
-  				$("#cajaNSerie" + conuntvariable).val(cajaNseri);
-  				$("#cajaSitio" + conuntvariable).val(cajaSit);
-  				$("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
+            $("#cajaNtaxi" + conuntvariable).val(cajaTax);
+            $("#cajaPlaca" + conuntvariable).val(cajaPlac);
+            $("#jacaMarca" + conuntvariable).val(cajaMrc);
+            $("#cajaModelo" + conuntvariable).val(cajaModel);
+            $("#cajaNSerie" + conuntvariable).val(cajaNseri);
+            $("#cajaSitio" + conuntvariable).val(cajaSit);
+            $("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
 
-  				console.log("PLACA: [" + docnumtaxi.data().placa + "]");
-  				//verificr cuantos choferes hay rgistrado
-  				db.collection("choferes").where("placa_taxi", "==", docnumtaxi.data().placa).where("dueno", "==", emailP).onSnapshot(function (count) {
-  					var conuntc = 0;
-  					count.forEach(function (docnumchoferes) {
-  						conuntc++;
-  					})
-  					console.log("COUNT:" + docnumtaxi.data().placa + " :" + conuntc);
-
-
-
-  				});
-
-  			} else {
-  				console.log("No such document!");
-  			}
-  		});
-  	});
+            console.log("PLACA: [" + docnumtaxi.data().placa + "]");
+            //verificr cuantos choferes hay rgistrado
+            db.collection("choferes")
+              .where("placa_taxi", "==", docnumtaxi.data().placa)
+              .where("dueno", "==", emailP)
+              .onSnapshot(function (count) {
+                var conuntc = 0;
+                count.forEach(function (docnumchoferes) {
+                  conuntc++;
+                });
+                console.log(
+                  "COUNT:" + docnumtaxi.data().placa + " :" + conuntc
+                );
+              });
+          } else {
+            console.log("No such document!");
+          }
+        });
+      });
   }
   var numtaxisaltas;
   var idDocumento;
@@ -141,11 +137,17 @@ $(document).ready(function () {
         for (paso = 1; paso <= numtaxisaltas; paso++) {
           $(".container").append(
             '<div class="">\
-		<form id="form' +paso +'" class="pt-2 tc' +paso +'" action="javascript:void(0)">\
+		<form id="form' +
+              paso +
+              '" class="pt-2 tc' +
+              paso +
+              '" action="javascript:void(0)">\
 			<div class="row encierroI p-2">\
 				<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1 taxis">\
 					<div class="row  justify-content-center align-items-center taxx">\
-						<span class="titulos">TAXI # ' +paso +' <img class="iconotaxi"></span>\
+						<span class="titulos">TAXI # ' +
+              paso +
+              ' <img class="iconotaxi"></span>\
 					</div>\
 					<div class="row pl-4 pr-4">\
 						<div class="col-6 col-lg-6">\
@@ -194,7 +196,9 @@ $(document).ready(function () {
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12   col-sm-12   col-md-4   col-lg-3    col-form-label  text-center text-md-right px-0 subtitulo">Sitio:</label>\
 								<div class="col-12 col-sm-12 col-md-8  col-lg-9">\
-									<select class="form-control form-control-sm d-block" name="" id="selectSitio' +paso +'">\
+									<select class="form-control form-control-sm d-block" name="" id="selectSitio' +
+              paso +
+              '">\
 										<option value="-1">Seleccionar Sitio</option>\
 									</select>\
 									<input type="text" class="form-control form-control-sm d-none" id="cajaSitio' +
@@ -207,7 +211,7 @@ $(document).ready(function () {
 									<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi' +
               paso +
               '" class="d-none">\
-									<img class="selectorImagen imgSubida_estilo" id="imgSubida' +
+									<img class="selectorImagen imgSubida_estilo" id="imgSubida_' +
               paso +
               '" src="">\
 								</div>\
@@ -221,13 +225,19 @@ $(document).ready(function () {
 					</div>\
 					<div class="form-group row justify-content-center align-items-center pt-md-4">\
 						<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0 pt-sm-4 pt-md-0 ">\
-							<img class="iconochoferesS d-block m-auto" id="1'+paso+'">\
+							<img class="iconochoferesS d-block m-auto" id="1' +
+              paso +
+              '">\
 						</div>\
 						<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0">\
-							<img class="iconochoferesC d-block m-auto" id="2'+paso+'">\
+							<img class="iconochoferesC d-block m-auto" id="2' +
+              paso +
+              '">\
 						</div>\
 						<div class="col-3 col-sm-8  col-md-4">\
-							<img class="iconochoferesS d-block m-auto" id="3'+paso+'">\
+							<img class="iconochoferesS d-block m-auto" id="3' +
+              paso +
+              '">\
 						</div>\
 					</div>\
 					<div class="row justify-content-center align-items-center mt-2">\
@@ -274,12 +284,7 @@ $(document).ready(function () {
           $("#eliminar" + paso).attr("disabled", "disabled");
           $("#editar" + paso).attr("disabled", "disabled");
         }
-		ConsultaryllenarCampos();
-
-
-
-
-
+        ConsultaryllenarCampos();
 
         var campos_max = 8; //max de 9 taxis
         var x = paso;
@@ -382,27 +387,15 @@ $(document).ready(function () {
           //alert(myDate);
 
           if (estadoGuardar1 == 0) {
-            db.collection("taxis")
-              .add({
-                choferes: [],
-                correo: emailP,
-                foto_taxi: "taxiruta",
-                marca: cajaMarca,
-                modelo: cajaModelo,
-                numero: cajaNtaxi,
-                placa: cajaPlaca,
-                sitio: cajaSitio,
-                numero_serie: cajaNumeroSerie,
-                status_pago: "false",
-                fecha_alta_taxi: firebase.firestore.FieldValue.serverTimestamp(), //guarda la fecha del servidor en formato timestamp
-                suma_descuentos: 0,
-              })
-              .then(function (docRef) {
-                console.log("Registro exitoso");
-              })
-              .catch(function (error) {
-                console.error("Error adding document: ", error);
-              });
+            SubirImgTaxi(
+              emailP,
+              cajaMarca,
+              cajaModelo,
+              cajaNtaxi,
+              cajaPlaca,
+              cajaSitio,
+              cajaNumeroSerie
+            );
           } else if (estadoGuardar1 == 1) {
             let addIDColleccion = db.collection("taxis").doc(mySpanId);
             return addIDColleccion
@@ -468,8 +461,10 @@ $(document).ready(function () {
         var nuevoIDAGR = String(arrayDeCadenasAGR);
         var solonumeroAGR = nuevoIDAGR.slice(1);
 
-        var cajaPlaca = document.getElementById("cajaPlaca" + solonumeroAGR).value;
-		var cajasitio = document.getElementById("cajaSitio" + solonumeroAGR).value;
+        var cajaPlaca = document.getElementById("cajaPlaca" + solonumeroAGR)
+          .value;
+        var cajasitio = document.getElementById("cajaSitio" + solonumeroAGR)
+          .value;
 
         //alert("voy a redireccionar a chofer -- Placa: "+cajaPlaca);
         window.location = "#!/chofer";
@@ -477,68 +472,164 @@ $(document).ready(function () {
         sessionStorage.removeItem("placaTaxi");
         sessionStorage.placaTaxi = cajaPlaca;
 
-		sessionStorage.removeItem("sitioTaxi");
+        sessionStorage.removeItem("sitioTaxi");
         sessionStorage.sitioTaxi = cajasitio;
-
       });
 
       /* Funcion lanzada por clase, que extrae el ID de quien lo lanzo, para procesar su imagen de salida*/
+
       $(".selectorImagen").click(function (e) {
-        alert(e.target.id);
-        switch (e.target.id) {
-          case "imgSubida1":
-            inImg = e.target.id;
-            $("#imagenTaxi1").click();
+        let idClickImg = ""; //imagenTaxi
+        let inImg = ""; //imgSubida
+        inImg = e.target.id;
+        let cadenaPartida = [];
+        switch (inImg) {
+          case "" + inImg:
+            //inImg = imgSubida1
+            cadenaPartida = inImg.split("_");
+            idClickImg = "imagenTaxi" + cadenaPartida[1];
+            $("#" + idClickImg).click();
+            CargarImagen(idClickImg, inImg);
             break;
         }
       });
       /* Se carga la imagen de Perfil en el input correspondiente, unicamente si es un formato válido (png,jpg y jpeg)*/
-      $("#imagenTaxi1").change(function () {
-        var file = $("#imagenTaxi1").val();
-        var ext = file.substring(file.lastIndexOf("."));
-        //Validar si es un formato valido
-        if (
-          ext == ".jpg" ||
-          ext == ".png" ||
-          ext == ".jpeg" ||
-          ext == ".JPG" ||
-          ext == ".PNG" ||
-          ext == ".JPEG"
-        ) {
-          var imgExt = 23;
-          if (ext == ".png" || ext == ".PNG") {
-            imgExt = 22;
+      var file; //guardara la info de la imagen
+      function CargarImagen(idClickImg, inImg) {
+        $("#" + idClickImg).change(function () {
+          file = $("#" + idClickImg).val(); //imgenTaxi1
+          var ext = file.substring(file.lastIndexOf("."));
+          //Validar si es un formato valido
+          if (
+            ext == ".jpg" ||
+            ext == ".png" ||
+            ext == ".jpeg" ||
+            ext == ".JPG" ||
+            ext == ".PNG" ||
+            ext == ".JPEG"
+          ) {
+            var imgExt = 23;
+            if (ext == ".png" || ext == ".PNG") {
+              imgExt = 22;
+            }
+
+            var preview = document.getElementById(inImg);
+            file = document.getElementById(idClickImg).files[0];
+            extension_PM = ext; //ext de imagen
+
+            $("#" + inImg).attr("title", file.name);
+            $("#" + inImg).attr("alt", imgExt);
+
+            var reader = new FileReader();
+
+            reader.addEventListener(
+              "load",
+              function () {
+                preview.src = reader.result;
+                var imagen = preview.src;
+                recotarImagen_PM = imagen.slice(imgExt);
+                console.log(recotarImagen_PM);
+              },
+              false
+            );
+            if (file) {
+              reader.readAsDataURL(file);
+            }
+          } else {
+            $("#" + inImg).attr(
+              "src",
+              "../../Diseno/ICONOS/cerrar-sesion-Presionado.svg"
+            );
           }
+        });
+      }
 
-          var preview = document.getElementById("imgSubida1");
-          var file = document.getElementById("imagenTaxi1").files[0];
-          extension_PM = ext; //ext de imagen
+      /********************************************************** */
+      /*FUNCION QUE SUBE LA IMG A STORAGE
+      /*********************************************************** */
+      function SubirImgTaxi(
+        mail,
+        cMarca,
+        cModelo,
+        cNtaxi,
+        cPlaca,
+        cSitio,
+        cNumeroSerie
+      ) {
+        let imagenASubir = file;
+        let uploadTask = storageRef
+          .child("Fotos_taxis/" + imagenASubir.name)
+          .put(imagenASubir);
 
-          $("#imgSubida1").attr("title", file.name);
-          $("#imgSubida1").attr("alt", imgExt);
-
-          var reader = new FileReader();
-
-          reader.addEventListener(
-            "load",
-            function () {
-              preview.src = reader.result;
-              var imagen = preview.src;
-              recotarImagen_PM = imagen.slice(imgExt);
-              console.log(recotarImagen_PM);
-            },
-            false
-          );
-          if (file) {
-            reader.readAsDataURL(file);
+        uploadTask.on(
+          "state_changed",
+          function (snapshot) {
+            let progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            switch (snapshot.state) {
+              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                console.log("Upload is paused");
+                break;
+              case firebase.storage.TaskState.RUNNING: // or 'running'
+                console.log("Upload is running");
+                break;
+            }
+          },
+          function (error) {
+            // Handle unsuccessful uploads
+          },
+          function () {
+            uploadTask.snapshot.ref
+              .getDownloadURL()
+              .then(function (downloadURL) {
+                //Aqui va el metodo donde se guarda
+                GuardarTaxis(
+                  mail,
+                  downloadURL,
+                  cMarca,
+                  cModelo,
+                  cNtaxi,
+                  cPlaca,
+                  cSitio,
+                  cNumeroSerie
+                );
+              });
           }
-        } else {
-          $("#imgSubida1").attr(
-            "src",
-            "../../Diseno/ICONOS/cerrar-sesion-Presionado.svg"
-          );
-        }
-      });
+        );
+      }
+
+      function GuardarTaxis(
+        emailP,
+        url_foto,
+        cajaMarca,
+        cajaModelo,
+        cajaNtaxi,
+        cajaPlaca,
+        cajaSitio,
+        cajaNumeroSerie
+      ) {
+        db.collection("taxis")
+          .add({
+            choferes: [],
+            correo: emailP,
+            foto_taxi: url_foto,
+            marca: cajaMarca,
+            modelo: cajaModelo,
+            numero: cajaNtaxi,
+            placa: cajaPlaca,
+            sitio: cajaSitio,
+            numero_serie: cajaNumeroSerie,
+            status_pago: "false",
+            fecha_alta_taxi: firebase.firestore.FieldValue.serverTimestamp(), //guarda la fecha del servidor en formato timestamp
+            suma_descuentos: 0,
+          })
+          .then(function (docRef) {
+            console.log("Registro exitoso");
+          })
+          .catch(function (error) {
+            console.error("Error adding document: ", error);
+          });
+      }
     });
 
   //https://fireship.io/lessons/firestore-array-queries-guide/
@@ -551,9 +642,4 @@ $(document).ready(function () {
     e.preventDefault();
     window.location = "#!/Pagos";
   });
-
-
-
-
-
 });

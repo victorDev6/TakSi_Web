@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
   //efecto zoom
   $(".zoom").hover(
-    function() {
+    function () {
       $(this).addClass("transition");
     },
-    function() {
+    function () {
       $(this).removeClass("transition");
     }
   );
@@ -20,7 +20,7 @@ try {
     storageBucket: "taksi-d543c.appspot.com",
     messagingSenderId: "3651890584",
     appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-    measurementId: "G-6VDL057TWQ"
+    measurementId: "G-6VDL057TWQ",
   });
 } catch (err) {
   if (!/already exists/.test(err.message)) {
@@ -40,11 +40,11 @@ function MostrarNotificacion() {
   let mostrarTiempo;
   let nuevoMensaje = document.getElementById("agregarItemNoti");
 
-  db.collection("notificacion_pagos")
-    .orderBy("fecha", "desc")
-    .onSnapshot(function(querySnapshot) {
+  db.collection("solicitudes_pagos")
+    .where("estado_pago", "==", "Pendiente")
+    .onSnapshot(function (querySnapshot) {
       nuevoMensaje.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           mostrarTiempo = FechaServidor(doc.data().fecha.seconds);
@@ -57,25 +57,28 @@ function MostrarNotificacion() {
         data-autohide="false">
             <div class="toast-header">
                 <img class="mr-2 imagenPerfil zoom"
-                src="https://i.pinimg.com/originals/d8/ce/bb/d8cebb3d70b3688bb2c08aa902207e3c.jpg" alt="">
-                    <strong class="mr-auto ml-5">
-                    ${doc.data().nombre} ${doc.data().apellido}
-                    </strong>
+                src="../../Diseno/ICONOS/abrirFoto.svg" alt="">
+                      <strong class="mr-auto ml-5">
+                      <button class="btn btn-sm btn-link" onclick="redirePagos()">
+                      ${doc.data().nombre} ${doc.data().apellido}
+                      </button>
+                      </strong>
                     <small>${mostrarTiempo}</small>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"
-                    onclick="EliminarNotificacion('${doc.id}')">
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
             </div>
             <div class="toast-body">
                 <p class="mb-0 pb-2 colorRaya"><span class="font-weight-bold">Concepto:</span> <span
-                    class="mr-4">${doc.data().concepto}</span>
-                        <span class="font-weight-bold"> Cantidad: </span> 
-                        <span>$${doc.data().cantidad}</span></p>
+                    class="mr-4">Pago de Suscripción ${
+                      doc.data().opcion_pago
+                    }</span>
+                        <span class="font-weight-bold"> Status: </span> 
+                        <span>${doc.data().estado_pago}</span></p>
                         <p class="mb-0 pt-1"><span class="font-weight-bold">Ciudad:
-                        </span> ${doc.data().ciudad}, ${doc.data().estado}
-                         - <span class="font-weight-bold">Sitio:
-                         </span> ${doc.data().sitio}</p>
+                        </span> ${doc.data().ciudad}, ${doc.data().estado} 
+                        <span class="font-weight-bold ml-4">Email:
+                         </span> ${doc.data().email}</p>
             </div>
         </div>`;
       });
@@ -99,7 +102,7 @@ function FechaServidor(valor) {
     "Septiembre",
     "Octubre",
     "Noviembre",
-    "Diciembre"
+    "Diciembre",
   ];
   //Fecha de Servidor
   dateServer = new Date(valor * 1000);
@@ -177,13 +180,13 @@ function FechaServidor(valor) {
   return fechaImprimir;
 }
 
-$("#btn_refrescar_noti").click(function(e) {
+/*$("#btn_refrescar_noti").click(function (e) {
   e.preventDefault();
   MostrarNotificacion();
-});
+});*/
 
 function EliminarNotificacion(id) {
-  db.collection("notificacion_pagos")
+  /* db.collection("notificacion_pagos")
     .doc(id)
     .delete()
     .then(function() {
@@ -192,4 +195,9 @@ function EliminarNotificacion(id) {
     .catch(function(error) {
       console.error("Error removing document: ", error);
     });
+  */
+}
+
+function redirePagos() {
+  window.location = "#!/VerificarPagos";
 }

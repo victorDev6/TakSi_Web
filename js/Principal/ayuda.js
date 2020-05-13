@@ -81,8 +81,8 @@ function ConsultaPreguntas(tipo_usuario) {
       acordion1.innerHTML = "";
       acordion2.innerHTML = "";
       listaBusTabla.innerHTML = "";
+      resultado = ValidarNumero(tamanio);
       querySnapshot.forEach(function (doc) {
-        resultado = ValidarNumero(tamanio);
         contador += 1;
         if (contador <= resultado[0]) {
           acordion1.innerHTML += `

@@ -113,9 +113,10 @@ function moverseA(idDelElemento) {
 (function ConsultaLinks() {
   let appAndroidConductor = "";
   let appAndroidPasajero = "";
-  let appAppleConductor = "";
-  let appApplePasajero = "";
+  //let appAppleConductor = "";
+  //let appApplePasajero = "";
   let linkPaginaFacebook = "";
+  let linkPaginaFacebookIsoft = "";
   let linkTwitter = "";
   let correoBD = "";
   let numeroTelefono = "";
@@ -126,21 +127,24 @@ function moverseA(idDelElemento) {
         if (querySnapshot._snapshot.docChanges.length != 0) {
           appAndroidConductor = doc.data().link_app_android_conductor;
           appAndroidPasajero = doc.data().link_app_android_pasajero;
-          appAppleConductor = doc.data().link_app_apple_conductor;
-          appApplePasajero = doc.data().link_app_apple_pasajero;
+          //appAppleConductor = doc.data().link_app_apple_conductor;
+          //appApplePasajero = doc.data().link_app_apple_pasajero;
           linkPaginaFacebook = doc.data().link_facebook;
+          linkPaginaFacebookIsoft = doc.data().link_empresa_fb;
           linkTwitter = doc.data().link_twitter;
           correoBD = doc.data().correo_empresa;
           numeroTelefono = doc.data().telefono_empresa;
         }
       });
       $("#btn_link_android_conductor").attr("href", appAndroidConductor);
-      $("#btn_link_apple_conductor").attr("href", appAppleConductor);
+      //$("#btn_link_apple_conductor").attr("href", appAppleConductor);
       $("#btn_link_android_pasajero").attr("href", appAndroidPasajero);
-      $("#btn_link_apple_pasajero").attr("href", appApplePasajero);
-      $("#link_empresa_isoft").attr("href", linkPaginaFacebook);
+      //$("#btn_link_apple_pasajero").attr("href", appApplePasajero);
+      $("#link_empresa_isoft").attr("href", linkPaginaFacebookIsoft);
       $("#link_facebook").html(linkPaginaFacebook);
+      $("#verFacebookTaksi").attr("href", linkPaginaFacebook);
       $("#link_twitter").html(linkTwitter);
+      $("#verTwitter").attr("href", linkTwitter);
       $("#tel_empresa").html(numeroTelefono);
       $("#correo_empresa").html(correoBD);
     })

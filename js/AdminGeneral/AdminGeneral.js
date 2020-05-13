@@ -98,31 +98,13 @@ $("#btn_modal_cerrar_sesion").click(function (e) {
 //});
 
 //Codigo que siempre esta escuchando si
-//Hay un nuevo registro
+//Hay un nuevo registro de bugs feature
+/********************************************************** */
+/*FUNCIONES PARA MOSTRAR NOTIFICACION
+/*********************************************************** */
 (function ConsulSoliAceptados() {
   //Obtener fechas en segundos
   //var segundos = new Date().getTime();
-  //console.log(segundos);
-  /*let BreakException = {};
-  let contadorC = 0;
-
-  db.collection("bugs_feature")
-    .orderBy("fecha", "desc")
-    .onSnapshot(function (querySnapshot) {
-      try {
-        querySnapshot.forEach(function (doc) {
-          contadorC += 1;
-          if (contadorC === 1) {
-            console.log('Bienvenido');
-          }
-          console.log(doc.data());
-          if (contadorC === 1) throw BreakException;
-        });
-      } catch (e) {
-        if (e !== BreakException) throw e;
-      }
-    });*/
-
   var contaCambio = 0;
   db.collection("bugs_feature").onSnapshot(function (doc) {
     contaCambio += 1;
@@ -130,19 +112,54 @@ $("#btn_modal_cerrar_sesion").click(function (e) {
       Push.create("Bienvenido Admin!", {
         body: "Le damos la bienvenida",
         icon: "../../Diseno/ICONOS/logoTaxiNuevo.png",
-        timeout: 4000,
+        timeout: 6000,
         onClick: function () {
           window.focus();
           this.close();
         },
       });
     } else {
-      Push.create("Reporte del Chofer", {
+      Push.create("NUEVO REPORTE DE CHOFER", {
         body: "Tiene un nuevo reporte departe del chofer",
         icon: "../../Diseno/ICONOS/logoTaxiNuevo.png",
-        timeout: 4000,
+        timeout: 9000,
         onClick: function () {
           window.location = "#!/AdminPerfiles";
+          this.close();
+        },
+      });
+    }
+  });
+})();
+
+(function ConsulSoliAceptados() {
+  var contaCambio2 = 0;
+  db.collection("reportes_usuarios").onSnapshot(function (doc) {
+    contaCambio2 += 1;
+    if (contaCambio2 != 1) {
+      Push.create("NUEVO REPORTE DEL PASAJERO", {
+        body: "Tiene un nuevo reporte departe del pasajero",
+        icon: "../../Diseno/ICONOS/logoTaxiNuevo.png",
+        timeout: 9000,
+        onClick: function () {
+          window.location = "#!/AdminPerfiles";
+          this.close();
+        },
+      });
+    }
+  });
+})();
+
+(function ConsulSoliAceptados() {
+  var contaCambio3 = 0;
+  db.collection("solicitudes_pagos").onSnapshot(function (doc) {
+    contaCambio3 += 1;
+    if (contaCambio3 != 1) {
+      Push.create("NUEVA SOLICITUD DE PAGO", {
+        body: "Tiene una nueva solicitud de pago, verifique por favor",
+        icon: "../../Diseno/ICONOS/logoTaxiNuevo.png",
+        onClick: function () {
+          window.location = "#!/VerificarPagos";
           this.close();
         },
       });

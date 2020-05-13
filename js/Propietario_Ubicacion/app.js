@@ -31,10 +31,6 @@ app.config([
         url: "/informacion facturacion",
         templateUrl: "informacion_facturacion.html",
       })
-      .state("cerrarsesion", {
-        url: "/Home",
-        templateUrl: "ubicacion.html",
-      })
       .state("pagos", {
         url: "/Pagos",
         templateUrl: "../../vistas/PagosTarjeta/PagosFotos.html",

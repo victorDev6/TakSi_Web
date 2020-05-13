@@ -116,13 +116,13 @@ $(document).ready(function () {
 
     db.collection("reg_prop_prin_web") //registro_prop_princ_web
       .add({
-        nombre: nom_prop,
-        apellido: ape_prop,
+        nombre: nom_prop.trim(),
+        apellido: ape_prop.trim(),
         ciudad: cd_prop,
         estado: edo_prop,
-        direccion: direc_prop,
-        email: mail_prop,
-        num_consesion: num_cons_prop,
+        direccion: direc_prop.trim(),
+        email: mail_prop.trim(),
+        num_consesion: num_cons_prop.trim(),
         num_taxis: cant_tax_prop,
         telefono: tel_prop,
         fecha: firebase.firestore.FieldValue.serverTimestamp(),

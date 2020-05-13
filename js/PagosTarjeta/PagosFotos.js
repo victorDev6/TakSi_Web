@@ -359,6 +359,10 @@ function BuscarTaxiGeneralMes(email, montoMes) {
           $("#caja_mensaje_admin").removeClass("d-none");
         }
         $("#loaderFoto").hide();
+      } else {
+        $("#loaderFoto").hide();
+        let mensajeM = `<span class="text-info">¡No tienes taxis registrados!</span><br><br>`;
+        ShowModalMensajes(mensajeM, "2");
       }
     })
     .catch(function (error) {
@@ -401,6 +405,9 @@ function BuscarTaxiInactivoAnio(email) {
         //AQUI TERMINA EL LLENADO DEL SELECT Y FINALIZA EL LOADER
       } else {
         console.log("No hay taxis");
+        $("#loaderFoto").hide();
+        let mensajeM = `<span class="text-info">¡No tienes taxis registrados!</span><br><br>`;
+        ShowModalMensajes(mensajeM, "2");
       }
     })
     .catch(function (error) {
@@ -561,38 +568,46 @@ $("#btn_pago_anual").click(function (e) {
 /********************************************************** */
 /*OBSERVADOR
 /*********************************************************** */
-/*function Observador() {
-  firebase.auth().onAuthStateChanged(function(user) {
+(function ObservadorPago() {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       email_global = user.email;
       let verifiEmail = user.emailVerified;
 
       if (verifiEmail) {
+        console.log("email: " + email_global);
         //Que se ejecute la busqueda
         BuscarEdoCdUser(email_global);
       } else {
         //Si no hay usuario activo
+        console.log("No hay usuario activo");
       }
     } else {
       console.log("No hay usuario activo");
     }
   });
-}
-Observador*/
+})();
 
 /********************************************************** */
 /*AL INICIAR SE DEBE DE RALIZAR UNA BUSQUEDA Y MOSTRAR LOS
 DATOS DE COSTO EN EL MODAL DE PAGO
 /*********************************************************** */
-(function MostrarModalPagos() {
+/*(function MostrarModalPagos() {
   email_global = "dueno2@gmail.com";
   BuscarEdoCdUser(email_global);
-})();
+})();*/
 
 function ShowModalMensajes(mensajeM, valorBoton) {
   $("#textoCuerpoModalPF").html(mensajeM);
   $("#modalMensajesPF").modal("show");
   if (valorBoton === "1") {
+    $("#btn_modal_PF").click(function (e) {
+      e.preventDefault();
+      $("#modalMensajesPF").modal("hide");
+      setTimeout(redireccionarInfo, 1000);
+    });
+  }
+  if (valorBoton === "2") {
     $("#btn_modal_PF").click(function (e) {
       e.preventDefault();
       $("#modalMensajesPF").modal("hide");

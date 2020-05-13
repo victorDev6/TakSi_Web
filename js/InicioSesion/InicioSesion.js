@@ -182,18 +182,17 @@ $(document).ready(function () {
         BuscarStatus(email);
 
         setTimeout(() => {
+          checkAd = adCheck();
+          if (checkAd && verifiEmail) {
+            window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
+          }
+
           if (verifiEmail && estatus_user_global == "true") {
-            checkAd = adCheck();
-            if (checkAd) {
-              window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
-            } else {
-              // alert("entro");
-              window.location =
-                "../../vistas/Propietario_Ubicacion/principal_propietario.html";
-              buscarIdDoc(email);
-              MostrarBienvenida(user);
-              Limpiar();
-            }
+            window.location =
+              "../../vistas/Propietario_Ubicacion/principal_propietario.html";
+            buscarIdDoc(email);
+            MostrarBienvenida(user);
+            Limpiar();
           } else if (estatus_user_global == "false" && verifiEmail === true) {
             mensajeM = `¡Su cuenta ha sido bloqueada!`;
             colorTodos = "#e24c4b";

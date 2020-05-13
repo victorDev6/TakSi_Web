@@ -11,7 +11,7 @@ try {
     storageBucket: "taksi-d543c.appspot.com",
     messagingSenderId: "3651890584",
     appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-    measurementId: "G-6VDL057TWQ"
+    measurementId: "G-6VDL057TWQ",
   });
 } catch (err) {
   if (!/already exists/.test(err.message)) {
@@ -34,8 +34,8 @@ var valorOpcionBusqueda;
   let $selectEdo = $("#selectEdo_AdminPerfil");
   db.collection("estado_ciudad")
     .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
         estados.push(doc.id);
       });
       for (const iterator of estados) {
@@ -47,7 +47,7 @@ var valorOpcionBusqueda;
   /**Accion que realiza el selectEdo para buscar ciudad*/
   const selectEdo = document.querySelector("#selectEdo_AdminPerfil");
   const selectCd = document.querySelector("#selectCd_AdminPerfil");
-  selectEdo.addEventListener("change", event => {
+  selectEdo.addEventListener("change", (event) => {
     selectCd.innerHTML = "";
     selectCd.innerHTML = `<option selected>Ciudad</option>`;
     ObtenerCdP(event.target.value);
@@ -60,12 +60,12 @@ function ObtenerCdP(estado) {
   var docRef = db.collection("estado_ciudad").doc(estado);
   docRef
     .get()
-    .then(function(doc) {
+    .then(function (doc) {
       if (doc.exists) {
         obj = doc.data();
         obj = Object.values(obj);
         arrayLibreComa = obj.toString().split(",");
-        arrayLibreComa.forEach(function(valor, indice, array) {
+        arrayLibreComa.forEach(function (valor, indice, array) {
           $selectCd.append(`<option value="${valor}">${valor}</option>`);
         });
       } else {
@@ -73,14 +73,14 @@ function ObtenerCdP(estado) {
         $selectCd.append(`<option selected>Ciudad</option>`);
       }
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Error getting document:", error);
     });
 }
 (function ChangeSelectOpciones() {
   let selectOpcionBus = document.getElementById("addSelectOpcionesP");
   let valorSelect;
-  selectOpcionBus.addEventListener("change", event => {
+  selectOpcionBus.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     switch (valorSelect) {
       case "1": //Estado y ciudad
@@ -127,17 +127,17 @@ function BusquedaGeneral() {
   let tabla = document.getElementById("tabla_general_perfiles");
   db.collection("reg_prop_prin_web")
     .orderBy("fecha", "desc")
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
             (datevalues = [
               date.getFullYear(),
               date.getMonth() + 1,
-              date.getDate()
+              date.getDate(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -200,17 +200,17 @@ function BusquedaEdoCd() {
   db.collection("reg_prop_prin_web")
     .where("estado", "==", selEstado)
     .where("ciudad", "==", selCiudad)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
             (datevalues = [
               date.getFullYear(),
               date.getMonth() + 1,
-              date.getDate()
+              date.getDate(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -271,17 +271,17 @@ function BusquedaNombre() {
   let tabla = document.getElementById("tabla_general_perfiles");
   db.collection("reg_prop_prin_web")
     .where("nombre", "==", nombreP.trim())
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
             (datevalues = [
               date.getFullYear(),
               date.getMonth() + 1,
-              date.getDate()
+              date.getDate(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -342,17 +342,17 @@ function BusquedaApellido() {
   let tabla = document.getElementById("tabla_general_perfiles");
   db.collection("reg_prop_prin_web")
     .where("apellido", "==", apellidoP.trim())
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
             (datevalues = [
               date.getFullYear(),
               date.getMonth() + 1,
-              date.getDate()
+              date.getDate(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -413,17 +413,17 @@ function BusquedaStatus() {
   let tabla = document.getElementById("tabla_general_perfiles");
   db.collection("reg_prop_prin_web")
     .where("status", "==", statusPerfil.trim())
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
             (datevalues = [
               date.getFullYear(),
               date.getMonth() + 1,
-              date.getDate()
+              date.getDate(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -474,7 +474,7 @@ function BusquedaStatus() {
     });
 }
 
-$("#btn_buscar_perfiles").click(function(e) {
+$("#btn_buscar_perfiles").click(function (e) {
   e.preventDefault();
   EjecutarBusquedas(valorOpcionBusqueda);
 });
@@ -496,7 +496,7 @@ function EjecutarBusquedas(numero) {
       break;
   }
 }
-$("#btn_limpiar_perfiles").click(function(e) {
+$("#btn_limpiar_perfiles").click(function (e) {
   e.preventDefault();
   BusquedaGeneral();
   document.getElementById("caja_bus_filtrada_p").value = "";
@@ -515,12 +515,12 @@ function CambiarStatus(id, status) {
   let editarStatus = db.collection("reg_prop_prin_web").doc(id);
   return editarStatus
     .update({
-      status: NewStatus
+      status: NewStatus,
     })
-    .then(function() {
+    .then(function () {
       console.log("Se cambio de Status");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // The document probably doesn't exist.
       console.error("Error updating document: ", error);
     });
@@ -530,10 +530,10 @@ function EliminarPerfil(id) {
   db.collection("reg_prop_prin_web")
     .doc(id)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -557,11 +557,11 @@ function paginacionA() {
     total: pageCount,
     page: 1,
     maxVisible: 3,
-    leaps: true
+    leaps: true,
   });
 
   //al hacer click en el paginador
-  $("#pagination-here_p").on("page", function(event, num) {
+  $("#pagination-here_p").on("page", function (event, num) {
     displayRows(num);
   });
 
@@ -587,10 +587,10 @@ function paginacionA() {
   let tabla = document.getElementById("tabla_general_quejas");
   db.collection("reportes_usuarios")
     .orderBy("fecha", "desc")
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
@@ -599,7 +599,7 @@ function paginacionA() {
               date.getMonth() + 1,
               date.getDate(),
               date.getHours(),
-              date.getMinutes()
+              date.getMinutes(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -625,6 +625,7 @@ function paginacionA() {
 							<td class="text-nowrap">${doc.data().ciudad}</td>
               <td class="text-nowrap">${doc.data().nombre}</td>
               <td class="text-nowrap">${doc.data().correo}</td>
+              <td class="text-nowrap">${doc.data().tipo}</td>
               <td class="text-nowrap text-center">
               <textarea class="text-justify" rows="3" cols="20">${
                 doc.data().reporte
@@ -656,11 +657,11 @@ function paginacionQueja() {
     total: pageCount,
     page: 1,
     maxVisible: 3,
-    leaps: true
+    leaps: true,
   });
 
   //al hacer click en el paginador
-  $("#pagination-here_quejas").on("page", function(event, num) {
+  $("#pagination-here_quejas").on("page", function (event, num) {
     displayRows(num);
   });
 
@@ -676,10 +677,10 @@ function EliminarQueja(id) {
   db.collection("reportes_usuarios")
     .doc(id)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -696,10 +697,10 @@ function EliminarQueja(id) {
   let tabla = document.getElementById("tabla_general_bugs_chofer");
   db.collection("bugs_feature")
     .orderBy("fecha", "desc")
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       contadorCosto = 0;
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         /**Realiza la conversion de fecha */
         try {
           (date = new Date(doc.data().fecha.seconds * 1000)),
@@ -708,7 +709,7 @@ function EliminarQueja(id) {
               date.getMonth() + 1,
               date.getDate(),
               date.getHours(),
-              date.getMinutes()
+              date.getMinutes(),
             ]);
           formatDate =
             datevalues[2] + "/" + datevalues[1] + "/" + datevalues[0];
@@ -765,11 +766,11 @@ function paginacionBugsChofer() {
     total: pageCount,
     page: 1,
     maxVisible: 3,
-    leaps: true
+    leaps: true,
   });
 
   //al hacer click en el paginador
-  $("#pagination-here_bugs_chofer").on("page", function(event, num) {
+  $("#pagination-here_bugs_chofer").on("page", function (event, num) {
     displayRows(num);
   });
 
@@ -785,10 +786,10 @@ function EliminarBugsChofer(id) {
   db.collection("bugs_feature")
     .doc(id)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
