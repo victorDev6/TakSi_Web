@@ -79,6 +79,7 @@ div.ng-scope.tutulo h2 {
 /* ---------------------------------------------------- */
 /*  TAMAÑO BOTONES SM: Y PADDING DEL ICONO				*/
 /*----------------------------------------------------- */
+a.btnVerPago,
 a.btnAgregarNvotaxi,
 a.btnAgregarChofer,
 a.btnAgregarChofer2{
@@ -92,6 +93,11 @@ a.btnAgregarChofer2{
 /* ---------------------------------------------------- */
 /* BTN AGREGAR CHOFER 									*/
 /*----------------------------------------------------- */
+.btnVerPago{
+	margin-top:  3px !important;
+}
+
+.btnVerPago,
 .btnAgregarNvotaxi,
 .btnAgregarChofer,
 .btnAgregarChofer2{
@@ -103,6 +109,7 @@ a.btnAgregarChofer2{
 
 }
 
+.btnVerPago:hover,
 .btnAgregarNvotaxi:hover,
 .btnAgregarChofer:hover,
 .btnAgregarChofer2:hover{

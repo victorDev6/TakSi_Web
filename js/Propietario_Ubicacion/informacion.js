@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 //APUNTE
 //verificar QUE EL SELECT SALGA DE LA COLLECION LINEA
 
@@ -18,99 +25,107 @@ $(document).ready(function () {
       );
     }
   }
-  var db = firebase.firestore();
 
-  var emailP = "dueno2@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
+	var db = firebase.firestore();
+  	var emailP = "perezrobleroleiver15@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
+
+	//var user = firebase.auth().currentUser;
+	//var emailP;
+	/*if (user) {
+		email = user.email;
+	}else {
+			// usuario NO está logueado.
+						alert("user no esta logueado");
+
+		}*/
+
+	/*firebase.auth().onAuthStateChanged(function (user) {
+		if (user) {
+			// usuario está logueado.
+			emailP = user.email;
+			alert("LOGUEADO -->  CORREO: "+emailP);
+	}
+ 	});*/
+
+
+
   //var numtaxisaltas=3;
-
   function ConsultaryllenarCampos() {
-    var cajaTax;
-    var cajaChofer;
-    var cajaPlac;
-    var cajaMrc;
-    var cajaModel;
-    var cajaNseri;
-    var cajaSit;
-    var idFirebaseTaxi;
-    db.collection("taxis")
-      .where("correo", "==", emailP)
-      .orderBy("fecha_alta_taxi", "asc")
-      .onSnapshot(function (querytaxis) {
-        var conuntvariable = 0;
-        querytaxis.forEach(function (docnumtaxi) {
-          conuntvariable++;
+  	var cajaTax;
+  	var cajaChofer;
+  	var cajaPlac;
+  	var cajaMrc;
+  	var cajaModel;
+  	var cajaNseri;
+  	var cajaSit;
+  	var idFirebaseTaxi;
+  	//db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").get().then(function(querytaxis) {
+  	db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").onSnapshot(function (querytaxis) {
+  		var conuntvariable = 0;
+  		querytaxis.forEach(function (docnumtaxi) {
+  			conuntvariable++;
 
-          if (docnumtaxi.exists) {
-            $("#tc" + conuntvariable).addClass("clasedesactivarB");
-            $("#editar" + conuntvariable).removeClass("clasedesactivarB");
-            $("#eliminar" + conuntvariable).removeClass("clasedesactivarB");
+  			if (docnumtaxi.exists) {
+  				$("#tc" + conuntvariable).addClass("clasedesactivarB");
+  				$("#editar" + conuntvariable).removeClass("clasedesactivarB");
+  				$("#eliminar" + conuntvariable).removeClass("clasedesactivarB");
 
-            //document.getElementById("eliminar" + conuntvariable).disabled = false;
-            //document.getElementById("editar" + conuntvariable).disabled = false;
+  				$("#eliminar" + conuntvariable).removeAttr("disabled");
+  				$("#editar" + conuntvariable).removeAttr("disabled");
 
-            //$("#eliminar").attr('disabled','disabled');
-            //$("#editar").attr('disabled','disabled');
+  				$("#tc" + conuntvariable).attr("disabled", "disabled");
+  				$("#cajaNtaxi" + conuntvariable).attr("disabled", "disabled");
+  				$("#cajaPlaca" + conuntvariable).attr("disabled", "disabled");
+  				$("#jacaMarca" + conuntvariable).attr("disabled", "disabled");
+  				$("#cajaModelo" + conuntvariable).attr("disabled", "disabled");
+  				$("#cajaNSerie" + conuntvariable).attr("disabled", "disabled");
+  				$("#cajaSitio" + conuntvariable).attr("disabled", "disabled");
 
-            $("#eliminar").removeAttr("disabled");
-            $("#editar").removeAttr("disabled");
+  				//Para habilitar de nuevo, el método adecuado es usar .removeAttr()
+  				//$("#editar").removeAttr('disabled');
+  				//Para desabilitar de nuevo, el método adecuado es usar .attr("", "");
+  				// $("#editar"+conuntvariable).removeAttr("disabled");
 
-            $("#tc" + conuntvariable).attr("disabled", "disabled");
-            $("#cajaNtaxi" + conuntvariable).attr("disabled", "disabled");
-            $("#cajaPlaca" + conuntvariable).attr("disabled", "disabled");
-            $("#jacaMarca" + conuntvariable).attr("disabled", "disabled");
-            $("#cajaModelo" + conuntvariable).attr("disabled", "disabled");
-            $("#cajaNSerie" + conuntvariable).attr("disabled", "disabled");
-            $("#cajaSitio" + conuntvariable).attr("disabled", "disabled");
+  				$("#selectSitio" + conuntvariable).removeClass("d-block");
+  				$("#selectSitio" + conuntvariable).addClass("d-none");
+  				$("#cajaSitio" + conuntvariable).removeClass("d-none");
+  				$("#cajaSitio" + conuntvariable).addClass("d-block");
 
-            //Para habilitar de nuevo, el método adecuado es usar .removeAttr()
-            //$("input").removeAttr('disabled');
-            //$("#eliminar").removeAttr('disabled');
-            //$("#editar").removeAttr('disabled');
+  				cajaTax = docnumtaxi.data().numero;
+  				cajaPlac = docnumtaxi.data().placa;
+  				cajaMrc = docnumtaxi.data().marca;
+  				cajaModel = docnumtaxi.data().modelo;
+  				cajaSit = docnumtaxi.data().sitio;
+  				cajaNseri = docnumtaxi.data().numero_serie;
+  				idFirebaseTaxi = docnumtaxi.id;
 
-            /*document.getElementById("tc" + conuntvariable).disabled = true;
-							document.getElementById("cajaNtaxi" + conuntvariable).disabled = true;
-							document.getElementById("cajaPlaca" + conuntvariable).disabled = true;
-							document.getElementById("jacaMarca" + conuntvariable).disabled = true;
-							document.getElementById("cajaModelo" + conuntvariable).disabled = true;
-							document.getElementById("cajaNSerie" + conuntvariable).disabled = true;
-							document.getElementById("cajaSitio" + conuntvariable).disabled = true;*/
+  				$("#cajaNtaxi" + conuntvariable).val(cajaTax);
+  				$("#cajaPlaca" + conuntvariable).val(cajaPlac);
+  				$("#jacaMarca" + conuntvariable).val(cajaMrc);
+  				$("#cajaModelo" + conuntvariable).val(cajaModel);
+  				$("#cajaNSerie" + conuntvariable).val(cajaNseri);
+  				$("#cajaSitio" + conuntvariable).val(cajaSit);
+  				$("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
 
-            $("#selectSitio" + conuntvariable).removeClass("d-block");
-            $("#selectSitio" + conuntvariable).addClass("d-none");
-            $("#cajaSitio" + conuntvariable).removeClass("d-none");
-            $("#cajaSitio" + conuntvariable).addClass("d-block");
+  				console.log("PLACA: [" + docnumtaxi.data().placa + "]");
+  				//verificr cuantos choferes hay rgistrado
+  				db.collection("choferes").where("placa_taxi", "==", docnumtaxi.data().placa).where("dueno", "==", emailP).onSnapshot(function (count) {
+  					var conuntc = 0;
+  					count.forEach(function (docnumchoferes) {
+  						conuntc++;
+  					})
+  					console.log("COUNT:" + docnumtaxi.data().placa + " :" + conuntc);
 
-            cajaTax = docnumtaxi.data().numero;
-            cajaPlac = docnumtaxi.data().placa;
-            cajaMrc = docnumtaxi.data().marca;
-            cajaModel = docnumtaxi.data().modelo;
-            cajaSit = docnumtaxi.data().sitio;
-            cajaNseri = docnumtaxi.data().numero_serie;
-            idFirebaseTaxi = docnumtaxi.id;
 
-            /*document.getElementById("cajaNtaxi" + conuntvariable).value = cajaTax;
-							document.getElementById("cajaPlaca" + conuntvariable).value = cajaPlac;
-							document.getElementById("jacaMarca" + conuntvariable).value = cajaMrc;
-							document.getElementById("cajaModelo" + conuntvariable).value = cajaModel;
-							document.getElementById("cajaNSerie" + conuntvariable).value = cajaNseri;
-							document.getElementById("cajaSitio" + conuntvariable).value = cajaSit;
-							document.getElementById("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
-							*/
 
-            $("#cajaNtaxi" + conuntvariable).val(cajaTax);
-            $("#cajaPlaca" + conuntvariable).val(cajaPlac);
-            $("#jacaMarca" + conuntvariable).val(cajaMrc);
-            $("#cajaModelo" + conuntvariable).val(cajaModel);
-            $("#cajaNSerie" + conuntvariable).val(cajaNseri);
-            $("#cajaSitio" + conuntvariable).val(cajaSit);
-            $("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
-          } else {
-            console.log("No such document!");
-          }
-        });
-      });
+  				});
+
+  			} else {
+  				console.log("No such document!");
+  			}
+  		});
+  	});
   }
-
   var numtaxisaltas;
   var idDocumento;
   var paso;
@@ -126,17 +141,11 @@ $(document).ready(function () {
         for (paso = 1; paso <= numtaxisaltas; paso++) {
           $(".container").append(
             '<div class="">\
-		<form id="form' +
-              paso +
-              '" class="pt-2 tc' +
-              paso +
-              '" action="javascript:void(0)">\
+		<form id="form' +paso +'" class="pt-2 tc' +paso +'" action="javascript:void(0)">\
 			<div class="row encierroI p-2">\
 				<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1 taxis">\
 					<div class="row  justify-content-center align-items-center taxx">\
-						<span class="titulos">TAXI # ' +
-              paso +
-              ' <img class="iconotaxi"></span>\
+						<span class="titulos">TAXI # ' +paso +' <img class="iconotaxi"></span>\
 					</div>\
 					<div class="row pl-4 pr-4">\
 						<div class="col-6 col-lg-6">\
@@ -185,13 +194,8 @@ $(document).ready(function () {
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12   col-sm-12   col-md-4   col-lg-3    col-form-label  text-center text-md-right px-0 subtitulo">Sitio:</label>\
 								<div class="col-12 col-sm-12 col-md-8  col-lg-9">\
-									<select class="form-control form-control-sm d-block" name="" id="selectSitio' +
-              paso +
-              '">\
+									<select class="form-control form-control-sm d-block" name="" id="selectSitio' +paso +'">\
 										<option value="-1">Seleccionar Sitio</option>\
-										<option value="1">Radio Taxi</option>\
-										<option value="2">Junchavin</option>\
-										<option value="3">Miguel Aleman</option>\
 									</select>\
 									<input type="text" class="form-control form-control-sm d-none" id="cajaSitio' +
               paso +
@@ -217,13 +221,13 @@ $(document).ready(function () {
 					</div>\
 					<div class="form-group row justify-content-center align-items-center pt-md-4">\
 						<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0 pt-sm-4 pt-md-0 ">\
-							<img class="iconochoferesS d-block m-auto">\
+							<img class="iconochoferesS d-block m-auto" id="1'+paso+'">\
 						</div>\
 						<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0">\
-							<img class="iconochoferesC d-block m-auto">\
+							<img class="iconochoferesC d-block m-auto" id="2'+paso+'">\
 						</div>\
 						<div class="col-3 col-sm-8  col-md-4">\
-							<img class="iconochoferesS d-block m-auto">\
+							<img class="iconochoferesS d-block m-auto" id="3'+paso+'">\
 						</div>\
 					</div>\
 					<div class="row justify-content-center align-items-center mt-2">\
@@ -269,10 +273,15 @@ $(document).ready(function () {
           //document.getElementById("eliminar" + paso).disabled = true;
           $("#eliminar" + paso).attr("disabled", "disabled");
           $("#editar" + paso).attr("disabled", "disabled");
-          ConsultaryllenarCampos();
         }
+		ConsultaryllenarCampos();
 
-        var campos_max = 6; //max de 9 taxis
+
+
+
+
+
+        var campos_max = 8; //max de 9 taxis
         var x = paso;
         $("#activarmodal").click(function (e) {
           $("#confirmaragregartaxi").modal("show");
@@ -459,14 +468,18 @@ $(document).ready(function () {
         var nuevoIDAGR = String(arrayDeCadenasAGR);
         var solonumeroAGR = nuevoIDAGR.slice(1);
 
-        var cajaPlaca = document.getElementById("cajaPlaca" + solonumeroAGR)
-          .value;
+        var cajaPlaca = document.getElementById("cajaPlaca" + solonumeroAGR).value;
+		var cajasitio = document.getElementById("cajaSitio" + solonumeroAGR).value;
 
         //alert("voy a redireccionar a chofer -- Placa: "+cajaPlaca);
         window.location = "#!/chofer";
 
         sessionStorage.removeItem("placaTaxi");
         sessionStorage.placaTaxi = cajaPlaca;
+
+		sessionStorage.removeItem("sitioTaxi");
+        sessionStorage.sitioTaxi = cajasitio;
+
       });
 
       /* Funcion lanzada por clase, que extrae el ID de quien lo lanzo, para procesar su imagen de salida*/
@@ -538,4 +551,9 @@ $(document).ready(function () {
     e.preventDefault();
     window.location = "#!/Pagos";
   });
+
+
+
+
+
 });

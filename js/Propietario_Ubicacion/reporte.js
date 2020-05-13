@@ -165,7 +165,7 @@ $(document).ready(function () {
 
 		if (placaValue != 0) {
 			$("#chofer").removeClass("clasedesactivar");
-			db.collection("choferes").where("dueño", "==", emailP).where("placa_taxi", "==", placaTxtBuscar).onSnapshot(function (querySnapshot) {
+			db.collection("choferes").where("dueno", "==", emailP).where("placa_taxi", "==", placaTxtBuscar).onSnapshot(function (querySnapshot) {
 				selected_itemchofer.innerHTML = '';
 				selected_itemchofer.innerHTML += `<option value="0" selected>Seleccionar Chofer</option>`
 				var conuntchofer = 0;
