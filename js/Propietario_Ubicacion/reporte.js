@@ -41,8 +41,7 @@ $(document).ready(function () {
 	var tabla = document.getElementById('reportetabla');
 	var tablatotalpeso = document.getElementById('totalpesos');
 
-	var emailP = "dueno2@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
-
+	var emailP = "perezrobleroleiver15@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
 
 
 	//if (typeof (Storage) !== "undefined") {

@@ -1,5 +1,30 @@
 //jQuery(document).ready(function () {
 $(document).ready(function () {
+
+
+	  /* Conectarse a Firebase*/
+  try {
+    firebase.initializeApp({
+      apiKey: "AIzaSyB3Vk0nWljV4KhsfU9Co4qNNE0P_FhIJC4",
+      authDomain: "taksi-d543c.firebaseapp.com",
+      projectId: "taksi-d543c",
+      storageBucket: "taksi-d543c.appspot.com",
+    });
+  } catch (err) {
+    if (!/already exists/.test(err.message)) {
+      console.error(
+        "Se produjo un error de inicialización de Firebase",
+        err.stack
+      );
+    }
+  }
+
+  var db = firebase.firestore();
+
+
+
+
+
   /*Cerar Sidebar*/
   $(".cerrar-menu, .overlay").on("click", function () {
     $(".sidebar").removeClass("active");

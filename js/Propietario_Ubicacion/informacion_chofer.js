@@ -88,23 +88,10 @@ $(document).ready(function () {
 						conuntvariablenumcaja++;
 
 						if (docnumchoferes.exists) {
-
-							//$("#tc"+conuntvariable).addClass("clasedesactivarB");
-							//$("#editar"+conuntvariable).removeClass("clasedesactivarB");
-							//$("#eliminar"+conuntvariable).removeClass("clasedesactivarB");
-
-							//document.getElementById("editar" + conuntvariable).disabled = false;
-							//document.getElementById("eliminar" + conuntvariable).disabled = false;
-
 							document.getElementById("inputNombre" + conuntvariablenumcaja).disabled = true;
 							document.getElementById("inputApellido" + conuntvariablenumcaja).disabled = true;
 							document.getElementById("inputTelefono" + conuntvariablenumcaja).disabled = true;
 							document.getElementById("inputEmail" + conuntvariablenumcaja).disabled = true;
-
-
-							//$("#cajaSitio" + conuntvariable).removeClass("d-none");
-							//$("#cajaSitio" + conuntvariable).addClass("d-block");
-
 
 							cajaNombre = docnumchoferes.data().nombre;
 							cajaApellidos = docnumchoferes.data().apellidos;
@@ -188,33 +175,38 @@ $(document).ready(function () {
 
 				var numeroAleatorio2;
 
-				//verificar si esta el identificador del chofer
-				db.collection("choferes").get().then(function (queryIdentificador) {
-					queryIdentificador.forEach(function (docidentificador) {
-						if (numerosaleatorios1.toString() == docidentificador.data().identificador) {
-							console.log("!Si esta en la BD! :" + numerosaleatorios1.toString());
-							//si el identficador ya se encuentra en la bd, se vuelve a ejecutar la variable que crea el identificador para crear otro
-							numerosaleatorios1 = NumeroAleatorio(100, 100000);
-						} else {
-							console.log("!No esta en la BD!: " + numerosaleatorios1.toString());
-							//a la variable numeroAleatorio2 se le asigna el valor identificador en forma de cadena
-							numeroAleatorio2 = numerosaleatorios1.toString();
-
-						}
-					});
+		        //verificar si existe la coleccion chofer
+				db.collection("choferes").get().then(function (querySnapshot) {
+					console.log("TAMAÑO DEL ARREGLO: "+querySnapshot.size);
+					if (querySnapshot.size != 0) {
+						console.log("si EXISTE la colleccion CHOFERES Y SI TIENE REGISTROS");
+						db.collection("choferes").get().then(function (queryColl) {
+								db.collection("choferes").get().then(function (queryIdentificador) {
+									queryIdentificador.forEach(function (docidentificador) {
+										if (numerosaleatorios1.toString() == docidentificador.data().identificador) {
+											console.log("!Si esta en la BD! :" + numerosaleatorios1.toString());
+											//si el identficador ya se encuentra en la bd, se vuelve a ejecutar la variable que crea el identificador para crear otro
+											numerosaleatorios1 = NumeroAleatorio(100, 100000);
+										} else {
+											console.log("!No esta en la BD!: " + numerosaleatorios1.toString());
+											//a la variable numeroAleatorio2 se le asigna el valor identificador en forma de cadena
+											numeroAleatorio2 = numerosaleatorios1.toString();
+										}
+									});
+								});
+						});
+					} else {
+						console.log("No EXISTE colleccion CHOFERES Y NO HAY REGISTROS");
+						numeroAleatorio2 = numerosaleatorios1.toString();
+					}
 				});
-
-
-
-
 
 
 
 				//console.log("ID TAXI: "+idDocTaxi);
 
 				// se crea el usuario en authentication
-				firebase.auth().createUserWithEmailAndPassword(emailcompleto, passwordChofer)
-					.then(function (result) {
+				firebase.auth().createUserWithEmailAndPassword(emailcompleto, passwordChofer).then(function (result) {
 						console.log("se creo el usuario: " + emailcompleto + " contraseña: " + passwordChofer);
 						// si se crea el usuario en authentication, entonces tambien se guarda los datos en la colleccion choferes
 						db.collection("choferes").add({
@@ -222,7 +214,7 @@ $(document).ready(function () {
 							calificacion: "5.0",
 							dueno: emailP,
 							email: correoMinuscula,
-							foto: "https://scontent.fmtt1-1.fna.fbcdn.net/v/t1.0-9/p960x960/69790505_2396650170415277_1287301659680047104_o.jpg?_nc_cat=107&_nc_ohc=Ar694t-nuecAX9K8Bp6&_nc_ht=scontent.fmtt1-1.fna&_nc_tp=6&oh=66e0d38b87a57286dad18ea521a13715&oe=5ECA62BD",
+							foto: "fotouno",
 							identificador: numeroAleatorio2,
 							nombre: nombreChofer,
 							placa_taxi: placaAGR,
@@ -290,16 +282,4 @@ $(document).ready(function () {
 				window.location = "#!/Informacion";
 			});
 
-
-
-
-
-
 });
-
-
-
-
-
-
-

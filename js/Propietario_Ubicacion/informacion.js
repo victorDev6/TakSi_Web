@@ -41,6 +41,13 @@ $(document).ready(function () {
 	}
  	});*/
 
+
+
+
+
+
+
+
   //var numtaxisaltas=3;
   function ConsultaryllenarCampos() {
     var cajaTax;
@@ -50,12 +57,10 @@ $(document).ready(function () {
     var cajaModel;
     var cajaNseri;
     var cajaSit;
+	var cajaImgTaxi;
     var idFirebaseTaxi;
     //db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").get().then(function(querytaxis) {
-    db.collection("taxis")
-      .where("correo", "==", emailP)
-      .orderBy("fecha_alta_taxi", "asc")
-      .onSnapshot(function (querytaxis) {
+    db.collection("taxis").where("correo", "==", emailP).orderBy("fecha_alta_taxi", "asc").onSnapshot(function (querytaxis) {
         var conuntvariable = 0;
         querytaxis.forEach(function (docnumtaxi) {
           conuntvariable++;
@@ -75,6 +80,7 @@ $(document).ready(function () {
             $("#cajaModelo" + conuntvariable).attr("disabled", "disabled");
             $("#cajaNSerie" + conuntvariable).attr("disabled", "disabled");
             $("#cajaSitio" + conuntvariable).attr("disabled", "disabled");
+			$("#imagenTaxi" + conuntvariable).attr("disabled", "disabled");
 
             //Para habilitar de nuevo, el método adecuado es usar .removeAttr()
             //$("#editar").removeAttr('disabled');
@@ -92,7 +98,9 @@ $(document).ready(function () {
             cajaModel = docnumtaxi.data().modelo;
             cajaSit = docnumtaxi.data().sitio;
             cajaNseri = docnumtaxi.data().numero_serie;
+			cajaImgTaxi=docnumtaxi.data().foto_taxi;
             idFirebaseTaxi = docnumtaxi.id;
+
 
             $("#cajaNtaxi" + conuntvariable).val(cajaTax);
             $("#cajaPlaca" + conuntvariable).val(cajaPlac);
@@ -100,21 +108,18 @@ $(document).ready(function () {
             $("#cajaModelo" + conuntvariable).val(cajaModel);
             $("#cajaNSerie" + conuntvariable).val(cajaNseri);
             $("#cajaSitio" + conuntvariable).val(cajaSit);
-            $("myspanidfirebase" + conuntvariable).textContent = idFirebaseTaxi;
+			$("#imgSubida_" + conuntvariable).attr("src",cajaImgTaxi);
+			$("#myspanidfirebase" +conuntvariable).text(idFirebaseTaxi);
 
             console.log("PLACA: [" + docnumtaxi.data().placa + "]");
             //verificr cuantos choferes hay rgistrado
             db.collection("choferes")
-              .where("placa_taxi", "==", docnumtaxi.data().placa)
-              .where("dueno", "==", emailP)
-              .onSnapshot(function (count) {
+              .where("placa_taxi", "==", docnumtaxi.data().placa).where("dueno", "==", emailP).onSnapshot(function (count) {
                 var conuntc = 0;
                 count.forEach(function (docnumchoferes) {
                   conuntc++;
                 });
-                console.log(
-                  "COUNT:" + docnumtaxi.data().placa + " :" + conuntc
-                );
+                console.log("COUNT:" + docnumtaxi.data().placa + " :" + conuntc);
               });
           } else {
             console.log("No such document!");
@@ -122,65 +127,49 @@ $(document).ready(function () {
         });
       });
   }
+
   var numtaxisaltas;
   var idDocumento;
   var paso;
-  db.collection("reg_prop_prin_web")
-    .where("email", "==", emailP)
-    .onSnapshot(function (queryNumtaxi) {
-      //ConsultaryllenarCampos();
+  db.collection("reg_prop_prin_web").where("email", "==", emailP).onSnapshot(function (queryNumtaxi) {
       queryNumtaxi.forEach(function (docnumtaxi) {
         numtaxisaltas = docnumtaxi.data().num_taxis;
         idDocumento = docnumtaxi.id; //id colleccion dueño
         $(".container").empty().prepend(); //limpiar antes de crear
 
+
         for (paso = 1; paso <= numtaxisaltas; paso++) {
-          $(".container").append(
-            '<div class="">\
-		<form id="form' +
-              paso +
-              '" class="pt-2 tc' +
-              paso +
-              '" action="javascript:void(0)">\
+          $(".container").append('<div class="">\
+			<form id="form' + paso +'" class="pt-2 tc'+paso+'" action="javascript:void(0)">\
 			<div class="row encierroI p-2">\
 				<div class="col-12  col-sm-8  col-md-8 col-lg-8  p-1 taxis">\
 					<div class="row  justify-content-center align-items-center taxx">\
-						<span class="titulos">TAXI # ' +
-              paso +
-              ' <img class="iconotaxi"></span>\
+						<span class="titulos">TAXI # '+paso +' <img class="iconotaxi"></span>\
 					</div>\
 					<div class="row pl-4 pr-4">\
 						<div class="col-6 col-lg-6">\
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">N° Taxi:</label>\
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">\
-									<input type="text" class="form-control form-control-sm" id="cajaNtaxi' +
-              paso +
-              '" placeholder="Ingrese No de Taxi..">\
+									<input type="text" class="form-control form-control-sm" id="cajaNtaxi'+paso+'" placeholder="Ingrese No de Taxi..">\
 								</div>\
 							</div>\
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12  col-sm-12  col-md-4  col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Placa:</label>\
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">\
-									<input type="text" class="form-control form-control-sm" id="cajaPlaca' +
-              paso +
-              '" placeholder="Ingrese la Placa..">\
+									<input type="text" class="form-control form-control-sm" id="cajaPlaca'+paso+'" placeholder="Ingrese la Placa..">\
 								</div>\
 							</div>\
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12  col-sm-12   col-md-4	col-lg-3  col-form-label  text-center text-md-right px-0 subtitulo">Marca:</label>\
 								<div class="col-12  col-sm-12   col-md-8  col-lg-9">\
-									<input type="text" class="form-control form-control-sm" id="jacaMarca' +
-              paso +
-              '" placeholder="Ingrese la Marca..">\
+									<input type="text" class="form-control form-control-sm" id="jacaMarca'+paso+'" placeholder="Ingrese la Marca..">\
 								</div>\
 							</div>\
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">Modelo:</label>\
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">\
-									<input type="text" class="form-control form-control-sm" id="cajaModelo' +
-              paso +
-              '" placeholder="Ingrese el Modelo..">\
+									<input type="text" class="form-control form-control-sm" id="cajaModelo'+paso +'" placeholder="Ingrese el Modelo..">\
 								</div>\
 							</div>\
 						</div>\
@@ -188,32 +177,22 @@ $(document).ready(function () {
 								<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12  col-sm-12   col-md-4   col-lg-3   col-form-label  text-center text-md-right px-0 subtitulo">No. Serie:</label>\
 								<div class="col-12  col-sm-12  col-md-8  col-lg-9">\
-									<input type="text" class="form-control form-control-sm" id="cajaNSerie' +
-              paso +
-              '" placeholder="Ingrese No de Serie..">\
+									<input type="text" class="form-control form-control-sm" id="cajaNSerie' +paso +'" placeholder="Ingrese No de Serie..">\
 								</div>\
 							</div>\
 							<div class="form-group row mb-0 pb-1">\
 								<label for="" class="col-12   col-sm-12   col-md-4   col-lg-3    col-form-label  text-center text-md-right px-0 subtitulo">Sitio:</label>\
 								<div class="col-12 col-sm-12 col-md-8  col-lg-9">\
-									<select class="form-control form-control-sm d-block" name="" id="selectSitio' +
-              paso +
-              '">\
-										<option value="-1">Seleccionar Sitio</option>\
+									<select class="form-control form-control-sm d-block selectLinea" name="" id="selectSitio'+paso+'">\
+									<option value="0" selected>Seleccionar Sitio</option>\
 									</select>\
-									<input type="text" class="form-control form-control-sm d-none" id="cajaSitio' +
-              paso +
-              '" disabled>\
+									<input type="text" class="form-control form-control-sm d-none" id="cajaSitio' + paso +'" disabled>\
 								</div>\
 							</div>\
 							<div class="form-group row mb-0 pt-1 justify-content-center align-items-center">\
 								<div class=" offset-md-3">\
-									<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi' +
-              paso +
-              '" class="d-none">\
-									<img class="selectorImagen imgSubida_estilo" id="imgSubida_' +
-              paso +
-              '" src="">\
+									<input type="file" name="noti1" accept=".png, .jpg, .jpeg" id="imagenTaxi' + paso +'" class="d-none">\
+									<img class="selectorImagen imgSubida_estilo" id="imgSubida_' + paso +'" src="">\
 								</div>\
 							</div>\
 						</div>\
@@ -225,66 +204,71 @@ $(document).ready(function () {
 					</div>\
 					<div class="form-group row justify-content-center align-items-center pt-md-4">\
 						<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0 pt-sm-4 pt-md-0 ">\
-							<img class="iconochoferesS d-block m-auto" id="1' +
-              paso +
-              '">\
+							<img class="iconochoferesS d-block m-auto" id="1' +paso+'">\
 						</div>\
 						<div class="col-3 col-sm-8  col-md-4 pb-sm-4 pb-md-0">\
-							<img class="iconochoferesC d-block m-auto" id="2' +
-              paso +
-              '">\
+							<img class="iconochoferesC d-block m-auto" id="2' +paso +'">\
 						</div>\
 						<div class="col-3 col-sm-8  col-md-4">\
-							<img class="iconochoferesS d-block m-auto" id="3' +
-              paso +
-              '">\
+							<img class="iconochoferesS d-block m-auto" id="3' +paso+'">\
 						</div>\
 					</div>\
 					<div class="row justify-content-center align-items-center mt-2">\
 						<div class="p-1 col-12">\
-							<a ui-sref="choferes" class="btn btn-secondary btn-sm active btn-block m-auto btnAgregarChofer" id="agr' +
-              paso +
-              '" role="button">\
+							<a ui-sref="choferes" class="btn btn-secondary btn-sm active btn-block m-auto btnAgregarChofer" id="agr'+paso+'" role="button">\
 								<span class="fas fa-plus float-right pr-4 Ipropietario"></span>Agregar\
 							</a>\
 						</div>\
 					</div>\
-					<span class="d-none" id="myspanidfirebase' +
-              paso +
-              '">id</span>\
+					<span class="d-none" id="myspanidfirebase'+paso+'">id</span>\
 				</div>\
 				<div class="col-12  col-sm-12  col-md-1 col-lg-1  p-1 pt-md-4 cuatro">\
 					<div class="row justify-content-center align-items-center p-1 pt-md-4">\
 						<div class="col-4 col-sm-4 col-md-12 col-lg-8 pb-md-4">\
-							<button class="btn guardar d-block m-auto" id="tc' +
-              paso +
-              '"></button>\
+							<button class="btn guardar d-block m-auto" id="tc'+paso+'"></button>\
 						</div>\
 						<div class="col-4 col-sm-4  col-md-12 col-lg-8 pb-md-4">\
-							<button class="btn editar d-block m-auto" id="editar' +
-              paso +
-              '" ></button>\
+							<button class="btn editar d-block m-auto" id="editar' +paso+'" ></button>\
 						</div>\
 						<div class="col-4 col-sm-4  col-md-12 col-lg-8">\
-							<button class="btn eliminar d-block m-auto" id="eliminar' +
-              paso +
-              '" ></button>\
+							<button class="btn eliminar d-block m-auto" id="eliminar' +paso+'" ></button>\
 						</div>\
 					</div>\
 				</div>\
 			</div>\
 		</form>\
-	</div>'
-          );
-          $("#editar" + paso).addClass("clasedesactivarB");
+	</div>');
+          $("#editar"   + paso).addClass("clasedesactivarB");
           $("#eliminar" + paso).addClass("clasedesactivarB");
-
-          //document.getElementById("editar" + paso).disabled = true;
-          //document.getElementById("eliminar" + paso).disabled = true;
           $("#eliminar" + paso).attr("disabled", "disabled");
-          $("#editar" + paso).attr("disabled", "disabled");
+          $("#editar"   + paso).attr("disabled", "disabled");
+
         }
+
+		//metodos para llenar los select con los sitios de Taxi
+		const lineasTaxi = [];
+		db.collection("lineas").onSnapshot(function (querySnapshot) {
+	 			querySnapshot.forEach(function (doc) {
+					lineasTaxi.push(doc.data().nombre);
+	 			});
+			cargar_provincias(lineasTaxi);
+	 	});
+        function cargar_provincias(lineasTaxi){
+			console.log(lineasTaxi+" paso "+numtaxisaltas);
+            for(var i in lineasTaxi){
+				var repetir;
+				for(repetir = 1; repetir <= numtaxisaltas; repetir++){
+					  document.getElementById("selectSitio"+repetir).innerHTML += "<option value='"+repetir+"'>"+lineasTaxi[i]+"</option>";
+				}
+            }
+		}
+		//Fin metodos select
+
+		//llena los campos con los datos si es que existen
         ConsultaryllenarCampos();
+
+
+
 
         var campos_max = 8; //max de 9 taxis
         var x = paso;
@@ -294,13 +278,11 @@ $(document).ready(function () {
             var mensajeE = "Seguro deseas agregar el taxi No?" + x;
             document.getElementById("textoModal").innerHTML = mensajeE;
             document.getElementById("textoModal").style.fontWeight = "bold";
-            //ConsultaryllenarCampos();
           } else {
             var mensajeE = "Has llegado al limite de taxis";
             document.getElementById("textoModal").innerHTML = mensajeE;
             document.getElementById("textoModal").style.color = "#BF2503";
             document.getElementById("textoModal").style.fontWeight = "bold";
-            //ConsultaryllenarCampos();
           }
         });
 
@@ -308,18 +290,14 @@ $(document).ready(function () {
           $("#confirmaragregartaxi").modal("hide");
           e.preventDefault(); //prevenir clicks
           if (x <= campos_max) {
-            db.collection("reg_prop_prin_web")
-              .doc(idDocumento)
-              .update({
+            db.collection("reg_prop_prin_web").doc(idDocumento).update({
                 num_taxis: x,
               })
               .then(function () {
                 console.log("¡actualizado exitosamente!");
-                //ConsultaryllenarCampos();
               })
               .catch(function (error) {
                 console.error("Error al actualizar el documento: ", error);
-                //ConsultaryllenarCampos();
               });
           }
           x++;
@@ -333,17 +311,13 @@ $(document).ready(function () {
 
           //para saver si los botones estan desabilitado
           var expresionRegularDisabled = "tc";
-          var arrayDeCadenasDisabled = idBtnidForm.split(
-            expresionRegularDisabled
-          );
-          var nuevoDisabled = String(arrayDeCadenasDisabled);
+          var arrayDeCadenasDisabled   = idBtnidForm.split(expresionRegularDisabled);
+          var nuevoDisabled      = String(arrayDeCadenasDisabled);
           var solonumeroDisabled = nuevoDisabled.slice(1);
 
           //verificar si esta desabilitado o no
-          var btn1ED = document.getElementById("editar" + solonumeroDisabled)
-            .disabled;
-          var btn1EL = document.getElementById("eliminar" + solonumeroDisabled)
-            .disabled;
+          var btn1ED = document.getElementById("editar"   + solonumeroDisabled).disabled;
+          var btn1EL = document.getElementById("eliminar" + solonumeroDisabled).disabled;
 
           if (btn1ED == true && btn1EL == true) {
             var mensajeE = "Seguro Deseas dar de Alta un Nuevo Taxi?";
@@ -370,50 +344,19 @@ $(document).ready(function () {
           var nuevoI = String(arrayDeCadenas);
           var vuenvo = nuevoI.slice(1);
 
-          var cajaNtaxi = document.getElementById("cajaNtaxi" + vuenvo).value;
-          var cajaPlaca = document.getElementById("cajaPlaca" + vuenvo).value;
-          var cajaMarca = document.getElementById("jacaMarca" + vuenvo).value;
-          var cajaModelo = document.getElementById("cajaModelo" + vuenvo).value;
-          var cajaNumeroSerie = document.getElementById("cajaNSerie" + vuenvo)
-            .value;
-          var cajaSitio = $(
-            "#selectSitio" + vuenvo + " option:selected"
-          ).text();
-          var mySpanId = $("#myspanidfirebase" + vuenvo).text();
+          var cajaNtaxi  = document.getElementById("cajaNtaxi" + vuenvo).value;
+          var cajaPlaca  = document.getElementById("cajaPlaca" + vuenvo).value;
+          var cajaMarca  = document.getElementById("jacaMarca" + vuenvo).value;
+          var cajaModelo = document.getElementById("cajaModelo"+ vuenvo).value;
+          var cajaNumeroSerie = document.getElementById("cajaNSerie" + vuenvo).value;
+          var cajaSitio = $("#selectSitio" + vuenvo + " option:selected").text();
+          var mySpanId  = $("#myspanidfirebase" + vuenvo).text();
 
-          //obtener la fecha para guardarlo en firebase
-          //var utcDate = moment(myDate).utc();
-          //var myDate = utcDate.toDate();
-          //alert(myDate);
-
-          if (estadoGuardar1 == 0) {
-            SubirImgTaxi(
-              emailP,
-              cajaMarca,
-              cajaModelo,
-              cajaNtaxi,
-              cajaPlaca,
-              cajaSitio,
-              cajaNumeroSerie
-            );
+         if (estadoGuardar1 == 0) {
+            SubirImgTaxi(emailP,cajaMarca,cajaModelo,cajaNtaxi,cajaPlaca,cajaSitio,cajaNumeroSerie);
           } else if (estadoGuardar1 == 1) {
             let addIDColleccion = db.collection("taxis").doc(mySpanId);
-            return addIDColleccion
-              .update({
-                foto_taxi: "taxirutaupdate",
-                numero: cajaNtaxi,
-                placa: cajaPlaca,
-                marca: cajaMarca,
-                modelo: cajaModelo,
-                numero_serie: cajaNumeroSerie,
-                sitio: cajaSitio,
-              })
-              .then(function () {
-                console.log("Document successfully updated!");
-              })
-              .catch(function (error) {
-                console.error("Error updating document: ", error);
-              });
+			SubirImgTaxiActualizada(cajaMarca,cajaModelo,cajaNtaxi,cajaPlaca,cajaSitio,cajaNumeroSerie,addIDColleccion);
           }
         });
 
@@ -431,18 +374,19 @@ $(document).ready(function () {
 
           $("#tc" + solonumero).removeClass("clasedesactivarB");
           document.getElementById("tc" + solonumero).disabled = false;
-          document.getElementById("cajaNtaxi" + solonumero).disabled = false;
-          document.getElementById("cajaPlaca" + solonumero).disabled = false;
-          document.getElementById("jacaMarca" + solonumero).disabled = false;
+          document.getElementById("cajaNtaxi"  + solonumero).disabled = false;
+          document.getElementById("cajaPlaca"  + solonumero).disabled = false;
+          document.getElementById("jacaMarca"  + solonumero).disabled = false;
           document.getElementById("cajaModelo" + solonumero).disabled = false;
           document.getElementById("cajaNSerie" + solonumero).disabled = false;
-          document.getElementById("cajaSitio" + solonumero).disabled = false;
+          document.getElementById("cajaSitio"  + solonumero).disabled = false;
 
           $("#selectSitio" + solonumero).removeClass("d-none");
           $("#selectSitio" + solonumero).addClass("d-block");
+          $("#cajaSitio"   + solonumero).removeClass("d-block");
+          $("#cajaSitio"   + solonumero).addClass("d-none");
+		  $("#imagenTaxi" + solonumero).removeAttr('disabled');
 
-          $("#cajaSitio" + solonumero).removeClass("d-block");
-          $("#cajaSitio" + solonumero).addClass("d-none");
 
           estadoGuardar1 = 1;
           console.log(
@@ -545,24 +489,13 @@ $(document).ready(function () {
       }
 
       /********************************************************** */
-      /*FUNCION QUE SUBE LA IMG A STORAGE
+      /*FUNCION QUE SUBE LA IMG A STORAGE --GUARDAR
       /*********************************************************** */
-      function SubirImgTaxi(
-        mail,
-        cMarca,
-        cModelo,
-        cNtaxi,
-        cPlaca,
-        cSitio,
-        cNumeroSerie
-      ) {
+      function SubirImgTaxi(mail,cMarca,cModelo,cNtaxi,cPlaca,cSitio,cNumeroSerie) {
         let imagenASubir = file;
-        let uploadTask = storageRef
-          .child("Fotos_taxis/" + imagenASubir.name)
-          .put(imagenASubir);
+        let uploadTask = storageRef.child("Fotos_taxis/" + imagenASubir.name).put(imagenASubir);
 
-        uploadTask.on(
-          "state_changed",
+        uploadTask.on("state_changed",
           function (snapshot) {
             let progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -579,37 +512,15 @@ $(document).ready(function () {
             // Handle unsuccessful uploads
           },
           function () {
-            uploadTask.snapshot.ref
-              .getDownloadURL()
-              .then(function (downloadURL) {
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                 //Aqui va el metodo donde se guarda
-                GuardarTaxis(
-                  mail,
-                  downloadURL,
-                  cMarca,
-                  cModelo,
-                  cNtaxi,
-                  cPlaca,
-                  cSitio,
-                  cNumeroSerie
-                );
+                GuardarTaxis(mail,downloadURL,cMarca,cModelo,cNtaxi,cPlaca,cSitio,cNumeroSerie);
               });
           }
         );
       }
-
-      function GuardarTaxis(
-        emailP,
-        url_foto,
-        cajaMarca,
-        cajaModelo,
-        cajaNtaxi,
-        cajaPlaca,
-        cajaSitio,
-        cajaNumeroSerie
-      ) {
-        db.collection("taxis")
-          .add({
+      function GuardarTaxis(emailP,url_foto,cajaMarca,cajaModelo,cajaNtaxi,cajaPlaca,cajaSitio,cajaNumeroSerie) {
+        db.collection("taxis").add({
             choferes: [],
             correo: emailP,
             foto_taxi: url_foto,
@@ -630,12 +541,59 @@ $(document).ready(function () {
             console.error("Error adding document: ", error);
           });
       }
+
+
+	   /********************************************************** */
+      /*FUNCION QUE SUBE LA IMG A STORAGE  --ACTUALIZAR
+      /*********************************************************** */
+      function SubirImgTaxiActualizada(cMarca, cModelo, cNtaxi, cPlaca, cSitio, cNumeroSerie, addIDColleccion) {
+      	let imagenASubir = file;
+      	let uploadTask = storageRef.child("Fotos_taxis/" + imagenASubir.name).put(imagenASubir);
+
+      	uploadTask.on("state_changed",
+      		function (snapshot) {
+      			let progress =
+      				(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      			switch (snapshot.state) {
+      				case firebase.storage.TaskState.PAUSED: // or 'paused'
+      					console.log("Upload is paused");
+      					break;
+      				case firebase.storage.TaskState.RUNNING: // or 'running'
+      					console.log("Upload is running");
+      					break;
+      			}
+      		},
+      		function (error) {
+      			// Handle unsuccessful uploads
+      		},
+      		function () {
+      			uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+      				//Aqui va el metodo donde se guarda
+      				actualizarTaxi(cMarca, cModelo, cNtaxi, cPlaca, cSitio, cNumeroSerie, downloadURL, addIDColleccion);
+      			});
+      		}
+      	);
+      }
+      function actualizarTaxi(cajaMarca, cajaModelo, cajaNtaxi, cajaPlaca, cajaSitio, cajaNumeroSerie, url_foto, addIDColleccion) {
+      	return addIDColleccion.update({
+      			foto_taxi: url_foto,
+      			numero: cajaNtaxi,
+      			placa: cajaPlaca,
+      			marca: cajaMarca,
+      			modelo: cajaModelo,
+      			numero_serie: cajaNumeroSerie,
+      			sitio: cajaSitio,
+      		})
+      		.then(function () {
+      			console.log("Document successfully updated!");
+      		})
+      		.catch(function (error) {
+      			console.error("Error updating document: ", error);
+      		});
+      }
     });
 
-  //https://fireship.io/lessons/firestore-array-queries-guide/
-  //.catch(function (error) {
-  //console.log("Error getting document:", error);
-  //});
+
 
   //Reedirecciona al Modulo de Pagos
   $("#btn_show_pagos").click(function (e) {
@@ -643,3 +601,8 @@ $(document).ready(function () {
     window.location = "#!/Pagos";
   });
 });
+
+
+
+
+
