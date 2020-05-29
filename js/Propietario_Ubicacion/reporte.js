@@ -117,13 +117,16 @@ $(document).ready(function () {
 			if (conunt == 0) {
 				$(".alert").removeClass("d-none");
 				$(".claseocultarpag").addClass("d-none");
-				document.getElementById("desabled").disabled = true;
+				//document.getElementById("desabled").disabled = true;
+				$("#desabled").attr("disabled", "disabled");
+
 				$("#desabled").addClass("clasedesactivar");
 			} else {
 				$("#nopagina").change(); //mostrar registros
 				$('.claseocultarpag').removeClass('d-none');
 				$(".alert").addClass('d-none');
-				document.getElementById("desabled").disabled = false;
+				//document.getElementById("desabled").disabled = false;
+				$("#desabled").removeAttr("disabled");
 				$("#desabled").removeClass("clasedesactivar");
 			}
 		});

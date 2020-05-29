@@ -27,10 +27,6 @@ app.config([
         url: "/chofer",
         templateUrl: "informacion_chofer.html",
       })
-      .state("facturacion", {
-        url: "/informacion facturacion",
-        templateUrl: "informacion_facturacion.html",
-      })
       .state("pagos", {
         url: "/Pagos",
         templateUrl: "../../vistas/PagosTarjeta/PagosFotos.html",

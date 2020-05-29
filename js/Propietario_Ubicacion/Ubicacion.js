@@ -1,111 +1,128 @@
 
-/*
-
-try {
-		firebase.initializeApp({
-			apiKey: "AIzaSyB3Vk0nWljV4KhsfU9Co4qNNE0P_FhIJC4",
-			authDomain: "taksi-d543c.firebaseapp.com",
-			databaseURL: "https://taksi-d543c.firebaseio.com",
-			projectId: "taksi-d543c",
-			storageBucket: "taksi-d543c.appspot.com",
-			messagingSenderId: "3651890584",
-			appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-			measurementId: "G-6VDL057TWQ"
-		})
-	} catch (err) {
-		if (!/already exists/.test(err.message)) {
-			console.error("Se produjo un error de inicialización de Firebase", err.stack)
-		}
-	}
-	var db = firebase.firestore();
+			/* Conectarse a Firebase*/
+			try {
+				firebase.initializeApp({
+					apiKey: "AIzaSyB3Vk0nWljV4KhsfU9Co4qNNE0P_FhIJC4",
+					authDomain: "taksi-d543c.firebaseapp.com",
+					projectId: "taksi-d543c",
+					storageBucket: "taksi-d543c.appspot.com",
+				});
+			} catch (err) {
+				if (!/already exists/.test(err.message)) {
+					console.error(
+						"Se produjo un error de inicialización de Firebase",
+						err.stack
+					);
+				}
+			}
 
 
-	document.getElementById("user_div").style.display = "block";
-	printDatos();
+			var db = firebase.firestore();
+			var storageRef = firebase.storage().ref();
+			var gmarkers = [];
+			var map;
 
 
-	var map;
-	var gmarkers = [];
+			function printDatos() {
+				var user = firebase.auth().currentUser;
+				//var correo_id = user.email;
+				var correo_id = "perezrobleroleiver15@gmail.com";
 
-	function printDatos() {
-		var emailP = "dueno2@gmail.com"; //CORREO DEL PROPIETARIO QUE INICIE SESSSION
 
-		//var user = firebase.auth().currentUser;
-		//var correo_id = user.email;
+				db.collection("Comitán de Domínguez").where("dueño", "==", correo_id).onSnapshot(function (querySnapshot) {
+					removeMarkers();
+					querySnapshot.forEach(async function (doc) {
+						if (doc.data().estado == "online" || doc.data().estado == "offline" || doc.data().estado == "ocupado") {
 
-		//[ ] (where("estado","in",["online","ocupado"])   ,  .where("estado","==","online") ,
-		db.collection("Comitán de Domínguez").where("dueño", "==", emailP).onSnapshot(function (querySnapshot) {
-			removeMarkers();
-			querySnapshot.forEach(async function (doc) {
-				console.log(doc.data());
-				if (doc.data().estado == "online" || doc.data().estado == "ocupado") {
-					var infowindow = new google.maps.InfoWindow();
-					var marker = new google.maps.Marker({
-						position: {
-							lat: doc.data().ubicacion.latitude,
-							lng: doc.data().ubicacion.longitude
-						},
-						icon: {
-							url: "taxi.svg",
-							scaledSize: new google.maps.Size(50, 50)
-						},
-						map: map,
-						title: doc.data().identificador
+							var infowindow = new google.maps.InfoWindow();
+							var marker = new google.maps.Marker({
+								position: {
+									lat: doc.data().ubicacion.latitude,
+									lng: doc.data().ubicacion.longitude
+								},
+								icon: {
+									url: "../../Diseno/IMG/taxi.svg",
+									scaledSize: new google.maps.Size(50, 50)
+								},
+								map: map,
+								title: doc.data().identificador
+							});
+
+							//console.log("IDENTIFICADOR: "+doc.data().identificador);
+
+							var name = "nombre";
+							var apePat = "Apellido";
+							var placaTaxi = "default";
+							var urltaxi = "Url";
+
+							await db.collection("choferes").where("dueno", "==", correo_id).where("identificador", "==", doc.data().identificador).get().then(function (doc) {
+								//forma de obtener los datos sin el foreach
+								name = doc.docs[0]._document.proto.fields.nombre['stringValue'];
+								apePat = doc.docs[0]._document.proto.fields.apellidos['stringValue'];
+								placaTaxi = doc.docs[0]._document.proto.fields.placa_taxi['stringValue'];
+
+							}).catch(function (err) {
+								console.log(err);
+							});
+
+							await db.collection("taxis").where("correo", "==", correo_id).where("placa", "==", placaTaxi).get().then(function (doc) {
+								//forma de obtener los datos sin el foreach
+								urltaxi = doc.docs[0]._document.proto.fields.foto_taxi['stringValue'];
+							}).catch(function (err) {
+								console.log(err);
+							});
+
+
+							var estadoTxi="";
+							 if(doc.data().estado === 'online'){
+									estadoTxi='Buscando servicio..'
+								}else if(doc.data().estado === 'offline'){
+									estadoTxi='Fuera de servicio'
+								}
+								else if(doc.data().estado === 'ocupado'){
+									estadoTxi='En un servicio'
+								}
+
+
+							var contentString = "<div align='center'><img height='100px' width='200px' src='"+urltaxi+"'/></div>" +
+								"<h5 class='placa'>" + placaTaxi + "</h5>" +
+								"<br><b>Sitio:</b>  " + doc.data().sitio +
+								"<br><b>Chofer:</b>   " + name + " " + apePat +
+								"<br><strong>Actualmente:</strong>   " + estadoTxi +
+								"<br>";
+
+
+
+
+
+								(doc.data().estado === 'online' ? 'Buscando servicio' : 'En un servicio') +
+								"<br>";
+							google.maps.event.addListener(marker, 'mouseover', function (e) {
+								infowindow.setContent(contentString);
+								infowindow.open(map, marker);
+							});
+							google.maps.event.addListener(marker, 'mouseout', function (e) {
+								infowindow.close();
+							});
+							gmarkers.push(marker);
+						} else {}
 					});
+				});
+			}
 
-
-					var name = "dj";
-					var apePat = "gg";
-					await db.collection("choferes").where("dueño", "==", emailP).where("identificador", "==", doc.data().identificador).get().then(function (doc) {
-
-						console.log(doc.docs[0]._document.proto.fields.nombre['stringValue']);
-						name = doc.docs[0]._document.proto.fields.nombre['stringValue'];
-						apePat = doc.docs[0]._document.proto.fields.apellidos['stringValue'];
-						console.log(doc.docs[22]._document.proto.fields.numero['stringValue']);
-
-					}).catch(function (err) {
-						console.log(err);
-					});
-
-					var contentString = "<img height='140px' width='250px' src='taxi.png' />" +
-						"<h5>" + doc.data().identificador + "</h5>" +
-						"<br>El taxi del sitio: " + doc.data().sitio +
-						"<br>Operado por: " + name + " " + apePat +
-						"<br>Está actualmente: " + (doc.data().estado === 'online' ? 'Buscando servicio' : 'En un servicio') +
-						"<br>";
-					google.maps.event.addListener(marker, 'mouseover', function (e) {
-						infowindow.setContent(contentString);
-						infowindow.open(map, marker);
-					});
-
-					google.maps.event.addListener(marker, 'mouseout', function (e) {
-						infowindow.close();
-					});
-
-					gmarkers.push(marker);
-				} else {}
-			});
-		});
-	}
-
-	function initMap() {
-		map = new google.maps.Map(document.getElementById('map'), {
-			center: {
-				lat: 16.241409,
-				lng: -92.129658
-			},
-			zoom: 14
-		});
-	}
-
-
-	function removeMarkers() {
-		while (gmarkers.length) {
-			var oldMarker = gmarkers.pop();
-			oldMarker.setMap(null);
-			// delete oldMarker;  // optionally delete it, allegedly it's unnnecesary.
-		}
-		//  for(i=0; i<gmarkers.length; i++){
-		//    gmarkers[i].setMap(null);
-		// }
-	}
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: {
+						lat: 16.241409,
+						lng: -92.129658
+					},
+					zoom: 14,
+				});
+				printDatos();
+			}
+			function removeMarkers() {
+				while (gmarkers.length) {
+					var oldMarker = gmarkers.pop();
+					oldMarker.setMap(null);
+				}
+			}
