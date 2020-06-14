@@ -1072,14 +1072,28 @@ function GuardarSegFechas(idPago, fechaInicio, fechaFin) {
 
 //Agregar datos a la coleccion taxis
 function CicloUpdateTaxi(fechaIni, fechaFin) {
+  let OpcionPago = document.getElementById("selectOpcionPago").value;
   let solicitud = document.getElementById("cajaTaxiSelect").value;
   let objetoRes = DividirCadena(solicitud);
   for (const iterator of objetoRes) {
-    UpdateStatusPagoTaxi(iterator.id, fechaIni, fechaFin);
+    UpdateStatusPagoTaxi(
+      iterator.id,
+      fechaIni,
+      fechaFin,
+      OpcionPago,
+      iterator.monto
+    );
   }
 }
 
-function UpdateStatusPagoTaxi(idTaxi, fechaIni, fechaFin) {
+function UpdateStatusPagoTaxi(
+  idTaxi,
+  fechaIni,
+  fechaFin,
+  opcionPago,
+  montoPago
+) {
+  montoPago = parseInt(montoPago);
   let updateSoliTaxi = db.collection("taxis").doc(idTaxi);
   return updateSoliTaxi
     .update({
@@ -1090,6 +1104,8 @@ function UpdateStatusPagoTaxi(idTaxi, fechaIni, fechaFin) {
       fecha_final_pago: firebase.firestore.Timestamp.fromDate(
         new Date(fechaFin * 1000)
       ),
+      opcion_pago: opcionPago,
+      monto_pago: montoPago,
     })
     .then(function () {
       console.log("Document successfully updated!");

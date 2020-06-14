@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:400,400i,500" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"> -->
     <title>Terminos de Uso</title>
+    <link rel="shortcut icon" href="../../Diseno/ICONOS/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:400,400i,500" rel="stylesheet">
     <style>
         body {
+            background-image: none;
             color: #616060;
             font-family: "Roboto", sans-serif;
             font-size: 16px;
@@ -26,7 +28,7 @@
         <br>
         <div class="row justify-content-center">
             <div class="col-8">
-                <p class="h2 text-center">Terminos de Uso</p>
+                <p class="h2 text-center">Términos de Uso</p>
             </div>
         </div>
         <br>
@@ -42,9 +44,11 @@
                     ("Condiciones") al instalar.</p>
 
                 <p class="h5">1.- Uso.</p>
-                <p class="text-justify">Para poder ser socio, necesitas completar un formulario de registro
-                    proporcionada
-                    en la siguiente página: ________ , nuestro servicio esta dirigido para taxis
+                <p class="text-justify">Para poder ser socio, necesitas completar un formulario de registro,
+                    da clic en este enlace para registrarte:
+                    <a class="btn-link" href="#" id="linkPaginaRegistro"><u>enlace de registro.</u></a>
+                    <br>
+                    Nuestro servicio está dirigido para taxis
                     concesionados únicamente.</p>
 
                 <p class="h5">2.- Edad.</p>
@@ -56,7 +60,7 @@
                     funcionar correctamente, por lo que es importante que seas consciente y
                     responsable del uso de datos de tu dispositivo móvil.</p>
 
-                <p class="h5">4.- Software..</p>
+                <p class="h5">4.- Software.</p>
                 <p class="text-justify">Durante el uso del servicio aceptas instalar las diferentes actualizaciones que
                     se
                     estarán brindando e inclusive de manera automática a fin de mejorar el
@@ -105,10 +109,18 @@
                     por eventos fuera de nuestro control, como desastres naturales y otros eventos de
                     fuerza mayor, sin embargo, se realizará todo lo posible para que los mantenimientos
                     no afecten el uso del servicio.</p>
+
+                <p class="h5 font-weight-bold">CONTÁCTANOS.</p>
+                <p class="text-justify">Si tienes dudas con los términos de uso, ponte en contacto con
+                    nosotros, al correo <span class="text-primary" id="correoSoporteT"></span> o al número
+                    <span class="text-primary" id="numeroTelefonoT"></span></p>
+                <br>
+                <br>
             </div>
         </div>
     </div>
 
+    <script src="../../js/Registrarse/Terminos.js"></script>
 </body>
 
 </html>

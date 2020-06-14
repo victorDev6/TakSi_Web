@@ -1,4 +1,5 @@
 header {
+	height: 115px; /* igual al tamaño del header2 */
 	width:100%; /* Establecemos que el header abarque el 100% del documento */
 	overflow:hidden; /* Eliminamos errores de float */
 	background: #ffd700;
@@ -13,19 +14,24 @@ header {
 }
 
 header .logo {
-	/* color:#f2f2f2;
-	font-size:50px;
-	line-height:150px;
-	float:left; */
-	width: 140px;
+	/* width: 140px;
 	height: 140px;
-	line-height:140px;
+	line-height:140px; */
+
+	/* Esto es igual al tamaño del header2 */
+	line-height:100px;
+	width: 110px;
+	height: 110px;
+	/*  */
+
 	float:left;
 }
 
 header nav {
 	float:right;
-	line-height:140px;
+	/* line-height:140px; */
+	/* esto es igual al tamaño de header2 */
+	line-height: 100px;
 }
 
 header nav a {
@@ -44,7 +50,7 @@ header nav a {
 header nav a:hover {
 	background:#373635;
 	border-radius:50px;
-	color: #fbfbfb;
+	color: #fbfbfb !important;
 }
 
 /* lo que haremos es cambiarle la posición del encabezado a una posición fija en pantalla,

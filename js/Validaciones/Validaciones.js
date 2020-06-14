@@ -198,7 +198,7 @@ $(document).ready(function () {
       }
     });
 
-  //Validacion del modulo Registrar Usuario
+  //Validacion del modulo Iniciar Sesión
   $("#formularioInicioSesion")
     .bootstrapValidator({
       excluded: [":disabled"],
@@ -229,9 +229,9 @@ $(document).ready(function () {
               message: "Formato de contraseña incorrecto",
             },
             stringLength: {
-              min: 8,
+              min: 6,
               max: 15,
-              message: "La contraseña necesita entre 8 y 15 caracteres",
+              message: "La contraseña necesita entre 6 y 15 caracteres",
             },
           },
         },

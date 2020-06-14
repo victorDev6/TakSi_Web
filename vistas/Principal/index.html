@@ -20,26 +20,22 @@
     <link rel="stylesheet" href="../../css/Principal/contenido.css" />
 
 
-    <!-- Liberias de Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
-
-
-    <title>Menu</title>
+    <title>Inicio</title>
+    <link rel="shortcut icon" href="../../Diseno/ICONOS/favicon.ico">
 </head>
 
 <body>
     <div class="loader" id="loader"></div>
     <header>
         <div class="wrapper" id="sidebar">
-            <div class="cont2"><a href="#!/Contenedor"><img class="logo" src="../../Diseno/ICONOS/logoTaxiNuevo.png"
+            <div class="cont2"><a href="#!/Inicio"><img class="logo" src="../../Diseno/ICONOS/logoTaxiNuevo.png"
                         alt=""></a>
             </div>
             <nav>
-                <a ui-sref="contenedor" id="contenedor">Inicio</a>
-                <a ui-sref="registro" id="registro">Registrarse</a>
-                <a ui-sref="iniciosesion" id="iniciosesion">Iniciar Sesion</a>
+                <!-- ui-sref="contenedor" ui-sref="registro" ui-sref="iniciosesion"-->
+                <a class="btn" id="contenedor">Inicio</a>
+                <a class="btn" id="registro">Registrarse</a>
+                <a class="btn" id="iniciosesion">Iniciar Sesión</a>
             </nav>
         </div>
     </header>
@@ -56,7 +52,7 @@
                 <div class="col-lg-2 col-md-6 single-footer-widget mt-4">
 
                     <ul>
-                        <li><a href="../Principal/ayuda.html" target="_blank">AYUDA</a></li>
+                        <li><a href="#" id="btn_ayuda_principal">AYUDA</a></li>
                         <li><a href="#" id="mostrarAcercade">ACERCA DE</a></li>
 
                     </ul>
@@ -64,8 +60,12 @@
                 <div class="col-lg-2 col-md-6 single-footer-widget mt-4">
 
                     <ul>
-                        <li><a href="../Registrarse/Terminos.html" target="_blank">TERMINOS DE USO</a></li>
-                        <li><a href="../Registrarse/Politicas.html" target="_blank">AVISO DE PRIVACIDAD</a></li>
+                        <!-- href="../Registrarse/Terminos.html" target="_blank" -->
+                        <li><a href="#" id="btn_terminos_uso">TÉRMINOS DE USO</a>
+                        </li>
+                        <!-- href="../Registrarse/Politicas.html" target="_blank" -->
+                        <li><a href="#" id="btn_aviso_privacidad">AVISO DE PRIVACIDAD</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-5 col-md-6 single-footer-widget mt-4">
@@ -83,8 +83,7 @@
                                             <p class="font-weight-bold" style="font-size: 16px;">App para
                                                 Conductor</p>
                                             <p class="font-weight-normal" style="font-size: 13px;">Disponible en:
-                                                <br>Play Store y App
-                                                Store</p>
+                                                <br>Play Store</p>
                                         </p>
                                     </a>
                                 </div>
@@ -100,8 +99,7 @@
                                             <p class="font-weight-bold" style="font-size: 16px;">App para
                                                 Pasajero</p>
                                             <p class="font-weight-normal" style="font-size: 13px;">Disponible en:
-                                                <br>Play Store y App
-                                                Store</p>
+                                                <br>Play Store</p>
                                         </p>
                                     </a>
                                 </div>
@@ -116,17 +114,20 @@
                         <li><a href="#" target="_blank" id="verFacebookTaksi"><i
                                     class="fa fa-facebook fa-2x mr-2"></i><span id="link_facebook"></span></a>
                         </li>
-                        <li><a href="#" target="_blank" id="verTwitter"><i class="fa fa-twitter fa-2x mr-2"></i><span
-                                    id="link_twitter"></span></a></li>
+                        <!-- fa-twitter -->
+                        <!-- <li><a href="#" target="_blank" id="verInstagram"><i
+                                    class="fa fa-instagram fa-2x mr-2"></i><span id="link_instagram"></span></a></li> -->
                         <!-- fa fa-address-book fa-2x mr-2 -->
-                        <li><a href="#"><i class="fa fa-whatsapp mr-2 fa-2x"></i><span id="tel_empresa"></span></a>
-                        </li>
+                        <!-- <li><a href="#"><i class="fa fa-whatsapp mr-2 fa-2x"></i><span id="tel_empresa"></span></a>
+                        </li> -->
                         <li><a href="#"><i class="fa fa-envelope fa-2x mr-2"></i><span id="correo_empresa"></span></a>
                         </li>
 
                     </ul>
                 </div>
             </div>
+            <!-- Se le agrega mas espacio entre los otros items y los derechos de autor -->
+            <br>
             <div class="row mt-3 justify-content-center">
                 <p class="footer-text m-0 col-lg-6 col-md-12 p-0 py-3 text-center">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -194,12 +195,12 @@
                 <!--Body-->
                 <div class="modal-body">
                     <p class="mt-3 font-weight-bold text-center h4">Acerca de Tak-si</p>
-                    <p class="text-justify">Tak-si fué creado en diciembre de 2020 desarrollado por <a href="#"
+                    <p class="text-justify">Tak-si fué creado en diciembre de 2019 desarrollado por <a href="#"
                             id="link_empresa_acerca" target="_blank">Isoft</a>
-                        convirtiéndose en la primera taxi app en conectar directamente a pasajeros con
+                        convirtiéndose en la primera tak-si app en conectar directamente a pasajeros con
                         taxistas.
                         <br>
-                        Fue lanzado el 15 de junio de 2020 en la cuidad de Comitán de Domínguez del estado de Chiapas
+                        Fué lanzado el 15 de junio de 2020 en la cuidad de Comitán de Domínguez del estado de Chiapas
                     </p>
 
                     <p class="mt-3 font-weight-bold text-center h4">Datos y Cifras</p>
@@ -212,14 +213,14 @@
                         <li class="text-left ml-3"><span class="font-weight-bold">Equipo:</span><br>
                             <span id="equipo_acerca"></span>
                         </li>
-                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de colaboradores: </span><span
+                        <li class="text-left ml-3"><span class="font-weight-bold">Número de colaboradores: </span><span
                                 id="num_colab_acerca"></span>
                         </li>
-                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de oficinas: </span><span
+                        <li class="text-left ml-3"><span class="font-weight-bold">Número de oficinas: </span><span
                                 id="num_oficina_acerca"></span></li>
-                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de taxis registrados:
+                        <li class="text-left ml-3"><span class="font-weight-bold">Número de taxis registrados:
                             </span><span id="num_taxis_acerca"></span></li>
-                        <li class="text-left ml-3"><span class="font-weight-bold">Numero de pasajeros registrados:
+                        <li class="text-left ml-3"><span class="font-weight-bold">Número de pasajeros registrados:
                             </span><span id="num_pasajero_acerca"></span></li>
                     </p>
 
@@ -234,11 +235,17 @@
         </div>
     </div>
 
+    <!-- Liberias de Firebase -->
+    <!-- Nueva version 7.14.4 -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+
     <!-- Librerias -->
     <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
     <script src="../../angular/angular.min.js"></script>
     <script src="../../angular/angular-ui-router.min.js"></script>
+    <script src="../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
     <script src="../../librerias/bootstrap/js/bootstrap.min.js"> </script>
     <script src="../../js/Principal/app.js"></script>
     <script src="../../js/Principal/principal.js"></script>

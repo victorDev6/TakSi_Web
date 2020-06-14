@@ -1,3 +1,4 @@
+@media screen and (min-width: 990px) { 
 body{
     background-image: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd),
     url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi2.png?alt=media&token=fe5167d9-b413-4554-a656-578fafb1de73);
@@ -9,6 +10,23 @@ body{
     -webkit-background-size: 400px 200px !important;
     -moz-background-size: 400px 200px !important;
     -o-background-size: cover !important;
+}
+}
+
+@media screen and (max-width: 989px) { 
+    body{
+    /* background-color: #d6d0ce; */
+    background-color: #ffffff;
+    background-repeat: no-repeat !important;
+    /* background-attachment: scroll !important; */
+    background-position: center left,
+    center right;
+    z-index: auto;
+    background-size: 400px 200px !important;
+    -webkit-background-size: 400px 200px !important;
+    -moz-background-size: 400px 200px !important;
+    -o-background-size: cover !important;
+    }
 }
 
 .btn_registrar {
@@ -38,17 +56,26 @@ body{
     margin-top: 5px;
 }
 
+/* Tamaño de la caja del ojo de contraseñas */
+#mostrar1, #mostrar2 {
+    height: 38px;
+}
+
 
 @media (max-width: 454px) {
     .caja, #input1, #input2 {
-    width: 230px !important;
+    width: 270px !important;
     margin-top: 5px !important;
 }
+    /* Tamaño de la caja del ojo de contraseñas */
+    #mostrar1, #mostrar2 {
+    height: 38px;
+    }
 }
 
 @media (max-width: 370px) {
     .caja, #input1, #input2{
-    width: 200px !important;
+    width: 230px !important;
     margin-top: 5px !important;
     /* Fuente de todos los campos */
     font-size: 14px !important;    
@@ -60,5 +87,9 @@ body{
 
 .tamLetra{
     font-size: 14px !important;  
+}
+/* Tamaño de la caja del ojo de contraseñas */
+#mostrar1, #mostrar2 {
+    height: 35px;
 }
 }

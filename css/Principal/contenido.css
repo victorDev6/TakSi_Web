@@ -3,3 +3,25 @@
   height: 70vh !important;
   width: 100% !important;
 }
+
+@media (max-width: 992px) { 
+  .carousel-inner{
+  object-fit: scale-down !important;
+  height: auto !important;
+  width: 100% !important;
+  }  
+}
+
+@media screen and (min-width: 993px) and (max-width: 1300px) { 
+   .carousel-inner{
+    object-fit: scale-down !important;
+    height: 50vh !important;
+    width: 100% !important;
+    }  
+
+ }
+
+ /* Color de contenido de las tres cajas de index */
+ .colorIconoCaja{
+   color: #6b6f72;
+ }

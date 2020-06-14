@@ -1,7 +1,3 @@
-$(document).ready(function () {
-  ConsultaNoticias();
-});
-
 /********************************************************** */
 /*INICIA FIREBASE
 /*********************************************************** */
@@ -24,13 +20,25 @@ try {
     );
   }
 }
-var db = firebase.firestore();
+
+try {
+  var db = firebase.firestore();
+} catch (error) {
+  console.log("verifica tu conexion a internet");
+  mensajeM = `¡Error de comunicación!<br>
+            Inténtalo mas tarde`;
+  colorTodos = "#e24c4b";
+  linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+  mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+}
+
 ConsultaNoticias();
 
 /********************************************************** */
 /*CONSULTA LAS NOTICIAS
 /*********************************************************** */
 function ConsultaNoticias() {
+  $("#loader").show();
   let contadorClase = 0;
   let nomClase = "";
   let indi, noti;
@@ -55,6 +63,9 @@ function ConsultaNoticias() {
         //Imagen Noticia
         noticias.innerHTML += `
                    <div class="carousel-item ${nomClase}">
+                      <a href="${
+                        doc.data().url
+                      }" id="btn_link_android_pasajero" target="_blank">
                         <div class="carousel-caption d-block">
                             <p class="font-weight-bold text-center">Equipo Tak-si</p>
                             <p class="font-weight-bold text-center">
@@ -62,13 +73,20 @@ function ConsultaNoticias() {
                         </div>
                         <img class="d-block m-auto img-fluid" 
                         src="${doc.data().url}">
+                      </a>
                     </div> 
       `;
         contadorClase++;
       });
+      $("#loader").hide();
     })
     .catch(function (error) {
       console.log("Error: " + error);
+      mensajeM = `¡Error de comunicación!<br>
+            Inténtalo mas tarde`;
+      colorTodos = "#e24c4b";
+      linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+      mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
     });
 }
 
@@ -89,6 +107,12 @@ $("#btn_app_conductor").click(function (e) {
 $("#btn_app_conductor_f").click(function (e) {
   e.preventDefault();
   moverseA("id_app_conductor");
+  //Para que enfoque el boton nuevamente
+  if (location.hash === "#!/Inicio#!%2FInicio") {
+    window.document.title = "Inicio";
+    $("nav a").removeClass("activo");
+    $("#contenedor").addClass("activo");
+  }
 });
 
 //Al dar click en app pasajero
@@ -100,134 +124,35 @@ $("#btn_app_pasajero").click(function (e) {
 $("#btn_app_pasajero_f").click(function (e) {
   e.preventDefault();
   moverseA("id_app_pasajero");
+  //Para que enfoque el boton nuevamente
+  if (location.hash === "#!/Inicio#!%2FInicio") {
+    window.document.title = "Inicio";
+    $("nav a").removeClass("activo");
+    $("#contenedor").addClass("activo");
+  }
 });
 
 function moverseA(idDelElemento) {
   location.hash = "#" + idDelElemento;
-  window.location = "#!/Contenedor" + location.hash;
+  window.location = "#!/Inicio" + location.hash;
 }
 
-/********************************************************** */
-/*AGREGAR LINK AL BOTON PARA PLAY STORE Y APP STORE
-/*********************************************************** */
-(function ConsultaLinks() {
-  let appAndroidConductor = "";
-  let appAndroidPasajero = "";
-  //let appAppleConductor = "";
-  //let appApplePasajero = "";
-  let linkPaginaFacebook = "";
-  let linkPaginaFacebookIsoft = "";
-  let linkTwitter = "";
-  let correoBD = "";
-  let numeroTelefono = "";
-  db.collection("configuracion")
-    .get()
-    .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        if (querySnapshot._snapshot.docChanges.length != 0) {
-          appAndroidConductor = doc.data().link_app_android_conductor;
-          appAndroidPasajero = doc.data().link_app_android_pasajero;
-          //appAppleConductor = doc.data().link_app_apple_conductor;
-          //appApplePasajero = doc.data().link_app_apple_pasajero;
-          linkPaginaFacebook = doc.data().link_facebook;
-          linkPaginaFacebookIsoft = doc.data().link_empresa_fb;
-          linkTwitter = doc.data().link_twitter;
-          correoBD = doc.data().correo_empresa;
-          numeroTelefono = doc.data().telefono_empresa;
-        }
-      });
-      $("#btn_link_android_conductor").attr("href", appAndroidConductor);
-      //$("#btn_link_apple_conductor").attr("href", appAppleConductor);
-      $("#btn_link_android_pasajero").attr("href", appAndroidPasajero);
-      //$("#btn_link_apple_pasajero").attr("href", appApplePasajero);
-      $("#link_empresa_isoft").attr("href", linkPaginaFacebookIsoft);
-      $("#link_facebook").html(linkPaginaFacebook);
-      $("#verFacebookTaksi").attr("href", linkPaginaFacebook);
-      $("#link_twitter").html(linkTwitter);
-      $("#verTwitter").attr("href", linkTwitter);
-      $("#tel_empresa").html(numeroTelefono);
-      $("#correo_empresa").html(correoBD);
-    })
-    .catch(function (error) {
-      console.log("Error: " + error);
-    });
-})();
+//Funcion de mostrar mensajes modal
+function mostrarModalMensaje(mensajeM, colorTodos, linkImagenCuerpo) {
+  $("#cabezaModal").css("background-color", colorTodos);
+  $("#textoCuerpoModal").css("color", colorTodos);
+  $("#botonAceptarModalM").css("background-color", colorTodos);
+  $("#imagenCuerpoM").attr("src", linkImagenCuerpo);
+  $("#textoCuerpoModal").html(mensajeM);
+  $("#modalMensajesM").modal("show");
+  //setTimeout(QuitarModalM, 4000);
+}
+function QuitarModalM() {
+  $("#modalMensajesM").modal("hide");
+}
 
-/********************************************************** */
-/*CONSULTA DE DATOS DE ACERCA DE
-/*********************************************************** */
-$("#mostrarAcercade").click(function (e) {
+//Hacer que las 3 cajas no tengan funcion al hacer click
+$("#caja1, #caja2 , #caja3").click(function (e) {
   e.preventDefault();
-  //$("#modalAcercaDe").modal("show");
-  DatosAcercaDe();
+  console.log("...");
 });
-
-function DatosAcercaDe() {
-  let num_taxis = "";
-  let num_usuarios = "";
-  let fundacion = "";
-  let equipo = "";
-  let link_empresa = "";
-  let lugar = "";
-  let num_colaboradores = "";
-  let num_oficinas = "";
-
-  db.collection("taxis")
-    .get()
-    .then(function (querySnapshot) {
-      //console.log(querySnapshot.size);
-      num_taxis = querySnapshot.size;
-    });
-
-  db.collection("usuarios")
-    .get()
-    .then(function (querySnapshot) {
-      num_usuarios = querySnapshot.size;
-      //console.log(querySnapshot.size);
-    });
-
-  db.collection("datos_acerca_de")
-    .get()
-    .then(function (querySnapshot) {
-      console.log(querySnapshot.size);
-      querySnapshot.forEach(function (doc) {
-        fundacion = doc.data().fundacion;
-        equipo = doc.data().equipo;
-        link_empresa = doc.data().link_empresa;
-        lugar = doc.data().lugar;
-        num_colaboradores = doc.data().num_colaboradores;
-        num_oficinas = doc.data().num_oficinas;
-      });
-      LlenarModalAcercaDe(
-        fundacion,
-        lugar,
-        equipo,
-        num_colaboradores,
-        num_oficinas,
-        num_taxis,
-        num_usuarios,
-        link_empresa
-      );
-    });
-}
-
-function LlenarModalAcercaDe(
-  fundacion,
-  lugar,
-  equipo,
-  numColab,
-  numOfic,
-  numTaxis,
-  numPasa,
-  linkE
-) {
-  $("#fundacion_acerca").html(fundacion);
-  $("#lugar_acerca").html(lugar);
-  $("#equipo_acerca").html(equipo);
-  $("#num_colab_acerca").html(numColab);
-  $("#num_oficina_acerca").html(numOfic);
-  $("#num_taxis_acerca").html(numTaxis);
-  $("#num_pasajero_acerca").html(numPasa);
-  $("#link_empresa_acerca").attr("href", linkE);
-  $("#modalAcercaDe").modal("show");
-}

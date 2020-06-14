@@ -1,8 +1,24 @@
+@media screen and (min-width: 1052px) { 
 body{
     /* background-color: #d6d0ce; */
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd),
+     background-image: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd),
     url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi2.png?alt=media&token=fe5167d9-b413-4554-a656-578fafb1de73);
     
+    background-repeat: no-repeat !important;
+    background-position: center left,
+    center right;
+    z-index: auto;
+    background-size: 400px 200px !important;
+    -webkit-background-size: 400px 200px !important;
+    -moz-background-size: 400px 200px !important;
+    -o-background-size: cover !important;
+}
+}
+
+@media screen and (max-width: 1051px) { 
+	body{
+    /* background-color: #d6d0ce; */
+    background-color: #ffffff;
     background-repeat: no-repeat !important;
     /* background-attachment: scroll !important; */
     background-position: center left,
@@ -12,8 +28,9 @@ body{
     -webkit-background-size: 400px 200px !important;
     -moz-background-size: 400px 200px !important;
     -o-background-size: cover !important;
-
 }
+}
+
 .btn_accesar {
     background-color: #9e9e9e; 
     border-color: white; 

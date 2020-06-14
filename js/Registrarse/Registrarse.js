@@ -1,4 +1,13 @@
+//Cambia el nombre de la petaña de la pagina
+window.document.title = "Registrarse";
+
 $(document).ready(function () {
+  //Obtener el hash direccion
+  if (location.hash === "#!/Registrarse") {
+    $("nav a").removeClass("activo");
+    $("#registro").addClass("activo");
+  }
+
   setTimeout(function () {
     $("#loader").fadeIn(500);
     $("#loader").fadeOut(500);
@@ -384,4 +393,15 @@ $(document).ready(function () {
   function QuitarModalM() {
     $("#modalMensajesM").modal("hide");
   }
-}); //fin del doc
+
+  //Click para mostrar terminos y politicas de privacidad
+  $("#btn_terminos_r").click(function (e) {
+    e.preventDefault();
+    window.open("#!/Terminos", "_blank");
+  });
+
+  $("#btn_politicas_r").click(function (e) {
+    e.preventDefault();
+    window.open("#!/Politicas", "_blank");
+  });
+});

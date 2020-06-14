@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayuda</title>
-    <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../../css/Principal/ayuda.css">
 
     <!-- Liberias de Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script> -->
 </head>
 
 <body>
 
     <div class="container-fluid">
         <!-- Mensaje de ayuda -->
-        <div class="row justify-content-start mt-3">
-            <p class="h3 font-weight-bold text-capitalize ml-1 ml-md-3 text-warning bg-dark rounded-lg px-2">Centro de
+        <div class="row justify-content-start">
+            <p class="h3 font-weight-bold text-capitalize ml-1 ml-md-3 text-warning bg-dark rounded-lg px-2 mt-3">Centro
+                de
                 Ayuda</p>
         </div>
         <!-- Logo -->
@@ -41,8 +42,8 @@
         </div>
         <!-- seleccionar user  -->
         <div class="row justify-content-center">
-            <a href="#" class="btn btn-secondary mx-1" id="btn_ayuda_conductor">Conductor</a>
-            <a href="#" class="btn btn-secondary mx-1" id="btn_ayuda_pasajero">Pasajero</a>
+            <button class="btn btn-secondary mx-1" id="btn_ayuda_conductor">Conductor</button>
+            <button class="btn btn-secondary mx-1" id="btn_ayuda_pasajero">Pasajero</button>
         </div>
         <!-- Cargando -->
         <div class="row justify-content-center d-none" id="cargando">
@@ -77,20 +78,22 @@
                     </thead>
 
                     <tbody id="mostrarResulLista">
-                        <!-- <tr>
-                            <td><a href="#" onclick="ResultadoBusqueda('id')">¿Que es ta-si?</a></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </div>
 
+        <br>
+        <br>
+        <br>
+        <br>
+
     </div>
 
-    <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script>
+    <!-- <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script> -->
     <script src="../../librerias/dataTable/jquery.dataTables.min.js"></script>
     <script src="../../librerias/popper/popper.min.js"></script>
-    <script src="../../librerias/bootstrap/js/bootstrap.min.js"> </script>
+    <!-- <script src="../../librerias/bootstrap/js/bootstrap.min.js"> </script> -->
     <script src="../../js/Principal/ayuda.js"></script>
 </body>
 

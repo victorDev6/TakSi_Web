@@ -24,6 +24,7 @@ var db = firebase.firestore();
 
 //Variables Globales
 var idPagosRealizados_global = "";
+var id_reg_soli_pagos = "";
 
 /********************************************************** */
 /*HACE UNA BUSQUEDA CON LAS SOLICITUDES PENDIENTES
@@ -253,9 +254,9 @@ function AceptarSolicitud(
 
   $("#botonAceptarModalM").click(function (e) {
     e.preventDefault();
-    //console.log("Acpetaste la solicitud");
+    id_reg_soli_pagos = idRegistro; //Variable global le pasa el id
     let estadoPago = "Aceptado";
-    PagosRealizados(solicitud, edo, cd, nom, ape, email, cons, tel);
+    PagosRealizados(solicitud, edo, cd, nom, ape, email, cons, tel, opcionPago);
     UpdateSolicitudPagos(idRegistro, estadoPago);
     CicloUpdateSolicitudTaxi(solicitud);
     CicloGuardarFechaBD(solicitud, opcionPago);
@@ -263,6 +264,7 @@ function AceptarSolicitud(
   });
 }
 
+//Cambia el estado de solicitudes_pagos a Aceptado
 function UpdateSolicitudPagos(id, estadoPago) {
   let updateSoliPagos = db.collection("solicitudes_pagos").doc(id);
   return updateSoliPagos
@@ -277,6 +279,28 @@ function UpdateSolicitudPagos(id, estadoPago) {
     });
 }
 
+//Se agrega nueva fecha en la coleccion de solicitudes_pagos
+function ActualizarFechaAceptado(fechaInicio, fechaFin) {
+  let idReg = id_reg_soli_pagos;
+  let updateSoliPagos = db.collection("solicitudes_pagos").doc(idReg);
+  return updateSoliPagos
+    .update({
+      fecha_inicial_pago: firebase.firestore.Timestamp.fromDate(
+        new Date(fechaInicio * 1000)
+      ),
+      fecha_final_pago: firebase.firestore.Timestamp.fromDate(
+        new Date(fechaFin * 1000)
+      ),
+    })
+    .then(function () {
+      console.log("Document successfully updated!");
+    })
+    .catch(function (error) {
+      console.error("Error updating document: ", error);
+    });
+}
+
+//Se crea un ciclo para ir actualizando los taxis a true
 function CicloUpdateSolicitudTaxi(solicitud) {
   let objetoRes = DividirCadena(solicitud);
   for (const iterator of objetoRes) {
@@ -284,6 +308,7 @@ function CicloUpdateSolicitudTaxi(solicitud) {
   }
 }
 
+//Funcion que cambia el status del taxi a true
 function UpdateStatusPagoTaxi(idTaxi) {
   let updateSoliTaxi = db.collection("taxis").doc(idTaxi);
   return updateSoliTaxi
@@ -469,91 +494,21 @@ $("#selectBusquedaSoli").change(function () {
   }
 });
 
-/*(function Fecha() {
-  var fechaEnMiliseg = 1587447786; //se tiene que convertir en segundos
-  //console.log(fechaEnMiliseg);
-  let ObtenerSegundos = Math.floor(Date.now() / 1000);
-  //console.log(ObtenerSegundos);
-
-  let fechaLegible = ConvertirFechas(ObtenerSegundos);
-  //console.log(fechaLegible);
-
-  let fechaSegunda = ObtenerSegundos + 86400 * 30; //3 dias (24)
-  let fechaLegible2 = ConvertirFechas(fechaSegunda);
-  //console.log(fechaLegible2);
-
-  // var fechaEnMiliseg2 = Date.now();
-  // let fechaLegible2 = msToTime(fechaEnMiliseg2);
-  // console.log(fechaLegible2);
-})();*/
-
-/*function msToTime(duration) {
-  let fechaCompleta;
-  var milliseconds = parseInt((duration % 1000) / 100),
-    seconds = Math.floor((duration / 1000) % 60),
-    minutes = Math.floor((duration / (1000 * 60)) % 60),
-    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  fechaCompleta = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
-
-  return fechaCompleta;
-}*/
-
-//Obtener fecha que solo seria el mes
-/*(function Mes() {
-  var date = new Date();
-  var month = date.getMonth();
-  var year = date.getFullYear();
-  var dia = date.getDate();
-
-  var days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  if (new Date(year, 1, 29).getDate() == 29) days_in_months[1] = 29;
-
-  //Obtener el mes y los dias que tiene ese mes actual
-  let diasMes = days_in_months[month]; //21
-  //console.log("Mes: " + month);
-  //console.log("T Dias: " + diasMes);
-  //console.log("Dia " + dia);
-
-  //Obtener el mes siguiente +1 y los dias que tiene el mes
-  let sigMes = month + 1;
-  let diasSigMes = days_in_months[sigMes];
-  //console.log("Mes: " + sigMes);
-  //console.log("T Dias: " + diasSigMes);
-
-  //Restar dias para ver cuanto es la diferencia
-  // let TotalDias = diasSigMes - dia;
-  // console.log();
-
-  var fechaInicio = new Date("2020-03-31").getTime();
-  var fechaFin = new Date("2020-04-21").getTime();
-
-  var diff = fechaFin - fechaInicio;
-
-  //console.log(diff / (1000 * 60 * 60 * 24));
-
-  let segundos = fechaInicio / 1000;
-  //console.log("Segundos: " + segundos);
-
-  //Restar dias
-})();*/
-
-//Guardar fechas de acuerdo al id de taxi
+//Ciclo para ir guardando las fechas por cada taxi aceptado
 function CicloGuardarFechaBD(solicitud, opcionPago) {
   let objetoRes = DividirCadena(solicitud);
   for (const iterator of objetoRes) {
-    GuardarFechaBD(iterator.id, opcionPago);
+    GuardarFechaBD(iterator.id, opcionPago, iterator.monto);
   }
 }
-function GuardarFechaBD(idTaxi, opcionPago) {
+function GuardarFechaBD(idTaxi, opcionPago, montoPago) {
+  montoPago = parseInt(montoPago);
   db.collection("taxis")
     .doc(idTaxi)
     .update({
       fecha_aceptacion: firebase.firestore.FieldValue.serverTimestamp(),
+      opcion_pago: opcionPago,
+      monto_pago: montoPago,
     })
     .then(function () {
       console.log("Document successfully updated!");
@@ -672,6 +627,7 @@ function GuardarSegFechas(idTaxi, fechaInicio, fechaFin) {
     .then(function () {
       console.log("Document successfully updated!");
       PagosRealizadosFechas(fechaInicio, fechaFin);
+      ActualizarFechaAceptado(fechaInicio, fechaFin);
     })
     .catch(function (error) {
       console.log(error);
@@ -680,7 +636,17 @@ function GuardarSegFechas(idTaxi, fechaInicio, fechaFin) {
 
 //Agregar los mismos datos en una coleccion diferente
 //Pagos_Realizados
-function PagosRealizados(solicitud, edo, cd, nom, ape, email, cons, tel) {
+function PagosRealizados(
+  solicitud,
+  edo,
+  cd,
+  nom,
+  ape,
+  email,
+  cons,
+  tel,
+  opcionPago
+) {
   db.collection("pagos_realizados")
     .add({
       estado: edo,
@@ -692,6 +658,7 @@ function PagosRealizados(solicitud, edo, cd, nom, ape, email, cons, tel) {
       telefono: tel,
       fecha_aceptacion: firebase.firestore.FieldValue.serverTimestamp(),
       solicitud: solicitud,
+      opcion_pago: opcionPago,
     })
     .then(function (docRef) {
       console.log("Registro exitoso");

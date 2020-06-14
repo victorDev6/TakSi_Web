@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadisticas</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:400,400i,500" rel="stylesheet">
+    <link rel="stylesheet" href="../../librerias/chartjs/Chart.min.css">
+    <style>
+        .tamNumero {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-3">
+            <!-- <div class="col-10"> -->
+            <div class="col-3">
+                <div class="form-group">
+                    <select class="form-control" name="" id="edo_estadistica">
+                        <option>Estado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <select class="form-control" name="" id="cd_estadistica">
+                        <option>Ciudad</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <a href="#" class="btn btn-info" id="btn_buscar_reg"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+
+
+        <!-- Mi propio dieño -->
+        <div class="row justify-content-center">
+            <!-- Propietarios -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Propietarios</div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Total de Registros:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_prop_g"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span id="ciudad_prop"></span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_prop_cd"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Activos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-success tamNumero"
+                                id="total_prop_activo"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Inactivos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-danger tamNumero"
+                                id="total_prop_inactivo"></span></span>
+                    </p>
+                    <p class="card-text"></p>
+                </div>
+
+                <canvas id="propietario" width="100px" height="100px"></canvas>
+            </div>
+
+            <!-- Total taxis -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Taxis</div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Total de Taxis:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_taxis_g"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span id="ciudad_taxis"></span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_taxis_cd"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Activos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-success tamNumero"
+                                id="total_taxis_activo"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Inactivos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-danger tamNumero"
+                                id="total_taxis_inactivo"></span></span>
+                    </p>
+                    <p class="card-text"></p>
+                </div>
+
+                <canvas id="taxis" width="100px" height="100px"></canvas>
+            </div>
+
+            <!-- Total Pasajeros -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Pasajeros</div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Total de Pasajeros:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_pasajeros_g"></span></span></p>
+                    <p class="card-title">
+                        <span id="ciudad_pasajeros"></span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_pasajeros_cd"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Activos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-success tamNumero"
+                                id="total_pasajero_activo"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Inactivos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-danger tamNumero"
+                                id="total_pasajero_inactivo"></span></span>
+                    </p>
+                    <p class="card-text"></p>
+                </div>
+                <canvas id="pasajeros" width="100px" height="100px"></canvas>
+            </div>
+
+            <!-- Total Viajes -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Viajes</div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Total de Viajes:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_viajes_g"></span></span></p>
+                    <p class="card-title">
+                        <span id="ciudad_viajes"></span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_viajes_cd"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Viajes de Hoy</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_viajes_hoy"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Viajes de Ayer</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_viajes_ayer"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Vieajes de Antier</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_viajes_antier"></span></span>
+                    </p>
+                    <p class="card-text"></p>
+                </div>
+                <canvas id="viajes" width="100px" height="100px"></canvas>
+            </div>
+
+            <!-- Solicitudes -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Solicitudes</div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Total Solicitudes:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_solicitudes_g"></span></span></p>
+
+                    <!-- Aca irá todas las ciudades -->
+                    <div id="ciudades_solicitudes">
+                        <!-- <p class="card-title">
+                                <span>Comitán de Dominguez:</span>
+                                <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                        id="total_viajes_cd"></span></span>
+                            </p> -->
+                    </div>
+
+                    <p class="card-text"></p>
+                </div>
+                <!-- <canvas id="viajes" width="100px" height="100px"></canvas> -->
+            </div>
+
+            <!-- Total Marcadores -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Total Marcadores </div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Total Marcadores:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_marcadores_g"></span></span></p>
+                    <p class="card-title">
+                        <span id="ciudad_marcadores"></span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_marcadores_cd"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Activos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-success amNumero"
+                                id="total_marcador_activo"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Inactivos</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-danger tamNumero"
+                                id="total_marcador_inactivo"></span></span>
+                    </p>
+                    <p class="card-text"></p>
+                </div>
+                <canvas id="marcadores" width="100px" height="100px"></canvas>
+            </div>
+
+            <!-- Monto Total -->
+            <div class="card text-white bg-light mb-3 d-inline-block mx-3" style="max-width: 20rem;">
+                <div class="card-header font-weight-bold text-dark">Monto </div>
+                <div class="card-body text-dark">
+                    <p class="card-title">
+                        <span>Cantidad de Pagos:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_monto_g"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span id="ciudad_montos"></span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="cantidad_pago_cd"></span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Total Mes:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="cant_pago_mes">
+                            </span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Total Anual:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="cant_pago_anio">
+                            </span></span>
+                    </p>
+                    <p class="card-title">
+                        <span>Monto total:</span>
+                        <span class="font-weight-bold float-right ml-3"> <span class="badge badge-info tamNumero"
+                                id="total_monto_cd"></span></span>
+                    </p>
+
+                    <p class="card-text"></p>
+                </div>
+                <canvas id="monto" width="100px" height="100px"></canvas>
+            </div>
+
+        </div>
+
+        <!-- Grafica -->
+
+    </div>
+
+    <script type="text/javascript" src="../../librerias/chartjs/Chart.min.js"></script>
+    <script type="text/javascript" src="../../js/AdminGeneral/Estadisticas.js"></script>
+</body>
+
+</html>

@@ -5,20 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagos</title>
-    <!-- <link rel="stylesheet" href="../../librerias/bootstrap/css/bootstrap.min.css"> -->
-
-    <!-- <link rel="stylesheet" href="../../librerias/bootstrapSelect/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="../../librerias/bootstrapValidator/css/Validaciones.css">
-    <link rel="stylesheet" href="../../css/Validaciones/validaciones.css">
-    <link rel="stylesheet" href="../../css/PagosTarjeta/PagosFotos.css"> -->
-    <!-- <link rel="stylesheet" href="../../css/PagosTarjeta/PagosFotos.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:400,400i,500" rel="stylesheet">
-
-
-    <!-- Liberias de Firebase -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script> -->
 </head>
 
 <body>
@@ -42,12 +29,6 @@
 
                 <div class="col-10 col-sm-8 col-md-5 col-xl-4 ml-md-2 fondoCaja">
                     <div class="row justify-content-center mb-4">
-                        <!-- <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9">
-                                <div class="form-group mt-5">
-                                    <input type="text" name="email_pago" placeholder="Ingresa tu correo"
-                                        class="form-control tamTexto_textArea" id="email_user_pago">
-                                </div>
-                            </div> -->
                         <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9">
                             <div class="float-right mt-2">
                                 <button class="btn bg-light btn-sm rounded-circle" data-toggle="tooltip"
@@ -64,6 +45,9 @@
                                 <!-- Acumula lo seleccionado -->
                                 <input type="text" id="cajaTaxiSelect" class="form-control"
                                     placeholder="Taxis Seleccionados" hidden>
+
+                                <!-- Guarda el email del propietario -->
+                                <input type="text" id="caja_email_user" class="form-control" hidden>
                                 <!-- select multiple  -->
                                 <!-- name="cajaTaxiSelect" -->
                                 <div class="d-none" id="cajaVisual">
@@ -80,6 +64,16 @@
                                 <textarea name="" id="descripcion_pago" cols="40" rows="3"
                                     class="tamTexto_textArea form-control"
                                     placeholder="Escribe un mensaje al Administrador si asi lo desea (Opcional)"></textarea>
+                            </div>
+                        </div>
+                        <!-- Pdf -->
+                        <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9 d-none" id="caja_btn_pdf">
+                            <div class="form-group">
+                                <span class="text-success bg-white d-block text-center">Formato de pago PDF</span>
+                                <a href="#" class="btn btn-success d-block m-auto" id="btn_desc_pdf_pago">
+                                    Descargar PDF<i class="fa fa-download ml-2"></i>
+                                    <!-- <img src="../../Diseno/ICONOS/pdf_Mediano.svg" alt="" width="40px" height="40px">-->
+                                </a>
                             </div>
                         </div>
                         <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-9 d-none" id="caja_mensaje_activos">
@@ -127,11 +121,17 @@
                             <span class="h4 colorTituloPasos">
                                 ¡Realiza tu pago en tan solo 4 pasos!
                             </span>
+                            <div class="float-left">
+                                <button class="btn btn-sm rounded-circle" data-toggle="tooltip" data-placement="top"
+                                    title="Regresar" id="btn_regresar_modal" style="background-color: #e6edf0;"><img
+                                        src="../../Diseno/ICONOS/regresar.svg" alt="" width="20px"
+                                        height="25px"></button>
+                            </div>
                         </div>
                         <div class="col-10 col-lg-5 m-2 bordePasosPago">
                             <span class="d-block text-lg-left tamTextoModalPago">
                                 <span class="font-weight-bold">Paso 1: </span>Elige la opción que quieras pagar, ya sea
-                                suscripcion anual o mensual.
+                                suscripción anual o mensual.
                             </span>
                         </div>
                         <div class="col-10 col-lg-5 m-2 bordePasosPago">
@@ -143,7 +143,7 @@
                         </div>
                         <div class="col-10 col-lg-5 m-2 bordePasosPago">
                             <span class="d-block text-lg-left tamTextoModalPago">
-                                <span class="font-weight-bold">Paso 3: </span>Por ultimo sube una foto de su ticket de
+                                <span class="font-weight-bold">Paso 3: </span>Por último sube una foto de su ticket de
                                 pago, dando click en el recuadro
                                 blanco y finalmente de click en "Enviar Datos".
                             </span>
@@ -206,7 +206,7 @@
                                 incluye
                                 un 30% de descuento. -->
                                 Si tu taxi ha realizado viajes con cupones de descuento,
-                                tambien se te descontará y pagarás menos.
+                                se te descontará y pagarás menos.
                                 <!-- si tu taxi realiza viajes con cupones de descuento, no te preocupes el monto que
                                 acumulas
                                 se te descontará en tu proximo pago. -->
@@ -252,11 +252,21 @@
         </div>
     </div>
 
-    <!-- <script src="../../librerias/jquery/jquery-3.4.1.min.js"></script> -->
-    <!-- <script src="../../librerias/popper/popper.min.js"></script>
-    <script src="../../librerias/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../librerias/bootstrapValidator/js/bootstrapValidator.min.js"> </script>
-    <script src="../../librerias/bootstrapSelect/js/bootstrap-select.min.js"></script> -->
+    <!-- Tabla de Taxis -->
+    <div id="pago_taxis" class="d-none">
+        <br>
+        <table id="demo" class="table table-bordered">
+            <thead id="tabla_taxi_encabezado">
+            </thead>
+            <tbody id="contenido_tabla_taxi">
+            </tbody>
+        </table>
+        <br>
+        <footer class="footer">Contacto: soporte.taksi@gmail.com | 9631865124</footer>
+    </div>
+
+
+    <script src="../../librerias/jspdf/PDF_FormatoPago.js"> </script>
     <script src=" ../../js/Validaciones/Validaciones.js"> </script>
     <script src="../../js/PagosTarjeta/PagosFotos.js"></script>
 </body>

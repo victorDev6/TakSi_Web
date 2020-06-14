@@ -1,3 +1,6 @@
+//Cambia el titulo de la pestaña
+window.document.title = "Ayuda";
+
 try {
   firebase.initializeApp({
     apiKey: "AIzaSyB3Vk0nWljV4KhsfU9Co4qNNE0P_FhIJC4",
@@ -90,11 +93,13 @@ function ConsultaPreguntas(tipo_usuario) {
                         <div class="card-header" role="tab" 
                         id="heading${doc.id}">
                             <p class="mb-0 h6">
-                                <a data-toggle="collapse" 
-                                href="#${doc.id}" aria-expanded="true"
-                                    aria-controls="${doc.id}">
+                                <button data-toggle="collapse" 
+                                 aria-expanded="true"
+                                    aria-controls="${doc.id}" 
+                                    onclick="Capturar('${doc.id}')" 
+                                    class="btn btn-link">
                                     ${doc.data().pregunta}
-                                </a>
+                                </button>
                             </p>
                         </div>
 
@@ -112,11 +117,13 @@ function ConsultaPreguntas(tipo_usuario) {
                         <div class="card-header" role="tab" 
                         id="heading${doc.id}">
                             <p class="mb-0 h6">
-                                <a data-toggle="collapse" 
-                                href="#${doc.id}" aria-expanded="true"
-                                    aria-controls="${doc.id}">
+                                <button data-toggle="collapse" 
+                                 aria-expanded="true"
+                                    aria-controls="${doc.id}"
+                                     onclick="Capturar('${doc.id}')" 
+                                     class="btn btn-link">
                                     ${doc.data().pregunta}
-                                </a>
+                                </button>
                             </p>
                         </div>
 
@@ -133,8 +140,9 @@ function ConsultaPreguntas(tipo_usuario) {
         listaBusTabla.innerHTML += `
                         <tr>
                           <td>
-                            <a href="#" onclick="ResultadoBusqueda(
-                              '${doc.id}')">${doc.data().pregunta}</a>
+                            <button id="${doc.id}" 
+                            class="btn_bus" onclick="ResultadoBusqueda(
+                              '${doc.id}')">${doc.data().pregunta}</button>
                           </td>
                         </tr>`;
       });
@@ -178,3 +186,12 @@ $("#buscador_txt").blur(function (e) {
   e.preventDefault();
   $(".content-search").fadeOut(300);
 });
+
+function Capturar(idCaja) {
+  let checkClass = $("#" + idCaja).hasClass("show");
+  if (checkClass) {
+    $("#" + idCaja).removeClass("show");
+  } else {
+    $("#" + idCaja).addClass("show");
+  }
+}

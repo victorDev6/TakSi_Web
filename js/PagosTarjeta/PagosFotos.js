@@ -165,6 +165,8 @@ function GuardarDatos(url) {
       consesion: consesion,
       estado_pago: "Pendiente",
       opcion_pago: opcionPago,
+      fecha_inicial_pago: firebase.firestore.FieldValue.serverTimestamp(),
+      fecha_final_pago: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then(function (docRef) {
       console.log("Registro exitoso");
@@ -198,11 +200,13 @@ $("#selectTaxis").change(function () {
     $("#ocul_btn_continuar").addClass("d-none");
     $("#ocul_btn_enviar").addClass("d-none");
     $("#oculCajaImg").addClass("d-none");
+    $("#caja_btn_pdf").addClass("d-none");
   } else {
     $("#mensajeSeleccion").addClass("d-none");
     $("#ocul_btn_continuar").removeClass("d-none");
     $("#ocul_btn_enviar").addClass("d-none");
     $("#oculCajaImg").addClass("d-none");
+    $("#caja_btn_pdf").removeClass("d-none");
   }
 });
 /********************************************************** */
@@ -577,6 +581,7 @@ $("#btn_pago_anual").click(function (e) {
       if (verifiEmail) {
         console.log("email: " + email_global);
         //Que se ejecute la busqueda
+        $("#caja_email_user").val(email_global);
         BuscarEdoCdUser(email_global);
       } else {
         //Si no hay usuario activo
@@ -624,4 +629,12 @@ $("#btn_regresar_atras").click(function (e) {
   e.preventDefault();
   window.location = "#!/Informacion";
   limpiarModalErrores();
+});
+
+//Regresar del modal a la pagina anterior
+$("#btn_regresar_modal").click(function (e) {
+  e.preventDefault();
+  limpiarModalErrores();
+  $("#modalMostrarOpcion").modal("hide");
+  setTimeout(redireccionarInfo, 1000);
 });

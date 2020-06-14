@@ -1,4 +1,12 @@
+//Cambia el nombre de la petaña de la pagina
+window.document.title = "Iniciar Sesión";
 $(document).ready(function () {
+  //Obtener el hash dirección
+  if (location.hash === "#!/InicioSesion") {
+    $("nav a").removeClass("activo");
+    $("#iniciosesion").addClass("activo");
+  }
+
   setTimeout(function () {
     $("#loader").fadeIn(500);
     $("#loader").fadeOut(500);
@@ -176,8 +184,6 @@ $(document).ready(function () {
         // User is signed in.
         let email = user.email;
         let verifiEmail = user.emailVerified;
-        console.log(user.email);
-        console.log(user.emailVerified);
 
         BuscarStatus(email);
 
@@ -188,11 +194,7 @@ $(document).ready(function () {
           }
 
           if (verifiEmail && estatus_user_global == "true") {
-            window.location =
-              "../../vistas/Propietario_Ubicacion/principal_propietario.html";
-            buscarIdDoc(email);
-            MostrarBienvenida(user);
-            Limpiar();
+            buscarIdDoc(email, user);
           } else if (estatus_user_global == "false" && verifiEmail === true) {
             mensajeM = `¡Su cuenta ha sido bloqueada!`;
             colorTodos = "#e24c4b";
@@ -226,20 +228,24 @@ $(document).ready(function () {
   /********************************************************** */
   /*CAMBIA EL ESTADO DE EMAIL A ACTIVO
 /*********************************************************** */
-  function updateStateEmail(idDoc) {
+  function updateStateEmail(idDoc, user) {
     db.collection("reg_prop_prin_web")
       .doc(idDoc)
       .update({
         verifEmail: "true",
       })
       .then(function () {
+        MostrarBienvenida(user);
+        Limpiar();
+        window.location =
+          "../../vistas/Propietario_Ubicacion/principal_propietario.html";
         //Document successfully updated
       });
   }
   /********************************************************** */
   /*SI SE VERIFICO EL CORREO SE EJECUTA ESTO
 /*********************************************************** */
-  function buscarIdDoc(emailU) {
+  function buscarIdDoc(emailU, user) {
     let obtenerId = "";
     let obtenerStateEmail = "";
     let mensajeM;
@@ -254,7 +260,12 @@ $(document).ready(function () {
           obtenerStateEmail = doc.data().verifEmail;
         });
         if (obtenerStateEmail === "false") {
-          updateStateEmail(obtenerId);
+          updateStateEmail(obtenerId, user);
+        } else {
+          MostrarBienvenida(user);
+          Limpiar();
+          window.location =
+            "../../vistas/Propietario_Ubicacion/principal_propietario.html";
         }
       })
       .catch(function (error) {

@@ -267,7 +267,8 @@ h4, h5, h6 {
         display: none; } }
   @media (max-width: 991px) {
     .home-banner-area .fullscreen {
-      height: 700px !important; } }
+      /* height: 700px !important; */
+      height: inherit !important; } }
 
 
 .home-banner-content h1 {
@@ -380,7 +381,8 @@ h4, h5, h6 {
     .feature-area .single-feature:hover {
       cursor: pointer; }
       .feature-area .single-feature:hover h3 {
-        color: #46dbf9; }
+        color: #6b6f72
+; }
 
 .fact-area .fact-box {
   box-shadow: 0px 20px 50px rgba(153, 153, 153, 0.2); }

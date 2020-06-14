@@ -11,7 +11,7 @@ try {
     storageBucket: "taksi-d543c.appspot.com",
     messagingSenderId: "3651890584",
     appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-    measurementId: "G-6VDL057TWQ"
+    measurementId: "G-6VDL057TWQ",
   });
 } catch (err) {
   if (!/already exists/.test(err.message)) {
@@ -33,33 +33,33 @@ var valorFunBusqueda = 0;
 /************************************************************************* */
 /*SE USA PARA VALIDAR QUE BOTON FUE PULSADO Y MOSTRAR LA PANTALLA ADECUADA
 /************************************************************************* */
-(function() {
+(function () {
   let valor;
-  $("#btnMenuSitio").click(function() {
+  $("#btnMenuSitio").click(function () {
     valor = 1;
     Vswitch(valor);
   });
-  $("#btnMenuCiudad").click(function() {
+  $("#btnMenuCiudad").click(function () {
     valor = 2;
     Vswitch(valor);
   });
-  $("#btnMenuConsesion").click(function() {
+  $("#btnMenuConsesion").click(function () {
     valor = 3;
     Vswitch(valor);
   });
-  $("#btnMenuEstado").click(function() {
+  $("#btnMenuEstado").click(function () {
     valor = 4;
     Vswitch(valor);
   });
-  $("#btnMenuCostoKm").click(function() {
+  $("#btnMenuCostoKm").click(function () {
     valor = 5;
     Vswitch(valor);
   });
-  $("#btnMenuCodigo").click(function() {
+  $("#btnMenuCodigo").click(function () {
     valor = 6;
     Vswitch(valor);
   });
-  $("#btnMenuMarcador").click(function() {
+  $("#btnMenuMarcador").click(function () {
     valor = 7;
     Vswitch(valor);
   });
@@ -317,8 +317,8 @@ function Vswitch(valor) {
 /* Funcion lanzada por clase, que extrae el ID de quien lo lanzo, para procesar su imagen de salida*/
 var numeroTaxi = "";
 var file;
-$(document).ready(function() {
-  $(".selectorImagen").click(function(e) {
+$(document).ready(function () {
+  $(".selectorImagen").click(function (e) {
     switch (e.target.id) {
       case "imgSubidaM":
         inImg = e.target.id;
@@ -328,7 +328,7 @@ $(document).ready(function() {
     }
   });
   /* Se carga la imagen de Perfil si es un formato válido (png,jpg y jpeg)*/
-  $("#imagenMarcador").change(function() {
+  $("#imagenMarcador").change(function () {
     file = $("#imagenMarcador" + numeroTaxi).val();
     var ext = file.substring(file.lastIndexOf("."));
     if (
@@ -352,7 +352,7 @@ $(document).ready(function() {
       var reader = new FileReader();
       reader.addEventListener(
         "load",
-        function() {
+        function () {
           preview.src = reader.result;
         },
         false
@@ -377,8 +377,8 @@ $(document).ready(function() {
   let $selectEdo = $("#selectEdo_AdminA");
   db.collection("estado_ciudad")
     .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
         estados.push(doc.id);
       });
       for (const iterator of estados) {
@@ -391,7 +391,7 @@ $(document).ready(function() {
   const selectEdo = document.querySelector("#selectEdo_AdminA");
   const selectCd = document.querySelector("#selectCd_AdminA");
   const selSitio = document.getElementById("selectSitio_a");
-  selectEdo.addEventListener("change", event => {
+  selectEdo.addEventListener("change", (event) => {
     selectCd.innerHTML = "";
     selectCd.innerHTML = `<option selected>Ciudad</option>`;
     ObtenerCd(event.target.value);
@@ -404,12 +404,12 @@ function ObtenerCd(estado) {
   var docRef = db.collection("estado_ciudad").doc(estado);
   docRef
     .get()
-    .then(function(doc) {
+    .then(function (doc) {
       if (doc.exists) {
         obj = doc.data();
         obj = Object.values(obj);
         arrayLibreComa = obj.toString().split(",");
-        arrayLibreComa.forEach(function(valor, indice, array) {
+        arrayLibreComa.forEach(function (valor, indice, array) {
           $selectCd.append(`<option value="${valor}">${valor}</option>`);
         });
       } else {
@@ -417,7 +417,7 @@ function ObtenerCd(estado) {
         $selectCd.append(`<option selected>Ciudad</option>`);
       }
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Error getting document:", error);
     });
 }
@@ -434,15 +434,15 @@ function LlenarSelectSitio() {
     .where("estado", "==", estado)
     .where("ciudad", "==", ciudad)
     .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
         sitios.push(doc.data().nombre);
       });
-      sitios.forEach(function(valor, indice, array) {
+      sitios.forEach(function (valor, indice, array) {
         $selectSitio.append(`<option value="${valor}">${valor}</option>`);
       });
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Error getting documents: ", error);
       $selectSitio.append(`<option selected>Sitio</option>`);
     });
@@ -451,7 +451,7 @@ function LlenarSelectSitio() {
   /**Accion que realiza el selectCd para buscar Sitio*/
   const selectCd = document.querySelector("#selectCd_AdminA");
   const selSitio = document.getElementById("selectSitio_a");
-  selectCd.addEventListener("change", event => {
+  selectCd.addEventListener("change", (event) => {
     selSitio.innerHTML = "";
     selSitio.innerHTML = `<option selected>Sitio</option>`;
     LlenarSelectSitio();
@@ -461,7 +461,7 @@ function LlenarSelectSitio() {
 /********************************************************** */
 /*AGREGA UN NUEVO SITIO
 /*********************************************************** */
-$("#btn_agregar_sitio").click(function(e) {
+$("#btn_agregar_sitio").click(function (e) {
   e.preventDefault();
   AgregarSitio();
 });
@@ -473,14 +473,14 @@ function AgregarSitio() {
     .add({
       estado: edo_agregar,
       ciudad: cd_agregar,
-      nombre: nombreSitio
+      nombre: nombreSitio,
     })
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Registro exitoso");
       //Limpia los campos
       document.getElementById("nombre_sitio_a").value = "";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     });
 }
@@ -488,7 +488,7 @@ function AgregarSitio() {
 /********************************************************** */
 /*AGREGA UN NUEVO ESTADO
 /*********************************************************** */
-$("#btnAgregarEdo").click(function(e) {
+$("#btnAgregarEdo").click(function (e) {
   e.preventDefault();
   AgregarEstado();
   document.getElementById("nombre_estado_a").value = "";
@@ -497,16 +497,13 @@ function AgregarEstado() {
   let nombreEstado = document.getElementById("nombre_estado_a").value;
   var data = {};
 
-  return (output = db
-    .collection("estado_ciudad")
-    .doc(nombreEstado)
-    .set(data));
+  return (output = db.collection("estado_ciudad").doc(nombreEstado).set(data));
 }
 
 /********************************************************** */
 /*AGREGA UNA NUEVA CIUDAD
 /*********************************************************** */
-$("#btnAgregarCd").click(function(e) {
+$("#btnAgregarCd").click(function (e) {
   e.preventDefault();
   AgregarCiudad();
 });
@@ -516,7 +513,7 @@ function AgregarCiudad() {
   let addCiudad = db.collection("estado_ciudad").doc(edo_agregar);
   // Atomically add a new region to the "regions" array field.
   addCiudad.update({
-    Ciudades: firebase.firestore.FieldValue.arrayUnion(nombreCiudad)
+    Ciudades: firebase.firestore.FieldValue.arrayUnion(nombreCiudad),
   });
   document.getElementById("nombre_ciudad_a").value = "";
 }
@@ -524,7 +521,7 @@ function AgregarCiudad() {
 /********************************************************** */
 /*AGREGA FOLIO DE CONSESIÓN
 /*********************************************************** */
-$("#btnAgregarFolio").click(function(e) {
+$("#btnAgregarFolio").click(function (e) {
   e.preventDefault();
   AgregarFolio();
 });
@@ -543,9 +540,9 @@ function AgregarFolio() {
       apellido: apellidosUser,
       folio: num_consesion,
       fecha: firebase.firestore.FieldValue.serverTimestamp(),
-      sitio: sitio_usuario
+      sitio: sitio_usuario,
     })
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Registro exitoso");
       //Limpia los campos
       document.getElementById("nombre_user_a").value = "";
@@ -553,7 +550,7 @@ function AgregarFolio() {
       document.getElementById("num_cons_a").value = "";
       document.getElementById("selectSitio_a").value = "Sitio";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     });
 }
@@ -561,7 +558,7 @@ function AgregarFolio() {
 /********************************************************** */
 /*AGREGA EL COSTO POR KILOMETRO
 /*********************************************************** */
-$("#btnAgregarCostoKm").click(function(e) {
+$("#btnAgregarCostoKm").click(function (e) {
   e.preventDefault();
   AgregarCostoKm();
 });
@@ -585,13 +582,13 @@ function AgregarCostoKm() {
       costo_foraneo: costo_foraneo,
       costo_kilometro: costo_km,
       tarifa_base: tarifa_base,
-      tarifa_kilometros: tarifa_km
+      tarifa_kilometros: tarifa_km,
     })
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Registro exitoso");
       AgregarNuevaColeccion(cd_agregar);
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     });
 }
@@ -601,7 +598,7 @@ function AgregarNuevaColeccion(nomColeccion) {
     .collection(nomColeccion)
     .doc(nomColeccion)
     .set(data)
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Se creo la nueva colección");
 
       document.getElementById("costo_foraneo_a").value = "";
@@ -609,7 +606,7 @@ function AgregarNuevaColeccion(nomColeccion) {
       document.getElementById("tarifa_base_a").value = "";
       document.getElementById("tarifa_km_a").value = "";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     }));
 }
@@ -617,7 +614,7 @@ function AgregarNuevaColeccion(nomColeccion) {
 /********************************************************** */
 /*AGREGA CODIGO DE DESCUENTO
 /*********************************************************** */
-$("#btnAgregarCodigoD").click(function(e) {
+$("#btnAgregarCodigoD").click(function (e) {
   e.preventDefault();
   AgregarCodigoD();
 });
@@ -636,16 +633,16 @@ function AgregarCodigoD() {
       ciudad: cd_agregar,
       codigo: codigoD,
       descuento: c_descuento,
-      usos: total_usos
+      usos: total_usos,
     })
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Registro exitoso");
       //Limpia los campos
       document.getElementById("codigo_descuento_a").value = "";
       document.getElementById("c_descuento_a").value = "";
       document.getElementById("total_usos_a").value = "";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     });
 }
@@ -653,7 +650,21 @@ function AgregarCodigoD() {
 /********************************************************** */
 /*AGREGA Y ANEXA NUEVO REGISTRO DE MARCADORES
 /*********************************************************** */
-$("#btnAgregarMarcadorP").click(function(e) {
+$("#checkAgregarMarcador").change(function (e) {
+  e.preventDefault();
+  if ($("#checkAgregarMarcador").prop("checked")) {
+    $("#imagenMarcador").prop("disabled", true);
+    $("#status_marker").prop("disabled", true);
+    $("#telefono_empresa").prop("disabled", true);
+    $("#descrip_empresa").prop("disabled", true);
+  } else {
+    $("#imagenMarcador").prop("disabled", false);
+    $("#status_marker").prop("disabled", false);
+    $("#telefono_empresa").prop("disabled", false);
+    $("#descrip_empresa").prop("disabled", false);
+  }
+});
+$("#btnAgregarMarcadorP").click(function (e) {
   e.preventDefault();
   if ($("#checkAgregarMarcador").prop("checked")) {
     buscarIdMarcador();
@@ -682,9 +693,9 @@ function AgregarMarcadorP(url_img) {
       status: status_marcador,
       telefono: telefono,
       descripcion: descripcion,
-      ubicaciones: [new firebase.firestore.GeoPoint(latitud, longitud)]
+      ubicaciones: [new firebase.firestore.GeoPoint(latitud, longitud)],
     })
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Registro exitoso");
       //Limpia los campos
       document.getElementById("nombre_empresa").value = "";
@@ -695,7 +706,7 @@ function AgregarMarcadorP(url_img) {
       document.getElementById("telefono_empresa").value = "";
       document.getElementById("descrip_empresa").value = "";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     });
 }
@@ -707,7 +718,7 @@ function GuardarIMG_YDatos() {
 
   uploadTask.on(
     "state_changed",
-    function(snapshot) {
+    function (snapshot) {
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log("Upload is " + progress + "% done");
       switch (snapshot.state) {
@@ -719,12 +730,12 @@ function GuardarIMG_YDatos() {
           break;
       }
     },
-    function(error) {
+    function (error) {
       // Handle unsuccessful uploads
     },
-    function() {
+    function () {
       // Handle successful uploads on complete
-      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
         AgregarMarcadorP(downloadURL);
       });
     }
@@ -740,7 +751,7 @@ function AnexarOtroMarcador(idMarcador) {
   addOtroMarker.update({
     ubicaciones: firebase.firestore.FieldValue.arrayUnion(
       new firebase.firestore.GeoPoint(latitud, longitud)
-    )
+    ),
   });
   console.log("se anexo nueva ubicacion");
   document.getElementById("latitud_marker").value = "";
@@ -757,14 +768,14 @@ function buscarIdMarcador() {
     .where("ciudad", "==", cd_agregar)
     .where("empresa", "==", nom_empresa.trim())
     .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
         idMarcador = doc.id;
       });
       //Agregar el otro marcador
       AnexarOtroMarcador(idMarcador);
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
 }
@@ -783,7 +794,7 @@ function ChangeOpcionesBSitio() {
                                 </select>`;
   let selectOpcionBus_sitio = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus_sitio.addEventListener("change", event => {
+  selectOpcionBus_sitio.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -819,9 +830,9 @@ function mostrarTablaGeneralSitio() {
                                 <th class="text-nowrap">Sitio</th>
                                 <th class="text-nowrap">Editar</th>
                                 <th class="text-nowrap">Eliminar</th>`;
-  db.collection("lineas").onSnapshot(function(querySnapshot) {
+  db.collection("lineas").onSnapshot(function (querySnapshot) {
     tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
+    querySnapshot.forEach(function (doc) {
       tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -853,9 +864,9 @@ function showTableEdoCdSitio() {
   db.collection("lineas")
     .where("estado", "==", edo_agregar)
     .where("ciudad", "==", cd_agregar)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -885,9 +896,9 @@ function showTableNombreSitio() {
                                 <th class="text-nowrap">Eliminar</th>`;
   db.collection("lineas")
     .where("nombre", "==", nombreSitio)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -909,10 +920,10 @@ function eliminarSitioA(idSitio) {
   db.collection("lineas")
     .doc(idSitio)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -922,7 +933,7 @@ function EditarSitioA(idSitio, estado, ciudad, nombreSitio) {
   $("#ocultar_caja_btn_editar_sitio").removeClass("d-none");
   $("#ocultar_caja_btn_agregar_sitio").addClass("d-none");
 
-  botonA.onclick = function(e) {
+  botonA.onclick = function (e) {
     e.preventDefault();
     let selEstado = document.getElementById("selectEdo_AdminA").value;
     let selCiudad = document.getElementById("selectCd_AdminA").value;
@@ -933,15 +944,15 @@ function EditarSitioA(idSitio, estado, ciudad, nombreSitio) {
       .update({
         estado: selEstado,
         ciudad: selCiudad,
-        nombre: nombreSitio
+        nombre: nombreSitio,
       })
-      .then(function() {
+      .then(function () {
         console.log("Document successfully updated!");
         $("#ocultar_caja_btn_agregar_sitio").removeClass("d-none");
         $("#ocultar_caja_btn_editar_sitio").addClass("d-none");
         document.getElementById("nombre_sitio_a").value = "";
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
@@ -963,7 +974,7 @@ function ChangeOpcionesBConsesion() {
                                 </select>`;
   let selectOpcionBus_sitio = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus_sitio.addEventListener("change", event => {
+  selectOpcionBus_sitio.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -1009,9 +1020,9 @@ function mostrarTablaGeneralConsesion() {
                                 <th class="text-nowrap">Editar</th>`;
   db.collection("folios_consesion")
     .orderBy("fecha", "desc")
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1050,9 +1061,9 @@ function showTableEdoCdConsesion() {
   db.collection("folios_consesion")
     .where("estado", "==", edo_agregar)
     .where("ciudad", "==", cd_agregar)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1093,9 +1104,9 @@ function showTableEdoCdSitio_consesion() {
     .where("estado", "==", edo_agregar)
     .where("ciudad", "==", cd_agregar)
     .where("sitio", "==", sitio_consesion)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1131,9 +1142,9 @@ function showTableNombreConsesion() {
                                 <th class="text-nowrap">Editar</th>`;
   db.collection("folios_consesion")
     .where("nombre", "==", nombreCons)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1158,10 +1169,10 @@ function eliminarConsesionA(idConsesion) {
   db.collection("folios_consesion")
     .doc(idConsesion)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -1174,7 +1185,7 @@ function editarConsesionA(idCons, edo, cd, nom, ape, folio, sitio) {
   $("#ocultar_caja_btn_editar_consesion").removeClass("d-none");
   $("#ocultar_caja_btn_agregar_consesion").addClass("d-none");
 
-  botonA.onclick = function(e) {
+  botonA.onclick = function (e) {
     e.preventDefault();
     let selEstado = document.getElementById("selectEdo_AdminA").value;
     let selCiudad = document.getElementById("selectCd_AdminA").value;
@@ -1190,9 +1201,9 @@ function editarConsesionA(idCons, edo, cd, nom, ape, folio, sitio) {
         nombre: nombreUser,
         apellido: apellidosUser,
         folio: folioC,
-        sitio: nomSitio
+        sitio: nomSitio,
       })
-      .then(function() {
+      .then(function () {
         console.log("Document successfully updated!");
         $("#ocultar_caja_btn_agregar_consesion").removeClass("d-none");
         $("#ocultar_caja_btn_editar_consesion").addClass("d-none");
@@ -1200,7 +1211,7 @@ function editarConsesionA(idCons, edo, cd, nom, ape, folio, sitio) {
         document.getElementById("ape_user_a").value = "";
         document.getElementById("num_cons_a").value = "";
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
@@ -1220,7 +1231,7 @@ function ChangeOpcionesBCosto() {
                                 </select>`;
   let selectOpcionBus_sitio = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus_sitio.addEventListener("change", event => {
+  selectOpcionBus_sitio.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -1252,9 +1263,9 @@ function mostrarTablaGeneralCosto() {
                                 <th class="text-nowrap">T_Km</th>
                                 <th class="text-nowrap">Eliminar</th>
                                 <th class="text-nowrap">Editar</th>`;
-  db.collection("ciudades_afiliadas").onSnapshot(function(querySnapshot) {
+  db.collection("ciudades_afiliadas").onSnapshot(function (querySnapshot) {
     tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
+    querySnapshot.forEach(function (doc) {
       tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1292,9 +1303,9 @@ function mostrarTablaEdoCdCosto() {
   db.collection("ciudades_afiliadas")
     .where("estado", "==", edo_agregar)
     .where("ciudad", "==", cd_agregar)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1319,10 +1330,10 @@ function eliminarCostoA(idCosto) {
   db.collection("ciudades_afiliadas")
     .doc(idCosto)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -1336,7 +1347,7 @@ function editarCostoA(idCod, edo, cd, c_for, c_km, ta_b, ta_km) {
   $("#ocultar_caja_btn_editar_costo").removeClass("d-none");
   $("#ocultar_caja_btn_agregar_costo").addClass("d-none");
 
-  botonA.onclick = function(e) {
+  botonA.onclick = function (e) {
     e.preventDefault();
     let selEstado = document.getElementById("selectEdo_AdminA").value;
     let selCiudad = document.getElementById("selectCd_AdminA").value;
@@ -1356,9 +1367,9 @@ function editarCostoA(idCod, edo, cd, c_for, c_km, ta_b, ta_km) {
         costo_foraneo: costo_foraneo,
         costo_kilometro: costo_km,
         tarifa_base: tarifa_base,
-        tarifa_kilometros: tarifa_km
+        tarifa_kilometros: tarifa_km,
       })
-      .then(function() {
+      .then(function () {
         console.log("Document successfully updated!");
         $("#ocultar_caja_btn_agregar_costo").removeClass("d-none");
         $("#ocultar_caja_btn_editar_costo").addClass("d-none");
@@ -1367,7 +1378,7 @@ function editarCostoA(idCod, edo, cd, c_for, c_km, ta_b, ta_km) {
         document.getElementById("tarifa_base_a").value = "";
         document.getElementById("tarifa_km_a").value = "";
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
@@ -1389,7 +1400,7 @@ function ChangeOpcionesBCodigo() {
                                 </select>`;
   let selectOpcionBus = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus.addEventListener("change", event => {
+  selectOpcionBus.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -1430,9 +1441,9 @@ function mostrarTablaGeneralCodigo() {
                                 <th class="text-nowrap">Usos</th>
                                 <th class="text-nowrap">Eliminar</th>
                                 <th class="text-nowrap">Editar</th>`;
-  db.collection("codigos_descuento").onSnapshot(function(querySnapshot) {
+  db.collection("codigos_descuento").onSnapshot(function (querySnapshot) {
     tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
+    querySnapshot.forEach(function (doc) {
       tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1467,9 +1478,9 @@ function mostrarTablaEdoCdCodigo() {
   db.collection("codigos_descuento")
     .where("estado", "==", edo_agregar)
     .where("ciudad", "==", cd_agregar)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1502,9 +1513,9 @@ function mostrarTablaBusCodigo() {
                                 <th class="text-nowrap">Editar</th>`;
   db.collection("codigos_descuento")
     .where("codigo", "==", codigo_des)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1538,9 +1549,9 @@ function mostrarTablaBusCodDescuento() {
                                 <th class="text-nowrap">Editar</th>`;
   db.collection("codigos_descuento")
     .where("descuento", "==", codigo_des)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1563,10 +1574,10 @@ function eliminarCodigoA(idCodigo) {
   db.collection("codigos_descuento")
     .doc(idCodigo)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -1579,7 +1590,7 @@ function editarCodigoA(idCod, edo, cd, codigo, desc, uso) {
   $("#ocultar_caja_btn_editar_codigo").removeClass("d-none");
   $("#ocultar_caja_btn_agregar_codigo").addClass("d-none");
 
-  botonA.onclick = function(e) {
+  botonA.onclick = function (e) {
     e.preventDefault();
     let selEstado = document.getElementById("selectEdo_AdminA").value;
     let selCiudad = document.getElementById("selectCd_AdminA").value;
@@ -1595,9 +1606,9 @@ function editarCodigoA(idCod, edo, cd, codigo, desc, uso) {
         ciudad: selCiudad,
         codigo: codigo,
         descuento: descuento,
-        usos: usos
+        usos: usos,
       })
-      .then(function() {
+      .then(function () {
         console.log("Document successfully updated!");
         $("#ocultar_caja_btn_agregar_codigo").removeClass("d-none");
         $("#ocultar_caja_btn_editar_codigo").addClass("d-none");
@@ -1605,7 +1616,7 @@ function editarCodigoA(idCod, edo, cd, codigo, desc, uso) {
         document.getElementById("c_descuento_a").value = "";
         document.getElementById("total_usos_a").value = "";
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
@@ -1625,7 +1636,7 @@ function ChangeOpcionesBEstado() {
                                 </select>`;
   let selectOpcionBus = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus.addEventListener("change", event => {
+  selectOpcionBus.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -1652,9 +1663,9 @@ function mostrarTablaGeneralEstado() {
   encabezadoT.innerHTML = "";
   encabezadoT.innerHTML = `<th class="text-nowrap">Estado</th>
                                 <th class="text-nowrap">Eliminar</th>`;
-  db.collection("estado_ciudad").onSnapshot(function(querySnapshot) {
+  db.collection("estado_ciudad").onSnapshot(function (querySnapshot) {
     tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
+    querySnapshot.forEach(function (doc) {
       tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.id}</td>
               <td class="text-nowrap"><button class="btn btn-danger" 
@@ -1674,7 +1685,7 @@ function mostrarTablaBusNom_edo() {
   var busEdo = db.collection("estado_ciudad").doc(nombreEdo);
   busEdo
     .get()
-    .then(function(doc) {
+    .then(function (doc) {
       if (doc.exists) {
         tabla.innerHTML = "";
         tabla.innerHTML = `<tr>
@@ -1686,7 +1697,7 @@ function mostrarTablaBusNom_edo() {
         console.log("No enontro el documento");
       }
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Error getting document:", error);
     });
 }
@@ -1694,10 +1705,10 @@ function eliminarEstadoA(idEdo) {
   db.collection("estado_ciudad")
     .doc(idEdo)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -1716,7 +1727,7 @@ function ChangeOpcionesBCiudad() {
                                 </select>`;
   let selectOpcionBus = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus.addEventListener("change", event => {
+  selectOpcionBus.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -1748,9 +1759,9 @@ function mostrarTablaGeneralCiudad() {
   encabezadoT.innerHTML = "";
   encabezadoT.innerHTML = `<th class="text-nowrap">Estado</th>
                            <th class="text-nowrap">Ver Ciudades</th>`;
-  db.collection("estado_ciudad").onSnapshot(function(querySnapshot) {
+  db.collection("estado_ciudad").onSnapshot(function (querySnapshot) {
     tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
+    querySnapshot.forEach(function (doc) {
       tabla.innerHTML += `<tr>
        					<td class="text-nowrap">${doc.id}</td>
                  <td class="text-nowrap"><button class="btn btn-success"
@@ -1768,11 +1779,11 @@ function verCiudadesA(id) {
   nomEstado.innerHTML = "";
   nomEstado.innerHTML = `<span class="font-weight-bold">Estado:</span> ${id} </br>`;
   let docRef = db.collection("estado_ciudad").doc(id);
-  docRef.onSnapshot(function(doc) {
+  docRef.onSnapshot(function (doc) {
     if (doc.exists) {
       datosU = doc.data().Ciudades;
       tablaCiudades.innerHTML = "";
-      datosU.forEach(function(data, index) {
+      datosU.forEach(function (data, index) {
         tablaCiudades.innerHTML += `<tr>
        				<td class="text-nowrap">${data}</td>
                <td class="text-nowrap"><button class="btn btn-danger"
@@ -1787,7 +1798,7 @@ function verCiudadesA(id) {
 function eliminarCiudadArray(id, data) {
   let eliminarMarcador = db.collection("estado_ciudad").doc(id);
   eliminarMarcador.update({
-    Ciudades: firebase.firestore.FieldValue.arrayRemove(data)
+    Ciudades: firebase.firestore.FieldValue.arrayRemove(data),
   });
 }
 function ocultarTablaCiudades() {
@@ -1808,7 +1819,7 @@ function ChangeOpcionesBMarcador() {
                                 </select>`;
   let selectOpcionBus = document.getElementById("select_op_bus_filtado");
   let valorSelect;
-  selectOpcionBus.addEventListener("change", event => {
+  selectOpcionBus.addEventListener("change", (event) => {
     valorSelect = event.target.value;
     desocultarTabla_paginacion();
     switch (valorSelect) {
@@ -1847,9 +1858,9 @@ function mostrarTablaGeneralMarcador() {
                                 <th class="text-nowrap">Ver Ubicacion</th>
                                 <th class="text-nowrap">Eliminar</th>
                                 <th class="text-nowrap">Editar</th>`;
-  db.collection("marcadores_publicidad").onSnapshot(function(querySnapshot) {
+  db.collection("marcadores_publicidad").onSnapshot(function (querySnapshot) {
     tabla.innerHTML = "";
-    querySnapshot.forEach(function(doc) {
+    querySnapshot.forEach(function (doc) {
       tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1894,9 +1905,9 @@ function mostrarTablaBusEdoCdMarcador() {
   db.collection("marcadores_publicidad")
     .where("estado", "==", edo_agregar)
     .where("ciudad", "==", cd_agregar)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1939,9 +1950,9 @@ function mostrarTablaBusMarcador_empresa() {
                                 <th class="text-nowrap">Editar</th>`;
   db.collection("marcadores_publicidad")
     .where("empresa", "==", nombreEmpresa)
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       tabla.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         tabla.innerHTML += `<tr>
 							<td class="text-nowrap">${doc.data().estado}</td>
 							<td class="text-nowrap">${doc.data().ciudad}</td>
@@ -1972,10 +1983,10 @@ function eliminarMarcadorA(idMarcador) {
   db.collection("marcadores_publicidad")
     .doc(idMarcador)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log("Document successfully deleted!");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error removing document: ", error);
     });
 }
@@ -1990,7 +2001,7 @@ function editarMarcadorA(idM, edo, cd, empresa, marker, status, tel, descrip) {
   $("#ocultar_caja_btn_editar_marcador").removeClass("d-none");
   $("#ocultar_caja_btn_agregar_marcador").addClass("d-none");
 
-  botonA.onclick = function(e) {
+  botonA.onclick = function (e) {
     e.preventDefault();
     let selEstado = document.getElementById("selectEdo_AdminA").value;
     let selCiudad = document.getElementById("selectCd_AdminA").value;
@@ -2008,9 +2019,9 @@ function editarMarcadorA(idM, edo, cd, empresa, marker, status, tel, descrip) {
         marker: marker,
         status: status,
         telefono: telefono,
-        descripcion: descripcion
+        descripcion: descripcion,
       })
-      .then(function() {
+      .then(function () {
         console.log("Document successfully updated!");
         $("#ocultar_caja_btn_agregar_marcador").removeClass("d-none");
         $("#ocultar_caja_btn_editar_marcador").addClass("d-none");
@@ -2020,7 +2031,7 @@ function editarMarcadorA(idM, edo, cd, empresa, marker, status, tel, descrip) {
         document.getElementById("telefono_empresa").value = "";
         document.getElementById("descrip_empresa").value = "";
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
@@ -2038,12 +2049,12 @@ function verUbicacionM(idMarcador, empresa, edo, cd) {
                           <span class="font-weight-bold">Ciudad:</span> ${cd} </br>
                           <span class="font-weight-bold">Empresa:</span> ${empresa} </br>`;
   let docRef = db.collection("marcadores_publicidad").doc(idMarcador);
-  docRef.onSnapshot(function(doc) {
+  docRef.onSnapshot(function (doc) {
     if (doc.exists) {
       contadorMarcador = 0;
       datosU = doc.data().ubicaciones;
       tablaMarcador.innerHTML = "";
-      datosU.forEach(function(data, index) {
+      datosU.forEach(function (data, index) {
         contadorMarcador += 1;
         tablaMarcador.innerHTML += `<tr>
               <td class="text-nowrap">${contadorMarcador}</td>
@@ -2065,7 +2076,7 @@ function eliminarUbicacionArray(idM, lat, long) {
   eliminarMarcador.update({
     ubicaciones: firebase.firestore.FieldValue.arrayRemove(
       new firebase.firestore.GeoPoint(lat1, long1)
-    )
+    ),
     //ubicaciones: [new firebase.firestore.GeoPoint(latitud, longitud)]
   });
 }
@@ -2076,7 +2087,7 @@ function ocultarTablaUbicacion() {
 /********************************************************** */
 /*BUSQUEDAS FILTRADAS DE TODAS LAS TABLAS
 /*********************************************************** */
-$("#btn_busq_filtrada").click(function(e) {
+$("#btn_busq_filtrada").click(function (e) {
   e.preventDefault();
   switchEjecutarBusquedas(valorFunBusqueda);
 });
@@ -2136,11 +2147,11 @@ function paginacionA() {
     total: pageCount,
     page: 1,
     maxVisible: 3,
-    leaps: true
+    leaps: true,
   });
 
   //al hacer click en el paginador
-  $("#pagination-here").on("page", function(event, num) {
+  $("#pagination-here").on("page", function (event, num) {
     displayRows(num);
   });
 
