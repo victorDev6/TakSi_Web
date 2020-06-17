@@ -61,7 +61,17 @@ $(document).ready(function () {
 			input.attr("type", "password");
 		}
 	});
+	//modal pass
+	$("#icon-click-modal").click(function () {
+		$("#icon-mod").toggleClass("fa-eye-slash");
 
+		var input = $("#inputContraseñaConf");
+		if (input.attr("type") === "password") {
+			input.attr("type", "text");
+		} else {
+			input.attr("type", "password");
+		}
+	});
 
 
 
@@ -153,11 +163,6 @@ $(document).ready(function () {
 									$("#imgSubid_" + conuntvariablenumcaja).attr("src", cajaImagen);
 									$("#myspanidfirebaseCH" + conuntvariablenumcaja).text(idFirebaseCh);
 									$("#myspanidenCH" + conuntvariablenumcaja).text(idenCH);
-
-
-									/*extrallendo valor
-									$("#imgSubid_" + conuntvariablenumcaja).attr("src", cajaImagen);*/
-									//document.getElementById("myspanidfirebase"+ conuntvariable).textContent=idFirebaseTaxi;
 								} else {
 									console.log("No such document!");
 								}
@@ -192,12 +197,15 @@ $(document).ready(function () {
 					var cajaCor = $("#inputEmail" + solonumeroIdCh).val();
 					var cajaCon = $("#inputPass" + solonumeroIdCh).val();
 					var cajaImg = $("#imgSubid_" + solonumeroIdCh).attr("src");
-					var imAlt   = $("#imgSubid_" + solonumeroIdCh).attr("alt");
+					var imAlt = $("#imgSubid_" + solonumeroIdCh).attr("alt");
 
 					var mySpanIdCH = $("#myspanidfirebaseCH" + solonumeroIdCh).text();
 
-					if (cajaNom != "" && cajaApe != "" && cajaTel != "" && cajaCor != "" && cajaCon != "" && cajaImg != "" && imAlt === "23" || imAlt === "22") {
-						$("#altaChofer").modal("show");
+					let validarBusqueda = $("#chofer"+solonumeroIdCh).data("bootstrapValidator").validate();
+					if (validarBusqueda.isValid()) {
+						if (cajaNom != "" && cajaApe != "" && cajaTel != "" && cajaCor != "" && cajaCon != "" && cajaImg != "" && imAlt === "23" || imAlt === "22") {
+							$("#altaChofer").modal("show");
+						}
 					}
 
 					if (estadoGuardarCH === 0 && mySpanIdCH == "id") {
@@ -207,7 +215,7 @@ $(document).ready(function () {
 					} else if (estadoGuardarCH === 1 && mySpanIdCH !== "id") {
 						$("#ingrContraseña").removeClass("d-block");
 						$("#ingrContraseña").addClass("d-none");
-						var mensajemodalChofer = "Seguro desea modificar los datos?.";
+						var mensajemodalChofer = "¿Seguro desea modificar los datos?";
 					} else if (estadoGuardarCH === 1 && mySpanIdCH === "id") {
 						$("#ingrContraseña").removeClass("d-none");
 						$("#ingrContraseña").addClass("d-block");
@@ -276,7 +284,7 @@ $(document).ready(function () {
 
 					if (mySpanIdCHE !== "id") {
 						$("#deleteChofer").modal("show");
-						var mensajemodalChoferDelete = "Seguro desea eliminar al chofer.";
+						var mensajemodalChoferDelete = "¿Seguro desea eliminar al chofer?";
 						document.getElementById("textoModalDeleteCH").innerHTML = mensajemodalChoferDelete;
 						document.getElementById("textoModalDeleteCH").style.fontWeight = "bold";
 
@@ -421,7 +429,11 @@ $(document).ready(function () {
 										}
 									});
 							}).catch(function (error) {
-								console.log("INTENTE NUEVAMENTE, SUS DATOS SON INCORRECTOS");
+								//console.log("INTENTE NUEVAMENTE, SUS DATOS SON INCORRECTOS");
+								$("#datosIncorrectos").modal("show");
+								var mensajemodalDatInc = "Dato incorrecto.";
+								document.getElementById("textoModalDatosInco").innerHTML = mensajemodalDatInc;
+								document.getElementById("textoModalDatosInco").style.fontWeight = "bold";
 							});
 							//FIN REAUTENTIFICAR AL USUARIO-------------------------------------------------
 						}
@@ -518,7 +530,7 @@ $(document).ready(function () {
 													ubicacion: new firebase.firestore.GeoPoint(0.0, 0.0),
 												})
 												.then(function () {
-													console.log("Registro exitoso: "+ciudad+" : " + emailMin);
+													console.log("Registro exitoso: " + ciudad + " : " + emailMin);
 													//window.location = "#!/chofer";
 													window.location = "#!/Informacion";
 													$("#loaderP").removeClass("loader"); //REMOVER LOADER
@@ -689,16 +701,11 @@ $(document).ready(function () {
 				}
 				/******************************TERMINA SUBIR IMAGEN******************************************************************/
 
-
-
-
 				//se destruye la variable al regresar
 				$("#idRetornarATaxis").click(function () {
 					sessionStorage.removeItem("placaTaxi");
 					window.location = "#!/Informacion";
 				});
-
-
 			}
 		} else {} // No user is signed in.
 	});

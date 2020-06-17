@@ -90,12 +90,7 @@ a.btnAgregarChofer2{
 	padding-top: 2px;
 }
 
-/* ---------------------------------------------------- */
-/* BTN AGREGAR CHOFER 									*/
-/*----------------------------------------------------- */
-.btnVerPago{
-	margin-top:  3px !important;
-}
+
 
 .btnVerPago,
 .btnAgregarNvotaxi,
@@ -213,7 +208,6 @@ a.btnAgregarChofer2{
 
 
 .modal-header-Ntaxi {
-	background-color: #d6d0ce;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	border-bottom-width: 0px;

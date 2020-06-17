@@ -55,7 +55,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 			//actulizar telefono
 			$("#guardarTelefono").click(function (e) {
 				$("#altatelefono").modal("show");
-				var mensajeE = "Seguro deseas modifcar el número de telefono?";
+				var mensajeE = "¿Seguro deseas modificar el número de teléfono?";
 				document.getElementById("textoModalTel").innerHTML = mensajeE;
 				document.getElementById("textoModalTel").style.fontWeight = "bold";
 			});
@@ -67,6 +67,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 					$("#altatelefono").modal("hide");
 					var cajaT = $("#nuevotelefono").val();
 					var dbcollection = db.collection("reg_prop_prin_web").doc(idD);
+
+
 					return dbcollection.update({
 							telefono: cajaT,
 						})
@@ -74,6 +76,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 							console.log("Document successfully updated!");
 							$("#nuevotelefono").val("");
 							$("#loaderP").removeClass("loader"); //REMOVER LOADER
+							document.location.reload();
 						})
 						.catch(function (error) {
 							console.error("Error updating document: ", error);
@@ -132,13 +135,13 @@ firebase.auth().onAuthStateChanged(function (user) {
 			db.collection("solicitudes_pagos").where("email", "==", emailPP).onSnapshot(function (queryPagos) {
 				var paso = 0;
 
-				if(queryPagos.size==0){
+				if (queryPagos.size == 0) {
 					$("#alert-Cuenta").removeClass("d-none");
-					$("#alert-Cuenta" ).addClass("d-block");
+					$("#alert-Cuenta").addClass("d-block");
 					//$(".encierro-Pagos").removeClass(".encierro-Pagos");
-					$(".encierroF2" ).addClass("encierro-Pagos");
+					$(".encierroF2").addClass("encierro-Pagos");
 
-				}else{
+				} else {
 					$(".encierroF2").removeClass("encierro-Pagos");
 				}
 
@@ -263,7 +266,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 							<div class="row">\
 								<div class="col-12 col-sm-8">\
 								<div class="form-group row mb-0">\
-								<label class="col-12 col-sm-6 col-md-5  col-lg-4 col-xl-3 col-form-label  text-center text-sm-right labelSbt  pb-0" for="">Status pago:</label>\
+								<label class="col-12 col-sm-6 col-md-5  col-lg-4 col-xl-3 col-form-label  text-center text-sm-right labelSbt  pb-0" for="">Estatus pago:</label>\
 								<div class="col-12 col-sm-6 col-md-5  col-lg-4 col-xl-3 pl-md-0 pt-0 pb-0">\
 								<input type="text" readonly class="form-control-plaintext form-control-sm input-facturacion2 text-center text-sm-left text-md-left color col' + paso + ' pt-0 pb-0" id="" value="' + statusPago + '">\
 								</div>\

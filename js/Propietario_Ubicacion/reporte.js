@@ -1,5 +1,5 @@
 $(document).ready(function () {
-limpiarModalErrores();
+	limpiarModalErrores();
 	/*************************************************************************/
 	/**	        CALENDARIO VALIDANDO FECHA MINIMA-MAXIMA					**/
 	/*************************************************************************/
@@ -213,30 +213,26 @@ limpiarModalErrores();
 
 						if (fecha1 == "" && fecha2 == "") {
 							$("#fechasvacios").modal("show");
-							var mensajemodalChoferDelete = "seleccione fecha de inicio y fecha fin";
+							var mensajemodalChoferDelete = "Seleccione fecha de inicio y fecha fin";
 							document.getElementById("textoModalFecha").innerHTML = mensajemodalChoferDelete;
 							document.getElementById("textoModalFecha").style.fontWeight = "bold";
-
-
-
-
 							//alert("seleccione fecha de inicio y fecha fin");
 						} else if (fecha1 == "") {
 							$("#fechasvacios").modal("show");
-							var mensajemodalChoferDelete = "seleccione el fecha inicial";
+							var mensajemodalChoferDelete = "Seleccione fecha inicial";
 							document.getElementById("textoModalFecha").innerHTML = mensajemodalChoferDelete;
 							document.getElementById("textoModalFecha").style.fontWeight = "bold";
 
 							//alert("seleccione el fecha inicial");
 						} else if (fecha2 == "") {
 							$("#fechasvacios").modal("show");
-							var mensajemodalChoferDelete = "seleccione el fecha final";
+							var mensajemodalChoferDelete = "Seleccione fecha final";
 							document.getElementById("textoModalFecha").innerHTML = mensajemodalChoferDelete;
 							document.getElementById("textoModalFecha").style.fontWeight = "bold";
 
 							//alert("seleccione el fecha final");
 						} else {
-							//alert("value p: " + placa + " PLACA: " + placaTxt + " value c: " + chofer + " CHOFER: " + choferTxt + " fecha1: " + fecha1 + " fecha2: " + fecha2);
+
 							var nueva1 = fecha1.split(" ")[0];
 							var format1 = nueva1.split("/");
 
@@ -315,13 +311,15 @@ limpiarModalErrores();
 									if (conuntporfecha == 0) {
 										$(".alert").removeClass("d-none");
 										$(".claseocultarpag").addClass("d-none");
-										document.getElementById("desabled").disabled = true;
+										//document.getElementById("desabled").disabled = true;
+										$("#desabled").attr("disabled", "disabled");
 										$("#desabled").addClass("clasedesactivar");
 									} else {
 										$(".alert").addClass("d-none");
 										$('.claseocultarpag').removeClass("d-none");
 										$("#nopagina").change(); //mostrar registros
-										document.getElementById("desabled").disabled = false;
+										//document.getElementById("desabled").disabled = false;
+										$("#desabled").removeAttr("disabled");
 										$("#desabled").removeClass("clasedesactivar");
 									}
 								});
@@ -335,14 +333,20 @@ limpiarModalErrores();
 					} else {
 
 					}
-
-
 				});
+
+				$("#desabled").click(function () {
+						generate();
+				});
+
+
 
 				/*************************************************************************/
 				/**	        BOTON LIMPIAR CAMPOS					                    **/
 				/*************************************************************************/
 				$("#limpiarCampo").click(function () {
+					limpiarModalErrores();
+					document.location.reload();
 					// SE VUELVE A LLENAR EL SELECT CON LAS PLACAS
 					var selected_itemplaca = document.getElementById("placas");
 					db.collection("taxis").where("correo", "==", emailP).onSnapshot(function (querySnapshot) {
