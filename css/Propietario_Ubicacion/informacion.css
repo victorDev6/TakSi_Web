@@ -234,3 +234,16 @@ a.btnAgregarChofer2{
 .clasedesactivarB{
 	cursor: not-allowed !important;
 }
+
+.btnAgregarChoferDesactivado {
+    background: #d6d0ce !important;
+    color: #a2a0a0 !important;
+    border: 1.5px solid #a2a0a0 !important;
+}
+
+.btnAgregarChoferDesactivado:hover{
+	background: #d6d0ce !important;
+    color: #a2a0a0 !important;
+    border: 1.5px solid #a2a0a0 !important;
+}
+

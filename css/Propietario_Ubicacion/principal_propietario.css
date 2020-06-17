@@ -1,6 +1,6 @@
 /* ---------------------------------------------------- */
 /* BODY      					                    	*/
-/*----------------------------------------------------- */
+/*-----------------------------------------------------
 body.Body-Propietario {
 
 	height: 100vh;
@@ -8,16 +8,114 @@ body.Body-Propietario {
 	margin: 0px;
 	padding: 0px !important;
 	background-color: #d6d0ce;
-	background: url("../../Diseno/IMG/Tak-SiBody.jpeg") no-repeat center center fixed;
-	-webkit-background-size: cover;
+	/*background: url("../../Diseno/IMG/Tak-SiBody.jpeg") no-repeat center center fixed;
+
+	background-color: #d6d0ce;
+	background: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd)no-repeat center center fixed;
+
+	background-size: 400px 200px !important;
+	-webkit-background-size: 400px 200px !important;
+	-moz-background-size: 400px 200px !important;
+
+
+
+
+	/*-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-
-	-webkit-backdrop-filter: blur(1.5px);/* Safari 9+ */
-	backdrop-filter: blur(1.5px);/* Chrome and Opera */
-	background-color: rgba(255, 255, 255, 0.1);*/
+	/*para opacar fondo*/
+/*-webkit-backdrop-filter: blur(1.5px);/* Safari 9+
+	backdrop-filter: blur(1.5px);/* Chrome and Opera
+	background-color: rgba(255, 255, 255, 0.1);
 }
+
+*/
+
+/* ---------------------------------------------------- */
+/* BODY      					                    	*/
+/*-----------------------------------------------------
+body.Body-Propietario {
+
+	height: 100vh;
+	font-family: 'Poppins', sans-serif;
+	margin: 0px;
+	padding: 0px !important;
+	background-color: #d6d0ce;
+	/*background: url("../../Diseno/IMG/Tak-SiBody.jpeg") no-repeat center center fixed;
+
+	 background-color: #d6d0ce;
+    background: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd)no-repeat center center fixed;
+
+
+	/*-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+/*para opacar fondo*/
+/*-webkit-backdrop-filter: blur(1.5px);/* Safari 9+
+	backdrop-filter: blur(1.5px);/* Chrome and Opera
+	background-color: rgba(255, 255, 255, 0.1);
+}*/
+
+
+
+@media (max-device-width: 800px) {
+	body.Body-Propietario {
+
+		height: 100vh;
+		font-family: 'Poppins', sans-serif;
+		margin: 0px;
+		padding: 0px !important;
+
+		background: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi2.png?alt=media&token=fe5167d9-b413-4554-a656-578fafb1de73)no-repeat center center fixed !important;
+
+		background-size: 350px 160px !important;
+		-webkit-background-size: 350px 160px !important;
+		-moz-background-size: 350px 160px !important;
+		-o-background-size: 350px 160px !important;
+		z-index: auto;
+	}
+}
+
+/* ---------------------------------------------------- */
+/* BODY      					                    	*/
+/*----------------------------------------------------- */
+body.Body-Propietario {
+
+	height: 100vh;
+	font-family: 'Poppins', sans-serif;
+	margin: 0px;
+	padding: 0px !important;
+
+
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi1.png?alt=media&token=e1e40fa9-64e6-4199-b1ff-6dfdb15d9afd),
+		url(https://firebasestorage.googleapis.com/v0/b/taksi-d543c.appspot.com/o/fondos_web%2Ftaxi2.png?alt=media&token=fe5167d9-b413-4554-a656-578fafb1de73);
+
+	background-repeat: no-repeat;
+	/* background-attachment: scroll !important; */
+	background-position: center left,
+		center right;
+	z-index: auto;
+	background-size: 400px 200px;
+	-webkit-background-size: 400px 200px;
+	-moz-background-size: 400px 200px;
+	-o-background-size: 400px 200px;
+
+	background-color: #d6d0ce !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -174,8 +272,8 @@ a:hover {
 }
 
 .carrito {
-	width: 90%;
-	height: 100px;
+	width: 80%;
+	height: 145px;
 
 }
 
@@ -280,7 +378,7 @@ div.ng-scope.tutulo h2 {
 /* ---------------------------------------------------- */
 /*  TEXTO MODAL: 		;    						  	*/
 /*----------------------------------------------------- */
-.textoModal{
+.textoModal {
 	color: #020202;
 }
 
@@ -290,42 +388,48 @@ div.ng-scope.tutulo h2 {
 	background: transparent !important;
 	border: none;
 }
-#cuerpoModalExitoso_prop>.modal-body {
-    background: #414c50;
-    border-top-left-radius: 8px !important;
-    border-top-right-radius: 8px !important;
+
+#cuerpoModalExitoso_prop > .modal-body {
+	background: #414c50;
+	border-top-left-radius: 8px !important;
+	border-top-right-radius: 8px !important;
 }
-#cuerpoModalExitoso_prop>.footer {
-    background: #414c50;
-    border-bottom-left-radius: 8px !important;
-    border-bottom-right-radius: 8px !important;
+
+#cuerpoModalExitoso_prop > .footer {
+	background: #414c50;
+	border-bottom-left-radius: 8px !important;
+	border-bottom-right-radius: 8px !important;
 }
-#cuerpoModalExitoso_prop>.modal-body>div>div>label {
+
+#cuerpoModalExitoso_prop > .modal-body > div > div > label {
 	margin-top: 35px;
-    font-family: Prototype;
-    font-size: 25px;
-    color: #ffffff;
+	font-family: Prototype;
+	font-size: 25px;
+	color: #ffffff;
 }
-#cuerpoModalExitoso_prop>.modal-body>div>div>.subtitulo {
+
+#cuerpoModalExitoso_prop > .modal-body > div > div > .subtitulo {
 	margin-top: -5px;
 	margin-bottom: 35px;
-    font-family: Prototype;
-    font-size: 18px;
-    color: #ffffff;
+	font-family: Prototype;
+	font-size: 18px;
+	color: #ffffff;
 }
-#cuerpoModalExitoso_prop>.footer>div>div>button {
+
+#cuerpoModalExitoso_prop > .footer > div > div > button {
 	height: 35px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-    font-family: Prototype;
-    font-size: 15px;
-    font-style: normal;
-    text-align: center;
-    border-radius: 50px;
-    border: hidden;
-    background-color: #43a047;
-    color: #ffffff;
+	font-family: Prototype;
+	font-size: 15px;
+	font-style: normal;
+	text-align: center;
+	border-radius: 50px;
+	border: hidden;
+	background-color: #43a047;
+	color: #ffffff;
 }
+
 .imgCajaImg_prop {
 	width: 80px;
 	height: 80px;

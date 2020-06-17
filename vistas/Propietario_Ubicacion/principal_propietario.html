@@ -14,8 +14,10 @@
 
 	<!-- Librerias del Modulo de pagos -->
 	<link rel="stylesheet" href="../../librerias/bootstrapSelect/css/bootstrap-select.min.css">
+	<!-- Librerias bootstrap validator -->
 	<link rel="stylesheet" href="../../librerias/bootstrapValidator/css/Validaciones.css">
 	<link rel="stylesheet" href="../../css/Validaciones/validaciones.css">
+
 	<link rel="stylesheet" href="../../css/PagosTarjeta/PagosFotos.css">
 
 	<!--Vistas CSS-->
@@ -26,6 +28,7 @@
 	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/micuenta.css">
 	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion_chofer.css">
 	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion_facturacion.css">
+	<link rel="stylesheet" href="../../css/Propietario_Ubicacion/loader.css">
 
 	<!--DateTimepicker Calendario CSS-->
 	<link rel="stylesheet" href="../../librerias/datetimepicker/css/icon.css">
@@ -39,7 +42,7 @@
 </head>
 
 <body class="Body-Propietario">
-
+	<div class="loader" id="loaderP"></div>
 	<!-- Inicio Wrapper -->
 	<div class="wrapper  d-block m-auto">
 		<nav class="sidebar">
@@ -48,7 +51,7 @@
 				<i class="fa fa-arrow-left"></i><!-- close flechacerrarsidebar menu -->
 			</div>
 			<div class="headersidebar">
-				<img src="../../Diseno/ICONOS/logo.png" alt="" class="carrito mx-auto">
+				<img src="../../Diseno/ICONOS/logoTaxiNuevo.png" alt="" class="carrito mx-auto">
 			</div>
 
 			<ul class="list-unstyled menu-elements">
@@ -83,8 +86,7 @@
 
 
 	<!-- Modal para Cerrar Sesion Propietario-->
-	<div class="modal fade" id="modalCerrarSesion_prop" tabindex="-1" role="dialog" data-backdrop="static"
-		data-keyboard="false" aria-hidden="true">
+	<div class="modal fade" id="modalCerrarSesion_prop" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content" id="cuerpoModalExitoso_prop">
 				<div class="modal-body">
@@ -100,17 +102,28 @@
 				<div class="footer">
 					<div class="row">
 						<div class="col-4 offset-1">
-							<button type="button" class="form-control bg-danger" data-dismiss="modal"
-								aria-label="Close">Cancelar</button>
+							<button type="button" class="form-control bg-danger" data-dismiss="modal" aria-label="Close">Cancelar</button>
 						</div>
 						<div class="col-4 offset-2">
-							<button type="button" class="form-control"
-								id="btn_modal_cerrar_sesion_prop">Aceptar</button>
+							<button type="button" class="form-control" id="btn_modal_cerrar_sesion_prop">Aceptar</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+
+	<!-- Modal Error Validacion Bootstrap -->
+	<div id="showErrors" class="col-lg-4 col-md-5 col-sm-6 col-xs-12 showErrorModal">
+		<table class="errorModal">
+			<tr>
+				<td class="errorModalTitle"><img id="img1" alt="" src="../../Diseno/ICONOS/alerta.svg"></td>
+				<td class="errorModalBody">
+					<ul id="errors"></ul>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 
@@ -132,8 +145,7 @@
 	<script type="text/javascript" src="../../librerias/paginador/jquery.bootpag.js"></script>
 	<!-- DateTimepicker Calendario jS-->
 	<script type="text/javascript" src="../../librerias/datetimepicker/js/moment.min.js"></script>
-	<script type="text/javascript"
-		src="../../librerias/datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../librerias/datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
 
 	<!-- The core Firebase JS -->
 	<script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
@@ -156,12 +168,7 @@
 
 
 
-</body>
-
-
-
-
-</html>
+</body></html>
 
 
 

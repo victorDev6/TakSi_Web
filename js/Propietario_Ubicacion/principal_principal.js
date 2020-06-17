@@ -1,7 +1,7 @@
 //jQuery(document).ready(function () {
 $(document).ready(function () {
 
-
+$("#loaderP").removeClass("loader");
 	  /* Conectarse a Firebase*/
   try {
     firebase.initializeApp({

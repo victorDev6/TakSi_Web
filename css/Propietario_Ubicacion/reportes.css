@@ -198,3 +198,24 @@ tr:last-child td:last-child {
 .clasedesactivar{
 	cursor: not-allowed;
 }*/
+
+
+/* ---------------------------------------------------- */
+/*  MODAL FECHAS:										*/
+/*----------------------------------------------------- */
+.modal-content-fechas {
+	border-radius: 20px 20px;
+	-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+	-moz-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+	box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 1);
+}
+
+
+
+
+.modal-header-fechas {
+	background-color: #d6d0ce;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-width: 0px;
+}

@@ -1,0 +1,15 @@
+/* Loader */
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999 !important;
+	background: url('../../Diseno/ICONOS/LLANTA.gif') no-repeat rgb(74, 73, 73);
+	background-size: 20%;
+	background-position: center;
+	opacity: .8;
+	display: block;
+
+}

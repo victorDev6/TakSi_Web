@@ -1,5 +1,7 @@
 <!--link rel="stylesheet" href="../../css/Propietario_Ubicacion/informacion.css"-->
 
+
+
 <div class="tutulo p-3">
 	<h2>DATOS DEL TAXI</h2>
 </div>
@@ -55,12 +57,37 @@
 </div>
 
 
+<!-- Modal no poder elominar taxi-->
+<div class="modal" id="nodeletetaxi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+	data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content modal-content-Informacion">
+			<div class="modal-header modal-header-Ntaxi justify-content-center">
+				<h6 class="modal-title text-center " id="textoModalno">?.</h6>
+			</div>
+			<div class="modal-footer modal-footer-Ntaxi justify-content-center">
+				<button type="button" class="btn btn-primary cancelaltatxi" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Seleccione img taxi-->
+<div class="modal" id="seleccioneimg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+	data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content modal-content-Informacion">
+			<div class="modal-header modal-header-Ntaxi justify-content-center">
+				<h6 class="modal-title text-center " id="textoModalselectimg">?.</h6>
+			</div>
+			<div class="modal-footer modal-footer-Ntaxi justify-content-center">
+				<button type="button" class="btn btn-primary" id="cancelImg" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
-
-
-
-
-
-<script src="../../js/Propietario_Ubicacion/informacion.js"> </script>
+<script type="text/javascript" src="../../js/Validaciones_Propietario/Validaciones_propietario.js"></script>
+<script type="text/javascript" src="../../js/Propietario_Ubicacion/informacion.js"> </script>

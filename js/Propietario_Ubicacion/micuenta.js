@@ -16,6 +16,9 @@ try {
 	}
 }
 
+
+limpiarModalErrores();
+
 var db = firebase.firestore();
 var storageRef = firebase.storage().ref();
 
@@ -28,7 +31,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 		if (userCurrent != null) {
 			//se obtiene el correo de usuario logeado
 			var emailPP = user.email;
-			//console.log(emailPP);
+			//var emailPP = "perezrobleroleiver15@gmail.com";
 
 			//pasando el parametro correo
 			consultarTel(emailPP);
@@ -46,7 +49,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 							updateTel(idDueño);
 						}
 					});
-				});//le anexe; por ultimo
+				}); //le anexe; por ultimo
 			}
 
 			//actulizar telefono
@@ -60,16 +63,17 @@ firebase.auth().onAuthStateChanged(function (user) {
 			//modificando el telefono
 			function updateTel(idD) {
 				$(".acepataraltaTelefonoR").click(function (e) {
+					$("#loaderP").addClass("loader"); //CARGANDO LOADER
 					$("#altatelefono").modal("hide");
 					var cajaT = $("#nuevotelefono").val();
 					var dbcollection = db.collection("reg_prop_prin_web").doc(idD);
-
 					return dbcollection.update({
 							telefono: cajaT,
 						})
 						.then(function () {
 							console.log("Document successfully updated!");
 							$("#nuevotelefono").val("");
+							$("#loaderP").removeClass("loader"); //REMOVER LOADER
 						})
 						.catch(function (error) {
 							console.error("Error updating document: ", error);
@@ -127,6 +131,18 @@ firebase.auth().onAuthStateChanged(function (user) {
 			//consultando a la coleccion "solicitudes_pagos" para imprimir el historial de pago
 			db.collection("solicitudes_pagos").where("email", "==", emailPP).onSnapshot(function (queryPagos) {
 				var paso = 0;
+
+				if(queryPagos.size==0){
+					$("#alert-Cuenta").removeClass("d-none");
+					$("#alert-Cuenta" ).addClass("d-block");
+					//$(".encierro-Pagos").removeClass(".encierro-Pagos");
+					$(".encierroF2" ).addClass("encierro-Pagos");
+
+				}else{
+					$(".encierroF2").removeClass("encierro-Pagos");
+				}
+
+
 				$(".contenedorPGS").empty().prepend(); //limpiar antes de crear
 				queryPagos.forEach(function (docP) {
 					paso++;
@@ -241,8 +257,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 						if (statusPago == "Pendiente") {
 							if_fecha_In_Fin = "En Proceso";
 						}
-
-
 
 
 						$(".contenedorPGS").append('<div class="col-12">\

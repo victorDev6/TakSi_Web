@@ -17,7 +17,8 @@
 						<div class="form-group row mb-0">
 							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right  subtitulo">Taxi:</label>
 							<div class="col-12 col-sm-12 col-md-5  col-lg-7">
-								<select class="form-control form-control-sm" name="" id="placas">
+								<select class="form-control form-control-sm" name="placas" id="placas">
+								<option value="0" selected>Seleccionar Placa</option>
 								</select>
 							</div>
 						</div>
@@ -27,7 +28,7 @@
 						<div class="form-group row mb-0">
 							<label for="" class="col-12 col-sm-12 col-md-7  col-lg-5 col-form-label  text-center text-md-right subtitulo">Chofer:</label>
 							<div class="col-12 col-sm-12 col-md-5  col-lg-7">
-								<select class="form-control form-control-sm" name="" id="chofer" disabled>
+								<select class="form-control form-control-sm" name="chofer" id="chofer" disabled>
 								    <option value="0" selected>Seleccionar Chofer</option>
 								</select>
 							</div>
@@ -39,7 +40,7 @@
 							<label for="" class="col-12  col-sm-12   col-md-7	col-lg-5  col-form-label  text-center text-md-right subtitulo">Fecha Ini:</label>
 							<div class="col-12  col-sm-12   col-md-5    col-lg-7">
 								<div class="input-group">
-									<input type="text" class="form-control form-control-sm" id="date-start" name="datestart" placeholder="Fecha Inicial..">
+									<input type="text" value=""  class="form-control form-control-sm" id="datestart" name="datestart" placeholder="Fecha Inicial..">
 									<div class="input-group-append">
 										<span class="input-group-text p-0" id="basic-addon2"><i class="material-icons">event</i></span>
 									</div>
@@ -53,7 +54,7 @@
 							<label for="" class="col-12  col-sm-12   col-md-7   col-lg-5   col-form-label  text-center text-md-right subtitulo">Fecha Fin:</label>
 							<div class="col-12  col-sm-12   col-md-5   col-lg-7">
 								<div class="input-group">
-									<input class="form-control form-control-sm" id="date-end" name="dateend" placeholder="Fecha Final.." />
+									<input class="form-control form-control-sm" id="dateend" name="dateend" placeholder="Fecha Final.." />
 									<div class="input-group-append">
 										<span class="input-group-text p-0" id="basic-addon2"><i class="material-icons">event</i></span>
 									</div>
@@ -92,6 +93,10 @@
 		</div><!-- FIN PDF-->
 
 	</form>
+
+
+
+
 
 
 
@@ -162,6 +167,21 @@
 </div>
 
 
+<!-- Modal Fecha vacios-->
+<div class="modal" id="fechasvacios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content modal-content-fechas">
+			<div class="modal-header .modal-header-fechas  justify-content-center">
+				<h6 class="modal-title text-center " id="textoModalFecha">?.</h6>
+			</div>
+			<div class="modal-footer modal-footer-NvChofer justify-content-center">
+				<button type="button" class="btn btn-primary acepatarFecha">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
 
+
+<script type="text/javascript" src="../../js/Validaciones_Propietario/Validaciones_propietario.js"> </script>
 <script src="../../js/Propietario_Ubicacion/reporte.js"> </script>
 <script src="../../librerias/jspdf/PDF-Reportes.js"> </script>

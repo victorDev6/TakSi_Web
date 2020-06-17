@@ -186,6 +186,10 @@ a.btnRegresarTaxi {
 	border-bottom-width: 0px;
 }
 
+.modal-body-NvChofer {
+	background-color: #d6d0ce;
+}
+
 .modal-footer-NvChofer {
 	border-top-width: 0px;
 	background-color: #d6d0ce;
@@ -193,3 +197,10 @@ a.btnRegresarTaxi {
 	border-bottom-right-radius: 20px;
 }
 
+
+/* ---------------------------------------------------- */
+/*  			CURSOR BOTONES G-E-E      				*/
+/*----------------------------------------------------- */
+.descBCHOFER{
+	cursor: not-allowed !important;
+}
