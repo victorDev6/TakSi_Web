@@ -1,3 +1,14 @@
+$(document).ready(function () {
+
+ //Use esto dentro de su document ready jQuery -- forzar la recarga de una página
+      $(window).on('popstate', function() {
+         location.reload(true);
+      });
+
+});
+
+
+
 /* Conectarse a Firebase*/
 try {
 	firebase.initializeApp({
@@ -16,10 +27,15 @@ try {
 }
 
 
+
+
+
 var db = firebase.firestore();
 var storageRef = firebase.storage().ref();
 var gmarkers = [];
 var map;
+
+
 
 
 firebase.auth().onAuthStateChanged(function (user) {
