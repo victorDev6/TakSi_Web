@@ -9,23 +9,23 @@ app.config([
     $stateProvider
       .state("ubicacion", {
         url: "/Ubicacion",
-        templateUrl: "ubicacion.html",
+        templateUrl: "../../vistas/Propietario_Ubicacion/ubicacion.html",
       })
       .state("informacion", {
         url: "/Informacion",
-        templateUrl: "informacion.html",
+        templateUrl: "../../vistas/Propietario_Ubicacion/informacion.html",
       })
       .state("reportes", {
         url: "/Reportes",
-        templateUrl: "reportes.html",
+        templateUrl: "../../vistas/Propietario_Ubicacion/reportes.html",
       })
       .state("micuenta", {
         url: "/Mi Cuenta",
-        templateUrl: "micuenta.html",
+        templateUrl: "../../vistas/Propietario_Ubicacion/micuenta.html",
       })
       .state("choferes", {
         url: "/chofer",
-        templateUrl: "informacion_chofer.html",
+        templateUrl: "../../vistas/Propietario_Ubicacion/informacion_chofer.html",
       })
       .state("pagos", {
         url: "/Pagos",
