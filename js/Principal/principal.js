@@ -155,7 +155,11 @@ function LlenarModalAcercaDe(
   numOfic,
   numTaxis,
   numPasa,
-  linkE
+  linkE,
+  parrafo1,
+  parrafo2,
+  parrafo3,
+  textoBoton
 ) {
   $("#fundacion_acerca").html(fundacion);
   $("#lugar_acerca").html(lugar);
@@ -165,6 +169,10 @@ function LlenarModalAcercaDe(
   $("#num_taxis_acerca").html(numTaxis);
   $("#num_pasajero_acerca").html(numPasa);
   $("#link_empresa_acerca").attr("href", linkE);
+  $("#parrafo_1").html(parrafo1);
+  $("#parrafo_2").html(parrafo2);
+  $("#parrafo_3").html(parrafo3);
+  $("#link_empresa_acerca").text(textoBoton);
   $("#modalAcercaDe").modal("show");
 }
 
@@ -182,6 +190,10 @@ function DatosAcercaDe() {
   let lugar = "";
   let num_colaboradores = "";
   let num_oficinas = "";
+  let parrafo1,
+    parrafo2,
+    parrafo3,
+    textoBotonE = "";
 
   db.collection("taxis")
     .get()
@@ -208,6 +220,10 @@ function DatosAcercaDe() {
         lugar = doc.data().lugar;
         num_colaboradores = doc.data().num_colaboradores;
         num_oficinas = doc.data().num_oficinas;
+        parrafo1 = doc.data().parrafo1;
+        parrafo2 = doc.data().parrafo2;
+        parrafo3 = doc.data().parrafo3;
+        textoBotonE = doc.data().textoBoton;
       });
       LlenarModalAcercaDe(
         fundacion,
@@ -217,7 +233,11 @@ function DatosAcercaDe() {
         num_oficinas,
         num_taxis,
         num_usuarios,
-        link_empresa
+        link_empresa,
+        parrafo1,
+        parrafo2,
+        parrafo3,
+        textoBotonE
       );
     })
     .catch(function (error) {

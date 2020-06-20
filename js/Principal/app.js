@@ -9,7 +9,7 @@ app.config([
     $stateProvider
       .state("contenedor", {
         url: "/Inicio",
-        templateUrl: "contenido.html",
+        templateUrl: "../../vistas/Principal/contenido.html",
       })
       .state("registro", {
         url: "/Registrarse",
