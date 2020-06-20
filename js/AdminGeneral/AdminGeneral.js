@@ -102,7 +102,7 @@ $("#btn_modal_cerrar_sesion").click(function (e) {
 /********************************************************** */
 /*FUNCIONES PARA MOSTRAR NOTIFICACION
 /*********************************************************** */
-(function ConsulSoliAceptados() {
+(function ConsulReporteChofer() {
   //Obtener fechas en segundos
   //var segundos = new Date().getTime();
   var contaCambio = 0;
@@ -132,7 +132,7 @@ $("#btn_modal_cerrar_sesion").click(function (e) {
   });
 })();
 
-(function ConsulSoliAceptados() {
+(function ConsulReportePasajero() {
   var contaCambio2 = 0;
   db.collection("reportes_usuarios").onSnapshot(function (doc) {
     contaCambio2 += 1;
@@ -151,18 +151,19 @@ $("#btn_modal_cerrar_sesion").click(function (e) {
 })();
 
 (function ConsulSoliAceptados() {
-  var contaCambio3 = 0;
-  db.collection("solicitudes_pagos").onSnapshot(function (doc) {
-    contaCambio3 += 1;
-    if (contaCambio3 != 1) {
-      Push.create("NUEVA SOLICITUD DE PAGO", {
-        body: "Tiene una nueva solicitud de pago, verifique por favor",
-        icon: "../../Diseno/ICONOS/logoTaxiNuevo.png",
-        onClick: function () {
-          window.location = "#!/VerificarPagos";
-          this.close();
-        },
-      });
-    }
+  //let contaCambio3 = 0;
+  db.collection("solicitudes_pagos").onSnapshot(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      if (doc.data().estado_pago === "Pendiente") {
+        Push.create("NUEVA SOLICITUD DE PAGO", {
+          body: "Tiene una nueva solicitud de pago, verifique por favor",
+          icon: "../../Diseno/ICONOS/logoTaxiNuevo.png",
+          onClick: function () {
+            window.location = "#!/VerificarPagos";
+            this.close();
+          },
+        });
+      }
+    });
   });
 })();
