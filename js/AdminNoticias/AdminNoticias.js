@@ -14,7 +14,7 @@ try {
     storageBucket: "taksi-d543c.appspot.com",
     messagingSenderId: "3651890584",
     appId: "1:3651890584:web:3807da6ea8ba790f560fed",
-    measurementId: "G-6VDL057TWQ"
+    measurementId: "G-6VDL057TWQ",
   });
 } catch (err) {
   if (!/already exists/.test(err.message)) {
@@ -28,7 +28,7 @@ var db = firebase.firestore();
 var storageRef = firebase.storage().ref();
 
 /* Funcion lanzada por clase, que extrae el ID de quien lo lanzo, para procesar su imagen de salida*/
-$(".selectorImagen").click(function(e) {
+$(".selectorImagen").click(function (e) {
   switch (e.target.id) {
     case "imgSubida1":
       inImg = e.target.id;
@@ -38,7 +38,7 @@ $(".selectorImagen").click(function(e) {
   }
 });
 /* Se carga la imagen de Perfil en el input correspondiente, unicamente si es un formato válido (png,jpg y jpeg)*/
-$("#imagenNoticia1").change(function() {
+$("#imagenNoticia1").change(function () {
   file = $("#imagenNoticia" + numeroNoti).val();
   var ext = file.substring(file.lastIndexOf("."));
   if (
@@ -62,7 +62,7 @@ $("#imagenNoticia1").change(function() {
     var reader = new FileReader();
     reader.addEventListener(
       "load",
-      function() {
+      function () {
         preview.src = reader.result;
         //Hace que muestre la img
       },
@@ -89,7 +89,7 @@ function subirImagenAFirebase() {
 
   uploadTask.on(
     "state_changed",
-    function(snapshot) {
+    function (snapshot) {
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       showProgress(progress); //ejecutar progreso
       switch (snapshot.state) {
@@ -101,11 +101,11 @@ function subirImagenAFirebase() {
           break;
       }
     },
-    function(error) {
+    function (error) {
       // Handle unsuccessful uploads
     },
-    function() {
-      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    function () {
+      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
         GuardarNoticia_BD(downloadURL);
       });
     }
@@ -122,13 +122,13 @@ function GuardarNoticia_BD(url) {
     .add({
       url: imagen_url,
       descripcion: descripcion,
-      fecha: firebase.firestore.FieldValue.serverTimestamp()
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
     })
-    .then(function(docRef) {
+    .then(function (docRef) {
       console.log("Registro exitoso");
       document.getElementById("descripcion_noticia").value = "";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error("Error adding document: ", error);
     });
 }
@@ -139,9 +139,9 @@ function ConsultaNoticias() {
   let noticiasC = document.getElementById("agregarHijosNoticia");
   db.collection("noticias_web")
     .orderBy("fecha", "desc")
-    .onSnapshot(function(querySnapshot) {
+    .onSnapshot(function (querySnapshot) {
       noticiasC.innerHTML = "";
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         noticiasC.innerHTML += `
       <div class="contenedorhijo_noticias mt-3">
         <div class="contenedor_imagen">
@@ -158,7 +158,8 @@ function ConsultaNoticias() {
         </div>
 
         <button class="btn btn_noticia_admin btn_noticia_elim p-0" 
-        role="link" type="button" onclick="EliminarNoticia('${doc.id}')">
+        role="link" type="button" onclick="EliminarNoticia('${doc.id}',
+        '${doc.data().url}')">
             <img src="../../Diseno/ICONOS/eliminar.svg" class="iconos_admin_j">
           ELIMINAR
         </button>
@@ -171,21 +172,13 @@ ConsultaNoticias();
 /********************************************************** */
 /*ELIMINAR NOTICIAS
 /*********************************************************** */
-function EliminarNoticia(id) {
-  db.collection("noticias_web")
-    .doc(id)
-    .delete()
-    .then(function() {
-      console.log("Document successfully deleted!");
-    })
-    .catch(function(error) {
-      console.error("Error removing document: ", error);
-    });
+function EliminarNoticia(id, urlImg) {
+  EliminarImagenStorage(id, urlImg);
 }
 /********************************************************** */
 /*SUBIR LA IMAGEN AL DAR CLICK
 /*********************************************************** */
-$("#btn_subir_noti").click(function(e) {
+$("#btn_subir_noti").click(function (e) {
   e.preventDefault();
   subirImagenAFirebase();
 });
@@ -204,4 +197,28 @@ function showProgress(valor) {
   aria-valuemin="0" aria-valuemax="100">${convertirInt}%</div>
   </div>`;
 }
-//});
+
+function EliminarImagenStorage(id, urlImg) {
+  var queryDelete = firebase.storage().refFromURL(urlImg);
+  queryDelete
+    .delete()
+    .then(function () {
+      console.log("Imagen eliminada");
+      EliminarRegistroBD(id);
+    })
+    .catch(function (error) {
+      console.log("Error al eliminar imagen");
+    });
+}
+
+function EliminarRegistroBD(id) {
+  db.collection("noticias_web")
+    .doc(id)
+    .delete()
+    .then(function () {
+      console.log("Document successfully deleted!");
+    })
+    .catch(function (error) {
+      console.error("Error removing document: ", error);
+    });
+}

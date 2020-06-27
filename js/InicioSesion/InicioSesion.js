@@ -7,14 +7,20 @@ $(document).ready(function () {
     $("#iniciosesion").addClass("activo");
   }
 
+  /********************************************************** */
+  /*MUESTRA EL CARGANDO AL CAMBIAR DE PAGINA
+/*********************************************************** */
   setTimeout(function () {
     $("#loader").fadeIn(500);
     $("#loader").fadeOut(500);
   }, 1);
 
+  //LIMPIA LOS ERRORES
   limpiarModalErrores();
 
-  // Initialize Firebase
+  /********************************************************** */
+  /*SE INICIA FIREBASE
+/*********************************************************** */
   try {
     firebase.initializeApp({
       apiKey: "AIzaSyB3Vk0nWljV4KhsfU9Co4qNNE0P_FhIJC4",
@@ -36,8 +42,6 @@ $(document).ready(function () {
   }
   var db = firebase.firestore();
 
-  //Variable global
-  var estatus_user_global = "";
   /********************************************************** */
   /*MOSTRAR PASSWORD
 /*********************************************************** */
@@ -53,230 +57,7 @@ $(document).ready(function () {
       document.getElementById("iconoOjoS").classList.add("fa-eye-slash");
     }
   });
-  /********************************************************** */
-  /*LIMPIA LOS DOS CAMPOS
-/*********************************************************** */
-  function Limpiar() {
-    document.getElementById("email_ini_sesion").value = "";
-    document.getElementById("pass_ini_sesion").value = "";
-  }
 
-  /********************************************************** */
-  /*INICIAR SESION
-/*********************************************************** */
-  function ingreso() {
-    var email_ini_sesion = document.getElementById("email_ini_sesion").value;
-    var pass_ini_sesion = document.getElementById("pass_ini_sesion").value;
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email_ini_sesion, pass_ini_sesion)
-
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        switch (errorCode) {
-          case "auth/invalid-email":
-            mensajeM = `¡El correo no es valido!. Verifique`;
-            colorTodos = "#ffc107";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            break;
-
-          case "auth/user-disabled":
-            mensajeM = `¡El correo ingresado, esta deshabilitado!`;
-            colorTodos = "#ffc107";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            break;
-
-          case "auth/user-not-found":
-            mensajeM = `¡No existe ningun usuario con este correo`;
-            colorTodos = "#ffc107";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            break;
-
-          case "auth/wrong-password":
-            mensajeM = `¡La contraseña no es valida!`;
-            colorTodos = "#ffc107";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            break;
-
-          default:
-            mensajeM = `¡Error!<br>
-            Intentalo mas tarde`;
-            colorTodos = "#e24c4b";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            break;
-        }
-      });
-  }
-  $("#btn_ini_sesion").click(function (e) {
-    e.preventDefault();
-    limpiarModalErrores();
-    let validarUser = $("#formularioInicioSesion")
-      .data("bootstrapValidator")
-      .validate();
-    if (validarUser.isValid()) {
-      setTimeout(function () {
-        $("#loader").fadeIn(500);
-        $("#loader").fadeOut(500);
-      }, 1);
-      ingreso();
-    } else {
-      mensajeM = `Verifique los campos`;
-      colorTodos = "#ffc107";
-      linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-      mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-    }
-  });
-
-  //Al dar enter
-  $("#pass_ini_sesion , #email_ini_sesion").keypress(function (e) {
-    if (e.which == 13) {
-      e.preventDefault();
-      limpiarModalErrores();
-      let validarUser = $("#formularioInicioSesion")
-        .data("bootstrapValidator")
-        .validate();
-      if (validarUser.isValid()) {
-        setTimeout(function () {
-          $("#loader").fadeIn(500);
-          $("#loader").fadeOut(500);
-        }, 1);
-        ingreso();
-      } else {
-        mensajeM = `Verifique los campos`;
-        colorTodos = "#ffc107";
-        linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-        mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-      }
-    }
-  });
-
-  /**AdCkeck */
-  function adCheck() {
-    let adCheck = document.getElementById("pass_ini_sesion").value;
-    let valorAdchek = false;
-    try {
-      separador = "_"; // un espacio en blanco
-      limit = 2;
-      arrayDivicion = adCheck.split(separador);
-      if (arrayDivicion[0] === "admin") {
-        valorAdchek = true;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-    return valorAdchek;
-  }
-
-  /********************************************************** */
-  /*ESTA EN ESCUCHA POR CUALQUIER CAMBIO
-/*********************************************************** */
-  function observador() {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        let email = user.email;
-        let verifiEmail = user.emailVerified;
-
-        BuscarStatus(email);
-
-        setTimeout(() => {
-          checkAd = adCheck();
-          if (checkAd && verifiEmail) {
-            window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
-          }
-
-          if (verifiEmail && estatus_user_global == "true") {
-            buscarIdDoc(email, user);
-          } else if (estatus_user_global == "false" && verifiEmail === true) {
-            mensajeM = `¡Su cuenta ha sido bloqueada!`;
-            colorTodos = "#e24c4b";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            cerrarSesion();
-          } else if (verifiEmail === false) {
-            mensajeM = `Revise su correo y active su cuenta para poder accesar`;
-            colorTodos = "#ffc107";
-            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
-            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-            cerrarSesion();
-          }
-        }, 1000);
-      } else {
-        // User is signed out.
-        //console.log("no existe usuario activo");
-      }
-    });
-  }
-  observador();
-  /********************************************************** */
-  /*SOLO MUESTRA EL MODAL DE BIENVENIDA
-/*********************************************************** */
-  function MostrarBienvenida(user) {
-    let mensajeM = `Bienvenido ${user.email}`;
-    let colorTodos = "#4caf50";
-    let linkImagen = "../../Diseno/ICONOS/icon_modal_correct.svg";
-    mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-  }
-  /********************************************************** */
-  /*CAMBIA EL ESTADO DE EMAIL A ACTIVO
-/*********************************************************** */
-  function updateStateEmail(idDoc, user) {
-    db.collection("reg_prop_prin_web")
-      .doc(idDoc)
-      .update({
-        verifEmail: "true",
-      })
-      .then(function () {
-        MostrarBienvenida(user);
-        Limpiar();
-        window.location =
-          "../../vistas/Propietario_Ubicacion/principal_propietario.html";
-        //Document successfully updated
-      });
-  }
-  /********************************************************** */
-  /*SI SE VERIFICO EL CORREO SE EJECUTA ESTO
-/*********************************************************** */
-  function buscarIdDoc(emailU, user) {
-    let obtenerId = "";
-    let obtenerStateEmail = "";
-    let mensajeM;
-    let colorTodos;
-    let linkImagen;
-    db.collection("reg_prop_prin_web")
-      .where("email", "==", emailU)
-      .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          obtenerId = doc.id;
-          obtenerStateEmail = doc.data().verifEmail;
-        });
-        if (obtenerStateEmail === "false") {
-          updateStateEmail(obtenerId, user);
-        } else {
-          MostrarBienvenida(user);
-          Limpiar();
-          window.location =
-            "../../vistas/Propietario_Ubicacion/principal_propietario.html";
-        }
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
-        mensajeM = `¡Error de comunicación!<br>
-            Inténtalo mas tarde`;
-        colorTodos = "#e24c4b";
-        linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
-        mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
-      });
-  }
   /********************************************************** */
   /*AGREGAR DATOS AL MODAL Y CERRAR MODAL
 /*********************************************************** */
@@ -289,23 +70,11 @@ $(document).ready(function () {
     $("#modalMensajesM").modal("show");
     setTimeout(QuitarModalM, 4000);
   }
+
   function QuitarModalM() {
     $("#modalMensajesM").modal("hide");
   }
-  /********************************************************** */
-  /*CERRAR SESION
-/*********************************************************** */
-  function cerrarSesion() {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        //console.log("Saliendo...");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+
   /********************************************************** */
   /*REESTABLECER PASSWORD
 /*********************************************************** */
@@ -352,6 +121,7 @@ $(document).ready(function () {
         }
       });
   }
+
   $("#btn_acept_pass").click(function (e) {
     e.preventDefault();
     limpiarModalErrores();
@@ -366,26 +136,185 @@ $(document).ready(function () {
       reestablecerPassword();
     }
   });
+
   $("#btn_cancel_pass").click(function (e) {
     e.preventDefault();
     limpiarModalErrores();
   });
 
-  //FUNCION PARA BUSCAR EL STATUS
-  //Nota: intente hacer esto pero me di cuenta de que
-  //debe validarlo leiver
-  function BuscarStatus(email) {
-    estatus_user_global = "";
-    let mensajeM;
-    let colorTodos;
-    let linkImagen;
+  //Nuevo codigo de Iniciar Sesión
+  $("#btn_ini_sesion").click(function (e) {
+    e.preventDefault();
+    var validar = $("#formularioInicioSesion")
+      .data("bootstrapValidator")
+      .validate();
+    if (validar.isValid()) {
+      let email_ini_sesion = document.getElementById("email_ini_sesion").value;
+      let pass_ini_sesion = document.getElementById("pass_ini_sesion").value;
+      setTimeout(function () {
+        $("#loader").fadeIn(500);
+        $("#loader").fadeOut(500);
+      }, 1);
+      //Tipo User
+      tipoUser = pass_ini_sesion.split("_");
+      if (tipoUser[0] === "admin") {
+        Ingresar("admin");
+      } else {
+        //user afiliado
+        db.collection("reg_prop_prin_web")
+          .where("email", "==", email_ini_sesion.trim())
+          .get()
+          .then(function (snapshot) {
+            if (snapshot.size > 0) {
+              snapshot.forEach(function (item) {
+                if (item.data().verifEmail == "false") {
+                  mensajeM = `Lo sentimos, no ha activado su cuenta`;
+                  colorTodos = "#fbbf0c";
+                  linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+                  mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+                } else {
+                  if (item.data().status == "false") {
+                    mensajeM = `Su cuenta ha sido deshabilitada, para mas información comuniquese al centro de ayuda`;
+                    colorTodos = "#fbbf0c";
+                    linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+                    mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+                  } else {
+                    Ingresar("afiliado");
+                  }
+                }
+              });
+            } else {
+              mensajeM = `El email ingresado no se encuentra en el sistema`;
+              colorTodos = "#fbbf0c";
+              linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+              mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+            mensajeM = `Ocurrio un error, intentelo de nuevo`;
+            colorTodos = "#e24c4b";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+          });
+      }
+    } else {
+      mensajeM = `Por favor, ingrese su email y contraseña correctamente`;
+      colorTodos = "#fbbf0c";
+      linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+      mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+    }
+  });
+
+  function Ingresar(type) {
+    limpiarModalErrores();
+    let email_ini_sesion = document.getElementById("email_ini_sesion").value;
+    let pass_ini_sesion = document.getElementById("pass_ini_sesion").value;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email_ini_sesion, pass_ini_sesion)
+      .then(function () {
+        if (type == "admin") {
+          mensajeM = `Bienvenido ${email_ini_sesion}`;
+          colorTodos = "#4caf50";
+          linkImagen = "../../Diseno/ICONOS/icon_modal_correct.svg";
+          mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+          window.location = "../../vistas/AdminGeneral/AdminGeneral.html";
+        } else {
+          mensajeM = `Bienvenido ${email_ini_sesion}`;
+          colorTodos = "#4caf50";
+          linkImagen = "../../Diseno/ICONOS/icon_modal_correct.svg";
+          mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+          window.location =
+            "../../vistas/Propietario_Ubicacion/principal_propietario.html";
+        }
+      })
+      .catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        switch (errorCode) {
+          case "auth/invalid-email":
+            mensajeM = `¡El correo no es valido!. Verifique`;
+            colorTodos = "#fbbf0c";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            break;
+
+          case "auth/user-disabled":
+            mensajeM = `¡El correo ingresado, esta deshabilitado!`;
+            colorTodos = "#fbbf0c";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            break;
+
+          case "auth/user-not-found":
+            mensajeM = `¡No existe ningun usuario con este correo`;
+            colorTodos = "#fbbf0c";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            break;
+
+          case "auth/wrong-password":
+            mensajeM = `¡La contraseña no es valida!`;
+            colorTodos = "#fbbf0c";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            break;
+
+          default:
+            mensajeM = `¡Error!<br>
+          Intentalo mas tarde`;
+            colorTodos = "#e24c4b";
+            linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+            mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            break;
+        }
+      });
+  }
+
+  (function Observador() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        let email = user.email;
+        let verifEmail = user.emailVerified;
+        if (verifEmail) {
+          BuscarUsuario(email);
+        }
+      } else {
+        console.log("No existe usuario activo");
+        CerrarSesion();
+        // User is signed out.
+        //console.log("no existe usuario activo");
+      }
+    });
+  })();
+
+  function UpdateEmailVerif(id) {
+    db.collection("reg_prop_prin_web")
+      .doc(id)
+      .update({
+        verifEmail: "true",
+      })
+      .then(function () {
+        //Si se actualizo
+      });
+  }
+
+  function BuscarUsuario(email) {
+    let idUser = "",
+      statusVerif = "";
     db.collection("reg_prop_prin_web")
       .where("email", "==", email)
       .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          estatus_user_global = doc.data().status;
+      .then(function (user) {
+        user.forEach(function (doc) {
+          idUser = doc.id;
+          statusVerif = doc.data().verifEmail;
         });
+        if (statusVerif === "false") {
+          UpdateEmailVerif(idUser, statusVerif);
+        }
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);
@@ -396,4 +325,83 @@ $(document).ready(function () {
         mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
       });
   }
+
+  function CerrarSesion() {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        //console.log("Saliendo...");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  $("#pass_ini_sesion , #email_ini_sesion").keypress(function (e) {
+    if (e.which == 13) {
+      e.preventDefault();
+      limpiarModalErrores();
+      let validar = $("#formularioInicioSesion")
+        .data("bootstrapValidator")
+        .validate();
+      if (validar.isValid()) {
+        let email_ini_sesion = document.getElementById("email_ini_sesion")
+          .value;
+        let pass_ini_sesion = document.getElementById("pass_ini_sesion").value;
+        setTimeout(function () {
+          $("#loader").fadeIn(500);
+          $("#loader").fadeOut(500);
+        }, 1);
+        //Tipo User
+        tipoUser = pass_ini_sesion.split("");
+        if (tipoUser[0] === "admin") {
+          Ingresar("admin");
+        } else {
+          //user afiliado
+          db.collection("reg_prop_prin_web")
+            .where("email", "==", email_ini_sesion.trim())
+            .get()
+            .then(function (snapshot) {
+              if (snapshot.size > 0) {
+                snapshot.forEach(function (item) {
+                  if (item.data().verifEmail === "false") {
+                    mensajeM = `Lo sentimos, no ha activado su cuenta`;
+                    colorTodos = "#fbbf0c";
+                    linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+                    mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+                  } else {
+                    if (item.data().status == "false") {
+                      mensajeM = `Su cuenta ha sido deshabilitada, para mas información comuniquese al centro de ayuda`;
+                      colorTodos = "#fbbf0c";
+                      linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+                      mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+                    } else {
+                      Ingresar("afiliado");
+                    }
+                  }
+                });
+              } else {
+                mensajeM = `El email ingresado no se encuentra en el sistema`;
+                colorTodos = "#fbbf0c";
+                linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+                mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+              mensajeM = `Ocurrio un error, intentelo de nuevo`;
+              colorTodos = "#e24c4b";
+              linkImagen = "../../Diseno/ICONOS/icon_modal_error.svg";
+              mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+            });
+        }
+      } else {
+        mensajeM = `Por favor, ingrese su email y contraseña correctamente`;
+        colorTodos = "#fbbf0c";
+        linkImagen = "../../Diseno/ICONOS/icon_modal_alert.svg";
+        mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+      }
+    }
+  });
 }); //fin del documento

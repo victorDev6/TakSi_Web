@@ -4,7 +4,7 @@ app.config([
   "$urlRouterProvider",
   "$stateProvider",
   function ($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise("/Ubicacion");
+    $urlRouterProvider.otherwise("/Informacion");
 
     $stateProvider
       .state("ubicacion", {
@@ -25,7 +25,8 @@ app.config([
       })
       .state("choferes", {
         url: "/chofer",
-        templateUrl: "../../vistas/Propietario_Ubicacion/informacion_chofer.html",
+        templateUrl:
+          "../../vistas/Propietario_Ubicacion/informacion_chofer.html",
       })
       .state("pagos", {
         url: "/Pagos",
@@ -33,7 +34,3 @@ app.config([
       });
   },
 ]);
-
-
-
-

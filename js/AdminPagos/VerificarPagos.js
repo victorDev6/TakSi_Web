@@ -127,7 +127,7 @@ function ConsulSoliAceptados() {
                         <div class="col-5">
                             <button class="btn btn_foto_elim p-0" role="link" type="button"
                             onclick="EliminarSolicitud(
-                              '${doc.id}')">
+                              '${doc.id}','${doc.data().url}')">
                                 ELIMINAR
                             </button>
                         </div>
@@ -174,7 +174,7 @@ function ConsulSoliRechazado() {
                         <div class="col-5">
                             <button class="btn btn_foto_elim p-0" role="link" type="button"
                             onclick="EliminarSolicitud(
-                              '${doc.id}')">
+                              '${doc.id}','${doc.data().url}')">
                                 ELIMINAR
                             </button>
                         </div>
@@ -348,7 +348,7 @@ function RechazarSolicitud(idRegistro, solicitud) {
 /*METODO PARA ELIMINAR DE FORMA PERMANENTE EL REGISTRO
 DEBE SER SOLO SI SE RECHAZO O ACEPTO
 /*********************************************************** */
-function EliminarSolicitud(idRegistro) {
+function EliminarSolicitud(idRegistro, urlImagen) {
   $("#botonAceptarModalElim").removeClass("d-none");
   $("#botonAceptarModalM").addClass("d-none");
   $("#botonAceptarModalMR").addClass("d-none");
@@ -356,19 +356,32 @@ function EliminarSolicitud(idRegistro) {
   colorTodos = "#414c50";
   linkImagen = "../../Diseno/ICONOS/alerta.svg";
   mostrarModalMensaje(mensajeM, colorTodos, linkImagen);
+  //Boton
   $("#botonAceptarModalElim").click(function (e) {
     e.preventDefault();
-    db.collection("solicitudes_pagos")
-      .doc(idRegistro)
+    //Elimina Imagen de storage
+    var queryDelete = firebase.storage().refFromURL(LinkImagen);
+    queryDelete
       .delete()
       .then(function () {
-        console.log("Document successfully deleted!");
+        //Elimina registro de la bd
+        db.collection("solicitudes_pagos")
+          .doc(idRegistro)
+          .delete()
+          .then(function () {
+            console.log("Document successfully deleted!");
+          })
+          .catch(function (error) {
+            console.error("Error removing document: ", error);
+          });
       })
       .catch(function (error) {
-        console.error("Error removing document: ", error);
+        console.log("Error al eliminar imagen");
       });
   });
 }
+
+function EliminarImagenStorage(LinkImagen) {}
 
 /********************************************************** */
 /*METODO DE ABRIR MODAL Y ENVIAR PARAMETROS
